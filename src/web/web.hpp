@@ -13,7 +13,9 @@
 #include "../config/core.hpp"
 
 
-#define SQL_BUFFER_SIZE 65535
+#ifndef SQL_BUFFER_SIZE
+	#define SQL_BUFFER_SIZE 65535
+#endif
 
 enum E_WEBSERVER_ST {
 	WEBSERVER_ST_RUNNING = CORE_ST_LAST,
@@ -35,6 +37,11 @@ struct Web_Config {
 struct Inter_Config {
 	int emblem_transparency_limit;					// Emblem transparency limit
 	bool emblem_woe_change;							// allow emblem change during woe
+};
+
+enum e_http_status{
+	HTTP_BAD_REQUEST = 400,
+	HTTP_NOT_FOUND = 404,
 };
 
 extern struct Web_Config web_config;
