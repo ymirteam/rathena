@@ -80,7 +80,7 @@ OnInit:
 	$all_mob_id_size = getarraysize(.mobIds);
 	
 	// Level range
-	.tier_1_lv = 30;
+	.tier_1_lv = 15;
 	.tier_2_lv = 50;
 	.tier_3_lv = 99;
 	.tier_4_lv = 150;
@@ -92,15 +92,15 @@ OnInit:
 		
 		.@monster_level = getmonsterinfo(.@monster_id,MOB_LV);
 		
-		if((.@monster_level > 0)	&& (.@monster_level < .tier_1_lv) && !F_IsDummyMonster(.@monster_id))
+		if((.@monster_level > 0) && (.@monster_level <= .tier_1_lv) && !F_IsDummyMonster(.@monster_id))
 		setarray $tier1MonsterIds[getarraysize($tier1MonsterIds)],.@monster_id;
-		else if((.@monster_level >= .tier_1_lv) && (.@monster_level < .tier_2_lv)&& !F_IsDummyMonster(.@monster_id))
+		else if((.@monster_level > .tier_1_lv) && (.@monster_level <= .tier_2_lv)&& !F_IsDummyMonster(.@monster_id))
 		setarray $tier2MonsterIds[getarraysize($tier2MonsterIds)],.@monster_id;
-		else if((.@monster_level >= .tier_2_lv) && (.@monster_level < .tier_3_lv)&& !F_IsDummyMonster(.@monster_id))
+		else if((.@monster_level > .tier_2_lv) && (.@monster_level <= .tier_3_lv)&& !F_IsDummyMonster(.@monster_id))
 		setarray $tier3MonsterIds[getarraysize($tier3MonsterIds)],.@monster_id;
-		else if((.@monster_level >= .tier_3_lv) && (.@monster_level < .tier_4_lv)&& !F_IsDummyMonster(.@monster_id))
+		else if((.@monster_level > .tier_3_lv) && (.@monster_level <= .tier_4_lv)&& !F_IsDummyMonster(.@monster_id))
 		setarray $tier4MonsterIds[getarraysize($tier4MonsterIds)],.@monster_id;
-		else if((.@monster_level >= .tier_4_lv) && !F_IsDummyMonster(.@monster_id))
+		else if((.@monster_level > .tier_4_lv) && !F_IsDummyMonster(.@monster_id))
 		setarray $tier5MonsterIds[getarraysize($tier5MonsterIds)],.@monster_id;
 	}
 	
