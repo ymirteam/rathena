@@ -369,7 +369,7 @@ yuno_fild03,38,146,5	script	Lily Blanc	-1,{
 				mes "[Lily]";
 				mes "Hmm... are you okay?";
 				mes "Hmmmm. Okay";
-				callsub( S_SetDelay, .@quest_ongoing, .@quest_first, .@quest_delay );
+				callsub( S_SetDelay, .@quest_ongoing, .@quest_first, .@quest_delay, 4852278,3396600 );
 			}
 			end;
 		case 2:
@@ -404,7 +404,7 @@ yuno_fild03,38,146,5	script	Lily Blanc	-1,{
 				mes "Huh... Really?";
 				mes "What should I do... my God. Is it real?";
 				mes "Hmmmm. Okay";
-				callsub( S_SetDelay, .@quest_ongoing, .@quest_first, .@quest_delay );
+				callsub( S_SetDelay, .@quest_ongoing, .@quest_first, .@quest_delay, 1661868,1163304 );
 			}
 			end;
 		case 3:
@@ -435,7 +435,7 @@ yuno_fild03,38,146,5	script	Lily Blanc	-1,{
 				mes "Um... that's right. The shell...";
 				mes "Yes? The soles of the feet? Indeed...";
 				mes "Hmmmm. Okay";
-				callsub( S_SetDelay, .@quest_ongoing, .@quest_first, .@quest_delay );
+				callsub( S_SetDelay, .@quest_ongoing, .@quest_first, .@quest_delay, 1590396,1113275 );
 			}
 			end;
 		case 4:
@@ -476,7 +476,7 @@ yuno_fild03,38,146,5	script	Lily Blanc	-1,{
 				mes "It's much more crumbly...";
 				mes "Aha, that's a lot more dust.";
 				mes "Hmmmm. Okay";
-				callsub( S_SetDelay, .@quest_ongoing, .@quest_first, .@quest_delay );
+				callsub( S_SetDelay, .@quest_ongoing, .@quest_first, .@quest_delay, 3251388,2275966 );
 			}
 			end;
 		case 5:
@@ -560,6 +560,7 @@ S_SetDelay:
 	else
 		erasequest .@quest_ongoing;
 	setquest .@quest_delay;
+	getexp getarg(3), getarg(4);
 	close;
 
 OnInit:
