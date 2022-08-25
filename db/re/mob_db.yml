@@ -95157,10 +95157,10 @@ Body:
         Rate: 80
       - Item: Lava_Leather_Suits
         Rate: 50
-        RandomOptionGroup: LAV1
+        RandomOptionGroup: MAGMA3
       - Item: Lava_Leather_Shoes
         Rate: 50
-        RandomOptionGroup: LAV1
+        RandomOptionGroup: MAGMA3
       - Item: Magma_Essence
         Rate: 5
       - Item: Rigid_Blazer_Card
@@ -95206,7 +95206,7 @@ Body:
         Rate: 80
       - Item: Lava_Leather_Manteau
         Rate: 50
-        RandomOptionGroup: LAV1
+        RandomOptionGroup: MAGMA3
       - Item: Magma_Essence
         Rate: 5
       - Item: Zelunium_Ore
@@ -95254,7 +95254,7 @@ Body:
         Rate: 80
       - Item: Lava_Leather_Robe
         Rate: 50
-        RandomOptionGroup: LAV1
+        RandomOptionGroup: MAGMA3
       - Item: Magma_Essence
         Rate: 5
       - Item: Zelunium_Ore
@@ -95302,7 +95302,7 @@ Body:
         Rate: 80
       - Item: Lava_Leather_Armor
         Rate: 50
-        RandomOptionGroup: LAV1
+        RandomOptionGroup: MAGMA3
       - Item: Magma_Essence
         Rate: 5
       - Item: Zelunium_Ore
@@ -95350,7 +95350,7 @@ Body:
         Rate: 80
       - Item: Lava_Leather_Sandals
         Rate: 50
-        RandomOptionGroup: LAV1
+        RandomOptionGroup: MAGMA3
       - Item: Magma_Essence
         Rate: 5
       - Item: Zelunium_Ore
@@ -95402,7 +95402,7 @@ Body:
         Rate: 80
       - Item: Lava_Leather_Hood
         Rate: 50
-        RandomOptionGroup: LAV1
+        RandomOptionGroup: MAGMA3
       - Item: Rigid_Kaho_Card
         Rate: 1
         StealProtected: true
@@ -95444,10 +95444,10 @@ Body:
         Rate: 80
       - Item: Lava_Leather_Muffler
         Rate: 50
-        RandomOptionGroup: LAV1
+        RandomOptionGroup: MAGMA3
       - Item: Lava_Leather_Boots
         Rate: 50
-        RandomOptionGroup: LAV1
+        RandomOptionGroup: MAGMA3
       - Item: Magma_Essence
         Rate: 5
       - Item: Zelunium_Ore
@@ -95739,13 +95739,13 @@ Body:
         Rate: 50
       - Item: Lava_Leather_Suits
         Rate: 100
-        RandomOptionGroup: LAV2
+        RandomOptionGroup: MAGMA3
       - Item: Lava_Leather_Robe
         Rate: 100
-        RandomOptionGroup: LAV2
+        RandomOptionGroup: MAGMA3
       - Item: Lava_Leather_Armor
         Rate: 100
-        RandomOptionGroup: LAV2
+        RandomOptionGroup: MAGMA3
       - Item: Firm_Muspell_Card
         Rate: 1
         StealProtected: true
