@@ -323,6 +323,10 @@ einbech,154,244,5	script	Need help#exsk_	4_F_JOB_BLACKSMITH,{
 }
 
 einbech,149,257,4	script	Site manager Elmen#extdq0	4_TOWER_16,{
+	if (checkweight(25814,100) == 0 || checkweight(1201,1) == 0 || (MaxWeight - Weight) < 10000) {
+		mes "- You cannot proceed because you have too many items. -";
+		close;
+	}
 	mes "[Elmen]";
 	mes "Hello. Adventurer.";
 	mes "If you're here to purchase Dynite mining equipment or refine ore into Dynite, you've come to the right place.";
@@ -356,9 +360,6 @@ einbech,149,257,4	script	Site manager Elmen#extdq0	4_TOWER_16,{
 			mes "[Elmen]";
 			mes "Hey! This makes it difficult for each other, don't you run out of materials needed for refining? The materials!";
 			close;
-		}
-		if (checkweight(25814,.@val) == 0) {	// todo
-			end;
 		}
 		specialeffect EF_REPAIRWEAPON;
 		progressbar_npc "FFFF00",1;
