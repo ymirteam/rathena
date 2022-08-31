@@ -11045,6 +11045,10 @@ void clif_parse_LoadEndAck(int fd,struct map_session_data *sd)
 			//Login Event
 			npc_script_event(sd, NPCE_LOGIN);
 		}
+
+		// Set facing direction before check below to update client
+		if (battle_config.spawn_direction)
+			unit_setdir(&sd->bl, sd->status.body_direction, false);
 	} else {
 		//For some reason the client "loses" these on warp/map-change.
 		clif_updatestatus(sd,SP_STR);
@@ -23242,21 +23246,24 @@ void clif_parse_laphine_synthesis( int fd, struct map_session_data* sd ){
 		}
 	}
 
-	int16 index = pc_search_inventory( sd, sd->state.laphine_synthesis );
+	// If triggered from item
+	if( sd->itemid == sd->state.laphine_synthesis ){
+		int16 index = pc_search_inventory( sd, sd->state.laphine_synthesis );
 
-	if( index < 0 ){
-		clif_laphine_synthesis_result( sd, LAPHINE_SYNTHESIS_ITEM );
-		return;
-	}
-
-	if( ( sd->inventory_data[index]->flag.delay_consume & DELAYCONSUME_NOCONSUME ) == 0 ){
-		if( pc_delitem( sd, index, 1, 0, 0, LOG_TYPE_LAPHINE ) != 0 ){
+		if( index < 0 ){
+			clif_laphine_synthesis_result( sd, LAPHINE_SYNTHESIS_ITEM );
 			return;
+		}
+
+		if( ( sd->inventory_data[index]->flag.delay_consume & DELAYCONSUME_NOCONSUME ) == 0 ){
+			if( pc_delitem( sd, index, 1, 0, 0, LOG_TYPE_LAPHINE ) != 0 ){
+				return;
+			}
 		}
 	}
 
 	for( size_t i = 0; i < count; i++ ){
-		index = server_index( p->items[i].index );
+		int16 index = server_index( p->items[i].index );
 
 		if( pc_delitem( sd, index, p->items[i].count, 0, 0, LOG_TYPE_LAPHINE ) != 0 ){
 			return;
