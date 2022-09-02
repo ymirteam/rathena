@@ -11081,6 +11081,7 @@ void clif_parse_LoadEndAck(int fd,struct map_session_data *sd)
 		clif_equipcheckbox(sd);
 #endif
 		clif_pet_autofeed_status(sd,false);
+		clif_configuration( sd, CONFIG_CALL, sd->status.disable_call );
 #if PACKETVER >= 20170920
 		if( battle_config.homunculus_autofeed_always ){
 			// Always send ON or OFF
@@ -17560,6 +17561,9 @@ void clif_parse_configuration( int fd, struct map_session_data* sd ){
 		case CONFIG_OPEN_EQUIPMENT_WINDOW:
 			sd->status.show_equip = flag;
 			break;
+		case CONFIG_CALL:
+			sd->status.disable_call = flag;
+			break;
 		case CONFIG_PET_AUTOFEED:
 			// Player can not click this if he does not have a pet
 			if( sd->pd == nullptr || !battle_config.feature_pet_autofeed || !sd->pd->get_pet_db()->allow_autofeed ){
@@ -23246,21 +23250,24 @@ void clif_parse_laphine_synthesis( int fd, struct map_session_data* sd ){
 		}
 	}
 
-	int16 index = pc_search_inventory( sd, sd->state.laphine_synthesis );
+	// If triggered from item
+	if( sd->itemid == sd->state.laphine_synthesis ){
+		int16 index = pc_search_inventory( sd, sd->state.laphine_synthesis );
 
-	if( index < 0 ){
-		clif_laphine_synthesis_result( sd, LAPHINE_SYNTHESIS_ITEM );
-		return;
-	}
-
-	if( ( sd->inventory_data[index]->flag.delay_consume & DELAYCONSUME_NOCONSUME ) == 0 ){
-		if( pc_delitem( sd, index, 1, 0, 0, LOG_TYPE_LAPHINE ) != 0 ){
+		if( index < 0 ){
+			clif_laphine_synthesis_result( sd, LAPHINE_SYNTHESIS_ITEM );
 			return;
+		}
+
+		if( ( sd->inventory_data[index]->flag.delay_consume & DELAYCONSUME_NOCONSUME ) == 0 ){
+			if( pc_delitem( sd, index, 1, 0, 0, LOG_TYPE_LAPHINE ) != 0 ){
+				return;
+			}
 		}
 	}
 
 	for( size_t i = 0; i < count; i++ ){
-		index = server_index( p->items[i].index );
+		int16 index = server_index( p->items[i].index );
 
 		if( pc_delitem( sd, index, p->items[i].count, 0, 0, LOG_TYPE_LAPHINE ) != 0 ){
 			return;
