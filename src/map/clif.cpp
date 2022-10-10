@@ -10164,15 +10164,17 @@ void clif_disp_overhead_(struct block_list *bl, const char* mes, enum send_targe
  * Minimap fix [Kevin]
  * Remove dot from minimap
  *--------------------------*/
-void clif_party_xy_remove(struct map_session_data *sd)
+void clif_party_xy_remove(struct map_session_data* sd)
 {
-	unsigned char buf[16];
 	nullpo_retv(sd);
-	WBUFW(buf,0)=0x107;
-	WBUFL(buf,2)=sd->status.account_id;
-	WBUFW(buf,6)=-1;
-	WBUFW(buf,8)=-1;
-	clif_send(buf,packet_len(0x107),&sd->bl,PARTY_SAMEMAP_WOS);
+
+	PACKET_ZC_NOTIFY_POSITION_TO_GROUPM p{};
+	p.PacketType = HEADER_ZC_NOTIFY_POSITION_TO_GROUPM;
+	p.AID = sd->status.account_id;
+	p.xPos = -1;
+	p.yPos = -1;
+
+	clif_send(&p, sizeof(p), &sd->bl, PARTY_SAMEMAP_WOS);
 }
 
 
@@ -22364,7 +22366,7 @@ void clif_unequipall_reply( struct map_session_data* sd, bool failed ){
 }
 
 void clif_parse_unequipall( int fd, struct map_session_data* sd ){
-#if PACKETVER_RE_NUM >= 20211103 || PACKETVER_ZERO_NUM >= 20210818
+#if PACKETVER_MAIN_NUM >= 20210818 || PACKETVER_RE_NUM >= 20211103 || PACKETVER_ZERO_NUM >= 20210818
 	if( pc_cant_act( sd ) ){
 		clif_unequipall_reply( sd, true );
 		return;
