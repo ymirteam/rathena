@@ -4414,14 +4414,13 @@ int status_calc_pc_sub(struct map_session_data* sd, uint8 opt)
 		sd->indexed_bonus.subele[ELE_FIRE] += skill*5;
 	}
 	if((skill=pc_checkskill(sd,SA_DRAGONOLOGY))>0) {
-#ifdef RENEWAL
-		skill = skill * 2;
-#else
+		uint8 dragon_matk = skill * 2;
+
 		skill = skill * 4;
-#endif
+
 		sd->right_weapon.addrace[RC_DRAGON]+=skill;
 		sd->left_weapon.addrace[RC_DRAGON]+=skill;
-		sd->indexed_bonus.magic_addrace[RC_DRAGON]+=skill;
+		sd->indexed_bonus.magic_addrace[RC_DRAGON]+=dragon_matk;
 		sd->indexed_bonus.subrace[RC_DRAGON]+=skill;
 	}
 	if ((skill = pc_checkskill(sd, AB_EUCHARISTICA)) > 0) {
@@ -12530,6 +12529,9 @@ int status_change_start(struct block_list* src, struct block_list* bl,enum sc_ty
 				}
 			}
 			break;
+		case SC_WEAPONBREAKER:
+			val2 = val1 * 2 * 100; // Chance to break weapon
+			break;
 
 		default:
 			if (calc_flag.none() && scdb->skill_id == 0 && scdb->icon == EFST_BLANK && scdb->opt1 == OPT1_NONE && scdb->opt2 == OPT2_NONE && scdb->state.none() && scdb->flag.none() && scdb->end.empty() && scdb->endreturn.empty() && scdb->fail.empty()) {
@@ -13485,7 +13487,7 @@ int status_change_end(struct block_list* bl, enum sc_type type, int tid)
 
 				std::shared_ptr<s_skill_db> skill = skill_db.find(RL_H_MINE);
 
-				if (!itemdb_exists(skill->require.itemid[0]))
+				if (!item_db.exists(skill->require.itemid[0]))
 					break;
 				memset(&it, 0, sizeof(it));
 				it.nameid = skill->require.itemid[0];
