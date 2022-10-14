@@ -73,5 +73,7 @@ prontera,142,180,7	script	แต่งตัว	894,{
 	
 OnInit:
 	waitingroom "แต่งตัว",0;
+	setbattleflag("min_hair_style", 0);
+	setbattleflag("max_hair_style", 99);
 	end;
 }
