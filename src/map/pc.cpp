@@ -5105,6 +5105,7 @@ int pc_insert_card(struct map_session_data* sd, int idx_card, int idx_equip)
 	t_itemid nameid;
 	struct item_data* item_eq = sd->inventory_data[idx_equip];
 	struct item_data* item_card = sd->inventory_data[idx_card];
+	bool is_enchantment = sd->inventory_data[idx_card]->name.find("_Card") == std::string::npos;
 
 	if(item_eq == nullptr)
 		return 0; //Invalid item index.
@@ -5122,7 +5123,7 @@ int pc_insert_card(struct map_session_data* sd, int idx_card, int idx_equip)
 		return 0; // target must be identified
 	if( itemdb_isspecial(sd->inventory.u.items_inventory[idx_equip].card[0]) )
 		return 0; // card slots reserved for other purposes
-	if( (item_eq->equip & item_card->equip) == 0 )
+	if( !is_enchantment && (item_eq->equip & item_card->equip) == 0 )
 		return 0; // card cannot be compounded on this item type
 	if( item_eq->type == IT_WEAPON && item_card->equip == EQP_SHIELD )
 		return 0; // attempted to place shield card on left-hand weapon.
@@ -5131,9 +5132,16 @@ int pc_insert_card(struct map_session_data* sd, int idx_card, int idx_equip)
 	if( sd->inventory.u.items_inventory[idx_equip].equip != 0 )
 		return 0; // item must be unequipped
 
-	ARR_FIND( 0, item_eq->slots, i, sd->inventory.u.items_inventory[idx_equip].card[i] == 0 );
-	if( i == item_eq->slots )
-		return 0; // no free slots
+	if (is_enchantment) {
+		ARR_FIND(item_eq->slots, 4, i, sd->inventory.u.items_inventory[idx_equip].card[i] == 0);
+		if (i == 4)
+			return 0; // no free slots
+	}
+	else {
+		ARR_FIND(0, item_eq->slots, i, sd->inventory.u.items_inventory[idx_equip].card[i] == 0);
+		if (i == item_eq->slots)
+			return 0; // no free slots
+	}
 
 	// remember the card id to insert
 	nameid = sd->inventory.u.items_inventory[idx_card].nameid;
@@ -5148,6 +5156,9 @@ int pc_insert_card(struct map_session_data* sd, int idx_card, int idx_equip)
 		sd->inventory.u.items_inventory[idx_equip].card[i] = nameid;
 		log_pick_pc(sd, LOG_TYPE_OTHER,  1, &sd->inventory.u.items_inventory[idx_equip]);
 		clif_insert_card(sd,idx_equip,idx_card,0);
+		//nullpo_retr(-1, sd);
+		nullpo_retv(sd);
+		clif_inventorylist(sd);
 	}
 
 	return 0;
