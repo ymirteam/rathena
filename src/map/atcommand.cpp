@@ -7772,7 +7772,6 @@ ACMD_FUNC(mobinfo)
 			drop_modifier = pc_level_penalty_mod( sd, PENALTY_DROP, mob );
 		}
 #endif
-
 		for (i = 0; i < MAX_MOB_DROP_TOTAL; i++) {
 
 			if (mob->dropitem[i].nameid == 0 || mob->dropitem[i].rate < 1)
@@ -7794,12 +7793,6 @@ ACMD_FUNC(mobinfo)
 				clif_displaymessage(fd, atcmd_output);
 				strcpy(atcmd_output, " ");
 			}
-		}
-		int the_box_key_rate = mob_getdroprate(&sd->bl, mob, battle_config.item_rate_the_box_key * mob->lv, drop_modifier);
-		sprintf(atcmd_output2, " - %s  %02.02f%%", 40016, (float)the_box_key_rate / 100);
-		if (mob->mexp > 0) {
-			int mvp_refine_rate = mob_getdroprate(&sd->bl, mob, battle_config.item_rate_mvp_refine * (mob->lv / 2), drop_modifier);
-			sprintf(atcmd_output2, " - %s  %02.02f%%", 40016, (float)mvp_refine_rate / 100);
 		}
 		if (j == 0)
 			clif_displaymessage(fd, msg_txt(sd,1246)); // This monster has no drops.
@@ -7853,6 +7846,14 @@ ACMD_FUNC(mobinfo)
 				clif_displaymessage(fd, msg_txt(sd,1249)); // This monster has no MVP prizes.
 			else
 				clif_displaymessage(fd, atcmd_output);
+		}
+		int the_box_key_rate = mob_getdroprate(&sd->bl, mob, battle_config.item_rate_the_box_key * mob->lv, drop_modifier);
+		sprintf(atcmd_output, " - %s  0 ~ %02.02f%%", "THE BOX KEY", (float)the_box_key_rate / 100);
+		clif_displaymessage(fd, atcmd_output);
+		if (mob->get_bosstype() == BOSSTYPE_MVP) {
+			int mvp_refine_rate = mob_getdroprate(&sd->bl, mob, battle_config.item_rate_mvp_refine * (mob->lv / 9), drop_modifier);
+			sprintf(atcmd_output, " - %s  0 ~ %02.02f%%", "MvP Refine", (float)mvp_refine_rate / 100);
+			clif_displaymessage(fd, atcmd_output);
 		}
 	}
 	return 0;

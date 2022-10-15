@@ -2885,7 +2885,7 @@ int mob_dead(struct mob_data *md, struct block_list *src, int type)
 			}
 			// MvP Refine [Start]
 			if (md->db->mexp > 0) {
-				drop_rate = mob_getdroprate(src, md->db, cap_value(battle_config.item_rate_mvp_refine * (rnd() % (md->level / 2)), 0, 10000), drop_modifier);
+				drop_rate = mob_getdroprate(src, md->db, cap_value(battle_config.item_rate_mvp_refine * (rnd() % (md->level / 9)), 0, 10000), drop_modifier);
 				if (rnd() % 10000 < drop_rate)
 				{
 					struct s_mob_drop mobdrop = {};
