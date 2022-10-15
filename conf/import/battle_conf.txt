@@ -1,0 +1,20 @@
+tb_monster_damage_multiplier: 1
+tb_damage_rate: 100
+tb_flee_penalty: 0
+
+tb2_monster_damage_multiplier: 1
+tb2_damage_rate: 100
+tb2_flee_penalty: 0
+
+tb3_monster_damage_multiplier: 1
+tb3_damage_rate: 100
+tb3_flee_penalty: 0
+
+tb4_monster_damage_multiplier: 1
+tb4_damage_rate: 100
+tb4_flee_penalty: 0
+
+// MvP Refine (1 = 0.01%)
+item_rate_mvp_refine: 1
+// THE BOX KEY (1 = 0.01%)
+item_rate_the_box_key: 1

@@ -9,6 +9,7 @@
  * For detailed guidance on these check http://rathena.org/wiki/SRC/config/
  **/
 
+#undef OFFICIAL_WALKPATH
 #undef RENEWAL_DROP
 #undef RENEWAL_EXP
 
