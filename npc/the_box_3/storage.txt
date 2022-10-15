@@ -81,7 +81,7 @@
 	return;
 	
 OnInit:
-	.additional_storage_price = 1000000000;
+	.additional_storage_price = 30000000;
 	waitingroom "คลังเก็บของ",0;
 	end;
 }
