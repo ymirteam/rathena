@@ -381,8 +381,6 @@ struct mob_data {
 	 **/
 	int tomb_nid;
 
-	bool is_ultima; // [Start]
-
 	e_mob_bosstype get_bosstype();
 };
 

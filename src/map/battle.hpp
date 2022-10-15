@@ -85,7 +85,6 @@ struct Damage {
 	int miscflag;
 	enum damage_lv dmg_lv; /// ATK_LUCKY,ATK_FLEE,ATK_DEF
 	bool isspdamage; /// Display blue damage numbers in clif_damage
-	bool is_ultima; // [Start]
 };
 
 // Damage Calculation
@@ -97,17 +96,17 @@ int64 battle_calc_return_damage(struct block_list *bl, struct block_list *src, i
 void battle_drain(struct map_session_data *sd, struct block_list *tbl, int64 rdamage, int64 ldamage, int race, int class_);
 
 int64 battle_attr_fix(struct block_list *src, struct block_list *target, int64 damage,int atk_elem,int def_type, int def_lv);
-int battle_calc_cardfix(int attack_type, struct block_list *src, struct block_list *target, std::bitset<NK_MAX> nk, int s_ele, int s_ele_, int64 damage, int left, int flag, bool is_ultima);
+int battle_calc_cardfix(int attack_type, struct block_list *src, struct block_list *target, std::bitset<NK_MAX> nk, int s_ele, int s_ele_, int64 damage, int left, int flag);
 
 // Final calculation Damage
 int64 battle_calc_damage(struct block_list *src,struct block_list *bl,struct Damage *d,int64 damage,uint16 skill_id,uint16 skill_lv);
 int64 battle_calc_gvg_damage(struct block_list *src,struct block_list *bl,int64 damage,uint16 skill_id,int flag);
 int64 battle_calc_bg_damage(struct block_list *src,struct block_list *bl,int64 damage,uint16 skill_id,int flag);
 int64 battle_calc_pk_damage(block_list &src, block_list &bl, int64 damage, uint16 skill_id, int flag);
-int64 battle_calc_tb_damage(struct block_list *src,struct block_list *bl,int64 damage,uint16 skill_id,int flag, bool is_ultima);
-int64 battle_calc_tb2_damage(struct block_list *src,struct block_list *bl,int64 damage,uint16 skill_id,int flag, bool is_ultima);
-int64 battle_calc_tb3_damage(struct block_list *src,struct block_list *bl,int64 damage,uint16 skill_id,int flag, bool is_ultima);
-int64 battle_calc_tb4_damage(struct block_list *src,struct block_list *bl,int64 damage,uint16 skill_id,int flag, bool is_ultima);
+int64 battle_calc_tb_damage(struct block_list *src,struct block_list *bl,int64 damage,uint16 skill_id,int flag);
+int64 battle_calc_tb2_damage(struct block_list *src,struct block_list *bl,int64 damage,uint16 skill_id,int flag);
+int64 battle_calc_tb3_damage(struct block_list *src,struct block_list *bl,int64 damage,uint16 skill_id,int flag);
+int64 battle_calc_tb4_damage(struct block_list *src,struct block_list *bl,int64 damage,uint16 skill_id,int flag);
 
 void battle_damage(struct block_list *src, struct block_list *target, int64 damage, t_tick delay, uint16 skill_lv, uint16 skill_id, enum damage_lv dmg_lv, unsigned short attack_type, bool additional_effects, t_tick tick, bool spdamage);
 int battle_delay_damage (t_tick tick, int amotion, struct block_list *src, struct block_list *target, int attack_type, uint16 skill_id, uint16 skill_lv, int64 damage, enum damage_lv dmg_lv, t_tick ddelay, bool additional_effects, bool spdamage);
@@ -535,7 +534,6 @@ struct Battle_Config
 	int bg_magic_damage_rate;
 	int bg_misc_damage_rate;
 	int bg_flee_penalty;
-	int bg_monster_damage_multiplier;
 
 	// rAthena
 	int max_third_parameter;

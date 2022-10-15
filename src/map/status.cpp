@@ -7477,13 +7477,13 @@ static signed short status_calc_flee2(struct block_list *bl, struct status_chang
 		struct map_data* mapdata = map_getmapdata(bl->m);
 
 		if (mapdata->flag[MF_TB])
-			flee2 -= flee2 * battle_config.tb_flee2_penalty / 100;
+			flee2 -= flee2 * battle_config.tb_flee_penalty / 100;
 		else if (mapdata->flag[MF_TB2])
-			flee2 -= flee2 * battle_config.tb2_flee2_penalty / 100;
+			flee2 -= flee2 * battle_config.tb2_flee_penalty / 100;
 		else if (mapdata->flag[MF_TB3])
-			flee2 -= flee2 * battle_config.tb3_flee2_penalty / 100;
+			flee2 -= flee2 * battle_config.tb3_flee_penalty / 100;
 		else if (mapdata->flag[MF_TB4])
-			flee2 -= flee2 * battle_config.tb4_flee2_penalty / 100;
+			flee2 -= flee2 * battle_config.tb4_flee_penalty / 100;
 	}
 
 	return (short)cap_value(flee2,10,SHRT_MAX);
