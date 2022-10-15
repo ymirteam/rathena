@@ -303,6 +303,7 @@ struct Battle_Config
 	int pc_cloak_check_type;
 	int monster_cloak_check_type;
 	int estimation_type;
+	int max_monster_dynamic;
 	int tb_monster_damage_multiplier;
 	int tb_damage_rate;
 	int tb_flee_penalty;

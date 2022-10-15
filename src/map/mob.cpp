@@ -1163,7 +1163,7 @@ int mob_spawn (struct mob_data *md)
 	md->last_linktime = tick;
 	md->dmgtick = tick - 5000;
 	md->last_pcneartime = 0;
-
+	md->dynamic = (int)(1 + (rnd() % battle_config.max_monster_dynamic));
 	t_tick c = tick - MOB_MAX_DELAY;
 
 	for (i = 0; i < MAX_MOBSKILL; i++)

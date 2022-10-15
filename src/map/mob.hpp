@@ -381,7 +381,7 @@ struct mob_data {
 	 **/
 	int tomb_nid;
 
-	int dynamic : 1; // [Start]
+	int dynamic; // [Start]
 
 	e_mob_bosstype get_bosstype();
 };

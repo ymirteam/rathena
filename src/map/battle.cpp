@@ -9991,6 +9991,7 @@ static const struct _battle_data {
 	{ "player_cloak_check_type",            &battle_config.pc_cloak_check_type,             1,      0,      1|2|4,          },
 	{ "monster_cloak_check_type",           &battle_config.monster_cloak_check_type,        4,      0,      1|2|4,          },
 	{ "sense_type",                         &battle_config.estimation_type,                 1|2,    0,      1|2,            },
+	{ "max_monster_dynamic",                &battle_config.max_monster_dynamic,             1,      0,      INT_MAX,        },
 	{ "tb_monster_damage_multiplier",       &battle_config.tb_monster_damage_multiplier,    1,      0,      INT_MAX,        },
 	{ "tb_damage_rate",                     &battle_config.tb_damage_rate,                  80,     0,      INT_MAX,        },
 	{ "tb_flee_penalty",                    &battle_config.tb_flee_penalty,                 20,     0,      INT_MAX,        },

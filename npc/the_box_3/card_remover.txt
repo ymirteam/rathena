@@ -55,6 +55,7 @@ prontera,95,254,5	script	ถอด Card + Enchant.	643,{
 	.@cardSlot2 = getequipcardid(.@part,1);
 	.@cardSlot3 = getequipcardid(.@part,2);
 	.@cardSlot4 = getequipcardid(.@part,3);
+	.@currentGrade = getenchantgrade(.@part);
 	.@randomOptionId1 = getequiprandomoption(.@part,0,ROA_ID);
 	.@randomOptionId2 = getequiprandomoption(.@part,1,ROA_ID);
 	.@randomOptionId3 = getequiprandomoption(.@part,2,ROA_ID);
@@ -118,10 +119,8 @@ prontera,95,254,5	script	ถอด Card + Enchant.	643,{
 		setarray .@OptID[0],.@randomOptionId1,.@randomOptionId2,.@randomOptionId3,.@randomOptionId4,.@randomOptionId5;
 		setarray .@OptVal[0],.@randomOptionValue1,.@randomOptionValue2,.@randomOptionValue3,.@randomOptionValue4,.@randomOptionValue5;
 		setarray .@OptParam[0],0,0,0,0,0;
-		getitem3 .@selectedItemId,1,1,.@refineCount,0,0,0,0,0,.@OptID,.@OptVal,.@OptParam;
 	}
-	else
-	getitem2 .@selectedItemId,1,1,.@refineCount,0,0,0,0,0;
+	getitem4 .@selectedItemId,1,1,.@refineCount,0,0,0,0,0,.@currentGrade,.@OptID,.@OptVal,.@OptParam;
 	
 	mes "เรียบร้อยแล้ว!";
 	close;

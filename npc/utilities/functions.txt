@@ -115,3 +115,8 @@ function	script	F_IsItemIdAvailable	{
 	return .@input;
 }
 
+// Get grade name
+function	script	GetGradeName	{
+	.@grade = getarg(0,0);
+	return (.@grade == 4) ? "A" : (.@grade == 3) ? "B" : (.@grade == 2) ? "C" : (.@grade == 1) ? "D" : "-";
+}
