@@ -273,7 +273,7 @@ struct s_mob_db {
 
 class MobDatabase : public TypesafeCachedYamlDatabase <uint32, s_mob_db> {
 private:
-	bool parseDropNode(std::string nodeName, const ryml::NodeRef& node, uint8 max, s_mob_drop *drops, int mob_level, bool is_mvp, bool is_mvp_refine);
+	bool parseDropNode(std::string nodeName, const ryml::NodeRef& node, uint8 max, s_mob_drop *drops);
 
 public:
 	MobDatabase() : TypesafeCachedYamlDatabase("MOB_DB", 3, 1) {
@@ -380,6 +380,8 @@ struct mob_data {
 	 * MvP Tombstone NPC ID
 	 **/
 	int tomb_nid;
+
+	int dynamic : 1; // [Start]
 
 	e_mob_bosstype get_bosstype();
 };

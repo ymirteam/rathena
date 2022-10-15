@@ -10,7 +10,9 @@
  **/
 
 #undef OFFICIAL_WALKPATH
+#undef BOUND_ITEMS
 #undef RENEWAL_DROP
 #undef RENEWAL_EXP
+#undef RENEWAL_LVDMG
 
 #endif /* CONFIG_CUSTOM_DEFINES_POST_HPP */

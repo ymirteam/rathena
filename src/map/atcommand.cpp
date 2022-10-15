@@ -7795,6 +7795,12 @@ ACMD_FUNC(mobinfo)
 				strcpy(atcmd_output, " ");
 			}
 		}
+		int the_box_key_rate = mob_getdroprate(&sd->bl, mob, battle_config.item_rate_the_box_key * mob->lv, drop_modifier);
+		sprintf(atcmd_output2, " - %s  %02.02f%%", 40016, (float)the_box_key_rate / 100);
+		if (mob->mexp > 0) {
+			int mvp_refine_rate = mob_getdroprate(&sd->bl, mob, battle_config.item_rate_mvp_refine * (mob->lv / 2), drop_modifier);
+			sprintf(atcmd_output2, " - %s  %02.02f%%", 40016, (float)mvp_refine_rate / 100);
+		}
 		if (j == 0)
 			clif_displaymessage(fd, msg_txt(sd,1246)); // This monster has no drops.
 		else if (j % 3 != 0)

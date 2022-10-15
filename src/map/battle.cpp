@@ -1853,6 +1853,11 @@ int64 battle_calc_damage(struct block_list *src,struct block_list *bl,struct Dam
 
 		if (md && md->db->damagetaken != 100)
 			damage = i64max(damage * md->db->damagetaken / 100, 1);
+
+		// [Start]
+		if (md
+			&& (md->dynamic > 0))
+			damage = i64max(damage * (100 - md->dynamic) / 100, 1);
 	}
 
 	return damage;
@@ -2000,58 +2005,6 @@ int64 battle_calc_gvg_damage(struct block_list *src,struct block_list *bl,int64 
 	return i64max(damage, 1);
 }
 
-int64 battle_calc_tb_damage(struct block_list* src, struct block_list* bl, int64 damage, uint16 skill_id, int flag)
-{
-	if (!damage) //No reductions to make.
-		return 0;
-
-	if (BL_CAST(BL_MOB, src))
-		damage = damage * battle_config.tb_monster_damage_multiplier;
-	else
-		damage = damage * battle_config.tb_damage_rate / 100000;
-
-	return i64max(damage, 1);
-}
-
-int64 battle_calc_tb2_damage(struct block_list* src, struct block_list* bl, int64 damage, uint16 skill_id, int flag)
-{
-	if (!damage) //No reductions to make.
-		return 0;
-
-	if (BL_CAST(BL_MOB, src))
-		damage = damage * battle_config.tb2_monster_damage_multiplier;
-	else
-		damage = damage * battle_config.tb2_damage_rate / 100000;
-
-	return i64max(damage, 1);
-}
-
-int64 battle_calc_tb3_damage(struct block_list* src, struct block_list* bl, int64 damage, uint16 skill_id, int flag)
-{
-	if (!damage) //No reductions to make.
-		return 0;
-
-	if (BL_CAST(BL_MOB, src))
-		damage = damage * battle_config.tb3_monster_damage_multiplier;
-	else
-		damage = damage * battle_config.tb3_damage_rate / 100000;
-
-	return i64max(damage, 1);
-}
-
-int64 battle_calc_tb4_damage(struct block_list* src, struct block_list* bl, int64 damage, uint16 skill_id, int flag)
-{
-	if (!damage) //No reductions to make.
-		return 0;
-
-	if (BL_CAST(BL_MOB, src))
-		damage = damage * battle_config.tb4_monster_damage_multiplier;
-	else
-		damage = damage * battle_config.tb4_damage_rate / 100000;
-
-	return i64max(damage, 1);
-}
-
 /**
  * Calculates PK related damage adjustments (between players only).
  * @param src: Source object
@@ -2086,6 +2039,73 @@ int64 battle_calc_pk_damage(block_list &src, block_list &bl, int64 damage, uint1
 
 	return i64max(damage, 1);
 }
+
+int64 battle_calc_dynamic_damage(struct block_list* src, int64 damage)
+{
+	if (!damage)
+		return 0;
+
+	mob_data* msd = BL_CAST(BL_MOB, src);
+
+	if (msd
+		&& (msd->dynamic > 1))
+		damage = damage * msd->dynamic;
+
+	return i64max(damage, 1);
+}
+
+int64 battle_calc_tb_damage(struct block_list* src, int64 damage)
+{
+	if (!damage)
+		return 0;
+
+	if (BL_CAST(BL_MOB, src))
+		damage = damage * battle_config.tb_monster_damage_multiplier;
+	else
+		damage = damage * battle_config.tb_damage_rate / 100000;
+
+	return i64max(damage, 1);
+}
+
+int64 battle_calc_tb2_damage(struct block_list* src, int64 damage)
+{
+	if (!damage)
+		return 0;
+
+	if (BL_CAST(BL_MOB, src))
+		damage = damage * battle_config.tb2_monster_damage_multiplier;
+	else
+		damage = damage * battle_config.tb2_damage_rate / 100000;
+
+	return i64max(damage, 1);
+}
+
+int64 battle_calc_tb3_damage(struct block_list* src, int64 damage)
+{
+	if (!damage)
+		return 0;
+
+	if (BL_CAST(BL_MOB, src))
+		damage = damage * battle_config.tb3_monster_damage_multiplier;
+	else
+		damage = damage * battle_config.tb3_damage_rate / 100000;
+
+	return i64max(damage, 1);
+}
+
+int64 battle_calc_tb4_damage(struct block_list* src, int64 damage)
+{
+	if (!damage)
+		return 0;
+
+	if (BL_CAST(BL_MOB, src))
+		damage = damage * battle_config.tb4_monster_damage_multiplier;
+	else
+		damage = damage * battle_config.tb4_damage_rate / 100000;
+
+	return i64max(damage, 1);
+}
+
 
 /**
  * HP/SP drain calculation
@@ -6099,37 +6119,41 @@ static void battle_calc_attack_gvg_bg(struct Damage* wd, struct block_list *src,
 
 		if(!wd->damage2) {
 			wd->damage = battle_calc_damage(src,target,wd,wd->damage,skill_id,skill_lv);
+			wd->damage = battle_calc_dynamic_damage(src,wd->damage);
 			if( mapdata_flag_gvg2(mapdata) )
 				wd->damage=battle_calc_gvg_damage(src,target,wd->damage,skill_id,wd->flag);
 			else if( mapdata->flag[MF_BATTLEGROUND] )
 				wd->damage=battle_calc_bg_damage(src,target,wd->damage,skill_id,wd->flag);
 			else if( mapdata->flag[MF_TB] )
-				wd->damage=battle_calc_tb_damage(src,target,wd->damage,skill_id,wd->flag);
+				wd->damage=battle_calc_tb_damage(src,wd->damage);
 			else if (mapdata->flag[MF_TB2])
-				wd->damage = battle_calc_tb2_damage(src, target, wd->damage, skill_id, wd->flag);
+				wd->damage = battle_calc_tb2_damage(src,wd->damage);
 			else if (mapdata->flag[MF_TB3])
-				wd->damage = battle_calc_tb3_damage(src, target, wd->damage, skill_id, wd->flag);
+				wd->damage = battle_calc_tb3_damage(src,wd->damage);
 			else if (mapdata->flag[MF_TB4])
-				wd->damage = battle_calc_tb4_damage(src, target, wd->damage, skill_id, wd->flag);
+				wd->damage = battle_calc_tb4_damage(src,wd->damage);
 		}
 		else if(!wd->damage) {
 			wd->damage2 = battle_calc_damage(src,target,wd,wd->damage2,skill_id,skill_lv);
+			wd->damage2 = battle_calc_dynamic_damage(src, wd->damage2);
 			if( mapdata_flag_gvg2(mapdata) )
 				wd->damage2 = battle_calc_gvg_damage(src,target,wd->damage2,skill_id,wd->flag);
 			else if( mapdata->flag[MF_BATTLEGROUND] )
 				wd->damage2 = battle_calc_bg_damage(src,target,wd->damage2,skill_id,wd->flag);
 			else if (mapdata->flag[MF_TB])
-				wd->damage2 = battle_calc_tb_damage(src, target, wd->damage2, skill_id, wd->flag);
+				wd->damage2 = battle_calc_tb_damage(src,wd->damage2);
 			else if (mapdata->flag[MF_TB2])
-				wd->damage2 = battle_calc_tb2_damage(src, target, wd->damage2, skill_id, wd->flag);
+				wd->damage2 = battle_calc_tb2_damage(src,wd->damage2);
 			else if (mapdata->flag[MF_TB3])
-				wd->damage2 = battle_calc_tb3_damage(src, target, wd->damage2, skill_id, wd->flag);
+				wd->damage2 = battle_calc_tb3_damage(src,wd->damage2);
 			else if (mapdata->flag[MF_TB4])
-				wd->damage2 = battle_calc_tb4_damage(src, target, wd->damage2, skill_id, wd->flag);
+				wd->damage2 = battle_calc_tb4_damage(src,wd->damage2);
 		}
 		else {
 			wd->damage = battle_calc_damage(src, target, wd, wd->damage, skill_id, skill_lv);
 			wd->damage2 = battle_calc_damage(src, target, wd, wd->damage2, skill_id, skill_lv);
+			wd->damage = battle_calc_dynamic_damage(src, wd->damage);
+			wd->damage2 = battle_calc_dynamic_damage(src, wd->damage2);
 			if (mapdata_flag_gvg2(mapdata)) {
 				wd->damage = battle_calc_gvg_damage(src, target, wd->damage, skill_id, wd->flag);
 				wd->damage2 = battle_calc_gvg_damage(src, target, wd->damage2, skill_id, wd->flag);
@@ -6139,23 +6163,23 @@ static void battle_calc_attack_gvg_bg(struct Damage* wd, struct block_list *src,
 				wd->damage2 = battle_calc_bg_damage(src, target, wd->damage2, skill_id, wd->flag);
 			}
 			else if (mapdata->flag[MF_TB]) {
-				wd->damage = battle_calc_tb_damage(src, target, wd->damage, skill_id, wd->flag);
-				wd->damage2 = battle_calc_tb_damage(src, target, wd->damage2, skill_id, wd->flag);
+				wd->damage = battle_calc_tb_damage(src,wd->damage);
+				wd->damage2 = battle_calc_tb_damage(src,wd->damage2);
 			}
 			else if (mapdata->flag[MF_TB2])
 			{
-				wd->damage = battle_calc_tb2_damage(src, target, wd->damage, skill_id, wd->flag);
-				wd->damage2 = battle_calc_tb2_damage(src, target, wd->damage2, skill_id, wd->flag);
+				wd->damage = battle_calc_tb2_damage(src,wd->damage);
+				wd->damage2 = battle_calc_tb2_damage(src,wd->damage2);
 			}
 			else if (mapdata->flag[MF_TB3])
 			{
-				wd->damage = battle_calc_tb3_damage(src, target, wd->damage, skill_id, wd->flag);
-				wd->damage2 = battle_calc_tb3_damage(src, target, wd->damage2, skill_id, wd->flag);
+				wd->damage = battle_calc_tb3_damage(src,wd->damage);
+				wd->damage2 = battle_calc_tb3_damage(src,wd->damage2);
 			}
 			else if (mapdata->flag[MF_TB4])
 			{
-				wd->damage = battle_calc_tb4_damage(src, target, wd->damage, skill_id, wd->flag);
-				wd->damage2 = battle_calc_tb4_damage(src, target, wd->damage2, skill_id, wd->flag);
+				wd->damage = battle_calc_tb4_damage(src,wd->damage);
+				wd->damage2 = battle_calc_tb4_damage(src,wd->damage2);
 			}
 			if(wd->damage > 1 && wd->damage2 < 1) wd->damage2 = 1;
 		}
@@ -7976,18 +8000,19 @@ struct Damage battle_calc_magic_attack(struct block_list *src,struct block_list 
 	struct map_data *mapdata = map_getmapdata(target->m);
 
 	ad.damage = battle_calc_damage(src,target,&ad,ad.damage,skill_id,skill_lv);
+	ad.damage = battle_calc_dynamic_damage(src,ad.damage);
 	if (mapdata_flag_gvg2(mapdata))
 		ad.damage = battle_calc_gvg_damage(src,target,ad.damage,skill_id,ad.flag);
 	else if (mapdata->flag[MF_BATTLEGROUND])
 		ad.damage = battle_calc_bg_damage(src,target,ad.damage,skill_id,ad.flag);
 	else if (mapdata->flag[MF_TB])
-		ad.damage = battle_calc_tb_damage(src, target, ad.damage, skill_id, ad.flag);
+		ad.damage = battle_calc_tb_damage(src,ad.damage);
 	else if (mapdata->flag[MF_TB2])
-		ad.damage = battle_calc_tb2_damage(src, target, ad.damage, skill_id, ad.flag);
+		ad.damage = battle_calc_tb2_damage(src,ad.damage);
 	else if (mapdata->flag[MF_TB3])
-		ad.damage = battle_calc_tb3_damage(src, target, ad.damage, skill_id, ad.flag);
+		ad.damage = battle_calc_tb3_damage(src,ad.damage);
 	else if (mapdata->flag[MF_TB4])
-		ad.damage = battle_calc_tb4_damage(src, target, ad.damage, skill_id, ad.flag);
+		ad.damage = battle_calc_tb4_damage(src,ad.damage);
 
 	// Skill damage adjustment
 	if ((skill_damage = battle_skill_damage(src,target,skill_id)) != 0)
@@ -8369,18 +8394,19 @@ struct Damage battle_calc_misc_attack(struct block_list *src,struct block_list *
 	struct map_data *mapdata = map_getmapdata(target->m);
 
 	md.damage = battle_calc_damage(src,target,&md,md.damage,skill_id,skill_lv);
+	md.damage = battle_calc_dynamic_damage(src,md.damage);
 	if(mapdata_flag_gvg2(mapdata))
 		md.damage = battle_calc_gvg_damage(src,target,md.damage,skill_id,md.flag);
 	else if(mapdata->flag[MF_BATTLEGROUND])
 		md.damage = battle_calc_bg_damage(src,target,md.damage,skill_id,md.flag);
 	else if (mapdata->flag[MF_TB])
-		md.damage = battle_calc_tb_damage(src, target, md.damage, skill_id, md.flag);
+		md.damage = battle_calc_tb_damage(src,md.damage);
 	else if (mapdata->flag[MF_TB2])
-		md.damage = battle_calc_tb2_damage(src, target, md.damage, skill_id, md.flag);
+		md.damage = battle_calc_tb2_damage(src,md.damage);
 	else if (mapdata->flag[MF_TB3])
-		md.damage = battle_calc_tb3_damage(src, target, md.damage, skill_id, md.flag);
+		md.damage = battle_calc_tb3_damage(src,md.damage);
 	else if (mapdata->flag[MF_TB4])
-		md.damage = battle_calc_tb4_damage(src, target, md.damage, skill_id, md.flag);
+		md.damage = battle_calc_tb4_damage(src,md.damage);
 
 	// Skill damage adjustment
 	if ((skill_damage = battle_skill_damage(src,target,skill_id)) != 0)
