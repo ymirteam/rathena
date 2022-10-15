@@ -173,15 +173,17 @@ uint64 ItemDatabase::parseBodyNode(const ryml::NodeRef& node) {
 
 			item->subtype = static_cast<e_ammo_type>(constant);
 		} else if (item->type == IT_CARD) {
-			std::string type_constant = "CARD_" + type;
+			item->subtype = CARD_NORMAL; // [Start]
+			/*std::string type_constant = "CARD_" + type;
 			int64 constant;
 
+			
 			if (!script_get_constant(type_constant.c_str(), &constant) || constant < CARD_NORMAL || constant >= MAX_CARD_TYPE) {
 				this->invalidWarning(node["SubType"], "Invalid card type %s, defaulting to CARD_NORMAL.\n", type.c_str());
 				item->subtype = CARD_NORMAL;
 			}
 
-			item->subtype = static_cast<e_card_type>(constant);
+			item->subtype = static_cast<e_card_type>(constant);*/
 		} else {
 			this->invalidWarning(node["SubType"], "Item sub type is not supported for this item type.\n");
 			return 0;

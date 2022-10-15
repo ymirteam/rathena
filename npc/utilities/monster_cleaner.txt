@@ -54,11 +54,5 @@ OnMinute30:
 	killmonsterall "1@eom";
 	killmonsterall "new_zone01";
 	killmonsterall "1@infi";
-	// Special Room
-	//donpcevent "Better Leveling::OnCleanUp";
-	//donpcevent "4 Keys::OnCleanUp";
-	donpcevent "Boss Equipment::OnCleanUp";
-	donpcevent "Boss Enchantment::OnCleanUp";
-	donpcevent "Boss Zeny::OnCleanUp";
 	end;
 }

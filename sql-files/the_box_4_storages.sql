@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `storage2`  (
   `enchantgrade` tinyint UNSIGNED NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `account_id`(`account_id`) USING BTREE
-) ENGINE=MyISAM AUTO_INCREMENT=1;
+) ENGINE = MyISAM AUTO_INCREMENT = 1
 
 -- ----------------------------
 -- Table structure for storage3
@@ -74,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `storage3`  (
   `enchantgrade` tinyint UNSIGNED NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `account_id`(`account_id`) USING BTREE
-) ENGINE=MyISAM AUTO_INCREMENT=1;
+) ENGINE = MyISAM AUTO_INCREMENT = 1
 
 -- ----------------------------
 -- Table structure for storage4
@@ -113,7 +113,7 @@ CREATE TABLE IF NOT EXISTS `storage4`  (
   `enchantgrade` tinyint UNSIGNED NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `account_id`(`account_id`) USING BTREE
-) ENGINE=MyISAM AUTO_INCREMENT=1;
+) ENGINE = MyISAM AUTO_INCREMENT = 1
 
 -- ----------------------------
 -- Table structure for storage5
@@ -152,7 +152,7 @@ CREATE TABLE IF NOT EXISTS `storage5`  (
   `enchantgrade` tinyint UNSIGNED NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `account_id`(`account_id`) USING BTREE
-) ENGINE=MyISAM AUTO_INCREMENT=1;
+) ENGINE = MyISAM AUTO_INCREMENT = 1
 
 -- ----------------------------
 -- Table structure for storage6
@@ -191,7 +191,7 @@ CREATE TABLE IF NOT EXISTS `storage6`  (
   `enchantgrade` tinyint UNSIGNED NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `account_id`(`account_id`) USING BTREE
-) ENGINE=MyISAM AUTO_INCREMENT=1;
+) ENGINE = MyISAM AUTO_INCREMENT = 1
 
 -- ----------------------------
 -- Table structure for storage7
@@ -230,7 +230,7 @@ CREATE TABLE IF NOT EXISTS `storage7`  (
   `enchantgrade` tinyint UNSIGNED NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `account_id`(`account_id`) USING BTREE
-) ENGINE=MyISAM AUTO_INCREMENT=1;
+) ENGINE = MyISAM AUTO_INCREMENT = 1
 
 -- ----------------------------
 -- Table structure for storage8
@@ -269,7 +269,7 @@ CREATE TABLE IF NOT EXISTS `storage8`  (
   `enchantgrade` tinyint UNSIGNED NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `account_id`(`account_id`) USING BTREE
-) ENGINE=MyISAM AUTO_INCREMENT=1;
+) ENGINE = MyISAM AUTO_INCREMENT = 1
 
 -- ----------------------------
 -- Table structure for storage9
@@ -308,7 +308,7 @@ CREATE TABLE IF NOT EXISTS `storage9`  (
   `enchantgrade` tinyint UNSIGNED NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `account_id`(`account_id`) USING BTREE
-) ENGINE=MyISAM AUTO_INCREMENT=1;
+) ENGINE = MyISAM AUTO_INCREMENT = 1
 
 -- ----------------------------
 -- Table structure for storage10
@@ -347,4 +347,4 @@ CREATE TABLE IF NOT EXISTS `storage10`  (
   `enchantgrade` tinyint UNSIGNED NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `account_id`(`account_id`) USING BTREE
-) ENGINE=MyISAM AUTO_INCREMENT=1;
+) ENGINE = MyISAM AUTO_INCREMENT = 1
