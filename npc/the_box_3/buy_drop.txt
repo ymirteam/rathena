@@ -1,5 +1,5 @@
 prontera,106,260,5	script	ซื้อ x Drop	10365,{
-	mes "๐ ^FF2929ตายแล้วต้องซื้อใหม่^000000";
+	mes "• ^FF2929ตายแล้วต้องซื้อใหม่^000000";
 	mes "---";
 	mes "ปัจจุบัน Drop x^3629FF" + drop_multiplier;
 	next;

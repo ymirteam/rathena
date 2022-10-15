@@ -12,9 +12,9 @@ prontera,120,263,3	script	Random Option	10127,{
 	,"ดูรายการ Option ID Set 3",L_DisplayOptionSet3
 	,"กำหนด Option ที่อยากได้ (^FF2929ใช้เงินมหาศาล^000000)",L_LockingOptionSetup
 	,"นำ Option เคลือบธาตุออกทุกอุปกรณ์ที่สวมใส่อยู่",L_ClearElementOption;
-	mes "๐ ต้องการ ^FF2929" + F_InsertComma(.price) + "z^000000 " + (locking_option ? "ต่อรอบ" : "");
-	mes "^3F28FF๐ รับ Random Option 5 แถว^000000";
-	mes "^3F28FF๐ สุ่มค่าที่ได้รับ 1~5 ต่อแถว^000000";
+	mes "• ต้องการ ^FF2929" + F_InsertComma(.price) + "z^000000 " + (locking_option ? "ต่อรอบ" : "");
+	mes "^3F28FF• รับ Random Option 5 แถว^000000";
+	mes "^3F28FF• สุ่มค่าที่ได้รับ 1~5 ต่อแถว^000000";
 	next;
 	
 	setarray .@indices[1], EQI_HEAD_TOP, EQI_HEAD_MID, EQI_HEAD_LOW, EQI_ARMOR, EQI_HAND_L, EQI_HAND_R, EQI_GARMENT, EQI_SHOES, EQI_ACC_L, EQI_ACC_R, EQI_COSTUME_HEAD_TOP, EQI_COSTUME_HEAD_MID, EQI_COSTUME_HEAD_LOW, EQI_SHADOW_ARMOR, EQI_SHADOW_WEAPON, EQI_SHADOW_SHIELD, EQI_COSTUME_GARMENT, EQI_SHADOW_SHOES, EQI_SHADOW_ACC_L, EQI_SHADOW_ACC_R;

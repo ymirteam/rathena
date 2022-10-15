@@ -134,6 +134,6 @@ OnInit:
 	.mode2Price = 1000000;
 	.mode3Price = 5000000;
 	.mode4Price = 10000000;
-	waitingroom "ถอด Card",0;
+	waitingroom "ถอด Card และ Enchantment",0;
 	end;
 }

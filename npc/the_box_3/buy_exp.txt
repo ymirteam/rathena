@@ -1,5 +1,5 @@
 prontera,101,257,5	script	ซื้อ x EXP	10364,{
-	mes "๐ ^FF2929ตายแล้วต้องซื้อใหม่^000000";
+	mes "• ^FF2929ตายแล้วต้องซื้อใหม่^000000";
 	mes "---";
 	mes "ปัจจุบัน EXP x^3629FF" + exp_multiplier;
 	next;
