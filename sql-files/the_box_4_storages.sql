@@ -1,7 +1,7 @@
 -- ----------------------------
 -- Table structure for storage2
 -- ----------------------------
-CREATE TABLE IF NOT EXISTS `storage2`  (
+CREATE TABLE `storage2`  (
   `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
   `account_id` int UNSIGNED NOT NULL DEFAULT 0,
   `nameid` int UNSIGNED NOT NULL DEFAULT 0,
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `storage2`  (
 -- ----------------------------
 -- Table structure for storage3
 -- ----------------------------
-CREATE TABLE IF NOT EXISTS `storage3`  (
+CREATE TABLE `storage3`  (
   `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
   `account_id` int UNSIGNED NOT NULL DEFAULT 0,
   `nameid` int UNSIGNED NOT NULL DEFAULT 0,
@@ -79,7 +79,7 @@ CREATE TABLE IF NOT EXISTS `storage3`  (
 -- ----------------------------
 -- Table structure for storage4
 -- ----------------------------
-CREATE TABLE IF NOT EXISTS `storage4`  (
+CREATE TABLE `storage4`  (
   `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
   `account_id` int UNSIGNED NOT NULL DEFAULT 0,
   `nameid` int UNSIGNED NOT NULL DEFAULT 0,
@@ -118,7 +118,7 @@ CREATE TABLE IF NOT EXISTS `storage4`  (
 -- ----------------------------
 -- Table structure for storage5
 -- ----------------------------
-CREATE TABLE IF NOT EXISTS `storage5`  (
+CREATE TABLE `storage5`  (
   `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
   `account_id` int UNSIGNED NOT NULL DEFAULT 0,
   `nameid` int UNSIGNED NOT NULL DEFAULT 0,
@@ -157,7 +157,7 @@ CREATE TABLE IF NOT EXISTS `storage5`  (
 -- ----------------------------
 -- Table structure for storage6
 -- ----------------------------
-CREATE TABLE IF NOT EXISTS `storage6`  (
+CREATE TABLE `storage6`  (
   `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
   `account_id` int UNSIGNED NOT NULL DEFAULT 0,
   `nameid` int UNSIGNED NOT NULL DEFAULT 0,
@@ -196,7 +196,7 @@ CREATE TABLE IF NOT EXISTS `storage6`  (
 -- ----------------------------
 -- Table structure for storage7
 -- ----------------------------
-CREATE TABLE IF NOT EXISTS `storage7`  (
+CREATE TABLE `storage7`  (
   `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
   `account_id` int UNSIGNED NOT NULL DEFAULT 0,
   `nameid` int UNSIGNED NOT NULL DEFAULT 0,
@@ -235,7 +235,7 @@ CREATE TABLE IF NOT EXISTS `storage7`  (
 -- ----------------------------
 -- Table structure for storage8
 -- ----------------------------
-CREATE TABLE IF NOT EXISTS `storage8`  (
+CREATE TABLE `storage8`  (
   `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
   `account_id` int UNSIGNED NOT NULL DEFAULT 0,
   `nameid` int UNSIGNED NOT NULL DEFAULT 0,
@@ -274,7 +274,7 @@ CREATE TABLE IF NOT EXISTS `storage8`  (
 -- ----------------------------
 -- Table structure for storage9
 -- ----------------------------
-CREATE TABLE IF NOT EXISTS `storage9`  (
+CREATE TABLE `storage9`  (
   `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
   `account_id` int UNSIGNED NOT NULL DEFAULT 0,
   `nameid` int UNSIGNED NOT NULL DEFAULT 0,
@@ -313,7 +313,7 @@ CREATE TABLE IF NOT EXISTS `storage9`  (
 -- ----------------------------
 -- Table structure for storage10
 -- ----------------------------
-CREATE TABLE IF NOT EXISTS `storage10`  (
+CREATE TABLE `storage10`  (
   `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
   `account_id` int UNSIGNED NOT NULL DEFAULT 0,
   `nameid` int UNSIGNED NOT NULL DEFAULT 0,
