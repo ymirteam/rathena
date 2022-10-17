@@ -5105,7 +5105,7 @@ int pc_insert_card(struct map_session_data* sd, int idx_card, int idx_equip)
 	t_itemid nameid;
 	struct item_data* item_eq = sd->inventory_data[idx_equip];
 	struct item_data* item_card = sd->inventory_data[idx_card];
-	bool is_enchantment = sd->inventory_data[idx_card]->name.find("_Card") == std::string::npos;
+	bool is_enchantment = sd->inventory_data[idx_card]->equip == 0;
 
 	if(item_eq == nullptr)
 		return 0; //Invalid item index.

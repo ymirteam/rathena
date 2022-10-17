@@ -7012,7 +7012,7 @@ void clif_use_card(struct map_session_data *sd,int idx)
 		return; //Avoid parsing invalid item indexes (no card/no item)
 
 	ep=sd->inventory_data[idx]->equip;
-	bool is_enchantment = sd->inventory_data[idx]->name.find("_Card") == std::string::npos;
+	bool is_enchantment = sd->inventory_data[idx]->equip == 0;
 	WFIFOHEAD(fd,MAX_INVENTORY * 2 + 4);
 	WFIFOW(fd,0)=0x17b;
 
