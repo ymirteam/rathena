@@ -10,6 +10,6 @@ OnLoad:
 			&& strcharinfo(3) != "force_1-3"
 			&& strcharinfo(3) != "force_2-3")
 	progressbar "000000",3;
-	warp "prontera",156,191;
+	warp getsavepoint(0),getsavepoint(1),getsavepoint(2);
 	end;
 }
