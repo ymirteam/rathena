@@ -12,7 +12,6 @@ prontera,158,193,3	script	Kill Box	888,{
 			// Check weight
 			if(!checkweight(6825,1)){
 				message strcharinfo(0),"น้ำหนักเต็ม (ต้องว่างอย่างน้อย 1000 น้ำหนัก)";
-				freeloop(0);
 				end;
 			}
 			// Give reward
@@ -27,7 +26,7 @@ prontera,158,193,3	script	Kill Box	888,{
 	else{
 		if(killBoxLastAccepted - gettimetick(2) <= 0)
 		killBoxZenyMultiplier = 0;
-		mes "คุณต้องการล่า Monster เพื่อรับสุ่มรับกล่องสุ่มหรือไม่?";
+		mes "คุณต้องการล่า Monster เพื่อสุ่มรับกล่องสุ่มหรือไม่?";
 		if(killBoxZenyMultiplier > 0)
 		mes "ค่ารับภารกิจจะถูกลงภายใน " + F_InsertComma(killBoxLastAccepted - gettimetick(2)) + " วินาที";
 		next;
@@ -72,12 +71,7 @@ prontera,158,193,3	script	Kill Box	888,{
 	close;
 	
 OnNPCKillEvent:
-	if((killBoxTarget > 0)
-			&& (killBoxCount > 0)
-			&& (killedrid == killBoxTarget)){
-		killBoxCount--;
-		dispbottom "เหลืออีก " + killBoxCount + " ตัว";
-	}
+	callfunc("KillBoxUpdate");
 	end;
 	
 OnInit:

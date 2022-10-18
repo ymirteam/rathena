@@ -10,14 +10,6 @@ function	script	F_DropMultiplier	{
 	return;
 }
 
-function	script	F_THE_BOX_KEY_Quest_Add_Drop	{
-	if(key_dropper_monster_id
-			&& (the_box_key_quest_duration - gettimetick(2) > 0)){
-		bonus_script "bonus3 bAddMonsterIdDropItem,40018," + key_dropper_monster_id + "," + the_box_key_quest_drop_rate + ";",(the_box_key_quest_duration - gettimetick(2)),8,1;
-	}
-	return;
-}
-
 function	script	F_PercentBase10000	{
 	.@v = getarg(0,0);
 	if(.@v < 10)
@@ -119,4 +111,15 @@ function	script	F_IsItemIdAvailable	{
 function	script	GetGradeName	{
 	.@grade = getarg(0,0);
 	return (.@grade == 4) ? "A" : (.@grade == 3) ? "B" : (.@grade == 2) ? "C" : (.@grade == 1) ? "D" : "-";
+}
+
+// Kill Box Quest Update
+function	script	KillBoxUpdate	{
+	if((killBoxTarget > 0)
+			&& (killBoxCount > 0)
+			&& (killedrid == killBoxTarget)){
+		killBoxCount--;
+		dispbottom "เหลืออีก " + killBoxCount + " ตัว";
+	}
+	return;
 }
