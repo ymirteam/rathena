@@ -92,6 +92,8 @@ Body:
     AegisName: MvP_Refine
     Name: MvP Refine
     Type: Etc
+    Flags:
+      BuyingStore: true
     TradeNoUse:
       Override: 100
       NoSell: true
@@ -99,6 +101,8 @@ Body:
     AegisName: THE_BOX_KEY
     Name: THE BOX KEY
     Type: Etc
+    Flags:
+      BuyingStore: true
     TradeNoUse:
       Override: 100
       NoSell: true
