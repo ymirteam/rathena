@@ -77,7 +77,7 @@ OnNPCKillEvent:
 OnInit:
 	.basePrice = 15000;
 	.delay = 10800;
-	.minTarget = 30;
+	.minTarget = 15;
 	.maxTarget = 50;
 	waitingroom "ภารกิจ Kill Box สุ่มรับกล่องสุ่ม",0;
 	end;
