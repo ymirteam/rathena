@@ -10177,6 +10177,26 @@ BUILDIN_FUNC(petautobonus3) {
 	return SCRIPT_CMD_SUCCESS;
 }
 
+BUILDIN_FUNC(skill_plagiarism)
+{
+	TBL_PC *sd;
+
+	if (script_rid2sd(sd))
+		script_pushint(st, pc_skill_plagiarism(*sd, script_getnum(st, 2), script_getnum(st, 3)));
+
+	return SCRIPT_CMD_SUCCESS;
+}
+
+BUILDIN_FUNC(skill_plagiarism_reset)
+{
+	TBL_PC *sd;
+
+	if (!script_rid2sd(sd))
+		script_pushint(st, pc_skill_plagiarism_reset(*sd, script_getnum(st, 2)));
+
+	return SCRIPT_CMD_SUCCESS;
+}
+
 /// Changes the level of a player skill.
 /// <flag> defaults to 1
 /// <flag>=0 : set the level of the skill
@@ -24129,6 +24149,12 @@ BUILDIN_FUNC(minmax){
 	return SCRIPT_CMD_SUCCESS;
 }
 
+BUILDIN_FUNC(cap_value)
+{
+	script_pushint64(st, cap_value(script_getnum64(st, 2), script_getnum64(st, 3), script_getnum64(st, 4)));
+	return SCRIPT_CMD_SUCCESS;
+}
+
 /**
  * Safety Base/Job EXP addition than using `set BaseExp,n;` or `set JobExp,n;`
  * Unlike `getexp` that affected by some adjustments.
@@ -26802,6 +26828,8 @@ struct script_function buildin_func[] = {
 	BUILDIN_DEF(petautobonus,"sii??"),
 	BUILDIN_DEF2(petautobonus,"petautobonus2","sii??"),
 	BUILDIN_DEF(petautobonus3,"siiv?"),
+	BUILDIN_DEF(skill_plagiarism, "ii"),
+	BUILDIN_DEF(skill_plagiarism_reset, "i"),
 	BUILDIN_DEF(skill,"vi?"),
 	BUILDIN_DEF2(skill,"addtoskill","vi?"), // [Valaris]
 	BUILDIN_DEF(guildskill,"vi"),
@@ -27047,6 +27075,7 @@ struct script_function buildin_func[] = {
 	BUILDIN_DEF2(minmax,"minimum", "*"),
 	BUILDIN_DEF2(minmax,"max", "*"),
 	BUILDIN_DEF2(minmax,"maximum", "*"),
+	BUILDIN_DEF(cap_value, "iii"),
 	// <--- [zBuffer] List of mathematics commands
 	BUILDIN_DEF(md5,"s"),
 	// [zBuffer] List of dynamic var commands --->
