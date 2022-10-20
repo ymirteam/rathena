@@ -2,6 +2,11 @@ prontera,158,193,3	script	Kill Box	888,{
 	// Still had target
 	if(killBoxTarget){
 		if(killBoxCount > 0){
+			if(getmonsterinfo(killBoxTarget,MOB_MVPEXP) > 0){
+				mes "เราได้ยกเลิกภารกิจและ Reset ค่าใช้จ่ายให้ถูกที่สุด เนื่องจากคุณได้รับภารกิจที่ผิดพลาด";
+				next;
+				goto L_FreeAbortKillBox;
+			}
 			mes "คุณต้องล่า \nLv." + getmonsterinfo(killBoxTarget,MOB_LV) + " " + getmonsterinfo(killBoxTarget,MOB_NAME) + " (" + killBoxTarget + ")" +"\nอีก " + killBoxCount + " ตัว";
 			atcommand "@whereis " + killBoxTarget;
 			next;
@@ -64,6 +69,8 @@ prontera,158,193,3	script	Kill Box	888,{
 		}
 	}
 	
+	L_FreeAbortKillBox:
+	killBoxZenyMultiplier = 0;
 	L_AbortKillBox:
 	killBoxTarget = 0;
 	killBoxCount = 0;
