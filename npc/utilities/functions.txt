@@ -39,7 +39,7 @@ function	script	F_IsDummyMonster	{
 			|| (.@v == 2537)							// Hidden Mob
 			|| (.@v == 2539)							// Hidden Mob
 			|| (.@v == 3038)							// Hidden Mob
-			|| (getmonsterinfo(.@v,MOB_MAXHP) < 60)		// HP below Poring is not allowed
+			//|| (getmonsterinfo(.@v,MOB_MAXHP) < 60)		// HP below Poring is not allowed
 			|| !isspawn(.@v))							// It's not spawn in official servers
 	return true;
 	else

@@ -47,20 +47,28 @@ prontera,158,193,3	script	Kill Box	888,{
 			
 			killBoxCount = rand(.minTarget,.maxTarget);
 			killBoxTarget = $all_mob_ids[rand(0,($all_mob_id_size - 1))];
+			
 			freeloop(1);
 			.@retry = 300;
 			while(.@retry > 0){
 				.@retry--;
-				if(isspawn(killBoxTarget)
+				if(!F_IsDummyMonster(killBoxTarget)
 						&& (getmonsterinfo(.@i,MOB_MVPEXP) <= 0)){
 					.@mobLevel = getmonsterinfo(killBoxTarget,MOB_LV);
 					.@diff = (BaseLevel > .@mobLevel) ? (BaseLevel - .@mobLevel) : (.@mobLevel - BaseLevel);
-					if(.@diff <= 15)
+					// Player level < 175 will use 15 level range
+					if((BaseLevel < 175)
+							&& (.@diff <= 15))
+					break;
+					// Otherwise will use monster level 175+ for player level 175+
+					else if((BaseLevel >= 175)
+							&& (.@mobLevel >= 175))
 					break;
 				}
 				killBoxTarget = $all_mob_ids[rand(0,($all_mob_id_size - 1))];
 			}
 			freeloop(0);
+			
 			mes "คุณต้องล่า \nLv." + getmonsterinfo(killBoxTarget,MOB_LV) + " " + getmonsterinfo(killBoxTarget,MOB_NAME) + " (" + killBoxTarget + ")" + "\nอีก " + killBoxCount + " ตัว";
 			atcommand "@whereis " + killBoxTarget;
 			next;
