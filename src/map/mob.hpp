@@ -380,6 +380,7 @@ struct mob_data {
 	 * MvP Tombstone NPC ID
 	 **/
 	int tomb_nid;
+	uint16 damagetaken;
 
 	int dynamic; // [Start]
 
