@@ -299,8 +299,10 @@ Dungeons:
 	"Orc Dungeon",D30, "Payon Dungeon",D31,"Payon Illusion Dungeon",D45, "Prontera Dungeon",D44, "Pyramids",D32, "Rachel Sanctuary",D33,
 	"Rockridge Dungeon",D43,"Rudus Dungeon",D47,
 	"Scaraba Hole",D34, "Sphinx",D35, "Sunken Ship",D36,"Special Border Area",D48, "Thanatos Tower",D37,
-	"Thor Volcano",D38, "Toy Factory",D39, "Turtle Dungeon",D40, "Umbala Dungeon",D41;
+	"Thor Volcano",D38, "Toy Factory",D39, "Turtle Dungeon",D40, "Umbala Dungeon",D41, "Werner Laboratory",D50;
 
+D50: setarray @c[2],0,0;
+	Disp("Floor 1"); Pick("","slabw01");
 D49: setarray @c[2],0,0;
 	Disp("Floor 1"); Pick("","gef_d01_i");
 D48: setarray @c[2],0,0;
