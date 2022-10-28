@@ -20,20 +20,6 @@ OnPCDieEvent:
 		sc_end SC_EXPBOOST;
 		sc_end SC_ITEMBOOST;
 		
-		// Wish Points
-		if(.@dead_map_name$ == instance_mapname("poring_w01",ultima_wish_id)){
-			.@temporary_wish_points = wish_points;
-			.@temporary_wish_points /= 10;
-			if(.@temporary_wish_points <= 0)
-			.@temporary_wish_points = 1;
-			
-			wish_points -= .@temporary_wish_points;
-			if(wish_points <= 0)
-			wish_points = 0;
-			
-			dispbottom "แต้มปราถนาลดลง " + F_InsertComma(.@temporary_wish_points) + " คงเหลือ " + F_InsertComma(wish_points);
-		}
-		
 		// Auto warp
 		if((.@dead_map_name$ == "bossnia_01")
 				|| (.@dead_map_name$ == "bossnia_02")
@@ -44,12 +30,23 @@ OnPCDieEvent:
 				|| (.@dead_map_name$ == "8@thts")
 				|| (.@dead_map_name$ == "1@halo"))
 		addtimer 1000,strnpcinfo(3) + "::OnWarp";
+		// World Boss Map
+		else if(.@dead_map_name$ == "x_prt"){
+			deltimer strnpcinfo(3) + "::OnWorldBossDead";
+			message strcharinfo(0),"หากยังตายอยู่ อีก 30 วินาทีจะ Warp ออกจาก Map";
+			addtimer 30000,strnpcinfo(3) + "::OnWorldBossDead";
+		}
 		
 		end;
 	}
 	
 	end;
 	
+OnWorldBossDead:
+	if(Hp <= 0)
+	warp "prontera",156,191;
+	end;
+
 OnWarp:
 	warp "prontera",156,191;
 	end;
