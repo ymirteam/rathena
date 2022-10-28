@@ -80,7 +80,10 @@ OnBossDead:
 	return;
 	
 OnWorldBossDead:
-	.reward = .baseReward - (.rewardMinus * $worldBossKilled);
+
+	callsub L_SpawnWorldBoss;
+
+	.reward = cap_value((.baseReward - (.rewardMinus * $worldBossKilled)),.rewardMinus,(INT_MAX - 1));
 	
 	announce strcharinfo(0) + " ได้ฆ่า World Boss ชื่อของเขาจะถูกจารึกเอาไว้ และเขาได้รับ " + F_InsertComma(.reward) + "z!!",bc_all;
 
