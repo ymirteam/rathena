@@ -11,5 +11,44 @@ OnInit:
 		
 		$all_mob_id_size = getarraysize($all_mob_ids);
 	}
+	
+	/*deletearray $allUnspawnMobIds[0],getarraysize($allUnspawnMobIds);
+	
+	freeloop(1);
+	
+	for(.@i = 0; .@i < $all_mob_id_size; .@i++){
+		if(!isspawn($all_mob_ids[.@i]))
+		setarray $allUnspawnMobIds[getarraysize($allUnspawnMobIds)],$all_mob_ids[.@i];
+	}
+	
+	freeloop(0);*/
+	
+	/*deletearray $allUnspawnMobIdsTier1[0],getarraysize($allUnspawnMobIdsTier1);
+	deletearray $allUnspawnMobIdsTier2[0],getarraysize($allUnspawnMobIdsTier2);
+	deletearray $allUnspawnMobIdsTier3[0],getarraysize($allUnspawnMobIdsTier3);
+	deletearray $allUnspawnMobIdsTier4[0],getarraysize($allUnspawnMobIdsTier4);
+	deletearray $allUnspawnMobIdsTier5[0],getarraysize($allUnspawnMobIdsTier5);
+	
+	freeloop(1);
+	
+	for(.@i = 0; .@i < getarraysize($allUnspawnMobIds); .@i++){
+		if(F_IsDummyMonster($allUnspawnMobIds[.@i],1))
+		continue;
+		
+		if(getmonsterinfo($allUnspawnMobIds[.@i],MOB_LV) < 30)
+		setarray $allUnspawnMobIdsTier1[getarraysize($allUnspawnMobIdsTier1)],$allUnspawnMobIds[.@i];
+		else if(getmonsterinfo($allUnspawnMobIds[.@i],MOB_LV) < 80)
+		setarray $allUnspawnMobIdsTier2[getarraysize($allUnspawnMobIdsTier2)],$allUnspawnMobIds[.@i];
+		else if(getmonsterinfo($allUnspawnMobIds[.@i],MOB_LV) < 130)
+		setarray $allUnspawnMobIdsTier3[getarraysize($allUnspawnMobIdsTier3)],$allUnspawnMobIds[.@i];
+		else if(getmonsterinfo($allUnspawnMobIds[.@i],MOB_LV) < 160)
+		setarray $allUnspawnMobIdsTier4[getarraysize($allUnspawnMobIdsTier4)],$allUnspawnMobIds[.@i];
+		else 
+		setarray $allUnspawnMobIdsTier5[getarraysize($allUnspawnMobIdsTier5)],$allUnspawnMobIds[.@i];
+		
+	}
+	
+	freeloop(0);*/
+
 	end;
 }

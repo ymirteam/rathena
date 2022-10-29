@@ -27,11 +27,13 @@ function	script	F_PercentBase10000	{
 
 function	script	F_IsDummyMonster	{
 	.@v = getarg(0,0);
+	.@isSkipSpawnCheck = getarg(1,0);
 	if((.@v == 2408)									// Dummy
 			|| (.@v == 2409)							// Dummy
 			|| (.@v == 2410)							// Dummy
 			|| (.@v == 2411)							// Dummy
 			|| (.@v == 2413)							// Dummy
+			|| (.@v == 1288)							// Emperium
 			|| (.@v == 2401)							// Poring on initial land maps
 			|| (.@v == 2337)							// Hidden Mob
 			|| (.@v == 2343)							// Hidden Mob
@@ -40,7 +42,7 @@ function	script	F_IsDummyMonster	{
 			|| (.@v == 2539)							// Hidden Mob
 			|| (.@v == 3038)							// Hidden Mob
 			//|| (getmonsterinfo(.@v,MOB_MAXHP) < 60)		// HP below Poring is not allowed
-			|| !isspawn(.@v))							// It's not spawn in official servers
+			|| (!isspawn(.@v) && !.@isSkipSpawnCheck))							// It's not spawn in official servers
 	return true;
 	else
 	return false;
