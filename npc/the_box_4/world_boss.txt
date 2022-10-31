@@ -92,7 +92,7 @@ OnWorldBossDead:
 	$worldBossKilled++;
 	
 	for(.@i = 0; .@i < getarraysize($worldBossKillers$); .@i++){
-		if($worldBossKillers$[i] == strcharinfo(0))
+		if($worldBossKillers$[.@i] == strcharinfo(0))
 		end;
 	}
 	
