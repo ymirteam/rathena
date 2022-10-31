@@ -42,9 +42,8 @@ prontera,156,200,3	script	ห้อง World Boss	10007,{
 	end;
 	
 	L_WorldBossKiller:
-	for(.@i = 0; .@i < getarraysize($worldBossKillers$); .@i++){
-		mes i+1+".) "+$worldBossKillers$[.@i];
-	}
+	for(.@i = 0; .@i < getarraysize($worldBossKillers$); .@i++)
+	mes (.@i + 1) + ".) " + $worldBossKillers$[.@i];
 	mes "---";
 	close;
 	
