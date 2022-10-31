@@ -11,7 +11,7 @@ x_prt	mapflag	noexp
 x_prt	mapflag	noloot
 
 prontera,156,200,3	script	ห้อง World Boss	10007,{
-	.reward = cap_value((.baseReward - (.rewardMinus * $worldBossKilled)),0,(INT_MAX - 1));
+	.reward = cap_value((.baseReward - (.rewardMinus * $worldBossKilled)),.rewardMinimum,(INT_MAX - 1));
 	mes "วิธีเล่น";
 	mes "• ^FF2929ช่วยกันฆ่า Boss^000000";
 	mes "• ^FF2929รางวัล " + F_InsertComma(.reward) + "z^000000";
@@ -80,7 +80,7 @@ OnWorldBossDead:
 
 	callsub L_SpawnWorldBoss;
 
-	.reward = cap_value((.baseReward - (.rewardMinus * $worldBossKilled)),0,(INT_MAX - 1));
+	.reward = cap_value((.baseReward - (.rewardMinus * $worldBossKilled)),.rewardMinimum,(INT_MAX - 1));
 	
 	announce strcharinfo(0) + " ได้ฆ่า World Boss ชื่อของเขาจะถูกจารึกเอาไว้ และเขาได้รับ " + F_InsertComma(.reward) + "z!!",bc_all;
 
@@ -106,6 +106,7 @@ OnInit:
 	
 	.baseReward = 2000000000;
 	.rewardMinus = 100000000;
+	.rewardMinimum = 1000000;
 	
 	waitingroom "ห้อง World Boss",0;
 	
