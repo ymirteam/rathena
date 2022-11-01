@@ -78,6 +78,7 @@ OnCleanUp:
 	end;
 	
 OnBossDead:
+	bossScore1++;
 	monster .map_name$,0,0,"--ja--",$all_boss_ids[rand(0,($all_boss_id_size - 1))],1,strnpcinfo(0) + "::OnBossDead";
 	end;
 	
@@ -136,6 +137,7 @@ OnCleanUp:
 	end;
 
 OnBossDead:
+	bossScore2++;
 	monster .map_name$,0,0,"--ja--",$all_boss_ids[rand(0,($all_boss_id_size - 1))],1,strnpcinfo(0) + "::OnBossDead";
 	end;
 	
@@ -194,6 +196,7 @@ OnCleanUp:
 	end;
 
 OnBossDead:
+	bossScore3++;
 	monster .map_name$,0,0,"--ja--",$all_boss_ids[rand(0,($all_boss_id_size - 1))],1,strnpcinfo(0) + "::OnBossDead";
 	end;
 	
@@ -252,6 +255,7 @@ OnCleanUp:
 	end;
 
 OnBossDead:
+	bossScore4++;
 	monster .map_name$,0,0,"--ja--",$all_boss_ids[rand(0,($all_boss_id_size - 1))],1,strnpcinfo(0) + "::OnBossDead";
 	end;
 	

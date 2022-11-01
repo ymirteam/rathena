@@ -26,7 +26,7 @@ prontera,156,200,3	script	ห้อง World Boss	10007,{
 	mes "• ^FF2929Monster จะโจมตีแรงขึ้น 5 เท่า^000000";
 	mes "• ^FF2929Cooldown หลังเข้าห้อง " + .delay + " วินาที (ต่อตัวละคร)^000000";
 	next;
-	menu "เข้า",-,"รายชื่อผู้สังหาร World Boss",L_WorldBossKiller;
+	menu "เข้า",-,"รายชื่อผู้สังหาร World Boss",L_WorldBossKiller,"บริจาค Zeny 100m ให้ Server",L_Donation;
 	
 	if (world_boss_room > gettimetick(2)){
 		mes "โปรดรอ " + (world_boss_room - gettimetick(2)) + " วินาที";
@@ -40,6 +40,17 @@ prontera,156,200,3	script	ห้อง World Boss	10007,{
 	announce strcharinfo(0) + " เข้าห้อง World Boss",bc_all;
 	warp .map_name$,0,0;
 	end;
+	
+	L_Donation:
+	if(Zeny < 100000000){
+		mes "คุณมี Zeny ไม่เพียงพอ";
+		close;	
+	}
+	Zeny = cap_value((Zeny - 100000000), 0, (INT_MAX - 1));
+	$worldBossKilled = cap_value(($worldBossKilled - 1), 0, 19);
+	announce strcharinfo(0) + " ได้บริจาค 100,000,000z เพื่อเป็นรางวัล World Boss!!",bc_all;
+	mes "เรียบร้อยแล้ว!";
+	close;
 	
 	L_WorldBossKiller:
 	for(.@i = 0; .@i < getarraysize($worldBossKillers$); .@i++)
