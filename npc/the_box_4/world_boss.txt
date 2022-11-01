@@ -48,7 +48,7 @@ prontera,156,200,3	script	ห้อง World Boss	10007,{
 	}
 	Zeny = cap_value((Zeny - 2000000000), 0, (INT_MAX - 1));
 	$worldBossKilled = 0;
-	announce strcharinfo(0) + " ได้บริจาค 100,000,000z เพื่อเป็นรางวัล World Boss!!",bc_all;
+	announce strcharinfo(0) + " ได้บริจาค 2,000,000,000z เพื่อเป็นรางวัล World Boss!!",bc_all;
 	mes "เรียบร้อยแล้ว!";
 	close;
 	
