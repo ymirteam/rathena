@@ -1,4 +1,4 @@
-x_prt	mapflag	tb2
+x_prt	mapflag	tb4
 x_prt	mapflag	novending
 x_prt	mapflag	nochat
 x_prt	mapflag	noteleport
@@ -19,11 +19,11 @@ prontera,156,200,3	script	ห้อง World Boss	10007,{
 	mes "โทษภายในห้อง";
 	mes "• ^FF2929Monster จะไม่ให้ EXP^000000";
 	mes "• ^FF2929Monster จะไม่ Drop Item^000000";
-	mes "• ^FF2929Damage จะเหลือ 0.1%^000000";
+	mes "• ^FF2929Damage จะเหลือ 0.001%^000000";
 	mes "• ^FF2929World Boss จะมีพลังป้องกัน\n(100 - จำนวนคนใน Map)%\n(ขณะนี้คือ: " + max(0,UMOB_DYNAMIC,(100 - getmapusers(.map_name$))) + "%)^000000";
-	mes "• ^FF2929Flee -50%^000000";
-	mes "• ^FF2929Perfect Dodge -50%^000000";
-	mes "• ^FF2929Monster จะโจมตีแรงขึ้น 5 เท่า^000000";
+	mes "• ^FF2929Flee -99%^000000";
+	mes "• ^FF2929Perfect Dodge -99%^000000";
+	mes "• ^FF2929Monster จะโจมตีแรงขึ้น 9 เท่า^000000";
 	mes "• ^FF2929Cooldown หลังเข้าห้อง " + .delay + " วินาที (ต่อตัวละคร)^000000";
 	next;
 	menu "เข้า",-,"รายชื่อผู้สังหาร World Boss",L_WorldBossKiller;
