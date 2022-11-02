@@ -26,7 +26,7 @@ prontera,156,200,3	script	ห้อง World Boss	10007,{
 	mes "• ^FF2929Monster จะโจมตีแรงขึ้น 5 เท่า^000000";
 	mes "• ^FF2929Cooldown หลังเข้าห้อง " + .delay + " วินาที (ต่อตัวละคร)^000000";
 	next;
-	menu "เข้า",-,"รายชื่อผู้สังหาร World Boss",L_WorldBossKiller,"บริจาค Zeny 2,000m ให้ Server",L_Donation;
+	menu "เข้า",-,"รายชื่อผู้สังหาร World Boss",L_WorldBossKiller;
 	
 	if (world_boss_room > gettimetick(2)){
 		mes "โปรดรอ " + (world_boss_room - gettimetick(2)) + " วินาที";
