@@ -1,0 +1,16 @@
+Branch rA-TH จัดทำมาเพื่อเป็นการศึกษา และทดลองการ Merge PR rAmaster
+มีNPC สำหรับการเปิดเซิร์ฟเวอร์พื้นฐาน ภาษาไทย สำหรับให้ผู้สนใจศึกษาการทำเซิร์ฟเวอร์
+
+ลิงก์เชิญ: https://discord.gg/AqFhZgws3H
+
+Credit : rAthena-TH Project
+- Playragnarok
+- Azael-Dev
+- sammeepay
+- DurexzOfiicial
+- rAmaster (Official)
+
+
+*** หมายเหตุ ***
+1.AFK
+https://github.com/rAthena-Thailand/rathena/pull/16

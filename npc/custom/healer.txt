@@ -15,56 +15,33 @@
 
 -	script	Healer	-1,{
 
-	.@Price = 0;	// ¤èÒãªé¨èÒÂã¹¡ÒÃÃÑ¡ÉÒ
-	.@Buffs = 0;	// ºÑ¿¼ÙéàÅè¹´éÇÂ? (1: ãªè / 0: äÁè)
-	.@Buffs = 1;	// ºÑ¿¼ÙéàÅè¹´éÇÂ? (1: ãªè / 0: äÁè)
-	.@Delay = 0;	// ÃÐÂÐàÇÅÒÃÑ¡ÉÒà»ç¹ÇÔ¹Ò·Õ
+	.@Price = 0;	// ��������㹡���ѡ��
+	.@Buffs = 1;	// �ѿ�����蹴���? (1: �� / 0: ���)
+	.@Delay = 3;	// ���������ѡ�����Թҷ�
 
 	if (@HD > gettimetick(2))
 		end;
 	if (.@Price) {
-		message strcharinfo(0), "¤èÒãªé¨èÒÂã¹¡ÒÃÃÑ¡ÉÒ " + callfunc("F_InsertComma",.@Price) + " Zeny";
+		message strcharinfo(0), "��������㹡���ѡ�� " + callfunc("F_InsertComma",.@Price) + " Zeny";
 		if (Zeny < .@Price)
 			end;
-		if (select("^0055FFÃÑ¡ÉÒ^000000:^777777Â¡àÅÔ¡^000000") == 2)
+		if (select("^0055FF�ѡ��^000000:^777777¡��ԡ^000000") == 2)
 			end;
 		Zeny -= .@Price;
 	}
 	specialeffect2 EF_HEAL2;
 	percentheal 100,100;
 	if (.@Buffs) {
-	
-		//ºÑ¾ÍÒËÒÃ 30 ¹Ò·Õ àÅàÇÅ 10
-		sc_start SC_STRFood, 1800000,10;
-		sc_start SC_AGIFood, 1800000,10;
-		sc_start SC_VITFood, 1800000,10;
-		sc_start SC_INTFood, 1800000,10;
-		sc_start SC_DEXFood, 1800000,10;
-		sc_start SC_LUKFood, 1800000,10;
-		
-		//ºÑ¾Ê¡ÔÅµèÒ§æ
-		sc_start SC_BLESSING,1800000,10;
-		sc_start SC_INCREASEAGI,1800000,10;
-		sc_start SC_GLORIA,1800000,10;
-		sc_start SC_MAGNIFICAT,1800000,10;
-		sc_start4 SC_POEMBRAGI,1800000,5,70,90,5;
-		sc_start4 SC_SERVICE4U,1800000,5,40,40,1;
-		
-		//á¡éÊ¶Ò¹ÐµèÒ§æ
-		sc_end SC_POISON;
-		sc_end SC_FREEZE;
-		sc_end SC_SLEEP;
-		sc_end SC_STAN;
-		sc_end SC_STUN;
-		sc_end SC_STONE;
-		sc_end SC_SILENCE;
-		sc_end SC_BLIND;
-		sc_end SC_Bleeding;
-		sc_end SC_CONFUSION;
-		sc_end SC_CURSE;
-		sc_end SC_HALLUCINATION;
-		sc_end SC_ORCISH;
-		
+		specialeffect2 EF_INCAGILITY;
+		sc_start SC_INCREASEAGI,240000,10;
+		specialeffect2 EF_BLESSING;
+		sc_start SC_BLESSING,240000,10;
+		specialeffect2 EF_IMPOSITIO;
+		sc_start SC_IMPOSITIO,240000,5;		
+		specialeffect2 EF_ODINS_POWER;
+		sc_start SC_ODINS_POWER,60000,2;
+		specialeffect2 AB_EXPIATIO;
+		sc_start SC_EXPIATIO,270000,5;		
 	}
 	if (.@Delay)
 		@HD = gettimetick(2) + .@Delay;
