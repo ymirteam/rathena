@@ -23,17 +23,23 @@ function Go; function Disp; function Pick; function Restrict;
 //	Main Menu:
 // --------------------------------------------------
 
-menu	"��������ش ^777777["+lastwarp$+"]^000000",-,
-    	" ~ ���ͧ",Towns,
-    	" ~ ��Ŵ�",Fields,
-    	" ~ �ѹ���¹",Dungeons,
-    	" ~ ����ҷ��Ŵ�",Castles,
-    	" ~ �ѹ���¹��Ŵ�",Guild_Dungeons,
-    	" ~ �ѹ��ǹ���",Instances,
-    	" ~ ��鹷������",Special;
+menu	"ÇÒÃì»ÅèÒÊØ´ ^777777["+lastwarp$+"]^000000",-,
+    	" ~ àÁ×Í§ËÅÇ§",Towns,
+    	" ~ Fields",Fields,
+    	" ~ Dungeons",Dungeons,
+    	" ~ »ÃÒÊÒ·¡ÔÅ´ì",Castles,
+    	" ~ Guild Dungeons",Guild_Dungeons,
+    	" ~ Instances",Instances,
+    	" ~ àÁ×Í§",Towns,
+    	" ~ ¿ÔÅ´ì",Fields,
+    	" ~ ´Ñ¹à¨ÕéÂ¹",Dungeons,
+    	" ~ »ÃÒÊÒ·¡ÔÅ´ì",Castles,
+    	" ~ ´Ñ¹à¨ÕéÂ¹¡ÔÅ´ì",Guild_Dungeons,
+    	" ~ ´Ñ¹ÊèÇ¹µÑÇ",Instances,
+    	" ~ ¾×é¹·Õè¾ÔàÈÉ",Special;
 
 	if (lastwarp$ == "")
-		message strcharinfo(0),"�س�ѧ�����������˹���";
+		message strcharinfo(0),"¤Ø³ÂÑ§äÁèà¤ÂÇÒÃì»ä»äË¹àÅÂ";
 	else
 		warp lastwarp$,lastwarpx,lastwarpy;
 	end;
@@ -100,7 +106,7 @@ function Pick {
 		set .@map$, getarg(0)+((.@i<10)?"0":"")+.@i;
 	}
 	if (.@warp_block & (1<<.@select)) {
-		message strcharinfo(0),"Ἱ�����������Դ��ҹ� "+((checkre(0))?"":"Pre-")+"Renewal.";
+		message strcharinfo(0),"á¼¹·Õè¹ÕéäÁèä´éà»Ô´ãªé§Ò¹ã¹ "+((checkre(0))?"":"Pre-")+"Renewal.";
 		end;
 	}
 	set .@x, @c[.@i*2];
@@ -116,7 +122,7 @@ function Restrict {
 			for (set .@i,1; .@i<getargcount(); set .@i,.@i+1)
 				set @warp_block, @warp_block | (1<<getarg(.@i));
 		} else {
-			message strcharinfo(0),"Ἱ�����������Դ��ҹ� "+((checkre(0))?"":"Pre-")+"Renewal.";
+			message strcharinfo(0),"á¼¹·Õè¹ÕéäÁèä´éà»Ô´ãªé§Ò¹ã¹ "+((checkre(0))?"":"Pre-")+"Renewal.";
 			end;
 		}
 	}

@@ -11,31 +11,40 @@
 //=	Changed set -> setarray, Improved text with F_InsertPlural
 //= 1.5 Added sc_end_class to reset related status changes [sader1992]
 //============================================================
+prontera,150,193,4	script	Reset Girl	124,{
 morocc,146,114,6	script	Reset Status	749,{
-	//	 		Skills,	Stats,	Both,	Limit  �Ҥ���ʡ�� ( 5000 ), �Ҥ����൵�� ( 5000 ), �Ҥ��շ�駤�� ( 9000 ), �ӹǹ����㹡���� ( 0 )
+	//	 		Skills,	Stats,	Both,	Limit  ÃÒ¤ÒÃÕÊ¡ÔÅ ( 5000 ), ÃÒ¤ÒÃÕÊàµµÑÊ ( 5000 ), ÃÒ¤ÒÃÕ·Ñé§¤Ùè ( 9000 ), ¨Ó¹Ç¹¤ÃÑé§ã¹¡ÒÃÃÕ ( 0 )
 	setarray .@Reset,	5000,	5000,	9000,	0;
 	mes "[Reset Status]";
 	if(.@Reset[3] && reset_limit > .@Reset[3]) {
-		mes "���ɴ����������ö������ "+callfunc("F_InsertPlural",.@Reset[3],"����")+" ��ҹ��.";
+		mes "¢Íâ·É´éÇÂà¨éÒÊÒÁÒÃ¶ÃÕä´éá¤è "+callfunc("F_InsertPlural",.@Reset[3],"¤ÃÑé§")+" à·èÒ¹Ñé¹.";
 		close;
 	}
-	mes "��Ҥ�� Reset Status.";
+	mes "¢éÒ¤×Í Reset Girl.";
+	mes "ÃÕÊàµµÑÊ: "+ callfunc("F_InsertComma",.@Reset[1]) +"z";
+	mes "ÃÕÊ¡ÔÅ: "+ callfunc("F_InsertComma",.@Reset[0]) +"z";
+	mes "ÃÕ·Ñé§¤Ùè: "+ callfunc("F_InsertComma",.@Reset[2]) +"z";
+	if(.@Reset[3]) mes "à¨éÒÊÒÁÒÃ¶ÃÕä´éá¤è "+callfunc("F_InsertPlural",.@Reset[3],"¤ÃÑé§")+", ´Ñ§¹Ñé¹ãªé "+((.@Reset[3]>1)?"ÁÑ¹":"ÍÂèÒ§")+" ©ÅÒ´.";
+	mes "¡ÃØ³ÒàÅ×Í¡ºÃÔ¡ÒÃ·ÕèµéÍ§¡ÒÃ:";
+	next;
+	set .@i,(select("^FF3355ÃÕÊ¡ÔÅ:ÃÕÊàµµÑÊ:ÃÕ·Ñé§¤Ùè^000000:Â¡àÅÔ¡"));
+	mes "¢éÒ¤×Í Reset Status.";
 	mes "Reset Status: "+ callfunc("F_InsertComma",.@Reset[1]) +"z";
 	mes "Reset Skill: "+ callfunc("F_InsertComma",.@Reset[0]) +"z";
 	mes "Reset Status & Skill: "+ callfunc("F_InsertComma",.@Reset[2]) +"z";
-	if(.@Reset[3]) mes "�������ö������ "+callfunc("F_InsertPlural",.@Reset[3],"����")+", �ѧ����� "+((.@Reset[3]>1)?"�ѹ":"���ҧ")+" ��Ҵ.";
-	mes "��س����͡��ԡ�÷���ͧ���:";
+	if(.@Reset[3]) mes "à¨éÒÊÒÁÒÃ¶ÃÕä´éá¤è "+callfunc("F_InsertPlural",.@Reset[3],"¤ÃÑé§")+", ´Ñ§¹Ñé¹ãªé "+((.@Reset[3]>1)?"ÁÑ¹":"ÍÂèÒ§")+" ©ÅÒ´.";
+	mes "¡ÃØ³ÒàÅ×Í¡ºÃÔ¡ÒÃ·ÕèµéÍ§¡ÒÃ:";
 	next;
-	set .@i,(select("^FF3355Reset Status:Reset Skill:Reset Status & Skill^000000:¡��ԡ"));
+	set .@i,(select("^FF3355Reset Status:Reset Skill:Reset Status & Skill^000000:Â¡àÅÔ¡"));
 	if(.@i > 3) close;
 	mes "[Reset Status]";
 	if (Zeny < .@Reset[.@i-1]) {
-		mes "���ɴ���, ������Թ����.";
+		mes "¢Íâ·É´éÇÂ, à¨éÒÁÕà§Ô¹äÁè¾Í.";
 		close;
 	}
 	if(.@Reset[3]){
-		mes "�������ö������ "+callfunc("F_InsertPlural",.@Reset[3],"����")+" ��ҹ��, ��������� ?";
-		if(select("�ͤԴ�١�͹:��͹") == 1) close;
+		mes "à¨éÒÊÒÁÒÃ¶ÃÕä´éá¤è "+callfunc("F_InsertPlural",.@Reset[3],"¤ÃÑé§")+" à·èÒ¹Ñé¹, à¨éÒá¹èã¨äËÁ ?";
+		if(select("¢Í¤Ô´´Ù¡èÍ¹:á¹è¹Í¹") == 1) close;
 	}
 	set Zeny, Zeny-.@Reset[.@i-1];
 	if(.@i&1){
@@ -43,10 +52,10 @@ morocc,146,114,6	script	Reset Status	749,{
 		ResetSkill;
 	}
 	if(.@i&2) ResetStatus;
-	mes "���º����!";
+	mes "àÃÕÂºÃéÍÂ!";
 	if(.@Reset[3]) set reset_limit,reset_limit + 1;
 	close;
 OnInit:
-	waitingroom "��ʡ��&�൵��",0;
+	waitingroom "ÃÕÊ¡ÔÅ&ÊàµµÑÊ",0;
 end;
 }
