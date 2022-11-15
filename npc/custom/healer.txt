@@ -1,34 +1,69 @@
-//===== rAthena Script =======================================
-//= Healer
-//===== By: ==================================================
-//= Euphy
-//===== Current Version: =====================================
-//= 1.1
-//===== Compatible With: =====================================
-//= rAthena Project
-//===== Description: =========================================
-//= Basic healer script.
-//===== Additional Comments: =================================
-//= 1.0 Initial script.
-//= 1.1 Aligned coordinates with @go.
-//============================================================
-
--	script	Healer	-1,{
-	.@Delay = 1;
+prontera,159,193,4	script	ตู้น้ำวิเศษ	564,{
+	mes "ตู้ที่ติดป้ายไว้ว่า ''ภายในตู้นี้มี 'ของกดใช้' หลากหลายชนิดอยู่'' แต่คุณพยายามดูผ่านกระจกแล้ว มองไม่ออกว่ายี่ห้อสินค้าคืออะไร..";
+	next;
+	menu "หยอด " + F_InsertComma(.zenyPrice) + "z",L_Zeny
+	,"หยอด " + F_InsertComma(.zenyPrice) + "z ไปเรื่อย ๆ",L_ZenyAllIn
+	,"ใช้ " + .itemPrice + " " + getitemname(.itemPriceId) + " ไข",L_Item
+	,"ใช้ " + .itemPrice + " " + getitemname(.itemPriceId) + " ไข ไปเรื่อย ๆ",L_ItemAllIn;
 	
-	if (@HD > gettimetick(2))
-	end;	
-
+	L_ZenyAllIn:
+	.@zenyAllIn = 1;
+	L_Zeny:
+	.@loopAmount = (.@zenyAllIn == 1) ? 30000 : 1;
+	freeloop(1);
+	while(.@loopAmount > 0){
+		if(Zeny >= .zenyPrice){
+			// Random reward
+			.@rewardItemId = $usableIds[rand(0,(getarraysize($usableIds) - 1))];
+			// Check weight
+			if(!checkweight(6825,1)){
+				message strcharinfo(0),"น้ำหนักเต็ม (ต้องว่างอย่างน้อย 1000 น้ำหนัก)";
+				freeloop(0);
+				end;
+			}
+			// Trade
+			Zeny -= .zenyPrice;
+			getitem .@rewardItemId,1;
+		}
+		else
+			break;
+	}
+	goto L_EndTrade;
+	
+	L_ItemAllIn:
+	.@itemAllIn = 1;
+	L_Item:
+	.@loopAmount = (.@zenyAllIn == 1) ? 30000 : 1;
+	freeloop(1);
+	while(.@loopAmount > 0){
+		if(countitem(.itemPriceId) > 0){
+			// Random reward
+			.@rewardItemId = $usableIds[rand(0,(getarraysize($usableIds) - 1))];
+			// Check weight
+			if(!checkweight(6825,1)){
+				message strcharinfo(0),"น้ำหนักเต็ม (ต้องว่างอย่างน้อย 1000 น้ำหนัก)";
+				freeloop(0);
+				end;
+			}
+			// Trade
+			delitem .itemPriceId,.itemPrice;
+			getitem .@rewardItemId,1;
+		}
+		else
+			break;
+	}
+	goto L_EndTrade;
+	
+	L_EndTrade:
+	mes "หลังจากได้รับ Item.. . ก็มีน้ำหอมลอยฟุ้งออกมา เพียงแค่คุณดม.. HP และ SP ของคุณก็เต็ม รวมทั้ง Item ทุกชิ้นถูกซ่อมแซมให้ใช้งานได้ตามปกติ..";
 	repairall;
-	
 	percentheal 100,100;
-
-	if (.@Delay)
-	@HD = gettimetick(2) + .@Delay;
+	freeloop(0);
+	close;
+	
+	OnInit:
+	.zenyPrice = 100000;
+	.itemPriceId = 40017;
+	.itemPrice = 1;
 	end;
 }
-
-
-// Duplicates
-//============================================================
-prontera,159,193,4	duplicate(Healer)	ฟื้นฟู HP & SP#prt	677

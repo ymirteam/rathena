@@ -43,7 +43,7 @@ OnPCDieEvent:
 	end;
 	
 OnWorldBossDead:
-	if(Hp <= 0)
+	if(isdead())
 	warp "prontera",156,191;
 	end;
 

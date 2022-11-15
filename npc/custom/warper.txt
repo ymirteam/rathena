@@ -19,7 +19,6 @@
 -	script	Warper	-1,{
 	function Go; function Disp; function Pick; function Restrict;
 	
-	repairall;
 	savepoint "prontera",156,191,10,10; // Randomize Save Point
 	
 	// --------------------------------------------------

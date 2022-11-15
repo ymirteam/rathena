@@ -1,4 +1,4 @@
-prontera,158,193,3	script	Kill Box	888,{
+prontera,163,205,5	script	Kill Box	888,{
 	// Still had target
 	if(killBoxTarget){
 		if(killBoxCount > 0){
