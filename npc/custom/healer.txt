@@ -12,6 +12,7 @@ prontera,159,193,4	script	µÙé¹éÓÇÔàÈÉ	564,{
 	.@loopAmount = (.@zenyAllIn == 1) ? 30000 : 1;
 	freeloop(1);
 	while(.@loopAmount > 0){
+		.@loopAmount--;
 		if(Zeny >= .zenyPrice){
 			// Random reward
 			.@rewardItemId = $usableIds[rand(0,(getarraysize($usableIds) - 1))];
@@ -37,6 +38,7 @@ prontera,159,193,4	script	µÙé¹éÓÇÔàÈÉ	564,{
 	.@loopAmount = (.@zenyAllIn == 1) ? 30000 : 1;
 	freeloop(1);
 	while(.@loopAmount > 0){
+		.@loopAmount--;
 		if(countitem(.itemPriceId) > 0){
 			// Random reward
 			.@rewardItemId = $usableIds[rand(0,(getarraysize($usableIds) - 1))];
