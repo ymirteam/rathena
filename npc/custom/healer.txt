@@ -24,6 +24,7 @@ prontera,159,193,4	script	ตู้น้ำวิเศษ	564,{
 			// Trade
 			Zeny -= .zenyPrice;
 			getitem .@rewardItemId,1;
+			.@successTrade = 1;
 		}
 		else
 			break;
@@ -48,6 +49,7 @@ prontera,159,193,4	script	ตู้น้ำวิเศษ	564,{
 			// Trade
 			delitem .itemPriceId,.itemPrice;
 			getitem .@rewardItemId,1;
+			.@successTrade = 1;
 		}
 		else
 			break;
@@ -55,9 +57,14 @@ prontera,159,193,4	script	ตู้น้ำวิเศษ	564,{
 	goto L_EndTrade;
 	
 	L_EndTrade:
-	mes "หลังจากได้รับ Item.. . ก็มีน้ำหอมลอยฟุ้งออกมา เพียงแค่คุณดม.. HP และ SP ของคุณก็เต็ม รวมทั้ง Item ทุกชิ้นถูกซ่อมแซมให้ใช้งานได้ตามปกติ..";
-	repairall;
-	percentheal 100,100;
+	if(.@successTrade){
+		mes "หลังจากได้รับ Item.. . ก็มีน้ำหอมลอยฟุ้งออกมา เพียงแค่คุณดม.. HP และ SP ของคุณก็เต็ม รวมทั้ง Item ทุกชิ้นถูกซ่อมแซมให้ใช้งานได้ตามปกติ..";
+		repairall;
+		percentheal 100,100;
+	}
+	else{
+		mes "..";
+	}
 	freeloop(0);
 	close;
 	
