@@ -157,7 +157,7 @@ OnBuyItem:
 		npcshopadditem "THE_BOX",$market[.@i],1;
 		for(.@i = 0; .@i < getarraysize($market2); .@i++)
 		npcshopadditem "THE_BOX2",$market2[.@i],1;
-	
+		
 		freeloop(0);
 		
 		return;

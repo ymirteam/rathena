@@ -28,7 +28,7 @@ prontera,159,193,4	script	ตู้น้ำวิเศษ	564,{
 			.@successTrade = 1;
 		}
 		else
-			break;
+		break;
 	}
 	goto L_EndTrade;
 	
@@ -54,7 +54,7 @@ prontera,159,193,4	script	ตู้น้ำวิเศษ	564,{
 			.@successTrade = 1;
 		}
 		else
-			break;
+		break;
 	}
 	goto L_EndTrade;
 	
@@ -70,7 +70,7 @@ prontera,159,193,4	script	ตู้น้ำวิเศษ	564,{
 	freeloop(0);
 	close;
 	
-	OnInit:
+OnInit:
 	.zenyPrice = 100000;
 	.itemPriceId = 40017;
 	.itemPrice = 1;
