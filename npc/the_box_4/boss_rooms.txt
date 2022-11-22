@@ -145,14 +145,12 @@ OnCleanUp:
 	
 OnBossDead:
 	bossScore1++;
-	//monster .map_name$,0,0,"--ja--",$all_boss_ids[rand(0,($all_boss_id_size - 1))],1,strnpcinfo(0) + "::OnBossDead";
-	monster .map_name$,0,0,"--ja--",1002,1,strnpcinfo(0) + "::OnBossDead";
+	monster .map_name$,0,0,"--ja--",$all_boss_ids[rand(0,($all_boss_id_size - 1))],1,strnpcinfo(0) + "::OnBossDead";
 	end;
 	
 	L_Spawn:
 	for(.@i = 0; .@i < .spawn_amount; .@i++)
-	//monster .map_name$,0,0,"--ja--",$all_boss_ids[rand(0,($all_boss_id_size - 1))],1,strnpcinfo(0) + "::OnBossDead";
-	monster .map_name$,0,0,"--ja--",1002,1,strnpcinfo(0) + "::OnBossDead";
+	monster .map_name$,0,0,"--ja--",$all_boss_ids[rand(0,($all_boss_id_size - 1))],1,strnpcinfo(0) + "::OnBossDead";
 	return;
 	
 OnInit:
