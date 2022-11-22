@@ -35,7 +35,7 @@ prontera,159,193,4	script	µÙé¹éÓÇÔàÈÉ	564,{
 	L_ItemAllIn:
 	.@itemAllIn = 1;
 	L_Item:
-	.@loopAmount = (.@zenyAllIn == 1) ? 30000 : 1;
+	.@loopAmount = (.@itemAllIn == 1) ? 30000 : 1;
 	freeloop(1);
 	while(.@loopAmount > 0){
 		.@loopAmount--;
