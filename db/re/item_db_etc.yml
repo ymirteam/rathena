@@ -35685,17 +35685,17 @@ Body:
       NoMail: true
       NoAuction: true
   - Id: 25311
-    AegisName: Piece_of_Black_Horn
+    AegisName: PieceOfBlackSpirit
     Name: Piece of Black Horn
     Type: Etc
     Weight: 10
   - Id: 25312
-    AegisName: Fine_Old_Doll
+    AegisName: OldDoll
     Name: Fine Old Doll
     Type: Etc
     Weight: 10
   - Id: 25313
-    AegisName: Old_Shell
+    AegisName: OldShell
     Name: Old Shell
     Type: Etc
     Weight: 10
@@ -38929,7 +38929,7 @@ Body:
       }
       bonus bDef,.@val;
   - Id: 27115
-    AegisName: Ominous_Permeter_Card
+    AegisName: OminousPermeter_Card
     Name: Ominous Permeter Card
     Type: Card
     Buy: 20
@@ -38948,7 +38948,7 @@ Body:
          bonus bSPrecovRate,30;
       }
   - Id: 27116
-    AegisName: Ominous_Heater_Card
+    AegisName: OminousHeater_Card
     Name: Ominous Heater Card
     Type: Card
     Buy: 20
@@ -38961,7 +38961,7 @@ Body:
       bonus bCritical,3;
       bonus bCritAtkRate,5;
   - Id: 27117
-    AegisName: Ominous_Assaulter_Card
+    AegisName: OminousAssulter_Card
     Name: Ominous Assaulter Card
     Type: Card
     Buy: 20
@@ -38979,7 +38979,7 @@ Body:
       }
       bonus bCritAtkRate,(10+.@r);
   - Id: 27118
-    AegisName: Ominous_Freezer_Card
+    AegisName: OminousFreezer_Card
     Name: Ominous Freezer Card
     Type: Card
     Buy: 20

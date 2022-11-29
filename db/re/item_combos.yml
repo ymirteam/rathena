@@ -12631,14 +12631,14 @@ Body:
   - Combos:
       - Combo:
           - OminousSolider_Card
-          - Ominous_Permeter_Card
+          - OminousPermeter_Card
     Script: |
       bonus bMaxHPrate,(getequiprefinerycnt(EQI_ARMOR)/3);
       bonus bMaxSP,(5*(getequiprefinerycnt(EQI_HEAD_TOP)/2));
   - Combos:
       - Combo:
-          - Ominous_Heater_Card
-          - Ominous_Assaulter_Card
+          - OminousHeater_Card
+          - OminousAssulter_Card
     Script: |
       bonus bCritical,2;
       bonus bCritAtkRate,2;
