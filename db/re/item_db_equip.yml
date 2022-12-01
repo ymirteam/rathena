@@ -5969,7 +5969,7 @@ Body:
          bonus bHit,5;
       }
   - Id: 1326
-    AegisName: Illusion_War_Axe
+    AegisName: War_Axe_IL
     Name: Illusion War Axe
     Type: Weapon
     SubType: 1hAxe
@@ -62328,7 +62328,7 @@ Body:
       bonus bBaseAtk,(30*(.@r/3));
       bonus bLongAtkRate,(3*.@r);
   - Id: 13338
-    AegisName: Illusion_Wing_Shuriken
+    AegisName: Huuma_Bird_Wing_IL
     Name: Illusion Wing Shuriken
     Type: Weapon
     SubType: Huuma
@@ -64481,7 +64481,7 @@ Body:
          bonus bHit,5;
       }
   - Id: 13469
-    AegisName: Illusion_Immaterial_Sword
+    AegisName: Immaterial_Sword_IL
     Name: Illusion Immaterial Sword
     Type: Weapon
     SubType: 1hSword
@@ -71891,7 +71891,7 @@ Body:
       }
       bonus bBaseAtk,.@val;
   - Id: 16065
-    AegisName: Illusion_Iron_Driver
+    AegisName: Iron_Driver_IL
     Name: Illusion Iron Driver
     Type: Weapon
     SubType: Mace
@@ -85452,7 +85452,7 @@ Body:
     Script: |
       bonus bAspd,1;
   - Id: 19247
-    AegisName: Illusion_Fancy_Flower
+    AegisName: Fancy_Flower_IL
     Name: Illusion Fancy Flower
     Type: Armor
     Weight: 100
@@ -137692,7 +137692,7 @@ Body:
          bonus bLongAtkRate,getskilllv("KN_SPEARMASTERY");
       }
   - Id: 32005
-    AegisName: Illusion_Pole_Axe
+    AegisName: Pole_Axe_IL
     Name: Illusion Pole Axe
     Type: Weapon
     SubType: 1hSpear
