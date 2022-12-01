@@ -21,7 +21,10 @@ prontera,163,205,5	script	Kill Box	888,{
 			}
 			// Give reward
 			mes "เจ๋ง! รับรางวัลไปเลย";
-			getitem $itemGroupIds[rand(0,getarraysize($itemGroupIds) - 1)],1;
+			while(killBoxReward > 0){
+				killBoxReward--;
+				getitem $itemGroupIds[rand(0,getarraysize($itemGroupIds) - 1)],1;
+			}
 			killBoxTarget = 0;
 			killBoxCount = 0;
 			close;
@@ -46,6 +49,7 @@ prontera,163,205,5	script	Kill Box	888,{
 			killBoxLastAccepted = gettimetick(2) + .delay;
 			
 			killBoxCount = rand(.minTarget,.maxTarget);
+			killBoxReward = cap_value((killBoxCount / 10) * 2,0,10);
 			killBoxTarget = $all_mob_ids[rand(0,($all_mob_id_size - 1))];
 			
 			freeloop(1);
