@@ -49,7 +49,14 @@ prontera,159,193,4	script	ตู้น้ำวิเศษ	564,{
 	menu "หยอด " + F_InsertComma(.zenyPrice) + "z",L_Zeny
 	,"หยอด " + F_InsertComma(.zenyPrice) + "z ไปเรื่อย ๆ",L_ZenyAllIn
 	,"ใช้ " + .itemPrice + " " + getitemname(.itemPriceId) + " ไข",L_Item
-	,"ใช้ " + .itemPrice + " " + getitemname(.itemPriceId) + " ไข ไปเรื่อย ๆ",L_ItemAllIn;
+	,"ใช้ " + .itemPrice + " " + getitemname(.itemPriceId) + " ไข ไปเรื่อย ๆ",L_ItemAllIn
+	,"ถอดชุด Hanbok, Summer, Oktober Fest",L_NoCosplay;
+	
+	L_NoCosplay:
+	sc_end SC_SUMMER;
+	sc_end SC_HANBOK;
+	sc_end SC_OKTOBERFEST;
+	close;
 	
 	L_ZenyAllIn:
 	.@zenyAllIn = 1;
