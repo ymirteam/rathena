@@ -2,6 +2,7 @@ prontera,159,193,4	script	ตู้น้ำวิเศษ	564,{
 	if(#FATHER_DAY){
 		mes "ตู้น้ำวิเศษ THE BOX 4 ขอมอบความสะดวกสบายให้กับผู้เล่นในวันพ่อวันนี้";
 		next;
+		L_FullBuff:
 		mes "• คุณได้รับพรหลายชนิด";
 		mes "• ฟื้นฟู HP และ SP เต็ม";
 		mes "• ซ่อม Item ทุกชนิด";
@@ -50,7 +51,27 @@ prontera,159,193,4	script	ตู้น้ำวิเศษ	564,{
 	,"หยอด " + F_InsertComma(.zenyPrice) + "z ไปเรื่อย ๆ",L_ZenyAllIn
 	,"ใช้ " + .itemPrice + " " + getitemname(.itemPriceId) + " ไข",L_Item
 	,"ใช้ " + .itemPrice + " " + getitemname(.itemPriceId) + " ไข ไปเรื่อย ๆ",L_ItemAllIn
+	,"หยอด " + F_InsertComma(.zenyPrice * .fullBuffPriceMultiplier) + "z รับ Full Buff",L_FullBuffTradeZeny
+	,"ใช้ " + (.itemPrice * .fullBuffPriceMultiplier) + " " + getitemname(.itemPriceId) + " รับ Full Buff",L_FullBuffTradeItem
 	,"ถอดชุด Hanbok, Summer, Oktober Fest",L_NoCosplay;
+	
+	L_FullBuffTradeZeny:
+	.@price = (.zenyPrice * .fullBuffPriceMultiplier);
+	if(Zeny < .@price){
+		mes "...";
+		close;
+	}
+	Zeny -= .@price;
+	goto L_FullBuff;
+	
+	L_FullBuffTradeItem:
+	.@price = (.itemPrice * .fullBuffPriceMultiplier);
+	if(countitem(.itemPriceId) <= .@price){
+		mes "...";
+		close;
+	}
+	delitem .itemPriceId,.@price;
+	goto L_FullBuff;
 	
 	L_NoCosplay:
 	sc_end SC_SUMMER;
@@ -126,5 +147,6 @@ OnInit:
 	.zenyPrice = 100000;
 	.itemPriceId = 40017;
 	.itemPrice = 1;
+	.fullBuffPriceMultiplier = 10;
 	end;
 }
