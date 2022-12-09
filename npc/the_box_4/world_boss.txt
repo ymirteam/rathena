@@ -76,6 +76,9 @@ OnCleanUp:
 	return;
 	
 OnBossDead:
+	if(!playerattached())
+	end;
+
 	monster .map_name$,0,0,"--ja--",$all_boss_ids[rand(0,($all_boss_id_size - 1))],1,strnpcinfo(0) + "::OnBossDead";
 	end;
 	

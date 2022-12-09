@@ -111,6 +111,9 @@ OnCleanUp:
 	end;
 
 OnBossDead:
+	if(!playerattached())
+	end;
+
 	mysteryScore++;
 	callsub L_SpawnMonster;
 	end;

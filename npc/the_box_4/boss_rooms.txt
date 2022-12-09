@@ -84,7 +84,7 @@ prontera,148,200,1	script	ห้อง Boss ที่ 1	10007,{
 		if(bossScore1 > 0){
 			// Already had maximum amount of zeny
 			if(Zeny >= (INT_MAX - 1))
-				break;
+			break;
 			
 			// Trade
 			bossScore1--;
@@ -106,7 +106,7 @@ prontera,148,200,1	script	ห้อง Boss ที่ 1	10007,{
 		if(bossScore1 > 0){
 			// Already had maximum amount of reward item
 			if(countitem(.itemRewardId) >= 30000)
-				break;
+			break;
 			
 			// Check weight
 			if(!checkweight(6825,1)){
@@ -144,6 +144,9 @@ OnCleanUp:
 	end;
 	
 OnBossDead:
+	if(!playerattached())
+	end;
+
 	bossScore1++;
 	monster .map_name$,0,0,"--ja--",$all_boss_ids[rand(0,($all_boss_id_size - 1))],1,strnpcinfo(0) + "::OnBossDead";
 	end;
@@ -213,7 +216,7 @@ prontera,148,205,1	script	ห้อง Boss ที่ 2	10007,{
 		if(bossScore2 > 0){
 			// Already had maximum amount of zeny
 			if(Zeny >= (INT_MAX - 1))
-				break;
+			break;
 			
 			// Trade
 			bossScore2--;
@@ -235,7 +238,7 @@ prontera,148,205,1	script	ห้อง Boss ที่ 2	10007,{
 		if(bossScore2 > 0){
 			// Already had maximum amount of reward item
 			if(countitem(.itemRewardId) >= 30000)
-				break;
+			break;
 			
 			// Check weight
 			if(!checkweight(6825,1)){
@@ -273,6 +276,9 @@ OnCleanUp:
 	end;
 
 OnBossDead:
+	if(!playerattached())
+	end;
+
 	bossScore2++;
 	monster .map_name$,0,0,"--ja--",$all_boss_ids[rand(0,($all_boss_id_size - 1))],1,strnpcinfo(0) + "::OnBossDead";
 	end;
@@ -342,7 +348,7 @@ prontera,148,210,1	script	ห้อง Boss ที่ 3	10007,{
 		if(bossScore3 > 0){
 			// Already had maximum amount of zeny
 			if(Zeny >= (INT_MAX - 1))
-				break;
+			break;
 			
 			// Trade
 			bossScore3--;
@@ -364,7 +370,7 @@ prontera,148,210,1	script	ห้อง Boss ที่ 3	10007,{
 		if(bossScore3 > 0){
 			// Already had maximum amount of reward item
 			if(countitem(.itemRewardId) >= 30000)
-				break;
+			break;
 			
 			// Check weight
 			if(!checkweight(6825,1)){
@@ -402,6 +408,9 @@ OnCleanUp:
 	end;
 
 OnBossDead:
+	if(!playerattached())
+	end;
+
 	bossScore3++;
 	monster .map_name$,0,0,"--ja--",$all_boss_ids[rand(0,($all_boss_id_size - 1))],1,strnpcinfo(0) + "::OnBossDead";
 	end;
@@ -471,7 +480,7 @@ prontera,148,215,1	script	ห้อง Boss ที่ 4	10007,{
 		if(bossScore4 > 0){
 			// Already had maximum amount of zeny
 			if(Zeny >= (INT_MAX - 1))
-				break;
+			break;
 			
 			// Trade
 			bossScore4--;
@@ -493,7 +502,7 @@ prontera,148,215,1	script	ห้อง Boss ที่ 4	10007,{
 		if(bossScore4 > 0){
 			// Already had maximum amount of reward item
 			if(countitem(.itemRewardId) >= 30000)
-				break;
+			break;
 			
 			// Check weight
 			if(!checkweight(6825,1)){
@@ -531,6 +540,9 @@ OnCleanUp:
 	end;
 
 OnBossDead:
+	if(!playerattached())
+	end;
+
 	bossScore4++;
 	monster .map_name$,0,0,"--ja--",$all_boss_ids[rand(0,($all_boss_id_size - 1))],1,strnpcinfo(0) + "::OnBossDead";
 	end;
