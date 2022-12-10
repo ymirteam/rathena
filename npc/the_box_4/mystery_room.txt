@@ -125,7 +125,7 @@ OnBossDead:
 	
 	L_SpawnMonster:
 	.@randomMonsterId = $all_mob_ids[rand(0,($all_mob_id_size - 1))];
-	while(F_IsDummyMonster(.@randomMonsterId)
+	while(F_IsDummyMonster(.@randomMonsterId))
 	.@randomMonsterId = $all_mob_ids[rand(0,($all_mob_id_size - 1))];
 	monster .map_name$,0,0,"--ja--",.@randomMonsterId,1,strnpcinfo(0) + "::OnBossDead";
 	setunitdata $@mobid[0],UMOB_MAXHP,.monsterHp;
