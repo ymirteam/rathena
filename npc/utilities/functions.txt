@@ -33,7 +33,7 @@ function	script	F_IsDummyMonster	{
 			|| (.@v == 2410)							// Dummy
 			|| (.@v == 2411)							// Dummy
 			|| (.@v == 2413)							// Dummy
-			|| ((.@v >= 21064) || (.@v <= 21086))		// Dummy
+			|| ((.@v >= 21064) && (.@v <= 21086))		// Dummy
 			|| (.@v == 1288)							// Emperium
 			|| (.@v == 2401)							// Poring on initial land maps
 			|| (.@v == 2337)							// Hidden Mob
