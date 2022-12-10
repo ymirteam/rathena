@@ -124,7 +124,10 @@ OnBossDead:
 	return;
 	
 	L_SpawnMonster:
-	monster .map_name$,0,0,"--ja--",$all_mob_ids[rand(0,($all_mob_id_size - 1))],1,strnpcinfo(0) + "::OnBossDead";
+	.@randomMonsterId = $all_mob_ids[rand(0,($all_mob_id_size - 1))];
+	while(F_IsDummyMonster(.@randomMonsterId)
+	.@randomMonsterId = $all_mob_ids[rand(0,($all_mob_id_size - 1))];
+	monster .map_name$,0,0,"--ja--",.@randomMonsterId,1,strnpcinfo(0) + "::OnBossDead";
 	setunitdata $@mobid[0],UMOB_MAXHP,.monsterHp;
 	setunitdata $@mobid[0],UMOB_HP,.monsterHp;
 	setunitdata $@mobid[0],UMOB_MODE,(MD_CANMOVE | MD_AGGRESSIVE | MD_CANATTACK | MD_ANGRY | MD_MVP | MD_KNOCKBACKIMMUNE | MD_DETECTOR | MD_STATUSIMMUNE);
