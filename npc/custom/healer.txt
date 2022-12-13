@@ -147,6 +147,6 @@ OnInit:
 	.zenyPrice = 100000;
 	.itemPriceId = 40017;
 	.itemPrice = 1;
-	.fullBuffPriceMultiplier = 10;
+	.fullBuffPriceMultiplier = #THANK_YOU ? 5 : 10;
 	end;
 }

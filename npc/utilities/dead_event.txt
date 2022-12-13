@@ -15,8 +15,17 @@ OnPCDieEvent:
 		end;
 	}
 	else{
-		exp_multiplier = 0;
-		drop_multiplier = 0;
+		if(#THANK_YOU){
+			exp_multiplier = cap_value(exp_multiplier - 1,0,(INT_MAX - 1));
+			drop_multiplier = cap_value(drop_multiplier - 1,0,(INT_MAX - 1));
+			dispbottom "x EXP คงเหลือ: " + F_InsertComma((exp_multiplier * 100)) + "%";
+			dispbottom "x Drop คงเหลือ: " + F_InsertComma((drop_multiplier * 100)) + "%";
+		}
+		else{
+			exp_multiplier = 0;
+			drop_multiplier = 0;
+		}
+		
 		sc_end SC_EXPBOOST;
 		sc_end SC_ITEMBOOST;
 		
