@@ -40,7 +40,7 @@ prontera,126,263,3	script	Grade	10078,{
 	// Upgrade mode selection
 	.@maxGrade = getarraysize(.gradeCostItemIds);
 	for(.@i = 0; .@i < .@maxGrade; .@i++)
-	mes "Grade " + GetGradeName(.@i + 1) + " ต้องการ " + F_InsertComma(.gradeCostItemAmount[.@i]) + " " + getitemname(.gradeCostItemIds[.@i]);
+	mes "Grade " + GetGradeName(.@i + 1) + " ต้องการ " + F_InsertComma(.gradeCostItemAmount[.@i] / (#THANK_YOU ? 2 : .gradeDivider)) + " " + getitemname(.gradeCostItemIds[.@i]);
 	next;
 	.@upgradeMode = select("ทีละขั้น:ทีเดียวเกรด A:ยกเลิก");
 	if(.@upgradeMode == 3)
@@ -53,13 +53,15 @@ prontera,126,263,3	script	Grade	10078,{
 	
 	// Loop
 	for(.@i = 0; .@i < .@loopAmount; .@i++){
+		.@price = .gradeCostItemAmount[.@currentGrade] / (#THANK_YOU ? 2 : .gradeDivider);
+	
 		// Item checking
-		if(countitem(.gradeCostItemIds[.@currentGrade]) < .gradeCostItemAmount[.@currentGrade]){
-			mes "ต้องการ " + F_InsertComma(.gradeCostItemAmount[.@currentGrade]) + " " + getitemname(.gradeCostItemIds[.@currentGrade]);
+		if(countitem(.gradeCostItemIds[.@currentGrade]) < .@price){
+			mes "ต้องการ " + F_InsertComma(.@price) + " " + getitemname(.gradeCostItemIds[.@currentGrade]);
 			close;
 		}
 		
-		delitem .gradeCostItemIds[.@currentGrade],.gradeCostItemAmount[.@currentGrade];
+		delitem .gradeCostItemIds[.@currentGrade],.@price;
 		atcommand "@grade " + gradeEquipLocationSelected + " +1";
 		.@currentGrade++;
 	}
@@ -72,6 +74,7 @@ OnInit:
 	// Grade D, C, B, A
 	setarray .gradeCostItemIds,40017,40017,40017,40017;
 	setarray .gradeCostItemAmount,30,300,3000,9000;
+	.gradeDivider = 1;
 	// Information
 	waitingroom "เสริมแกร่งด้วย Grade",0;
 	end;
