@@ -45,18 +45,20 @@ prontera,159,193,4	script	ตู้น้ำวิเศษ	564,{
 		close;	
 	}
 	
+	.@buffPriceMultiplier = #THANK_YOU ? 1 : .fullBuffPriceMultiplier;
+	
 	mes "ตู้ที่ติดป้ายไว้ว่า ''ภายในตู้นี้มี 'ของกดใช้' หลากหลายชนิดอยู่'' แต่คุณพยายามดูผ่านกระจกแล้ว มองไม่ออกว่ายี่ห้อสินค้าคืออะไร..";
 	next;
 	menu "หยอด " + F_InsertComma(.zenyPrice) + "z",L_Zeny
 	,"หยอด " + F_InsertComma(.zenyPrice) + "z ไปเรื่อย ๆ",L_ZenyAllIn
 	,"ใช้ " + .itemPrice + " " + getitemname(.itemPriceId) + " ไข",L_Item
 	,"ใช้ " + .itemPrice + " " + getitemname(.itemPriceId) + " ไข ไปเรื่อย ๆ",L_ItemAllIn
-	,"หยอด " + F_InsertComma(.zenyPrice * .fullBuffPriceMultiplier) + "z รับ Full Buff",L_FullBuffTradeZeny
-	,"ใช้ " + (.itemPrice * .fullBuffPriceMultiplier) + " " + getitemname(.itemPriceId) + " รับ Full Buff",L_FullBuffTradeItem
+	,"หยอด " + F_InsertComma(.zenyPrice * .@buffPriceMultiplier) + "z รับ Full Buff",L_FullBuffTradeZeny
+	,"ใช้ " + (.itemPrice * .@buffPriceMultiplier) + " " + getitemname(.itemPriceId) + " รับ Full Buff",L_FullBuffTradeItem
 	,"ถอดชุด Hanbok, Summer, Oktober Fest",L_NoCosplay;
 	
 	L_FullBuffTradeZeny:
-	.@price = (.zenyPrice * .fullBuffPriceMultiplier);
+	.@price = (.zenyPrice * .@buffPriceMultiplier);
 	if(Zeny < .@price){
 		mes "...";
 		close;
@@ -65,7 +67,7 @@ prontera,159,193,4	script	ตู้น้ำวิเศษ	564,{
 	goto L_FullBuff;
 	
 	L_FullBuffTradeItem:
-	.@price = (.itemPrice * .fullBuffPriceMultiplier);
+	.@price = (.itemPrice * .@buffPriceMultiplier);
 	if(countitem(.itemPriceId) <= .@price){
 		mes "...";
 		close;
@@ -147,6 +149,6 @@ OnInit:
 	.zenyPrice = 100000;
 	.itemPriceId = 40017;
 	.itemPrice = 1;
-	.fullBuffPriceMultiplier = #THANK_YOU ? 5 : 10;
+	.fullBuffPriceMultiplier = 10;
 	end;
 }
