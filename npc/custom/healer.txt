@@ -1,5 +1,5 @@
 prontera,159,193,4	script	ตู้น้ำวิเศษ	564,{
-	if(#FATHER_DAY){
+	if($FATHER_DAY){
 		mes "ตู้น้ำวิเศษ THE BOX 4 ขอมอบความสะดวกสบายให้กับผู้เล่นในวันพ่อวันนี้";
 		next;
 		L_FullBuff:
@@ -45,7 +45,7 @@ prontera,159,193,4	script	ตู้น้ำวิเศษ	564,{
 		close;	
 	}
 	
-	.@buffPriceMultiplier = #THANK_YOU ? 1 : .fullBuffPriceMultiplier;
+	.@buffPriceMultiplier = $THANK_YOU ? 1 : .fullBuffPriceMultiplier;
 	
 	mes "ตู้ที่ติดป้ายไว้ว่า ''ภายในตู้นี้มี 'ของกดใช้' หลากหลายชนิดอยู่'' แต่คุณพยายามดูผ่านกระจกแล้ว มองไม่ออกว่ายี่ห้อสินค้าคืออะไร..";
 	next;

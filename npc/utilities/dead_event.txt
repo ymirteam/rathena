@@ -15,7 +15,7 @@ OnPCDieEvent:
 		end;
 	}
 	else{
-		if(#THANK_YOU){
+		if($THANK_YOU){
 			exp_multiplier = cap_value(exp_multiplier - 1,0,(INT_MAX - 1));
 			drop_multiplier = cap_value(drop_multiplier - 1,0,(INT_MAX - 1));
 			dispbottom "x EXP คงเหลือ: " + F_InsertComma((exp_multiplier * 100)) + "%";
