@@ -39,64 +39,28 @@ prontera,163,210,1	script	ห้อง Monster สุ่ม	10007,{
 	menu "แลก " + F_InsertComma(.zenyReward) + "z",L_Zeny
 	,"แลก " + F_InsertComma(.zenyReward) + "z ทีเดียวหมด",L_AllInZeny
 	,"แลก " + F_InsertComma(.itemRewardAmount) + " " + getitemname(.itemRewardId),L_Item
-	,"แลก " + F_InsertComma(.itemRewardAmount) + " " + getitemname(.itemRewardId) + " ทีเดียวหมด",L_AllInItem;
+	,"แลก " + F_InsertComma(.itemRewardAmount) + " " + getitemname(.itemRewardId) + " ทีเดียวหมด",L_AllInItem
+	,"ใช้ " + F_InsertComma(.mvpRefinePrice) + " แต้ม แลก " + getitemname(.mvpRefineItemId),L_MvpRefine
+	;
 	
 	L_AllInZeny:
-	.@zenyAllIn = 1;
+	callfunc("MvPTradeZeny",1,1,.zenyReward,.variableName$);
+	close;
+	
 	L_Zeny:
-	.@loopAmount = (.@zenyAllIn == 1) ? 30000 : 1;
-	freeloop(1);
-	while(.@loopAmount > 0){
-		.@loopAmount--;
-		if(mysteryScore > 0){
-			// Already had maximum amount of zeny
-			if(Zeny >= (INT_MAX - 1))
-			break;
-			
-			// Trade
-			mysteryScore--;
-			Zeny = cap_value(Zeny + .zenyReward,0,(INT_MAX - 1));
-			.@successTrade = 1;
-		}
-		else
-		break;
-	}
-	goto L_EndTrade;
+	callfunc("MvPTradeZeny",0,1,.zenyReward,.variableName$);
+	close;
 	
 	L_AllInItem:
-	.@itemAllIn = 1;
-	L_Item:
-	.@loopAmount = (.@itemAllIn == 1) ? 30000 : 1;
-	freeloop(1);
-	while(.@loopAmount > 0){
-		.@loopAmount--;
-		if(mysteryScore > 0){
-			// Already had maximum amount of reward item
-			if(countitem(.itemRewardId) >= 30000)
-			break;
-			
-			// Check weight
-			if(!checkweight(6825,1)){
-				message strcharinfo(0),"น้ำหนักเต็ม (ต้องว่างอย่างน้อย 1000 น้ำหนัก)";
-				break;
-			}
-			
-			// Trade
-			mysteryScore--;
-			getitem .itemRewardId,.itemRewardAmount;
-			.@successTrade = 1;
-		}
-		else
-		break;
-	}
-	goto L_EndTrade;
+	callfunc("MvPTradeItem",1,1,.itemRewardId,.itemRewardAmount,.variableName$);
+	close;
 	
-	L_EndTrade:
-	if(.@successTrade)
-	mes "แลกรางวัลเรียบร้อยแล้ว!";
-	else
-	mes "..";
-	freeloop(0);
+	L_Item:
+	callfunc("MvPTradeItem",0,1,.itemRewardId,.itemRewardAmount,.variableName$);
+	close;
+	
+	L_MvpRefine:
+	callfunc("MvPTradeItem",0,.mvpRefinePrice,.mvpRefineItemId,1,.variableName$);
 	close;
 	
 OnWarp:
@@ -144,6 +108,9 @@ OnInit:
 	.zenyReward = 200000;
 	.itemRewardId = 40017;
 	.itemRewardAmount = 2;
+	.mvpRefineItemId = 40016;
+	.mvpRefinePrice = 300;
+	.variableName$ = "mysteryScore";
 	
 	waitingroom "ห้อง Monster สุ่ม (Damage 0.1%)",0;
 	
