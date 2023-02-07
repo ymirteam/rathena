@@ -320,7 +320,7 @@ moc_para01,106,38,4	script	Market Group Hustler#ent	4_M_YOYOROGUE,{
 		next;
 		mes "[Hustler]";
 		mes "มีรายการพิเศษเพิ่มเติมขายในช่วงวันหยุด";
-		mes "ฉันเคยเห็น <ITEM>Izidor<INFO>709</INFO></ITEM> กำลังขาย ~";
+		mes "ฉันเคยเห็น " + mesitemlink( 709, false ) + " กำลังขาย ~";
 		mes "มันช่างยอดเยี่ยม";
 		mes "แน่นอนมันแพงมากและมีเพียงไม่กี่คนเท่านั้นที่ขาย";
 		next;
