@@ -96434,9 +96434,60 @@ Body:
 #    AegisName: YOYO_Z
 #  - Id: 20418
 #    AegisName: ARGOS_Z
-#  - Id: 20419
-#    AegisName: MUSPELLSKOLL_H
-#    DamageTaken: 10
+  - Id: 20419
+    AegisName: MUSPELLSKOLL_H
+    Name: Rigid Muspellskoll
+    Level: 188
+    Hp: 48530254
+    BaseExp: 9706050
+    JobExp: 6794235
+    Attack: 5146
+    Attack2: 2356
+    Defense: 791
+    MagicDefense: 331
+    Str: 219
+    Agi: 132
+    Vit: 201
+    Int: 188
+    Dex: 177
+    Luk: 66
+    AttackRange: 1
+    SkillRange: 10
+    ChaseRange: 12
+    Size: Medium
+    Race: Demon
+    Element: Fire
+    ElementLevel: 3
+    WalkSpeed: 200
+    AttackDelay: 608
+    AttackMotion: 408
+    DamageMotion: 336
+    DamageTaken: 10
+    Ai: 21
+    Class: Boss
+    Modes:
+      Mvp: true
+    Drops:
+      - Item: Shadowdecon
+        Rate: 50
+      - Item: Old_Violet_Box
+        Rate: 3500
+      - Item: Yggdrasilberry
+        Rate: 3500
+      - Item: Zelunium
+        Rate: 50
+      - Item: Lava_Leather_Suits
+        Rate: 100
+        RandomOptionGroup: MAGMA3
+      - Item: Lava_Leather_Robe
+        Rate: 100
+        RandomOptionGroup: MAGMA3
+      - Item: Lava_Leather_Armor
+        Rate: 100
+        RandomOptionGroup: MAGMA3
+      - Item: Firm_Muspell_Card
+        Rate: 1
+        StealProtected: true
   - Id: 20420
     AegisName: WANDER_MAN_H
     Name: Corrupted Wanderer
