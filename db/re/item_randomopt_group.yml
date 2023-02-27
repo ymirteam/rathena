@@ -13692,6 +13692,7 @@ Body:
             MinValue: 4
             MaxValue: 7
             Chance: 10000
+  - Id: 156
     Group: AUTO_IMP_MELEE_1
     Slots:
       - Slot: 1
@@ -13752,7 +13753,7 @@ Body:
             MinValue: 3
             MaxValue: 20
             Chance: 5000
-  - Id: 156
+  - Id: 157
     Group: AUTO_IMP_MELEE_2
     Slots:
       - Slot: 1
@@ -13871,7 +13872,7 @@ Body:
             MinValue: 3
             MaxValue: 15
             Chance: 5000
-  - Id: 157
+  - Id: 158
     Group: AUTO_IMP_MELEE_3
     Slots:
       - Slot: 1
@@ -14059,7 +14060,7 @@ Body:
             MaxValue: 5
             Chance: 5000
 
-  - Id: 158
+  - Id: 159
     Group: AUTO_IMP_MAGIC_1
     Slots:
       - Slot: 1
@@ -14116,7 +14117,7 @@ Body:
             MinValue: 3
             MaxValue: 20
             Chance: 5000
-  - Id: 159
+  - Id: 160
     Group: AUTO_IMP_MAGIC_2
     Slots:
       - Slot: 1
@@ -14231,7 +14232,7 @@ Body:
             MinValue: 3
             MaxValue: 15
             Chance: 5000
-  - Id: 160
+  - Id: 161
     Group: AUTO_IMP_MAGIC_3
     Slots:
       - Slot: 1
@@ -14480,7 +14481,7 @@ Body:
         MinValue: 1
         MaxValue: 5
         Chance: 5000
-  - Id: 161
+  - Id: 162
     Group: EIN_DDBOX
     Slots:
       - Slot: 1
@@ -14653,7 +14654,7 @@ Body:
         MinValue: 3
         MaxValue: 18
         Chance: 5000
-  - Id: 162
+  - Id: 163
     Group: EIN_DDBOX2
     Slots:
       - Slot: 1
@@ -14818,4 +14819,4 @@ Body:
         MinValue: 5
         MaxValue: 10
         Chance: 5000
-#  - Id: 163 #new
+#  - Id: 164 #new
