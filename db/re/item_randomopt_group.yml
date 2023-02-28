@@ -14407,7 +14407,6 @@ Body:
             MinValue: 1
             MaxValue: 5
             Chance: 5000
-  - Id: 162
     Group: MAGMA3
     Slots: 
       - Slot: 1
@@ -14482,7 +14481,7 @@ Body:
         MinValue: 1
         MaxValue: 5
         Chance: 5000
-  - Id: 163
+  - Id: 162
     Group: EIN_DDBOX
     Slots:
       - Slot: 1
@@ -14655,7 +14654,7 @@ Body:
         MinValue: 3
         MaxValue: 18
         Chance: 5000
-  - Id: 164
+  - Id: 163
     Group: EIN_DDBOX2
     Slots:
       - Slot: 1
@@ -14820,4 +14819,4 @@ Body:
         MinValue: 5
         MaxValue: 10
         Chance: 5000
-#  - Id: 165 #new
+#  - Id: 164 #new
