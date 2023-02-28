@@ -88,54 +88,21 @@ Header:
   Version: 3
 
 Body:
-  - Id: 40016
-    AegisName: MvP_Refine
-    Name: MvP Refine
-    Type: Etc
-    Flags:
-      BuyingStore: true
-    TradeNoUse:
-      Override: 100
-      NoSell: true
-  - Id: 40017
-    AegisName: THE_BOX_KEY
-    Name: THE BOX KEY
-    Type: Etc
-    Flags:
-      BuyingStore: true
-    TradeNoUse:
-      Override: 100
-      NoSell: true
-  - Id: 1599
-    AegisName: Angra_Manyu
-    Name: Angra Manyu
-    Type: Weapon
-    SubType: Mace
-    Buy: 1
-    Weight: 10
-    Attack: 100
-    MagicAttack: 100
-    Range: 2
-    Locations:
-      Right_Hand: true
-    WeaponLevel: 1
-    EquipLevelMin: 1
-    Refineable: true
-    Script: |
-      sc_end SC_POISON;
-  - Id: 2199
-    AegisName: Ahura_Mazda
-    Name: Ahura Mazdah
-    Type: Armor
-    Buy: 1
-    Weight: 10
-    Locations:
-      Left_Hand: true
-    EquipLevelMin: 1
-    Refineable: true
-    View: 1
-    Script: |
-      sc_end SC_POISON;
-  - Id: 31089
-    Script: |
-      hateffect(HAT_EF_BAKURETSU_HADOU,false);
+#  - Id: 40016
+#    AegisName: MvP_Refine
+#    Name: MvP Refine
+#    Type: Etc
+#    Flags:
+#      BuyingStore: true
+#    TradeNoUse:
+#      Override: 100
+#      NoSell: true
+#  - Id: 40017
+#    AegisName: THE_BOX_KEY
+#    Name: THE BOX KEY
+#    Type: Etc
+#    Flags:
+#      BuyingStore: true
+#    TradeNoUse:
+#      Override: 100
+#      NoSell: true
