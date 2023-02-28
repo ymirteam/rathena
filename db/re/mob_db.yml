@@ -96819,10 +96819,60 @@ Body:
 #    AegisName: REGINLEIF_MJ
 #  - Id: 20515
 #    AegisName: INGRID_MJ
-#  - Id: 20516
-#    AegisName: G_BONE_FERUS
-#  - Id: 20517
-#    AegisName: G_BONE_ACIDUS
+  - Id: 20516
+    AegisName: G_BONE_FERUS
+    Name: Bone Ferus
+    Level: 206
+    Hp: 3474420
+    Attack: 6732
+    Attack2: 868
+    Defense: 285
+    MagicDefense: 80
+    Str: 242
+    Agi: 173
+    Vit: 75
+    Int: 122
+    Dex: 173
+    Luk: 67
+    AttackRange: 2
+    SkillRange: 10
+    ChaseRange: 12
+    Size: Large
+    Race: Undead
+    Element: Undead
+    ElementLevel: 4
+    WalkSpeed: 120
+    AttackDelay: 108
+    AttackMotion: 576
+    DamageMotion: 432
+    Ai: 21
+  - Id: 20517
+    AegisName: G_BONE_ACIDUS
+    Name: Bone Acidus
+    Level: 207
+    Hp: 3491700
+    Attack: 6917
+    Attack2: 870
+    Defense: 294
+    MagicDefense: 81
+    Str: 248
+    Agi: 175
+    Vit: 78
+    Int: 120
+    Dex: 175
+    Luk: 68
+    AttackRange: 2
+    SkillRange: 10
+    ChaseRange: 12
+    Size: Large
+    Race: Undead
+    Element: Undead
+    ElementLevel: 4
+    WalkSpeed: 180
+    AttackDelay: 168
+    AttackMotion: 768
+    DamageMotion: 360
+    Ai: 21
 #  - Id: 20518
 #    AegisName: E_MD_LUDE
 #  - Id: 20519
