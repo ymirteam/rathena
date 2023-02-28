@@ -95894,7 +95894,7 @@ Body:
         Rate: 700
       - Item: Shadowdecon_Ore
         Rate: 80
-      - Item: Lava_Leather_Suits
+      - Item: Lava_Leather_Suit
         Rate: 50
         RandomOptionGroup: MAGMA3
       - Item: Lava_Leather_Shoes
@@ -96476,7 +96476,7 @@ Body:
         Rate: 3500
       - Item: Zelunium
         Rate: 50
-      - Item: Lava_Leather_Suits
+      - Item: Lava_Leather_Suit
         Rate: 100
         RandomOptionGroup: MAGMA3
       - Item: Lava_Leather_Robe
