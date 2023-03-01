@@ -11133,7 +11133,7 @@ static const struct _battle_data {
 
 	{ "feature.goldpc_active",              &battle_config.feature_goldpc_active,           1,      0,      1,              },
 	{ "feature.goldpc_time",                &battle_config.feature_goldpc_time,          3600,      0,   3600,              },
-	{ "feature.goldpc_max_points",          &battle_config.feature_goldpc_max_points,     300,      0,    300,              },
+	{ "feature.goldpc_max_points",          &battle_config.feature_goldpc_max_points,     300,      0,    1000,              },
 	{ "feature.goldpc_vip",                 &battle_config.feature_goldpc_vip,              1,      0,      1,              },
 
 	// APACHE ITEM TYPE DROPEFFECT
