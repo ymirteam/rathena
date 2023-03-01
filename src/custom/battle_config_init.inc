@@ -11,3 +11,6 @@
  *	 { "name", &battle_config.<variable name>, <default value>, <minimum value>, <maximum value> },
  **/
 
+// Item ID for randdom @NULL#6385
+{ "item_1",							&battle_config.item_1,						0,		0,		INT32_MAX,		},
+{ "item_2",							&battle_config.item_2,						0,		0,		INT32_MAX,		},

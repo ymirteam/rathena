@@ -38,13 +38,15 @@ tb4_damage_rate: 1
 tb4_flee_penalty: 99
 
 // item from mobs
-item_from_mobs: no
+item_from_mobs: yes
 
-// MvP Refine (1 = 0.01%)
+// MvP drop item (1 = 0.01%)
 item_rate_mvp_refine: 1
+item_1:500
 
-// THE BOX KEY (1 = 0.01%)
+// Nomal drop item (1 = 0.01%)
 item_rate_the_box_key: 1
+item_2:500:909:1159:2199
 
 
 // APACHE ITEM TYPE DROPEFFECT
@@ -54,15 +56,15 @@ item_rate_the_box_key: 1
 // 4 = Green Effect
 // 5 = Red Effect
 
-itemtype_HEALING_dropeffect: 4
-itemtype_USABLE_dropeffect: 4
+itemtype_HEALING_dropeffect: 0
+itemtype_USABLE_dropeffect: 0
 itemtype_ETC_dropeffect: 0
 itemtype_ARMOR_dropeffect: 3
 itemtype_WEAPON_dropeffect: 2
-itemtype_CARD_dropeffect: 5
+//itemtype_CARD_dropeffect: 5
 itemtype_PETEGG_dropeffect: 1
 itemtype_PETARMOR_dropeffect: 2
-itemtype_AMMO_dropeffect: 1
+itemtype_AMMO_dropeffect: 0
 itemtype_SHADOWGEAR_dropeffect: 3
-itemtype_DELAYCONSUME_dropeffect: 4
+itemtype_DELAYCONSUME_dropeffect: 0
 itemtype_CASH_dropeffect: 4
