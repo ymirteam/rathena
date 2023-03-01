@@ -28,6 +28,8 @@ Thumbs.db
 *.o
 *.a
 *.vcxproj.user
+*.json
+/*.json
 /char-server
 /csv2yaml
 /config.log
