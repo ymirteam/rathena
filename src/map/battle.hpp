@@ -754,20 +754,6 @@ struct Battle_Config
 	int feature_goldpc_max_points;
 	int feature_goldpc_vip;
 
-	// APACHE ITEM TYPE DROPEFFECT
-	int itemtype_HEALING_dropeffect;
-	int itemtype_USABLE_dropeffect;
-	int itemtype_ETC_dropeffect;
-	int itemtype_ARMOR_dropeffect;
-	int itemtype_WEAPON_dropeffect;
-	int itemtype_CARD_dropeffect;
-	int itemtype_PETEGG_dropeffect;
-	int itemtype_PETARMOR_dropeffect;
-	int itemtype_AMMO_dropeffect;
-	int itemtype_SHADOWGEAR_dropeffect;
-	int itemtype_DELAYCONSUME_dropeffect;
-	int itemtype_CASH_dropeffect;
-
 #include "../custom/battle_config_struct.inc"
 };
 
