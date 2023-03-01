@@ -891,10 +891,60 @@ void clif_dropflooritem( struct flooritem_data* fitem, bool canShowEffect ){
 	if( canShowEffect ){
 		uint8 dropEffect = itemdb_dropeffect( fitem->item.nameid );
 
+	// APACHE ITEM TYPE DROPEFFECT
+		if( itemtype( fitem->item.nameid ) == IT_HEALING && battle_config.itemtype_HEALING_dropeffect > 0 && battle_config.itemtype_HEALING_dropeffect < 10 ) {
+			p.showdropeffect = 1;
+			p.dropeffectmode = battle_config.itemtype_HEALING_dropeffect;
+		}
+		if( itemtype( fitem->item.nameid ) == IT_USABLE && battle_config.itemtype_USABLE_dropeffect > 0 && battle_config.itemtype_USABLE_dropeffect < 10 ) {
+			p.showdropeffect = 1;
+			p.dropeffectmode = battle_config.itemtype_USABLE_dropeffect;
+		}
+		if( itemtype( fitem->item.nameid ) == IT_ETC && battle_config.itemtype_ETC_dropeffect > 0 && battle_config.itemtype_ETC_dropeffect < 10 ) {
+			p.showdropeffect = 1;
+			p.dropeffectmode = battle_config.itemtype_ETC_dropeffect;
+		}
+		if( itemtype( fitem->item.nameid ) == IT_ARMOR && battle_config.itemtype_ARMOR_dropeffect > 0 && battle_config.itemtype_ARMOR_dropeffect < 10 ) {
+			p.showdropeffect = 1;
+			p.dropeffectmode = battle_config.itemtype_ARMOR_dropeffect;
+		}
+		if( itemtype( fitem->item.nameid ) == IT_WEAPON && battle_config.itemtype_WEAPON_dropeffect > 0 && battle_config.itemtype_WEAPON_dropeffect < 10 ) {
+			p.showdropeffect = 1;
+			p.dropeffectmode = battle_config.itemtype_WEAPON_dropeffect;
+		}
+		if( itemtype( fitem->item.nameid ) == IT_CARD && battle_config.itemtype_CARD_dropeffect > 0 && battle_config.itemtype_CARD_dropeffect < 10 ) {
+			p.showdropeffect = 1;
+			p.dropeffectmode = battle_config.itemtype_CARD_dropeffect;
+		}
+		if( itemtype( fitem->item.nameid ) == IT_PETEGG && battle_config.itemtype_PETEGG_dropeffect > 0 && battle_config.itemtype_PETEGG_dropeffect < 10 ) {
+			p.showdropeffect = 1;
+			p.dropeffectmode = battle_config.itemtype_PETEGG_dropeffect;
+		}
+		if( itemtype( fitem->item.nameid ) == IT_PETARMOR && battle_config.itemtype_PETARMOR_dropeffect > 0 && battle_config.itemtype_PETARMOR_dropeffect < 10 ) {
+			p.showdropeffect = 1;
+			p.dropeffectmode = battle_config.itemtype_PETARMOR_dropeffect;
+		}
+		if( itemtype( fitem->item.nameid ) == IT_AMMO && battle_config.itemtype_AMMO_dropeffect > 0 && battle_config.itemtype_AMMO_dropeffect < 10 ) {
+			p.showdropeffect = 1;
+			p.dropeffectmode = battle_config.itemtype_AMMO_dropeffect;
+		}
+		if( itemtype( fitem->item.nameid ) == IT_SHADOWGEAR && battle_config.itemtype_SHADOWGEAR_dropeffect > 0 && battle_config.itemtype_SHADOWGEAR_dropeffect < 10 ) {
+			p.showdropeffect = 1;
+			p.dropeffectmode = battle_config.itemtype_SHADOWGEAR_dropeffect;
+		}
+		if( itemtype( fitem->item.nameid ) == IT_DELAYCONSUME && battle_config.itemtype_DELAYCONSUME_dropeffect > 0 && battle_config.itemtype_DELAYCONSUME_dropeffect < 10 ) {
+			p.showdropeffect = 1;
+			p.dropeffectmode = battle_config.itemtype_DELAYCONSUME_dropeffect;
+		}
+		if( itemtype( fitem->item.nameid ) == IT_CASH && battle_config.itemtype_CASH_dropeffect > 0 && battle_config.itemtype_CASH_dropeffect < 10 ) {
+			p.showdropeffect = 1;
+			p.dropeffectmode = battle_config.itemtype_CASH_dropeffect;
+		}
+
 		if( dropEffect > 0 ){
 			p.showdropeffect = 1;
 			p.dropeffectmode = dropEffect - 1;
-		}else if (battle_config.rndopt_drop_pillar != 0){
+		}/*else if (battle_config.rndopt_drop_pillar != 0){
 			uint8 optionCount = 0;
 
 			for (uint8 i = 0; i < MAX_ITEM_RDM_OPT; i++) {
@@ -921,8 +971,12 @@ void clif_dropflooritem( struct flooritem_data* fitem, bool canShowEffect ){
 		}
 	}else{
 		p.showdropeffect = 0;
-		p.dropeffectmode = DROPEFFECT_NONE;
-	}
+		p.dropeffectmode = DROPEFFECT_NONE;*/
+	}else{
+		p.showdropeffect = 0;
+		p.dropeffectmode = 0;
+		}
+
 #endif
 	clif_send( &p, sizeof(p), &fitem->bl, AREA );
 }
