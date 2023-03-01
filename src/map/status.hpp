@@ -1331,6 +1331,8 @@ enum sc_type : int16 {
 	SC_BLESSING_OF_M_CREATURES,
 	SC_BLESSING_OF_M_C_DEBUFF,
 	SC_KILLING_AURA,
+	SC_RELIEVE_ON,
+	SC_RELIEVE_OFF,
 
 #ifdef RENEWAL
 	SC_EXTREMITYFIST2, //! NOTE: This SC should be right before SC_MAX, so it doesn't disturb if RENEWAL is disabled
