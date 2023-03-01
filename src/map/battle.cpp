@@ -11136,6 +11136,20 @@ static const struct _battle_data {
 	{ "feature.goldpc_max_points",          &battle_config.feature_goldpc_max_points,     300,      0,    300,              },
 	{ "feature.goldpc_vip",                 &battle_config.feature_goldpc_vip,              1,      0,      1,              },
 
+	// APACHE ITEM TYPE DROPEFFECT
+	{ "itemtype_HEALING_dropeffect",                &battle_config.itemtype_HEALING_dropeffect,               0,      0,		9,	        },
+	{ "itemtype_USABLE_dropeffect",                 &battle_config.itemtype_USABLE_dropeffect,                0,      0,		9,	        },
+	{ "itemtype_ETC_dropeffect",                    &battle_config.itemtype_ETC_dropeffect,                   0,      0,		9,	        },
+	{ "itemtype_ARMOR_dropeffect",                  &battle_config.itemtype_ARMOR_dropeffect,                 0,      0,		9,	        },
+	{ "itemtype_WEAPON_dropeffect",                 &battle_config.itemtype_WEAPON_dropeffect,                0,      0,		9,	        },
+	{ "itemtype_CARD_dropeffect",                   &battle_config.itemtype_CARD_dropeffect,                  0,      0,		9,	        },
+	{ "itemtype_PETEGG_dropeffect",                 &battle_config.itemtype_PETEGG_dropeffect,                0,      0,		9,	        },
+	{ "itemtype_PETARMOR_dropeffect",               &battle_config.itemtype_PETARMOR_dropeffect,              0,      0,		9,	        },
+	{ "itemtype_AMMO_dropeffect",                   &battle_config.itemtype_AMMO_dropeffect,                  0,      0,		9,	        },
+	{ "itemtype_SHADOWGEAR_dropeffect",             &battle_config.itemtype_SHADOWGEAR_dropeffect,            0,      0,		9,	        },
+	{ "itemtype_DELAYCONSUME_dropeffect",           &battle_config.itemtype_DELAYCONSUME_dropeffect,          0,      0,		9,	        },
+	{ "itemtype_CASH_dropeffect",                   &battle_config.itemtype_CASH_dropeffect,                  0,      0,		9,	        },
+
 #include "../custom/battle_config_init.inc"
 };
 
