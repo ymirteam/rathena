@@ -8,6 +8,7 @@
 //= 1.2 Translation of the replay version [Lemongrass]
 //= 1.3 Cleanup of NPC logic [Lemongrass]
 //= 1.4 Added replay version of buff NPC [eppc0330]
+//= 1.5 Translation English [slammer86]
 //============================================================
 
 prontera,0,0,0	script	Goldpoint Manager::GOLDPCCAFE	4_F_02,{
@@ -62,83 +63,84 @@ prontera,0,0,0	script	Goldpoint Manager::GOLDPCCAFE	4_F_02,{
 	close;
 }
 
-prontera,146,93,5	script	프버방시피	4_M_MANAGER,{
-	mes "[프버방시피]";
-	mes "여~ 계속 보게 되는군 친구.";
-	mes "별로 소개도 필요없을 정도로";
-	mes "많이 본 것 같지만 아무튼...";
-	mes "..입아프게 말하는 것도 귀찮고,";
-	mes "이미 익히들 잘 알고 있을거라고";
-	mes "생각하니 간단하게 이야기할게.";
+prontera,146,93,5	script	Fever Banshee	4_M_MANAGER,{
+	mes "[Fever Banshee]";
+	mes "Yeah~ I'll keep seeing you, friend.";
+	mes "so much that it needs no introduction";
+	mes "I think I've seen it a lot, but anyway...";
+	mes "..It's annoying to say something that hurts your mouth,";
+	mes "I'm sure you already know that";
+	mes "Do you think so, I'll talk briefly.";
 	next;
-	mes "[프버방시피]";
-	mes "자네가 있는 장소에 따라서,";
-	mes "나는 자네에게 여러가지";
-	mes "서비스를 해 줄 예정이야.";
+	mes "[Fever Banshee]";
+	mes "Depending on where you are,";
+	mes "I have many things for you";
+	mes "I'm going to serve you.";
 	next;
-	mes "[프버방시피]";
-	mes "아무튼 자네가 지금 서비스를";
-	mes "받을 수 있는가 체크를 해";
-	mes "보도록 하겠어. 잠깐만";
-	mes "기다려봐.";
+	mes "[Fever Banshee]";
+	mes "Anyway you are now serving";
+	mes "Check if you can receive it";
+	mes "I'll take a look. Wait a minute";
+	mes "Wait.";
 	next;
 	if(vip_status(VIP_STATUS_ACTIVE)==1||getgroupid()==99)
 		goto VIP; //Custom. In KRo there's two PC cafe grade : gold and silver.
 	else
 		goto Normal;
+		
 Normal:
-	mes "[프버방시피]";
-	mes "애석하게도 자네는 서비스를";
-	mes "받을 수 있는 곳에 존재하고";
-	mes "있지않군... 정 서비스를 받고";
-	mes "싶다면 다른 장소에서 컨택트";
-	mes "하도록 해.";
+	mes "[Fever Banshee]";
+	mes "Unfortunately you have no service";
+	mes "exists where it can be received";
+	mes "There's no... I'm getting regular service";
+	mes "If you would like to contact us elsewhere";
+	mes "Let it be";
 	next;
-	mes "[프버방시피]";
-	mes "거 왜, 많은 사람들이 모여서";
-	mes "각자 다른 세계와 조우하는 그";
-	mes "장소 있잖아? 거기로 가서";
-	mes "이쪽 세계로 들어오란 말야.";
+	mes "[Fever Banshee]";
+	mes "Why, so many people gathered";
+	mes "He who encounters different worlds";
+	mes "You know a place? Go there";
+	mes "Come into this world.";
 	next;
-	mes "[프버방시피]";
-	mes "그 때 다시 이야기";
-	mes "하도록 하지. 좋은 하루되게.";
+	mes "[Fever Banshee]";
+	mes "Then talk again";
+	mes "Let's do it. Have a nice day.";
 	close;
-
+	
 Vip:
-	// ID:갯수:가격:이름:조사
+	// ID:Quantity:Price:Name:Investigation
 	setarray .items$[1],
-	"14529:10:2000:을", //탐욕스크롤
-	"12274:1:10000:을",	//대환단
-	"12275:1:10000:을", //태청단
-	"12262:10:10000:를"; //마패
+	"14529:10:2000:Greed Scroll", //Greed Scroll
+	"12274:1:10000:Daehwandan",	//Daehwandan
+	"12275:1:10000:Taecheongdan", //Taecheongdan
+	"12262:10:10000:Authoritative Badge"; // 	Authoritative Badge
 
-	mes "[프버방시피]";
-	mes "오케이. 자네는 서비스를 받을";
-	mes "수 있는 장소...거기서 등급을";
-	mes "나눠보자면 골드 등급인가.";
-	mes "탐욕 스크롤, 대환단, 태청단,";
-	mes "마패를 받을 수 있는데...";
+	mes "[Fever Banshee]";
+	mes "Okay. You get service";
+	mes "A place where you can ... rank there";
+	mes "Gold level to share?";
+	mes "Scroll of Greed, Daehwandan, Taecheongdan,";
+	mes "You can get a Authoritative Badge...";
 	next;
-	mes "[프버방시피]";
-	mes "각자 탐욕 스크롤이 2000제니.";
-	mes "대환단이 10000제니";
-	mes "태청단이 10000제니";
-	mes "마패가 10000제니!";
-	mes "자아, 자네는 이중에 뭘 받고";
-	mes "싶어?";
+	mes "[Fever Banshee]";
+	mes "Greed Scroll is 2000 Zenny.";
+	mes "Daehwandan is 10000 Zenny";
+	mes "Taecheongdan is 10000 Zenny";
+	mes "Authoritative Badge is 10000 Zenny";
+	mes "Hey, what are you getting for double";
+	mes "Do you want to?";
 	next;
 
 	for(.@i = 1; .@i < getarraysize(.items$); .@i++) {
 		explode(.@array$, .items$[.@i], ":");
 		.@menu$ += ":"+getitemname(atoi(.@array$[0]));
 	}
-	.@s = select(.@menu$+":받지 않는다.")-1;
+	.@s = select(.@menu$+":do not accept.")-1;
 	if(.@s == getarraysize(.items$)) {
-		mes "[프버방시피]";
-		mes "확고한 인간이로군. 오케이.";
-		mes "뭐 강요할 생각은 없다네.";
-		mes "그럼 좋은 하루되게나.";
+		mes "[Fever Banshee]";
+		mes "You're a solid man. Okay.";
+		mes "I'm not trying to force anything.";
+		mes "Then have a nice day.";
 		close;
 	}
 	explode(.@array$, .items$[.@s], ":");
@@ -148,66 +150,66 @@ Vip:
 	.@name$ = getitemname(atoi(.@array$[0]));
 	.@part$ = (.@array$[3]);
 	if(zeny < .@cost) {
-		mes "[프버방시피]";
-		mes "애석하게도 자넨 "+.@cost+"제니라는";
-		mes "돈도 없구만... 서비스받기는";
-		mes "글렀어. 아무리 서비스라지만";
-		mes "그렇게 정해졌으니 공짜로 해";
-		mes "줄 수는 없다네.";
-		close;
+	mes "[Fever Banshee]";
+	mes "Unfortunately, you are called "+.@cost+"Jenny";
+	mes "I don't have money... but to get service";
+	mes "That's wrong. Even if it's a service";
+	mes "It's decided that way, so do it for free";
+	mes "I can't give it to you.";
+	close;
 	}
 	if(countitem(.@itemid) > 0) {
-		mes "[프버방시피]";
-		mes "애석하게도 음... 자네는";
-		mes "이미 "+.@name$+""+.@part$+" 하나";
-		mes "가지고 있구만. 내가 이야기";
-		mes "안했었나? 아..이거 원 요즘";
-		mes "건망증이 늘어서 말이지.";
-		mes "핫핫핫.";
-		next;
-		mes "[프버방시피]";
-		mes "좌우지간, 물건이 많지는 않은";
-		mes "관계로 물건을 소지하고 있는";
-		mes "사람에게는 지급 할 수가 없어.";
-		next;
-		mes "[프버방시피]";
-		mes "다음 기회를 이용해 달라구.";
-		mes "다음에 또 보자구~!";
-		close;
+	mes "[Fever Banshee]";
+	mes "Unfortunately, um... you are";
+	mes "Already one "+.@name$+""+.@part$+"";
+	mes "I have it. I'm talking about it";
+	mes "Didn't you do this? Ah..I want this lately";
+	mes "Because I am forgetful.";
+	mes "Hot hot hot.";
+	next;
+	mes "[Fever Banshee]";
+	mes "It depends, but not a lot of stuff";
+	mes "possessing things in a relationship";
+	mes "I can't pay people";
+	next;
+	mes "[Fever Banshee]";
+	mes "Please use the next opportunity.";
+	mes "See you next time!";
+	close;
 	}
-	mes "[프버방시피]";
-	mes "오케이. 잘 생각했어. 정말";
-	mes "탁월한 선택이야. 핫핫핫.";
-	mes "잘 쓰도록 하라구~";
+	mes "[Fever Banshee]";
+	mes "Okay. Good idea. Really";
+	mes "Excellent choice. Hot hot hot.";
+	mes "Use well!";
 	set Zeny, Zeny - .@cost;
 	getitem .@itemid,.@amount;
 	next;
-	mes "[프버방시피]";
-	mes "그리고... 약속의 서비스다-!";
+	mes "[Fever Banshee]";
+	mes "And... the promised service!";
 	next;
-	mes "[프버방시피]";
-	mes "여기서 골드 등급의 손님을";
-	mes "위한 깜짝 선택! 서비스 4가지";
-	mes "중에 하나를 선택가능!";
+	mes "[Fever Banshee]";
+	mes "Gold-ranked guests here";
+	mes "Surprising choice for ! 4 kinds of service";
+	mes "You can choose one of these!";
 	next;
-	mes "[프버방시피]";
-	mes "첫 번째, ^FF0000STR+8, AGI+6, DEX+4,";
+	mes "[Fever Banshee]";
+	mes "First, ^FF0000STR+8, AGI+6, DEX+4,";
 	mes "^FF0000ATK+32, FLEE+5!";
-	mes "^000000두 번째, ^FF0000INT+8, DEX+6,";
+	mes "^000000Second, ^FF0000INT+8, DEX+6,";
 	mes "^FF0000VIT+4, MATK+40!^000000";
 	next;
-	mes "[프버방시피]";
-	mes "세 번째, ^FF0000DEX+8, AGI+6, LUK+4,";
+	mes "[Fever Banshee]";
+	mes "third, ^FF0000DEX+8, AGI+6, LUK+4,";
 	mes "^FF0000ATK+24, MATK+24!";
-	mes "^000000네 번째, ^FF0000올+6 ATK+24, MATK+24!!^000000";
+	mes "^000000fourth, ^FF0000올+6 ATK+24, MATK+24!!^000000";
 	next;
-	mes "[프버방시피]";
-	mes "넷 중 뭘 받을래!";
+	mes "[Fever Banshee]";
+	mes "Which of the four would you like to receive?!";
 	next;
-	.@s2 = (select("첫 번째:두 번째:세 번째:네 번째"));
+	.@s2 = (select("first:second:third:fourth"));
 
-	mes "[프버방시피]";
-	mes "이야아아아아아아압!";
+	mes "[Fever Banshee]";
+	mes "Yaaaaaaaaaaa!";	
 	if(.@s2 == 1) {
 		sc_start SC_STRFOOD,5400000,8;
 		sc_start SC_AGIFOOD,5400000,6;
@@ -236,44 +238,44 @@ Vip:
 		sc_start SC_MATKPOTION,5400000,24;
 	}
 	next;
-	mes "[프버방시피]";
-	mes "힘을 불어넣어주었어. 어때?";
-	mes "손해봤다는 생각은 죽어도";
-	mes "안들지? 핫핫핫. 글쎄 남는";
-	mes "남는 장사도 이렇게 남는";
-	mes "장사가 있을 수가 없대두.";
+	mes "[Fever Banshee]";
+	mes "You gave me strength. How is it?";
+	mes "Even if the thought of losing money dies";
+	mes "Doesn't it cost? Hot hot hot. Well, there's more";
+	mes "The surplus business also surplus like this";
+	mes "There is no business.";
 	next;
-	mes "[프버방시피]";
-	mes "자 그럼 다음에 또~";
+	mes "[Fever Banshee]";
+	mes "Okay then next time";
 	close;
 }
 
-alberta,104,60,5	duplicate(프버방시피)	프버방시피#alb	4_M_MANAGER
-aldebaran,146,116,5	duplicate(프버방시피)	프버방시피#ald	4_M_MANAGER
-amatsu,102,152,5	duplicate(프버방시피)	프버방시피#ama	4_M_MANAGER
-ayothaya,212,173,5	duplicate(프버방시피)	프버방시피#ayo	4_M_MANAGER
-brasilis,200,224,5	duplicate(프버방시피)	프버방시피#bra	4_M_MANAGER
-comodo,199,149,5	duplicate(프버방시피)	프버방시피#com	4_M_MANAGER
-dewata,202,188,5	duplicate(프버방시피)	프버방시피#dew	4_M_MANAGER
-dicastes01,193,191,5	duplicate(프버방시피)	프버방시피#dic	4_M_MANAGER
-einbroch,235,207,5	duplicate(프버방시피)	프버방시피#ein	4_M_MANAGER
-geffen,126,64,5	duplicate(프버방시피)	프버방시피#gef	4_M_MANAGER
-gonryun,156,122,5	duplicate(프버방시피)	프버방시피#gon	4_M_MANAGER
-hugel,80,152,5	duplicate(프버방시피)	프버방시피#hug	4_M_MANAGER
-izlude,125,148,5	duplicate(프버방시피)	프버방시피#izl	4_M_MANAGER
-lighthalzen,167,97,5	duplicate(프버방시피)	프버방시피#lig	4_M_MANAGER
-louyang,210,107,5	duplicate(프버방시피)	프버방시피#lou	4_M_MANAGER
-malangdo,178,139,5	duplicate(프버방시피)	프버방시피#mld	4_M_MANAGER
-malaya,234,218,5	duplicate(프버방시피)	프버방시피#mly	4_M_MANAGER
-manuk,296,147,5	duplicate(프버방시피)	프버방시피#man	4_M_MANAGER
-mid_camp,201,237,5	duplicate(프버방시피)	프버방시피#mid	4_M_MANAGER
-mora,113,112,5	duplicate(프버방시피)	프버방시피#mra	4_M_MANAGER
-morocc,164,255,5	duplicate(프버방시피)	프버방시피#mro	4_M_MANAGER
-moscovia,220,191,5	duplicate(프버방시피)	프버방시피#mos	4_M_MANAGER
-niflheim,206,179,5	duplicate(프버방시피)	프버방시피#nif	4_M_MANAGER
-payon,184,102,5	duplicate(프버방시피)	프버방시피#pay	4_M_MANAGER
-rachel,111,143,5	duplicate(프버방시피)	프버방시피#rah	4_M_MANAGER
-splendide,201,153,5	duplicate(프버방시피)	프버방시피#spl	4_M_MANAGER
-umbala,93,160,5	duplicate(프버방시피)	프버방시피#umb	4_M_MANAGER
-veins,210,109,5	duplicate(프버방시피)	프버방시피#vei	4_M_MANAGER
-yuno,149,187,5	duplicate(프버방시피)	프버방시피#yun	4_M_MANAGER
+alberta,104,60,5	duplicate(Fever Banshee)	Fever Banshee#alb	4_M_MANAGER
+aldebaran,146,116,5	duplicate(Fever Banshee)	Fever Banshee#ald	4_M_MANAGER
+amatsu,102,152,5	duplicate(Fever Banshee)	Fever Banshee#ama	4_M_MANAGER
+ayothaya,212,173,5	duplicate(Fever Banshee)	Fever Banshee#ayo	4_M_MANAGER
+brasilis,200,224,5	duplicate(Fever Banshee)	Fever Banshee#bra	4_M_MANAGER
+comodo,199,149,5	duplicate(Fever Banshee)	Fever Banshee#com	4_M_MANAGER
+dewata,202,188,5	duplicate(Fever Banshee)	Fever Banshee#dew	4_M_MANAGER
+dicastes01,193,191,5	duplicate(Fever Banshee)	Fever Banshee#dic	4_M_MANAGER
+einbroch,235,207,5	duplicate(Fever Banshee)	Fever Banshee#ein	4_M_MANAGER
+geffen,126,64,5	duplicate(Fever Banshee)	Fever Banshee#gef	4_M_MANAGER
+gonryun,156,122,5	duplicate(Fever Banshee)	Fever Banshee#gon	4_M_MANAGER
+hugel,80,152,5	duplicate(Fever Banshee)	Fever Banshee#hug	4_M_MANAGER
+izlude,125,148,5	duplicate(Fever Banshee)	Fever Banshee#izl	4_M_MANAGER
+lighthalzen,167,97,5	duplicate(Fever Banshee)	Fever Banshee#lig	4_M_MANAGER
+louyang,210,107,5	duplicate(Fever Banshee)	Fever Banshee#lou	4_M_MANAGER
+malangdo,178,139,5	duplicate(Fever Banshee)	Fever Banshee#mld	4_M_MANAGER
+malaya,234,218,5	duplicate(Fever Banshee)	Fever Banshee#mly	4_M_MANAGER
+manuk,296,147,5	duplicate(Fever Banshee)	Fever Banshee#man	4_M_MANAGER
+mid_camp,201,237,5	duplicate(Fever Banshee)	Fever Banshee#mid	4_M_MANAGER
+mora,113,112,5	duplicate(Fever Banshee)	Fever Banshee#mra	4_M_MANAGER
+morocc,164,255,5	duplicate(Fever Banshee)	Fever Banshee#mro	4_M_MANAGER
+moscovia,220,191,5	duplicate(Fever Banshee)	Fever Banshee#mos	4_M_MANAGER
+niflheim,206,179,5	duplicate(Fever Banshee)	Fever Banshee#nif	4_M_MANAGER
+payon,184,102,5	duplicate(Fever Banshee)	Fever Banshee#pay	4_M_MANAGER
+rachel,111,143,5	duplicate(Fever Banshee)	Fever Banshee#rah	4_M_MANAGER
+splendide,201,153,5	duplicate(Fever Banshee)	Fever Banshee#spl	4_M_MANAGER
+umbala,93,160,5	duplicate(Fever Banshee)	Fever Banshee#umb	4_M_MANAGER
+veins,210,109,5	duplicate(Fever Banshee)	Fever Banshee#vei	4_M_MANAGER
+yuno,149,187,5	duplicate(Fever Banshee)	Fever Banshee#yun	4_M_MANAGER
