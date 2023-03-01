@@ -45,3 +45,24 @@ item_rate_mvp_refine: 1
 
 // THE BOX KEY (1 = 0.01%)
 item_rate_the_box_key: 1
+
+
+// APACHE ITEM TYPE DROPEFFECT
+// 1 = Blue Effect
+// 2 = Yellow Effect
+// 3 = Purple Effect
+// 4 = Green Effect
+// 5 = Red Effect
+
+itemtype_HEALING_dropeffect: 4
+itemtype_USABLE_dropeffect: 4
+itemtype_ETC_dropeffect: 1
+itemtype_ARMOR_dropeffect: 3
+itemtype_WEAPON_dropeffect: 2
+itemtype_CARD_dropeffect: 5
+itemtype_PETEGG_dropeffect: 1
+itemtype_PETARMOR_dropeffect: 2
+itemtype_AMMO_dropeffect: 4
+itemtype_SHADOWGEAR_dropeffect: 3
+itemtype_DELAYCONSUME_dropeffect: 4
+itemtype_CASH_dropeffect: 4
