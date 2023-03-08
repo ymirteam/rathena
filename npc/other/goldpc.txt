@@ -135,7 +135,7 @@ Vip:
 		explode(.@array$, .items$[.@i], ":");
 		.@menu$ += ":"+getitemname(atoi(.@array$[0]));
 	}
-	.@s = select(.@menu$+":do not accept.")-1;
+	.@s = select(.@menu$+":Buy Buff Cash.:do not accept.")-2;
 	if(.@s == getarraysize(.items$)) {
 		mes "[Fever Banshee]";
 		mes "You're a solid man. Okay.";
@@ -274,6 +274,7 @@ morocc,164,255,5	duplicate(Fever Banshee)	Fever Banshee#mro	4_M_MANAGER
 moscovia,220,191,5	duplicate(Fever Banshee)	Fever Banshee#mos	4_M_MANAGER
 niflheim,206,179,5	duplicate(Fever Banshee)	Fever Banshee#nif	4_M_MANAGER
 payon,184,102,5	duplicate(Fever Banshee)	Fever Banshee#pay	4_M_MANAGER
+prontera,145,174,5	duplicate(Fever Banshee)	Fever Banshee#pay	4_M_MANAGER
 rachel,111,143,5	duplicate(Fever Banshee)	Fever Banshee#rah	4_M_MANAGER
 splendide,201,153,5	duplicate(Fever Banshee)	Fever Banshee#spl	4_M_MANAGER
 umbala,93,160,5	duplicate(Fever Banshee)	Fever Banshee#umb	4_M_MANAGER
