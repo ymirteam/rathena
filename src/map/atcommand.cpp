@@ -10848,7 +10848,7 @@ ACMD_FUNC( roulette ){
 #endif
 }
 
-#include "../custom/atcommand.inc"
+#include <custom/atcommand.inc>
 
 /**
  * Fills the reference of available commands in atcommand DBMap
@@ -10864,7 +10864,7 @@ void atcommand_basecommands(void) {
 	 * TODO: List all commands that causing crash
 	 **/
 	AtCommandInfo atcommand_base[] = {
-#include "../custom/atcommand_def.inc"
+#include <custom/atcommand_def.inc>
 		ACMD_DEF2R("warp", mapmove, ATCMD_NOCONSOLE),
 		ACMD_DEF(where),
 		ACMD_DEF(jumpto),

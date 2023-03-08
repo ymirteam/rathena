@@ -731,7 +731,7 @@ struct Battle_Config
 
 	int feature_stylist;
 
-#include "../custom/battle_config_struct.inc"
+#include <custom/battle_config_struct.inc>
 };
 
 extern struct Battle_Config battle_config;
