@@ -754,7 +754,7 @@ struct Battle_Config
 	int feature_goldpc_max_points;
 	int feature_goldpc_vip;
 
-#include "../custom/battle_config_struct.inc"
+#include <custom/battle_config_struct.inc>
 };
 
 extern struct Battle_Config battle_config;
