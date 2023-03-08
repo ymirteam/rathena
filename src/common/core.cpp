@@ -322,7 +322,7 @@ void usercheck(void)
 #if !defined(BUILDBOT)
 #ifdef _WIN32
 	if (IsCurrentUserLocalAdministrator()) {
-		ShowWarning("You are running rAthena with admin privileges, it is not necessary.\n");
+		//ShowWarning("You are running rAthena with admin privileges, it is not necessary.\n");
 	}
 #else
 	if (geteuid() == 0) {
