@@ -1,4 +1,4 @@
-prontera,210,218,6	script	Rebirth NPC	811,{
+prontera,166,158,3	script	Rebirth NPC	811,{
 function deleteItem;		// Deletes Required Items
 function CheckItemNeed;		// Shows the Required Items
 function getItemReward;		// Gives the Reward
@@ -61,7 +61,7 @@ function getItemReward;		// Gives the Reward
 					}
 						
 			}
-			if( BaseLevel < 500 || JobLevel < 120 ) {
+			if( BaseLevel == 250 || JobLevel == 50 ) {
 				mes "You must be Max BaselLevel/Joblevel to Rebirth.";
 				close;
 			}else if( !.@can_rebirth ){
@@ -130,7 +130,7 @@ function getItemReward;		// Gives the Reward
 			close;
 		case 4:
 			mes "[Reset Stats]";
-			mes "Reset Stats: "+ .ResetStat +"z";
+			mes "Reset Stats:  "+ callfunc("F_InsertComma",.ResetStat) +"z";
 			mes "Continue?";
 			if (select("~ Yes, Reset Stat", "No, I don't want to reset") == 2)
 				close;
@@ -314,16 +314,15 @@ OnInit:
 			
 			EAJL_THIRD|EAJL_2_1|EAJL_UPPER|EAJL_BABY: Baby Trans 3-1 Class
 			... You can have any Combination of classes ...
-			
-			
 	*/
-	.job_rebirth = EAJL_2|EAJL_UPPER;							
+	
+	.job_rebirth = EAJL_FOURTH|EAJ_SUMMONER;							
 	setarray .add_jobs[0],Job_Rebellion,Job_Gunslinger,				// Additional Jobs, who can rebirth
 						  Job_Soul_Linker,
 						  Job_Star_Gladiator,
 						  Job_Taekwon;
 
-	.ResetStat = 1000000000;									// Zeny needed for Resetting Stat
+	.ResetStat = 3500000;									// Zeny needed for Resetting Stat
 	.reset_opt = 1;										// (1=Reset Base and JobLevel to 1(0 skill points and all stats to 1),2=Reset Base and JobLevel to 1(SkillPoint=0, While Skills and stats are not affected),3=Reset BaseLevel to 1, 4=Reset Job Level to 1)
 	.reset_ss = 3;										// (1=Reset Status, 2=Reset Skills, 3 = Reset Status and Skills).
 	setarray .MaxRebirth[0],100,1;						// Maximum Number of Normal Rebirth/Master Rebirth.(0=Unlimited) 
