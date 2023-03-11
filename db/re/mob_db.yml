@@ -93885,6 +93885,8 @@ Body:
     AttackMotion: 864
     DamageMotion: 432
     Ai: 04  # TODO
+    Modes:
+      Detector: true
     Drops:
       - Item: Zargon
         Rate: 5000
@@ -93931,6 +93933,8 @@ Body:
     AttackMotion: 840
     DamageMotion: 900
     Ai: 04  # TODO
+    Modes:
+      Detector: true
     Drops:
       - Item: Star_Crumb
         Rate: 75
@@ -94062,6 +94066,8 @@ Body:
     AttackMotion: 500
     DamageMotion: 480
     Ai: 04  # TODO
+    Modes:
+      Detector: true
     Drops:
       - Item: Round_Shell
         Rate: 8750
