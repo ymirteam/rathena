@@ -1878,8 +1878,6 @@
 	export_constant(SC_GOLDENE_TONE);
 	export_constant(SC_TEMPERING);
 	export_constant(SC_KILLING_AURA);
-	export_constant(SC_GRADUAL_GRAVITY);
-	export_constant(SC_ALL_STAT_DOWN);
 	
 	export_constant(SC_RUSH_QUAKE1);
 	export_constant(SC_RUSH_QUAKE2);
