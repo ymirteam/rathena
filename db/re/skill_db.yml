@@ -17910,12 +17910,12 @@ Body:
     Name: NPC_MOVE_COORDINATE
     Description: Change Location
     MaxLevel: 1
-    TargetType: Attack
+    TargetType: Self
     DamageFlags:
       NoDamage: true
     Flags:
       IsNpc: true
-    Range: 14
+    Hit: Single
   - Id: 756
     Name: NPC_WIDEBLEEDING2
     Description: Wide Bleeding
