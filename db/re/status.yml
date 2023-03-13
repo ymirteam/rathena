@@ -9007,6 +9007,19 @@ Body:
       NoClearance: true
     EndOnStart:
       Relieve_on: true
+  - Status: ALL_STAT_DOWN
+    Icon: EFST_ALL_STAT_DOWN
+    DurationLookup: NPC_ALL_STAT_DOWN
+    CalcFlags:
+      Str: true
+      Agi: true
+      Vit: true
+      Int: true
+      Dex: true
+      Luk: true
+    Flags:
+      NoDispell: true
+      NoClearance: true
   - Status: GRADUAL_GRAVITY
     Icon: EFST_GRADUAL_GRAVITY
     DurationLookup: NPC_GRADUAL_GRAVITY
