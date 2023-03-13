@@ -1948,8 +1948,6 @@
 	export_constant(SC_BLESSING_OF_M_C_DEBUFF);
 	export_constant(SC_RELIEVE_ON);
 	export_constant(SC_RELIEVE_OFF);
-	export_constant(SC_GRADUAL_GRAVITY);
-	export_constant(SC_ALL_STAT_DOWN);
 
 #ifdef RENEWAL
 	export_constant(SC_EXTREMITYFIST2);

@@ -6533,10 +6533,7 @@ static unsigned short status_calc_str(struct block_list *bl, status_change *sc, 
 		str += sc->getSCE(SC_ALMIGHTY)->val1;
 	if (sc->getSCE(SC_ULTIMATECOOK))
 		str += sc->getSCE(SC_ULTIMATECOOK)->val1;
-	if (sc->getSCE(SC_ALL_STAT_DOWN))
-		str -= sc->getSCE(SC_ALL_STAT_DOWN)->val2;
 
-	//TODO: Stat points should be able to be decreased below 0
 	return (unsigned short)cap_value(str,0,USHRT_MAX);
 }
 
@@ -6620,10 +6617,7 @@ static unsigned short status_calc_agi(struct block_list *bl, status_change *sc, 
 		agi += sc->getSCE(SC_ALMIGHTY)->val1;
 	if (sc->getSCE(SC_ULTIMATECOOK))
 		agi += sc->getSCE(SC_ULTIMATECOOK)->val1;
-	if (sc->getSCE(SC_ALL_STAT_DOWN))
-		agi -= sc->getSCE(SC_ALL_STAT_DOWN)->val2;
 
-	//TODO: Stat points should be able to be decreased below 0
 	return (unsigned short)cap_value(agi,0,USHRT_MAX);
 }
 
@@ -6699,10 +6693,7 @@ static unsigned short status_calc_vit(struct block_list *bl, status_change *sc, 
 		vit += sc->getSCE(SC_ULTIMATECOOK)->val1;
 	if (sc->getSCE(SC_CUP_OF_BOZA))
 		vit += 10;
-	if (sc->getSCE(SC_ALL_STAT_DOWN))
-		vit -= sc->getSCE(SC_ALL_STAT_DOWN)->val2;
 
-	//TODO: Stat points should be able to be decreased below 0
 	return (unsigned short)cap_value(vit,0,USHRT_MAX);
 }
 
@@ -6791,10 +6782,7 @@ static unsigned short status_calc_int(struct block_list *bl, status_change *sc, 
 		int_ += sc->getSCE(SC_ALMIGHTY)->val1;
 	if (sc->getSCE(SC_ULTIMATECOOK))
 		int_ += sc->getSCE(SC_ULTIMATECOOK)->val1;
-	if (sc->getSCE(SC_ALL_STAT_DOWN))
-		int_ -= sc->getSCE(SC_ALL_STAT_DOWN)->val2;
 
-	//TODO: Stat points should be able to be decreased below 0
 	return (unsigned short)cap_value(int_,0,USHRT_MAX);
 }
 
@@ -6880,10 +6868,7 @@ static unsigned short status_calc_dex(struct block_list *bl, status_change *sc, 
 		dex += sc->getSCE(SC_ALMIGHTY)->val1;
 	if (sc->getSCE(SC_ULTIMATECOOK))
 		dex += sc->getSCE(SC_ULTIMATECOOK)->val1;
-	if (sc->getSCE(SC_ALL_STAT_DOWN))
-		dex -= sc->getSCE(SC_ALL_STAT_DOWN)->val2;
 
-	//TODO: Stat points should be able to be decreased below 0
 	return (unsigned short)cap_value(dex,0,USHRT_MAX);
 }
 
@@ -6957,10 +6942,7 @@ static unsigned short status_calc_luk(struct block_list *bl, status_change *sc, 
 		luk += sc->getSCE(SC_ULTIMATECOOK)->val1;
 	if (sc->getSCE(SC_MYSTICPOWDER))
 		luk += 10;
-	if (sc->getSCE(SC_ALL_STAT_DOWN))
-		luk -= sc->getSCE(SC_ALL_STAT_DOWN)->val2;
 
-	//TODO: Stat points should be able to be decreased below 0
 	return (unsigned short)cap_value(luk,0,USHRT_MAX);
 }
 
@@ -9574,7 +9556,6 @@ static int status_get_sc_interval(enum sc_type type)
 		case SC_DEATHHURT:
 		case SC_HANDICAPSTATE_DEADLYPOISON:
 		case SC_KILLING_AURA:
-		case SC_GRADUAL_GRAVITY:
 			return 1000;
 		case SC_HANDICAPSTATE_CONFLAGRATION:
 		case SC_HANDICAPSTATE_DEPRESSION:
@@ -11124,17 +11105,6 @@ int status_change_start(struct block_list* src, struct block_list* bl,enum sc_ty
 			if( (val4 = tick/(val2 * 1000)) < 1 )
 				val4 = 1;
 			tick_time = val2 * 1000; // [GodLesZ] tick time
-			break;
-		case SC_GRADUAL_GRAVITY:
-			val2 = 10 * val1;
-			tick_time = status_get_sc_interval(type);
-			val4 = tick - tick_time; // Remaining time
-			break;
-		case SC_ALL_STAT_DOWN:
-			val2 = 20 * val1;
-			if( val1 < skill_get_max( NPC_ALL_STAT_DOWN ) ){
-				val2 -= 10;
-			}
 			break;
 		case SC_BOSSMAPINFO:
 			if( sd != NULL ) {
@@ -14285,12 +14255,6 @@ TIMER_FUNC(status_change_timer){
 			status_heal(bl, 0, sp, 2);
 			sc_timer_next((sce->val2 * 1000) + tick);
 			return 0;
-		}
-		break;
-		
-	case SC_GRADUAL_GRAVITY:
-		if (sce->val4 >= 0) {
-			status_zap(bl, status->max_hp * sce->val2 / 100, 0);
 		}
 		break;
 

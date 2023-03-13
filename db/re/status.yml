@@ -8982,9 +8982,6 @@ Body:
   - Status: Killing_Aura
     Icon: EFST_KILLING_AURA
     DurationLookup: NPC_KILLING_AURA
-  - Status: GRADUAL_GRAVITY
-    Icon: EFST_GRADUAL_GRAVITY
-    DurationLookup: NPC_GRADUAL_GRAVITY
     Flags:
       BlEffect: true
       DisplayPc: true
@@ -9010,17 +9007,3 @@ Body:
       NoClearance: true
     EndOnStart:
       Relieve_on: true
-      NoClearance: true
-  - Status: ALL_STAT_DOWN
-    Icon: EFST_ALL_STAT_DOWN
-    DurationLookup: NPC_ALL_STAT_DOWN
-    CalcFlags:
-      Str: true
-      Agi: true
-      Vit: true
-      Int: true
-      Dex: true
-      Luk: true
-    Flags:
-      NoDispell: true
-      NoClearance: true
