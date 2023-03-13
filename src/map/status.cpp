@@ -6535,7 +6535,7 @@ static unsigned short status_calc_str(struct block_list *bl, status_change *sc, 
 		str += sc->getSCE(SC_ULTIMATECOOK)->val1;
 	if (sc->getSCE(SC_ALL_STAT_DOWN))
 		str -= sc->getSCE(SC_ALL_STAT_DOWN)->val2;
-
+ 
 	//TODO: Stat points should be able to be decreased below 0
 	return (unsigned short)cap_value(str,0,USHRT_MAX);
 }
@@ -6622,7 +6622,7 @@ static unsigned short status_calc_agi(struct block_list *bl, status_change *sc, 
 		agi += sc->getSCE(SC_ULTIMATECOOK)->val1;
 	if (sc->getSCE(SC_ALL_STAT_DOWN))
 		agi -= sc->getSCE(SC_ALL_STAT_DOWN)->val2;
-
+ 
 	//TODO: Stat points should be able to be decreased below 0
 	return (unsigned short)cap_value(agi,0,USHRT_MAX);
 }
@@ -6701,7 +6701,7 @@ static unsigned short status_calc_vit(struct block_list *bl, status_change *sc, 
 		vit += 10;
 	if (sc->getSCE(SC_ALL_STAT_DOWN))
 		vit -= sc->getSCE(SC_ALL_STAT_DOWN)->val2;
-
+ 
 	//TODO: Stat points should be able to be decreased below 0
 	return (unsigned short)cap_value(vit,0,USHRT_MAX);
 }
@@ -6880,8 +6880,8 @@ static unsigned short status_calc_dex(struct block_list *bl, status_change *sc, 
 		dex += sc->getSCE(SC_ALMIGHTY)->val1;
 	if (sc->getSCE(SC_ULTIMATECOOK))
 		dex += sc->getSCE(SC_ULTIMATECOOK)->val1;
+	if (sc->getSCE(SC_ALL_STAT_DOWN))
 		dex -= sc->getSCE(SC_ALL_STAT_DOWN)->val2;
-
 	//TODO: Stat points should be able to be decreased below 0
 	return (unsigned short)cap_value(dex,0,USHRT_MAX);
 }
