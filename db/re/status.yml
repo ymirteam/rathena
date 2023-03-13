@@ -9007,3 +9007,11 @@ Body:
       NoClearance: true
     EndOnStart:
       Relieve_on: true
+  - Status: GRADUAL_GRAVITY
+    Icon: EFST_GRADUAL_GRAVITY
+    DurationLookup: NPC_GRADUAL_GRAVITY
+    Flags:
+      BlEffect: true
+      DisplayPc: true
+      NoDispell: true
+      NoClearance: true

@@ -9554,6 +9554,7 @@ static int status_get_sc_interval(enum sc_type type)
 		case SC_LEECHESEND:
 		case SC_DPOISON:
 		case SC_DEATHHURT:
+		case SC_GRADUAL_GRAVITY:
 		case SC_HANDICAPSTATE_DEADLYPOISON:
 		case SC_KILLING_AURA:
 			return 1000;
@@ -11105,6 +11106,11 @@ int status_change_start(struct block_list* src, struct block_list* bl,enum sc_ty
 			if( (val4 = tick/(val2 * 1000)) < 1 )
 				val4 = 1;
 			tick_time = val2 * 1000; // [GodLesZ] tick time
+			break;
+		case SC_GRADUAL_GRAVITY:
+			val2 = 10 * val1;
+			tick_time = status_get_sc_interval(type);
+			val4 = tick - tick_time; // Remaining time
 			break;
 		case SC_BOSSMAPINFO:
 			if( sd != NULL ) {
@@ -13142,6 +13148,11 @@ int status_change_start(struct block_list* src, struct block_list* bl,enum sc_ty
 					ud->state.running = unit_run(bl, NULL, SC_RUN);
 			}
 			break;
+		case SC_GRADUAL_GRAVITY:
+			if (sce->val4 >= 0) {
+				status_zap(bl, status->max_hp * sce->val2 / 100, 0);
+			}
+		break;
 		case SC_BOSSMAPINFO:
 			if (sd)
 				clif_bossmapinfo(sd, map_id2boss(sce->val1), BOSS_INFO_ALIVE_WITHMSG); // First Message
