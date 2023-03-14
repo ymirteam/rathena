@@ -114,7 +114,7 @@ typedef uint32 t_itemid;
 #define MAX_CLAN 500
 #define MAX_CLANALLIANCE 6
 #ifndef MAX_BARTER_REQUIREMENTS
-	#define MAX_BARTER_REQUIREMENTS 5
+	#define MAX_BARTER_REQUIREMENTS 100
 #endif
 
 enum e_enchantgrade : uint16{
