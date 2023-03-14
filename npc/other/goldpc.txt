@@ -201,7 +201,7 @@ Vip:
 	mes "[Fever Banshee]";
 	mes "third, ^FF0000DEX+8, AGI+6, LUK+4,";
 	mes "^FF0000ATK+24, MATK+24!";
-	mes "^000000fourth, ^FF0000올+6 ATK+24, MATK+24!!^000000";
+	mes "^000000fourth, ^FF0000+6 ATK+24, MATK+24!!^000000";
 	next;
 	mes "[Fever Banshee]";
 	mes "Which of the four would you like to receive?!";
