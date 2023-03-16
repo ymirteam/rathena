@@ -748,6 +748,7 @@ struct Battle_Config
 	int mob_respawn_time;
 
 	int feature_stylist;
+	int feature_banking_state_enforce;
 
 	int feature_goldpc_active;
 	int feature_goldpc_time;
