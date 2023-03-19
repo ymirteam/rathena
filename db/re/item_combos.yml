@@ -10121,7 +10121,7 @@ Body:
       - Combo:
           - Lava_Leather_Muffler
           - Lava_Leather_Shoes
-          - Lava_Leather_Suit
+          - Lava_Leather_Suits
     Script: |
       bonus bAtkRate,2;
       .@a = getequiprefinerycnt(EQI_GARMENT);

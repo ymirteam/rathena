@@ -1690,7 +1690,7 @@ Body:
     RequiredRandomOptions: 2
     TargetItems:
       - Item: Lava_Leather_Armor
-      - Item: Lava_Leather_Suit
+      - Item: Lava_Leather_Suits
       - Item: Lava_Leather_Robe
   - Item: Shadow_9_Refine_Hammer
     ResultRefine: 9
