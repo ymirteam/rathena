@@ -16,23 +16,21 @@
 
 -	script	Healer	-1,{
 
-	.@Price = BaseLevel*100;	// ค่าใช้จ่ายในการรักษา
+	.@Price = BaseLevel*1000;	// ค่าใช้จ่ายในการรักษา
 	.@Buffs = 1;	// บัฟผู้เล่นด้วย? (1: ใช่ / 0: ไม่)
 	.@Delay = 0;	// ระยะเวลารักษาเป็นวินาที
 
 	if (@HD > gettimetick(2))
 		end;
-
 	specialeffect2 EF_HEAL2;
-	sc_start SC_BLESSING,1800000,5;
-	sc_start SC_INCREASEAGI,1800000,5;
 	percentheal 100,100;
-	
+	sc_start SC_BLESSING,1800000,10;
+	sc_start SC_INCREASEAGI,1800000,10;
 	if (.@Price) {
-		message strcharinfo(0), "รับบัพเพิ่ม " + callfunc("F_InsertComma",.@Price) + " Zeny";
+		message strcharinfo(0), "ค่าใช้จ่ายในการรักษา " + callfunc("F_InsertComma",.@Price) + " Zeny";
 		if (Zeny < .@Price)
 			end;
-		if (select("^0055FFรักษา^000000:^777777ยกเลิก^000000") == 2)
+		if (select("^0055FFรับบัพเพิ่มเติมมีค่าใช้จ่าย ^777777" + callfunc("F_InsertComma",.@Price) + "^0055FF Zeny^000000:^777777ยกเลิก^000000") == 2)
 			end;
 		Zeny -= .@Price;
 	}
