@@ -22,16 +22,20 @@
 
 	if (@HD > gettimetick(2))
 		end;
+
+	specialeffect2 EF_HEAL2;
+	sc_start SC_BLESSING,1800000,5;
+	sc_start SC_INCREASEAGI,1800000,5;
+	percentheal 100,100;
+	
 	if (.@Price) {
-		message strcharinfo(0), "ค่าใช้จ่ายในการรักษา " + callfunc("F_InsertComma",.@Price) + " Zeny";
+		message strcharinfo(0), "รับบัพเพิ่ม " + callfunc("F_InsertComma",.@Price) + " Zeny";
 		if (Zeny < .@Price)
 			end;
 		if (select("^0055FFรักษา^000000:^777777ยกเลิก^000000") == 2)
 			end;
 		Zeny -= .@Price;
 	}
-	specialeffect2 EF_HEAL2;
-	percentheal 100,100;
 	if (.@Buffs) {
 	
 		//บัพอาหาร 30 นาที เลเวล 10
@@ -98,6 +102,7 @@
 		sc_end SC_HANDICAPSTATE_DEADLYPOISON;
 		sc_end SC_HANDICAPSTATE_DEPRESSION;
 		sc_end SC_HANDICAPSTATE_HOLYFLAME;
+		percentheal 100,100;
 	}
 	if (.@Delay)
 		@HD = gettimetick(2) + .@Delay;
