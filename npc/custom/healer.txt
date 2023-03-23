@@ -22,10 +22,18 @@
 
 	if (@HD > gettimetick(2))
 		end;
-	specialeffect2 EF_HEAL2;
-	percentheal 100,100;
-	sc_start SC_BLESSING,1800000,10;
-	sc_start SC_INCREASEAGI,1800000,10;
+		
+	switch(select("•^FF3333บัฟฟรี ^000000:•^0D6106เซนีบัฟ^000000")){ 
+	case 1:
+		mes "ได้บัฟฟรีเลยจร้า";     
+		specialeffect2 EF_HEAL2;
+		specialeffect2 EF_HEAL2;
+		percentheal 100,100;
+		sc_start SC_BLESSING,1800000,10;
+		sc_start SC_INCREASEAGI,1800000,10;
+		break;
+
+	case 2:
 	if (.@Price) {
 		message strcharinfo(0), "ค่าใช้จ่ายในการรักษา " + callfunc("F_InsertComma",.@Price) + " Zeny";
 		if (Zeny < .@Price)
