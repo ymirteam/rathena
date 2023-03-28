@@ -1287,6 +1287,8 @@ ACMD_FUNC(kami)
 			clif_displaymessage(fd, msg_txt(sd,982)); // Invalid color.
 			return -1;
 		}
+		for( pl_sd = (TBL_PC*)mapit_first(iter); mapit_exists(iter); pl_sd = (TBL_PC*)mapit_next(iter) )
+			clif_soundeffect( pl_sd->bl, "anuncio.wav", 0, SELF );
 		intif_broadcast2(atcmd_output, strlen(atcmd_output) + 1, color, 0x190, 12, 0, 0);
 	}
 	mapit_free(iter);
