@@ -109,10 +109,13 @@
 		sc_end SC_HANDICAPSTATE_DEPRESSION;
 		sc_end SC_HANDICAPSTATE_HOLYFLAME;
 		percentheal 100,100;
-	}
+		}
+		
 	if (.@Delay)
 		@HD = gettimetick(2) + .@Delay;
 	end;
+	}
+end;
 }
 
 // Duplicates
