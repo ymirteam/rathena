@@ -1252,8 +1252,8 @@ ACMD_FUNC(alive)
  *------------------------------------------*/
 ACMD_FUNC(kami)
 {
-	struct map_session_data* pl_sd;
-	struct s_mapiterator* iter;
+	map_session_data* pl_sd;
+	s_mapiterator* iter;
 	unsigned long color=0;
 	nullpo_retr(-1, sd);
 
@@ -5631,8 +5631,8 @@ ACMD_FUNC(exp)
  *------------------------------------------*/
 ACMD_FUNC(broadcast)
 {
-	struct map_session_data* pl_sd;
-	struct s_mapiterator* iter;
+	map_session_data* pl_sd;
+	s_mapiterator* iter;
 	nullpo_retr(-1, sd);
 
 	memset(atcmd_output, '\0', sizeof(atcmd_output));
@@ -5660,8 +5660,8 @@ ACMD_FUNC(broadcast)
  *------------------------------------------*/
 ACMD_FUNC(localbroadcast)
 {
-	struct map_session_data* pl_sd;
-	struct s_mapiterator* iter;
+	map_session_data* pl_sd;
+	s_mapiterator* iter;
 	nullpo_retr(-1, sd);
 
 	memset(atcmd_output, '\0', sizeof(atcmd_output));

@@ -10600,8 +10600,8 @@ int battle_check_target( struct block_list *src, struct block_list *target,int f
 		state&=~BCT_ENEMY;
 
 	if ( s_bl->type == BL_PC && t_bl->type == BL_MOB ) {
-		struct map_session_data *sd = BL_CAST( BL_PC, s_bl );
-		struct mob_data *md = BL_CAST( BL_MOB, t_bl );
+		map_session_data *sd = BL_CAST( BL_PC, s_bl );
+		mob_data *md = BL_CAST( BL_MOB, t_bl );
 		if ( npc_isnear(&sd->bl) )
 				state &= ~BCT_ENEMY;
 	}
