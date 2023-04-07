@@ -124,6 +124,8 @@ OnInit:
     setunitdata getnpcid(0), UNPC_HEADTOP, 908;
     setunitdata getnpcid(0), UNPC_HEADBOTTOM, 1255;
     setunitdata getnpcid(0), UNPC_HEADMIDDLE, 355;
+    setunitdata (getnpcid(0), UNPC_GROUP_ID, 10); // รูปกิลด์ ใส่เพิ่มเติมที่ data/texture/??????????????/group บอกโดย @- - - ?  ??????????  ? - - -#7251
+    setunittitle(getnpcid(0), "NULL Inc.");  //คลาย ๆ ชื่อกิลด์
 end;
 }
 
