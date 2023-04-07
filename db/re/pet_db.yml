@@ -1577,7 +1577,7 @@ Body:
             Amount: 30
           - Item: Orc_Warrior_Card
             Amount: 10
-          - Item: Orc_Baby_Card
+          - Item: Orc_Baby_Card_Card
             Amount: 10
           - Item: Voucher_Of_Orcish_Hero
             Amount: 10
@@ -1936,7 +1936,7 @@ Body:
         bonus2 bExpAddClass,Class_All,1;
       }
   - Mob: NIGHTMARE_TERROR_H
-    EggItem: Rigid_Nightmare_Terror_Egg
+    EggItem: Nightmare_TerrorH_EGG
     FoodItem: Pet_Food
     Fullness: 2
     HungryDelay: 120
@@ -1961,7 +1961,7 @@ Body:
         bonus bInt,1;
       }
   - Mob: WANDER_MAN_H
-    EggItem: Contaminated_Wanderer_Egg
+    EggItem: Wanderer_H_EGG
     FoodItem: Pet_Food
     Fullness: 2
     HungryDelay: 120
@@ -2058,7 +2058,7 @@ Body:
         bonus bMdef,4;
       }
   - Mob: BACSOJIN2
-    EggItem: Bacsojin2_Egg_
+    EggItem: Bacsojin_Egg2
     FoodItem: High_Class_Pet_food
     Fullness: 7
     IntimacyFed: 10
@@ -2081,7 +2081,7 @@ Body:
         bonus bMaxSPRate,2;
       }
   - Mob: ORK_HERO2
-    EggItem: Orc_Hero_Egg_
+    EggItem: Ork_Hero_EGG
     FoodItem: High_Class_Pet_food
     Fullness: 2
     HungryDelay: 120
