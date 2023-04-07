@@ -2878,7 +2878,7 @@ int mob_dead(struct mob_data *md, struct block_list *src, int type)
 			}
 
 			// THE BOX KEY [Start]
-			if(battle_config.item_from_mobs && md->level) {
+			if(battle_config.item_the_box && md->level) {
 			drop_rate = mob_getdroprate(src, md->db, cap_value(battle_config.item_rate_the_box_key * (rnd() % md->level), 0, 10000), drop_modifier);
 			if (rnd() % 10000 < drop_rate)
 			{
