@@ -1689,6 +1689,8 @@ int64 battle_calc_damage(struct block_list *src,struct block_list *bl,struct Dam
 			int bonus = tsc->getSCE(SC_DARKCROW)->val2;
 		if( tsc->getSCE(SC_BURNT) && status_get_element(src) == ELE_FIRE )
 			damage += damage * 666 / 100; //Custom value
+		if (sc->getSCE(SC_DARKCROW) && (flag&(BF_SHORT|BF_MAGIC)) == BF_SHORT) {
+			int bonus = sc->getSCE(SC_DARKCROW)->val2;
 			if (status_get_class_(bl) == CLASS_BOSS)
 				bonus /= 2;
 			damage += damage * bonus / 100;
@@ -1717,7 +1719,6 @@ int64 battle_calc_damage(struct block_list *src,struct block_list *bl,struct Dam
 
 		if (sc->getSCE(SC_SHADOW_CLOCK) && (flag&(BF_WEAPON|BF_MAGIC)))
 			damage -= damage / 4; //TODO exact reduction unknown [Muh]
-
 		if (tsc->getSCE(SC_DEFENDER) &&
 			skill_id != NJ_ZENYNAGE && skill_id != KO_MUCHANAGE &&
 #ifdef RENEWAL
@@ -2042,11 +2043,6 @@ int64 battle_calc_damage(struct block_list *src,struct block_list *bl,struct Dam
 		if (md
 			&& (md->dynamic > 0))
 			damage = i64max(damage * (100 - md->dynamic) / 100, 1);
-	}
-	
-	if (tsc && tsc->count) {
-		if (!battle_status_block_damage(src, bl, tsc, d, damage, skill_id, skill_lv)) // Statuses that reduce damage to 0.
-			return 0;
 	}
 	
 	if (tsc && tsc->count) {
