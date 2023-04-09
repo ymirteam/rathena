@@ -47,3 +47,6 @@ item_the_box: no
 // Nomal drop item (1 = 0.01%)
 //item_rate_the_box_key: 1
 //item_2: 40017
+
+// limit the sale value of all [null]
+imited_sale_price: 1000000
