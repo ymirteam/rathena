@@ -11,3 +11,5 @@
  *	 { "name", &battle_config.<variable name>, <default value>, <minimum value>, <maximum value> },
  **/
 
+	// limit the sale value of all [null]
+	{ "imited_sale_price",					&battle_config.imited_sale_price,					0,      0,      INT_MAX,        },

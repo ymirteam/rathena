@@ -12,3 +12,5 @@
  *	 <datatype> name;
  **/
 
+// limit the sale value of all [null]
+int imited_sale_price;
