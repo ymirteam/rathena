@@ -12,5 +12,7 @@
  *	 <datatype> name;
  **/
 
-// Item ID for randdom @NULL#6385
-int item_1,item_2;
+
+int item_1,item_2;	// Item ID for the box [null]
+int imited_sale_price;	// limit the sale value of all [null]
+
