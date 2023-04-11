@@ -317,7 +317,7 @@ void usercheck(void)
 {
 #if !defined(BUILDBOT)
 #ifdef _WIN32
-	if (IsCurrentUserLocalAdministrator()) {
+/*	if (IsCurrentUserLocalAdministrator()) {
 		ShowWarning("You are running rAthena with admin privileges, it is not necessary.\n");
 	}
 #else
@@ -326,7 +326,7 @@ void usercheck(void)
 	}
 #endif
 #endif
-}
+}*/
 
 int Core::start( int argc, char **argv ){
 	if( this->get_status() != e_core_status::NOT_STARTED) {
