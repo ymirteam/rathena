@@ -1,0 +1,18 @@
+// Server Communication username and password.
+userid: jM0TsQb1
+passwd: Ioe7oGmcNpRVmrOS
+
+// Server name
+server_name: The M!Xtrix IV
+
+// Login Server IP
+login_ip: 127.0.0.1
+
+// Character Server IP
+char_ip: 127.0.0.1
+
+// Map Server IP
+map_ip: 127.0.0.1
+
+// Can you use _M/_F to make new accounts on the server?
+new_account: yes
