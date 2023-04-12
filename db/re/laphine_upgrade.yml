@@ -41,7 +41,7 @@
 
 Header:
   Type: LAPHINE_UPGRADE_DB
-  Version: 2
+  Version: 1
 
 Body:
 #  - Item: Ein_Ddbox

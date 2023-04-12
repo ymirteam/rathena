@@ -58799,7 +58799,7 @@ Body:
       NoMail: true
       NoAuction: true
     Script: |
-      duplicate_dynamic("Kachua's Secret Box#bm")
+      duplicate_dynamic("Kachua's Secret Box#bm");
   - Id: 23921
     AegisName: Season_Evt_Reward
     Name: Event Reward Box
