@@ -97433,6 +97433,17 @@ Body:
     AttackDelay: 576
     AttackMotion: 576
     DamageMotion: 480
+    DamageTaken: 10
+    Ai: 21
+    Class: Boss
+    Modes:
+      NoRandomWalk: true
+      Detector: true
+      Mvp: true
+    Drops:
+      - Item: Ingrid_Card
+        Rate: 1
+        StealProtected: true
   - Id: 20612
     AegisName: FERUS_P
     Name: Purple Ferus
@@ -97747,13 +97758,6 @@ Body:
     Ai: 21
     Class: Boss
     Modes:
-      NoRandomWalk: true
-      Detector: true
-      Mvp: true
-    Drops:
-      - Item: Ingrid_Card
-        Rate: 1
-        StealProtected: true
       Mvp: true
     Drops:
       - Item: Drabone_L
