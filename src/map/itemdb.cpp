@@ -1170,6 +1170,10 @@ void ItemDatabase::loadingFinished(){
 			ShowWarning( "Item %s (%u) is a shield and should have a view id. Defaulting to Guard...\n", item->name.c_str(), item->nameid );
 			item->look = 1;
 		}
+		// limit the sale value of all [null]
+		if (item->value_sell > battle_config.limited_sale_price){
+            item->value_sell = battle_config.limited_sale_price;
+        }
 	}
 
 	if( !this->exists( ITEMID_DUMMY ) ){

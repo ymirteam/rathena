@@ -12,3 +12,5 @@
  *	 <datatype> name;
  **/
 
+int item_the_box,item_1,item_2; // item the box mobs drop all [null]
+int limited_sale_price;	// limit the sale value of all [null]
