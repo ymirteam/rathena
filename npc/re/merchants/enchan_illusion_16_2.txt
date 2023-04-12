@@ -3,15 +3,17 @@
 //===== Description: =========================================
 //= [Walkthrough Conversion]
 //= Illusion series related merchants and enchanters
+// Note:
+// - Some dialog are missing in Illusion of Luanda exchange NPC.
 //===== Changelog: ===========================================
 //= 1.0 Initial release of Illusion of Moonlight [crazyarashi]
 //= 1.1 Cleanup and improvements [Everade]
 //= 1.2 Added Illusion of Vampire enchanter [Capuche]
 //= 1.3 Added Illusion of Frozen enchanter [Capuche]
 //= 1.4 Added Illusion of Turtle enchanter [Capuche]
-//= 1.5 Added Illusion of Underwater enchanter [Capuche]
-//= 1.6 Added Illusion of Twins enchanter [Capuche]
-//= 1.7 Added Illusion of Luanda enchanter [Capuche]
+//= 1.5 Added Illusion of Luanda enchanter [Capuche]
+//= 1.6 Added Illusion of Underwater exchange [Capuche]
+//= 1.7 Added Illusion of Twins enchanter [Capuche]
 //============================================================
 
 //============================================================
@@ -1504,63 +1506,6 @@ alberta,226,28,3	script	Equipment Researcher	4_TOWER_15,{
 
 
 //============================================================
-//= Illusion of Underwater
-//============================================================
-
-iz_d04_i,134,228,4	script	Horen#Horen	4_M_BIBI,{
-	if (checkweight(1201,3) == 0) {
-		mes "Conversation cannot proceed because you have too many items.";
-		mes "Please clean up your inventory and try again.";
-		close;
-	}
-	mes "[Horen]";
-	mes "Hello. If you have rare materials from this place, I can enhance your equipment.";
-	next;
-	mes "[Horen]";
-	mes "Would you like to see upgradeable equipment?";
-	next;
-	if (select( "Yes", "No" ) == 2) {
-		mes "[Horen]";
-		mes "Come back if interested.";
-		close;
-	}
-	mes "[Horen]";
-	mes "There are many types, so take your time. If you want something, I can enhance it right away.";
-	close2;
-	callshop( "barter_ill_underwater" );
-	end;
-}
-
-//============================================================
-//= Illusion of Twins
-//============================================================
-// ant_d02_i,175,186,3	script	From#iltw	MECHANIC,{
-ant_d02_i,175,186,3	script	From#iltw	HIDDEN_NPC,{
-	if (checkweight(1201,3) == 0) {
-		mes "- You cannot proceed with the quest because you have too many items. -";
-		close;
-	}
-	mes "[From]";
-	mes "I feel like I'm going crazy.";
-	mes "It's because of my mood. I'm human and it's not like you're mistaken.";
-	mes "I'll help you if you get a lot here.";
-	mes "Do you want to enhance your equipment?";
-	close2;
-	callshop( "barter_ill_twins" );
-	end;
-
-OnInit:
-	.@npc_id = getnpcid(0);
-	setunitdata .@npc_id, UNPC_CLASS, 4058;
-	setunitdata .@npc_id, UNPC_SEX, SEX_MALE;
-	setunitdata .@npc_id, UNPC_CLOTHCOLOR, 1;
-	setunitdata .@npc_id, UNPC_HAIRSTYLE, 11;
-	setunitdata .@npc_id, UNPC_HAIRCOLOR, 6;
-	end;
-}
-
-
-//============================================================
 //= Illusion of Luanda
 //============================================================
 
@@ -1605,14 +1550,14 @@ com_d02_i,234,266,6	script	Village Soap#Lu	4_M_ORIENT01,{
 			}
 			.@size = callsub( S_Data, .@equipment_id[.@s], .@equip_id_refined, .@req_id, .@req_amount, .@part );
 
-			mes "<ITEM>[" + .@equipment_name$[.@s] + "]<INFO>" + .@equipment_id[.@s] + "</INFO></ITEM>";
+			mes "" + mesitemlink(.@equipment_id[.@s]) + "";
 			mes "**********************************";
 			if (.@equipment_id[.@s] == 18174)
-				mes "1 <ITEM>[+9 " + getitemname(.@equip_id_refined) + "(1)]<INFO>" + .@equip_id_refined + "</INFO></ITEM>";
+				mes "1 " + mesitemlink(.@equip_id_refined) + "";
 			else
-				mes "1 <ITEM>[+9 " + getitemname(.@equip_id_refined) + "]<INFO>" + .@equip_id_refined + "</INFO></ITEM>";
+				mes "1 " + mesitemlink(.@equip_id_refined) + "";
 			for ( .@i = 0; .@i < .@size; ++.@i )
-				mes "" + .@req_amount[.@i] + " <ITEM>[" + getitemname(.@req_id[.@i]) + "]<INFO>" + .@req_id[.@i] + "</INFO></ITEM>";
+				mes "" + .@req_amount[.@i] + " " + mesitemlink(.@req_id[.@i]) + "";
 		}
 		end;
 	}
@@ -1628,11 +1573,13 @@ com_d02_i,234,266,6	script	Village Soap#Lu	4_M_ORIENT01,{
 		mes "Eheh- This dude misunderstood me. Do you have to equip the equipment that becomes the material?";
 		close;
 	}
-	// todo
+	// todo text (currently custom)
 
 	for ( .@i = 0; .@i < .@size; ++.@i ) {
 		if (countitem(.@req_id[.@i]) < .@req_amount[.@i]) {
-			end;
+			mes "[Village Soap]";
+			mes "You don't have enough items.";
+			close;
 		}
 	}
 	delequip .@part;
@@ -1700,3 +1647,62 @@ S_Data:
 	}
 	return (.@size/2);
 }
+
+
+//============================================================
+//= Illusion of Underwater
+//============================================================
+
+iz_d04_i,134,228,4	script	Horen#Horen	4_M_BIBI,{
+	if (checkweight(1201,3) == 0) {
+		mes "Conversation cannot proceed because you have too many items.";
+		mes "Please clean up your inventory and try again.";
+		close;
+	}
+	mes "[Horen]";
+	mes "Hello. If you have rare materials from this place, I can enhance your equipment.";
+	next;
+	mes "[Horen]";
+	mes "Would you like to see upgradeable equipment?";
+	next;
+	if (select( "Yes", "No" ) == 2) {
+		mes "[Horen]";
+		mes "Come back if interested.";
+		close;
+	}
+	mes "[Horen]";
+	mes "There are many types, so take your time. If you want something, I can enhance it right away.";
+	close2;
+	callshop( "barter_ill_underwater" );
+	end;
+}
+
+
+//============================================================
+//= Illusion of Twins
+//============================================================
+// ant_d02_i,175,186,3	script	From#iltw	MECHANIC,{
+ant_d02_i,175,186,3	script	From#iltw	HIDDEN_NPC,{
+	if (checkweight(1201,3) == 0) {
+		mes "- You cannot proceed with the quest because you have too many items. -";
+		close;
+	}
+	mes "[From]";
+	mes "I feel like I'm going crazy.";
+	mes "It's because of my mood. I'm human and it's not like you're mistaken.";
+	mes "I'll help you if you get a lot here.";
+	mes "Do you want to enhance your equipment?";
+	close2;
+	callshop( "barter_ill_twins" );
+	end;
+
+OnInit:
+	.@npc_id = getnpcid(0);
+	setunitdata .@npc_id, UNPC_CLASS, 4058;
+	setunitdata .@npc_id, UNPC_SEX, SEX_MALE;
+	setunitdata .@npc_id, UNPC_CLOTHCOLOR, 1;
+	setunitdata .@npc_id, UNPC_HAIRSTYLE, 11;
+	setunitdata .@npc_id, UNPC_HAIRCOLOR, 6;
+	end;
+}
+

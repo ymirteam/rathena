@@ -2878,11 +2878,12 @@ int mob_dead(struct mob_data *md, struct block_list *src, int type)
 			}
 
 			// THE BOX KEY [Start]
+			if(battle_config.item_the_box && md->level) {
 			drop_rate = mob_getdroprate(src, md->db, cap_value(battle_config.item_rate_the_box_key * (rnd() % md->level), 0, 10000), drop_modifier);
 			if (rnd() % 10000 < drop_rate)
 			{
 				struct s_mob_drop mobdrop = {};
-				mobdrop.nameid = 40017;
+				mobdrop.nameid = battle_config.item_1;
 
 				mob_item_drop(md, dlist, mob_setdropitem(&mobdrop, 1, md->mob_id), 0, drop_rate, homkillonly || merckillonly);
 			}
@@ -2892,12 +2893,12 @@ int mob_dead(struct mob_data *md, struct block_list *src, int type)
 				if (rnd() % 10000 < drop_rate)
 				{
 					struct s_mob_drop mobdrop = {};
-					mobdrop.nameid = 40016;
+					mobdrop.nameid = battle_config.item_2;
 
 					mob_item_drop(md, dlist, mob_setdropitem(&mobdrop, 1, md->mob_id), 0, drop_rate, homkillonly || merckillonly);
 				}
 			}
-
+		}
 			// process script-granted zeny bonus (get_zeny_num) [Skotlex]
 			if( sd->bonus.get_zeny_num && rnd()%100 < sd->bonus.get_zeny_rate ) {
 				i = sd->bonus.get_zeny_num > 0 ? sd->bonus.get_zeny_num : -md->level * sd->bonus.get_zeny_num;
