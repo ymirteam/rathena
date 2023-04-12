@@ -1171,8 +1171,8 @@ void ItemDatabase::loadingFinished(){
 			item->look = 1;
 		}
 		// limit the sale value of all [null]
-		if (item->value_sell > battle_config.limited_sale_price){
-            item->value_sell = battle_config.limited_sale_price;
+		if (item->value_sell > battle_config.limit_sale_price){
+            item->value_sell = battle_config.limit_sale_price;
         }
 	}
 

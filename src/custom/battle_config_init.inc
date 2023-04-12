@@ -16,4 +16,4 @@
 	{ "item_1",							&battle_config.item_1,						500,		500,		INT_MAX,	},
 	{ "item_2",							&battle_config.item_2,						500,		500,		INT_MAX,	},
 	// limit the sale value of all [null]
-	{ "limited_sale_price",				&battle_config.limit_sale_price,			0,			0,			INT_MAX,	},
+	{ "limit_sale_price",				&battle_config.limit_sale_price,			0,			0,			INT_MAX,	},
