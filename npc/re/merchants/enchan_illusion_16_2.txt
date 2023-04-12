@@ -1527,7 +1527,8 @@ iz_d04_i,134,228,4	script	Horen#Horen	4_M_BIBI,{
 	mes "There are many types, so take your time. If you want something, I can enhance it right away.";
 	close2;
 	callshop( "barter_ill_underwater" );
-
+	end;
+}
 
 //============================================================
 //= Illusion of Twins
