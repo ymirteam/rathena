@@ -88,54 +88,53 @@ Header:
   Version: 3
 
 Body:
-  - Id: 40016
-    AegisName: MvP_Refine
-    Name: MvP Refine
+#Item Vending
+  - Id: 30000
+    AegisName: Zeny
+    Name: Zeny
     Type: Etc
+    Weight: 1
+  - Id: 30001
+    AegisName: Cash
+    Name: Cash
+    Type: Usable
     Flags:
-      BuyingStore: true
-    TradeNoUse:
-      Override: 100
-      NoSell: true
-  - Id: 40017
-    AegisName: THE_BOX_KEY
-    Name: THE BOX KEY
-    Type: Etc
+      DropEffect: RED_PILLAR
+    Script: |
+      .@i = 30001;
+      dispbottom "[System] : You got "+ callfunc("F_InsertComma",(countitem(.@i)+1)) +" Cash Points";
+      #CASHPOINTS += (countitem(.@i) + 1);
+      delitem .@i,countitem(.@i);
+      dispbottom  "[System] : You have "+ callfunc("F_InsertComma",#CASHPOINTS) +" Cash Points";
+  - Id: 30002
+    AegisName: Cash_1MP
+    Name: Cash 1000000 Points
+    Type: CASH
     Flags:
-      BuyingStore: true
-    TradeNoUse:
-      Override: 100
-      NoSell: true
-  - Id: 1599
-    AegisName: Angra_Manyu
-    Name: Angra Manyu
-    Type: Weapon
-    SubType: Mace
-    Buy: 1
-    Weight: 10
-    Attack: 100
-    MagicAttack: 100
-    Range: 2
-    Locations:
-      Right_Hand: true
-    WeaponLevel: 1
-    EquipLevelMin: 1
-    Refineable: true
+      DropEffect: RED_PILLAR
     Script: |
-      sc_end SC_POISON;
-  - Id: 2199
-    AegisName: Ahura_Mazda
-    Name: Ahura Mazdah
-    Type: Armor
-    Buy: 1
-    Weight: 10
-    Locations:
-      Left_Hand: true
-    EquipLevelMin: 1
-    Refineable: true
-    View: 1
-    Script: |
-      sc_end SC_POISON;
-  - Id: 31089
-    Script: |
-      hateffect(HAT_EF_BAKURETSU_HADOU,false);
+      .@p = 1000000;
+      .@i = 30004;
+      dispbottom "[System] : คุณได้รับ Cash "+ callfunc("F_InsertComma",(countitem(.@i)*(.@p)+(.@p))) +" Cash Points";
+      #CASHPOINTS += (countitem(.@i)*(.@p)+(.@p));
+      delitem .@i,countitem(.@i);
+      dispbottom  "[System] : คุณมี Cash ทั้งหมด "+ callfunc("F_InsertComma",#CASHPOINTS) +" Cash Points";
+### The Box Script item ###
+#  - Id: 40016
+#    AegisName: MvP_Refine
+#    Name: MvP Refine
+#    Type: Etc
+#    Flags:
+#      BuyingStore: true
+#    TradeNoUse:
+#      Override: 100
+#      NoSell: true
+#  - Id: 40017
+#    AegisName: THE_BOX_KEY
+#    Name: THE BOX KEY
+#    Type: Etc
+#    Flags:
+#      BuyingStore: true
+#    TradeNoUse:
+#      Override: 100
+#      NoSell: true
