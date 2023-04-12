@@ -6844,6 +6844,13 @@
 	export_constant(IG_CLASS_SHADOW_EA_CUBE);
 	export_constant(IG_ENCHANT_STONE_BOX30);
 
+	/* feature/kachua */
+	export_constant(IG_AEGIS_101920);
+	export_constant(IG_AEGIS_101921);
+	export_constant(IG_AEGIS_101923);
+	export_constant(IG_AEGIS_101924);
+	export_constant(IG_AEGIS_101925);
+
 	/* unit stop walking */
 	export_constant(USW_NONE);
 	export_constant(USW_FIXPOS);
