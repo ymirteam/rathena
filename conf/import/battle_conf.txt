@@ -49,4 +49,4 @@ item_the_box: no
 //item_2: 40017
 
 // limit the sale value of all [null]
-imited_sale_price: 5000000
+limit_sale_price: 5000000
