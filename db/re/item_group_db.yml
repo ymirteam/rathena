@@ -42303,7 +42303,7 @@ Body:
             Rate: 500
           - Item: Hero_LT_Refine_Magic
             Rate: 250
-          - Item: Costama_Egg69
+          - Item: Hero_LT_Refine_Melee
             Rate: 250
           - Item: Up_Hero_Weapon_Box
             Rate: 100
@@ -42319,17 +42319,17 @@ Body:
             Rate: 100
           - Item: aegis_101925
             Rate: 100
-          - Item: aegis_600041
+          - Item: Execution_Great_Sword
             Rate: 100
-          - Item: aegis_500072
+          - Item: Devil_Guardian_Sword
             Rate: 100
-          - Item: aegis_550115
+          - Item: Darkness_Foxtail_Model
             Rate: 100
-          - Item: aegis_630027
+          - Item: Luppiter_Spear
             Rate: 100
-          - Item: aegis_530045
+          - Item: Holy_Raise_Spear
             Rate: 100
-          - Item: aegis_550116
+          - Item: Lightforce_Foxtail_Wand
             Rate: 100
           - Item: Blacksmith_Bless_Box_3
             Rate: 300
@@ -49294,8 +49294,6 @@ Body:
             Rate: 400
           - Item: Critical_Stone_Bottom
             Rate: 400
-          - Item: Trans_Scroll_Kobold_Archer
-          - Item: Trans_Scroll_Necromancer
 ###  feature/kachua  ###
   - Group: AEGIS_101920
     SubGroups:
