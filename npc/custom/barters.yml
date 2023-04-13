@@ -44,3 +44,15 @@
 Header:
   Type: BARTER_DB
   Version: 1
+Body:
+###########################################################################
+## TCG Card To Cash
+###########################################################################
+  - Name: BANK_TCG_TO_CASH
+    Items:
+      - Index: 0
+        Item: Cash
+        RequiredItems:
+          - Index: 0
+            Item: TCG_Card
+            Amount: 5

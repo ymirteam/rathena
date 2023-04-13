@@ -23,17 +23,17 @@ function Go; function Disp; function Pick; function Restrict;
 //	Main Menu:
 // --------------------------------------------------
 
-menu	"Last Warp ^777777["+lastwarp$+"]^000000",-,
-    	" ~ Towns",Towns,
+menu	"วาร์ปล่าสุด ^777777["+lastwarp$+"]^000000",-,
+    	" ~ เมืองหลวง",Towns,
     	" ~ Fields",Fields,
     	" ~ Dungeons",Dungeons,
-    	" ~ Guild Castles",Castles,
+    	" ~ ปราสาทกิลด์",Castles,
     	" ~ Guild Dungeons",Guild_Dungeons,
     	" ~ Instances",Instances,
-    	" ~ Special Areas",Special;
+    	" ~ พื้นที่พิเศษ",Special;
 
 	if (lastwarp$ == "")
-		message strcharinfo(0),"You haven't warped anywhere yet.";
+		message strcharinfo(0),"คุณยังไม่เคยวาร์ปไปไหนเลย";
 	else
 		warp lastwarp$,lastwarpx,lastwarpy;
 	end;
@@ -100,7 +100,7 @@ function Pick {
 		set .@map$, getarg(0)+((.@i<10)?"0":"")+.@i;
 	}
 	if (.@warp_block & (1<<.@select)) {
-		message strcharinfo(0),"This map is not enabled in "+((checkre(0))?"":"Pre-")+"Renewal.";
+		message strcharinfo(0),"แผนที่นี้ไม่ได้เปิดใช้งานใน "+((checkre(0))?"":"Pre-")+"Renewal.";
 		end;
 	}
 	set .@x, @c[.@i*2];
@@ -116,7 +116,7 @@ function Restrict {
 			for (set .@i,1; .@i<getargcount(); set .@i,.@i+1)
 				set @warp_block, @warp_block | (1<<getarg(.@i));
 		} else {
-			message strcharinfo(0),"This map is not enabled in "+((checkre(0))?"":"Pre-")+"Renewal.";
+			message strcharinfo(0),"แผนที่นี้ไม่ได้เปิดใช้งานใน "+((checkre(0))?"":"Pre-")+"Renewal.";
 			end;
 		}
 	}
@@ -1320,6 +1320,7 @@ OnInit:
 	.Satan_Morocc = true;	//	false will enable moc_fild 4,5,6,8,9,10,14,15 while disable moc_fild 20,21,22 Default is true.
 	.OnlyFirstFld = false;	//	true will teleport to the first level of the Fields  Default is false.
 	.OnlyFirstDun = false;	//	true will teleport to the first level of the Dungeons  Default is false.
+	waitingroom "[#] Warp Portal",0;
 }
 
 // --------------------------------------------------
@@ -1347,7 +1348,7 @@ manuk,274,146,6	duplicate(Warper)	Warper#man	811
 mid_camp,216,288,4	duplicate(Warper)	Warper#mid	811
 mjolnir_02,85,364,4	duplicate(Warper)	Warper#mjo	811
 moc_ruins,64,164,4	duplicate(Warper)	Warper#moc	811
-morocc,159,97,4	duplicate(Warper)	Warper#mor	811
+morocc,160,97,4	duplicate(Warper)	Warper#mor	10007
 moscovia,229,191,4	duplicate(Warper)	Warper#mos	811
 nameless_n,259,213,4	duplicate(Warper)	Warper#nam	811
 niflheim,205,179,4	duplicate(Warper)	Warper#nif	811

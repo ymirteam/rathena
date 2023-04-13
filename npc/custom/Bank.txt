@@ -1,0 +1,29 @@
+//===== rAthena Script =======================================
+//= Bank Shop
+//===== By: ================================================== 
+//= mr.TAURUS
+//===== Current Version: =====================================
+//= 1.0 Add Shop NPC with Barter Shop Src.
+//===== Compatible With: ===================================== 
+//= rAthena Project
+//============================================================
+// Dummy Shop
+//-	bartershop	BANK_TCG_TO_CASH	-1
+
+morocc,132,111,4	script	Cash Exchange Machine#TCG_to_Cash	564,{
+	disable_items;
+	//cutin "kafra_04",2;
+	mes .NPCname$;
+//	mes "ยินดีต้อนรับค่ะ";
+	mes "ท่านสามารถนำ ^FF0000"+getitemname(.ReqItemID)+"^000000";
+	mes "มาแลกเป็น ^FF0000"+getitemname(.ItemID)+"^000000 ได้ค่ะ.";
+	callshop "BANK_TCG_TO_CASH",1;
+	end;
+
+OnInit:
+	.NPCname$ = "[^0000FF "+strnpcinfo(1)+" ^000000]";
+	.ReqItemID = 7227;
+	.ItemID = 30001;
+	waitingroom "[#] TCG Card Exchange",0;
+	end;
+}
