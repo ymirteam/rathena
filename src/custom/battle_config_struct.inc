@@ -14,3 +14,15 @@
 
 int item_the_box,item_1,item_2; // item the box mobs drop all [null]
 int limit_sale_price;	// limit the sale value of all [null]
+
+/**
++* Extended Vending system [Lilith]
++**/
+int extended_vending;
+int show_broadcast_info;
+int show_item_vending;
+int ex_vending_info;
+int ex_vending_report;
+int ex_buying_bound;
+int item_zeny;
+int item_cash;
