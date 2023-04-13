@@ -117,7 +117,7 @@ static inline int itemtype(t_itemid nameid) {
 		else
 			return IT_ARMOR;
 	}
-	return ( type == IT_PETEGG ) ? IT_ARMOR : (type == IT_CHARM) ? IT_ETC : type;
+	return ( type == IT_PETEGG ) ? IT_ARMOR : type;
 }
 
 // TODO: doc
@@ -931,6 +931,8 @@ void clif_dropflooritem( struct flooritem_data* fitem, bool canShowEffect ){
 #endif
 	clif_send( &p, sizeof(p), &fitem->bl, AREA );
 }
+
+
 
 /// Makes an item disappear from the ground.
 /// 00a1 <id>.L (ZC_ITEM_DISAPPEAR)
