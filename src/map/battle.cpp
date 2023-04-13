@@ -1164,10 +1164,12 @@ bool battle_status_block_damage(struct block_list *src, struct block_list *targe
 	// SC Types that must be first because they may or may not block damage
 	if ((sce = sc->getSCE(SC_KYRIE)) && damage > 0 && ((flag & BF_WEAPON) || skill_id == TF_THROWSTONE)) {
 		sce->val2 -= static_cast<int>(cap_value(damage, INT_MIN, INT_MAX));
-		if (sce->val2 >= 0)
-			damage = 0;
-		else
-			damage = -sce->val2;
+		if (flag & BF_WEAPON || skill_id == TF_THROWSTONE) {
+			if (sce->val2 >= 0)
+				damage = 0;
+			else
+				damage = -sce->val2;
+		}
 		if ((--sce->val3) <= 0 || (sce->val2 <= 0) || skill_id == AL_HOLYLIGHT)
 			status_change_end(target, SC_KYRIE);
 	}
@@ -1253,9 +1255,9 @@ bool battle_status_block_damage(struct block_list *src, struct block_list *targe
 		if (sce->val3 >= 0)
 			damage = 0;
 		else
-			damage = -sce->val3;
-		if (sce->val3 <= 0)
-			status_change_end(target, SC_P_ALTER);
+			damage = -sce->val2;
+		if ((--sce->val3) <= 0 || (sce->val2 <= 0) || skill_id == AL_HOLYLIGHT)
+			status_change_end(target, SC_KYRIE);
 	}
 
 	if ((sce = sc->getSCE(SC_TUNAPARTY)) && damage > 0) {
@@ -1579,10 +1581,10 @@ int64 battle_calc_damage(struct block_list *src,struct block_list *bl,struct Dam
 			if (flag & BF_WEAPON && sd->special_state.no_weapon_damage)
 				damage -= damage * sd->special_state.no_weapon_damage / 100;
 
-		if(flag&BF_MAGIC && sd->special_state.no_magic_damage) {
-			if (tsc->getSCE(SC_DEADLY_DEFEASANCE)) //put it here because in in pc_calc_sub with CalcFlag All it'll break setunitdata of monsters, with CalcFlag Base it'll break other sc's bonuses [datawulf]
+			if (flag & BF_MAGIC && sd->special_state.no_magic_damage){
+				if (tsc && !tsc->getSCE(SC_DEADLY_DEFEASANCE)) //put it here because in in pc_calc_sub with CalcFlag All it'll break setunitdata of monsters, with CalcFlag Base it'll break other sc's bonuses [datawulf]
 				damage -= damage * sd->special_state.no_magic_damage / 100;
-		}
+			}
 
 			if (flag & BF_MISC && sd->special_state.no_misc_damage)
 				damage -= damage * sd->special_state.no_misc_damage / 100;
@@ -1618,18 +1620,18 @@ int64 battle_calc_damage(struct block_list *src,struct block_list *bl,struct Dam
 	}
 
 	if( tsc && tsc->count ) {
-
 		// Damage increasing effects
 #ifdef RENEWAL // Flat +400% damage from melee
 		if (tsc->getSCE(SC_KAITE) && (flag&(BF_SHORT|BF_MAGIC)) == BF_SHORT)
 			damage *= 4;
 #endif
 
+		if (tsc->getSCE(SC_AETERNA) && skill_id != PF_SOULBURN) {
 		if (tsc->getSCE(SC_GROUNDGRAVITY) && flag&(BF_MAGIC|BF_WEAPON) && !status_bl_has_mode(bl, MD_STATUSIMMUNE))
 			damage += damage * 15 / 100;
 		if (tsc->getSCE(SC_SHIELDCHAINRUSH) && !status_bl_has_mode(bl, MD_STATUSIMMUNE))
 			damage += damage /10;
-		if (tsc->getSCE(SC_AETERNA) && skill_id != PF_SOULBURN) {
+
 			if (src->type != BL_MER || !skill_id)
 				damage *= 2; // Lex Aeterna only doubles damage of regular attacks from mercenaries
 
@@ -1694,14 +1696,14 @@ int64 battle_calc_damage(struct block_list *src,struct block_list *bl,struct Dam
 		}
 		if (tsc->getSCE(SC_HOLY_OIL) && (flag&(BF_LONG|BF_WEAPON)) == (BF_LONG|BF_WEAPON))
 			damage += damage * 50 / 100;// Need official adjustment. [Rytech]
+		if (tsc->getSCE(SC_SHADOW_SCAR)) // !TODO: Need official adjustment for this too.
+			damage += damage * (3 * tsc->getSCE(SC_SHADOW_SCAR)->val1) / 100;
 		if (tsc->getSCE(SC_HANDICAPSTATE_SWOONING))
 			damage += damage * 50 / 100;
 		if (tsc->getSCE(SC_HANDICAPSTATE_HOLYFLAME) && (flag&(BF_WEAPON)) == (BF_WEAPON))
 			damage += damage * 50 / 100;
 		if (tsc->getSCE(SC_RUSH_QUAKE1) && (flag&(BF_WEAPON)) == (BF_WEAPON))
 			damage += damage * 50 / 100;
-		if (tsc->getSCE(SC_SHADOW_SCAR)) // !TODO: Need official adjustment for this too.
-			damage += damage * (3 * tsc->getSCE(SC_SHADOW_SCAR)->val1) / 100;
 
 		// Damage reductions
 		// Assumptio increases DEF on RE mode, otherwise gives a reduction on the final damage. [Igniz]
@@ -10609,7 +10611,6 @@ int battle_check_target( struct block_list *src, struct block_list *target,int f
 		if ( npc_isnear(&sd->bl) )
 				state &= ~BCT_ENEMY;
 	}
-
 	return (flag&state)?1:-1;
 }
 /*==========================================
@@ -10801,11 +10802,11 @@ static const struct _battle_data {
 	{ "max_walk_speed",                     &battle_config.max_walk_speed,                  300,    100,    100*DEFAULT_WALK_SPEED, },
 	{ "max_lv",                             &battle_config.max_lv,                          99,     0,      MAX_LEVEL,      },
 	{ "aura_lv",                            &battle_config.aura_lv,                         99,     0,      INT_MAX,        },
-	{ "max_hp_lv99",                        &battle_config.max_hp_lv99,                    330000,  100,    1000000000,     },
-	{ "max_hp_lv150",                       &battle_config.max_hp_lv150,                   660000,  100,    1000000000,     },
-	{ "max_hp",                             &battle_config.max_hp,                        1100000,  100,    1000000000,     },
-	{ "max_sp",                             &battle_config.max_sp,                          32500,  100,    1000000000,     },
-	{ "max_cart_weight",                    &battle_config.max_cart_weight,                 8000,   100,    1000000,        },
+	{ "max_hp_lv99",                        &battle_config.max_hp_lv99,                    110000000,  100,    INT_MAX,     },
+	{ "max_hp_lv150",                       &battle_config.max_hp_lv150,                   110000000,  100,    INT_MAX,     },
+	{ "max_hp",                             &battle_config.max_hp,                        110000000,  100,    INT_MAX,     },
+	{ "max_sp",                             &battle_config.max_sp,                          32500,  100,    INT_MAX,     },
+	{ "max_cart_weight",                    &battle_config.max_cart_weight,                 8000,   100,    INT_MAX,        },
 	{ "max_parameter",                      &battle_config.max_parameter,                   99,     10,     SHRT_MAX,       },
 	{ "max_baby_parameter",                 &battle_config.max_baby_parameter,              80,     10,     SHRT_MAX,       },
 	{ "max_def",                            &battle_config.max_def,                         99,     0,      INT_MAX,        },
@@ -10961,7 +10962,6 @@ static const struct _battle_data {
 	{ "vcast_stat_scale",                   &battle_config.vcast_stat_scale,                530,    1,      INT_MAX,        },
 	{ "area_size",                          &battle_config.area_size,                       14,     0,      INT_MAX,        },
 	{ "zeny_from_mobs",                     &battle_config.zeny_from_mobs,                  0,      0,      1,              },
-	{ "item_the_box",                 	    &battle_config.item_the_box,                  0,      0,      1,              },
 	{ "mobs_level_up",                      &battle_config.mobs_level_up,                   0,      0,      1,              },
 	{ "mobs_level_up_exp_rate",             &battle_config.mobs_level_up_exp_rate,          1,      1,      INT_MAX,        },
 	{ "pk_min_level",                       &battle_config.pk_min_level,                    55,     1,      INT_MAX,        },
@@ -11273,7 +11273,7 @@ static const struct _battle_data {
 	{ "macro_detection_punishment",         &battle_config.macro_detection_punishment,      0,      0,      1,              },
 	{ "macro_detection_punishment_time",    &battle_config.macro_detection_punishment_time, 0,      0,      INT_MAX,        },
 
-	{ "feature.dynamicnpc_timeout",         &battle_config.feature_dynamicnpc_timeout,      1000,   60000,  INT_MAX,        },
+	{ "feature.dynamicnpc_timeout",         &battle_config.feature_dynamicnpc_timeout,      1000,   10000,  INT_MAX,        },
 	{ "feature.dynamicnpc_rangex",          &battle_config.feature_dynamicnpc_rangex,       2,      0,      INT_MAX,        },
 	{ "feature.dynamicnpc_rangey",          &battle_config.feature_dynamicnpc_rangey,       2,      0,      INT_MAX,        },
 	{ "feature.dynamicnpc_direction",       &battle_config.feature_dynamicnpc_direction,    0,      0,      1,              },
@@ -11282,16 +11282,17 @@ static const struct _battle_data {
 
 	{ "feature.stylist",                    &battle_config.feature_stylist,                 1,      0,      1,              },
 	{ "feature.banking_state_enforce",      &battle_config.feature_banking_state_enforce,   0,      0,      1,              },
+
+	{ "feature.goldpc_active",              &battle_config.feature_goldpc_active,           1,      0,      1,              },
+	{ "feature.goldpc_time",                &battle_config.feature_goldpc_time,				3600,	0,		3600,              },
+	{ "feature.goldpc_max_points",          &battle_config.feature_goldpc_max_points,		300,	0,		SHRT_MAX,              },
+	{ "feature.goldpc_vip",                 &battle_config.feature_goldpc_vip,				1,		0,		1,              },
+
 #ifdef RENEWAL
 	{ "feature.instance_allow_reconnect",   &battle_config.instance_allow_reconnect,        1,      0,      1,              },
 #else
 	{ "feature.instance_allow_reconnect",   &battle_config.instance_allow_reconnect,        0,      0,      1,              },
 #endif
-
-	{ "feature.goldpc_active",              &battle_config.feature_goldpc_active,           1,      0,      1,              },
-	{ "feature.goldpc_time",                &battle_config.feature_goldpc_time,          3600,      0,   3600,              },
-	{ "feature.goldpc_max_points",          &battle_config.feature_goldpc_max_points,     300,      0,    32000,              },
-	{ "feature.goldpc_vip",                 &battle_config.feature_goldpc_vip,              1,      0,      1,              },
 
 #include <custom/battle_config_init.inc>
 };

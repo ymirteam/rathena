@@ -2899,7 +2899,6 @@ int mob_dead(struct mob_data *md, struct block_list *src, int type)
 				}
 			}
 		}
-
 			// process script-granted zeny bonus (get_zeny_num) [Skotlex]
 			if( sd->bonus.get_zeny_num && rnd()%100 < sd->bonus.get_zeny_rate ) {
 				i = sd->bonus.get_zeny_num > 0 ? sd->bonus.get_zeny_num : -md->level * sd->bonus.get_zeny_num;
@@ -2927,7 +2926,7 @@ int mob_dead(struct mob_data *md, struct block_list *src, int type)
 		if( mapdrops != nullptr ){
 			// Process map wide drops
 			for( const auto& it : mapdrops->globals ){
-				if( rnd_chance32( it.second->rate, 100000 ) ){
+				if( rnd_chance( it.second->rate, 100000u ) ){
 					// 'Cheat' for autoloot command: rate is changed from n/100000 to n/10000
 					int32 map_drops_rate = max(1, (it.second->rate / 10));
 					mob_item_drop( md, dlist, mob_setdropitem( it.second.get(), 1, md->mob_id ), 0, map_drops_rate, (homkillonly || merckillonly) );
@@ -2939,7 +2938,7 @@ int mob_dead(struct mob_data *md, struct block_list *src, int type)
 
 			if( specific != mapdrops->specific.end() ){
 				for( const auto& it : specific->second ){
-					if( rnd_chance32( it.second->rate, 100000 ) ){
+					if( rnd_chance( it.second->rate, 100000u ) ){
 						// 'Cheat' for autoloot command: rate is changed from n/100000 to n/10000
 						int32 map_drops_rate = max(1, (it.second->rate / 10));
 						mob_item_drop( md, dlist, mob_setdropitem( it.second.get(), 1, md->mob_id ), 0, map_drops_rate, (homkillonly || merckillonly) );
@@ -4235,6 +4234,7 @@ int mob_clone_spawn(map_session_data *sd, int16 m, int16 x, int16 y, const char 
 	if (!md) return 0; //Failed?
 
 	md->special_state.clone = 1;
+	md->damagetaken = 100; // Avoid Green Aura reduction calculation.
 
 	if (master_id || flag || duration) { //Further manipulate crafted char.
 		if (flag&1) //Friendly Character
@@ -4379,30 +4379,6 @@ bool MobDatabase::parseDropNode(std::string nodeName, const ryml::NodeRef& node,
 
 	return true;
 }
-
-/**
- * Mob constructor
- */
-s_mob_db::s_mob_db() :
-	id(0),
-	sprite(""),
-	name(""),
-	jname(name),
-	base_exp(0),
-	job_exp(0),
-	mexp(0),
-	range2(0),
-	range3(0),
-	race2(),
-	lv(1),
-	dropitem(),
-	mvpitem(),
-	status(),
-	vd(),
-	option(0),
-	skill(),
-	damagetaken(100)
-{}
 
 /**
  * Reads and parses an entry from the mob_db.
@@ -6556,7 +6532,7 @@ bool MapDropDatabase::parseDrop( const ryml::NodeRef& node, std::unordered_map<u
 	if( this->nodeExists( node, "Rate" ) ){
 		uint32 rate;
 
-		if( !this->asUInt32Rate( node, "Rate", rate ) ){
+		if( !this->asUInt32Rate( node, "Rate", rate, 100000 ) ){
 			return false;
 		}
 

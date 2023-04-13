@@ -177,58 +177,6 @@ Body:
           - Index: 2
             Item: E_Abyss1
             Amount: 50
-          - Index: 3
-            Item: IllusionStone
-            Amount: 100
-      - Index: 10
-        Item: Morrigane_Manyeau_IL
-        RequiredItems:
-          - Index: 0
-            Item: Morrigane's_Manteau
-            Refine: 9
-          - Index: 1
-            Item: Rotten_Deepseafish
-            Amount: 100
-          - Index: 2
-            Item: E_Abyss1
-            Amount: 50
-          - Index: 3
-            Item: IllusionStone
-            Amount: 100
-      - Index: 11
-        Item: Morrigane_Belt_IL
-        RequiredItems:
-          - Index: 0
-            Item: Morrigane's_Belt
-          - Index: 1
-            Item: Deepsea_Fish_Tail
-            Amount: 100
-          - Index: 2
-            Item: E_Abyss1
-            Amount: 50
-          - Index: 3
-            Item: IL_Kraken_Leg
-            Amount: 15
-          - Index: 4
-            Item: IllusionStone
-            Amount: 100
-      - Index: 12
-        Item: Morrigane_Pendant_IL
-        RequiredItems:
-          - Index: 0
-            Item: Morrigane's_Pendant
-          - Index: 1
-            Item: Abysmal_Clam
-            Amount: 100
-          - Index: 2
-            Item: E_Abyss1
-            Amount: 50
-          - Index: 3
-            Item: Crown_Of_Witch
-            Amount: 15
-          - Index: 4
-            Item: IllusionStone
-            Amount: 100
   - Name: barter_ill_twins
     Items:
       - Index: 0
@@ -385,6 +333,54 @@ Body:
             Item: IllusionStone
             Amount: 100
       - Index: 10
+        Item: Morrigane_Manyeau_IL
+        RequiredItems:
+          - Index: 0
+            Item: Morrigane's_Manteau
+            Refine: 9
+          - Index: 1
+            Item: Rotten_Deepseafish
+            Amount: 100
+          - Index: 2
+            Item: E_Abyss1
+            Amount: 50
+          - Index: 3
+            Item: IllusionStone
+            Amount: 100
+      - Index: 11
+        Item: Morrigane_Belt_IL
+        RequiredItems:
+          - Index: 0
+            Item: Morrigane's_Belt
+          - Index: 1
+            Item: Deepsea_Fish_Tail
+            Amount: 100
+          - Index: 2
+            Item: E_Abyss1
+            Amount: 50
+          - Index: 3
+            Item: IL_Kraken_Leg
+            Amount: 15
+          - Index: 4
+            Item: IllusionStone
+            Amount: 100
+      - Index: 12
+        Item: Morrigane_Pendant_IL
+        RequiredItems:
+          - Index: 0
+            Item: Morrigane's_Pendant
+          - Index: 1
+            Item: Abysmal_Clam
+            Amount: 100
+          - Index: 2
+            Item: E_Abyss1
+            Amount: 50
+          - Index: 3
+            Item: Crown_Of_Witch
+            Amount: 15
+          - Index: 4
+            Item: IllusionStone
+            Amount: 100
         Item: Sprint_Ring_IL
         RequiredItems:
           - Index: 0
@@ -398,7 +394,7 @@ Body:
           - Index: 3
             Item: IllusionStone
             Amount: 120
-      - Index: 11
+      - Index: 13
         Item: Sprint_Glove_IL
         RequiredItems:
           - Index: 0

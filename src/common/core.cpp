@@ -306,8 +306,8 @@ static void display_title(void) {
 	ShowMessage("" CL_PASS "       " CL_BT_WHITE "              http://rathena.org/board/                        " CL_PASS "" CL_CLL "" CL_NORMAL "\n");
 	ShowMessage("" CL_PASS "     " CL_BOLD "                                                                 " CL_PASS "" CL_CLL "" CL_NORMAL "\n");
 	ShowMessage("" CL_PASS "       " CL_BT_WHITE "             iberry-ro Merge Pull requests                  " CL_PASS "" CL_CLL "" CL_NORMAL "\n");
-	ShowMessage("" CL_PASS "       " CL_BT_WHITE "            Free distribution, not for sale.                  " CL_PASS "" CL_CLL "" CL_NORMAL "\n");
-	ShowMessage("" CL_PASS "       " CL_BT_WHITE "        For discord server : rAthena-TH Project.                  " CL_PASS "" CL_CLL "" CL_NORMAL "\n");
+	ShowMessage("" CL_PASS "       " CL_BT_WHITE "            Give away for free, not for sale.                  " CL_PASS "" CL_CLL "" CL_NORMAL "\n");
+	ShowMessage("" CL_PASS "       " CL_BT_WHITE "         For discord server : rAthena-TH Project.                 " CL_PASS "" CL_CLL "" CL_NORMAL "\n");
 	ShowMessage("" CL_PASS "       " CL_BT_WHITE "             https://discord.gg/AqFhZgws3H                  " CL_PASS "" CL_CLL "" CL_NORMAL "\n");
 	ShowMessage("" CL_PASS "     " CL_BOLD "                                                                 " CL_PASS "" CL_CLL "" CL_NORMAL "\n");
 
@@ -327,7 +327,7 @@ void usercheck(void)
 	}
 #else
 	if (geteuid() == 0) {
-		ShowWarning ("You are running rAthena with root privileges, it is not necessary.\n");
+		//ShowWarning ("You are running rAthena with root privileges, it is not necessary.\n");
 	}
 #endif
 #endif

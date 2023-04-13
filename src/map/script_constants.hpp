@@ -1877,7 +1877,23 @@
 	export_constant(SC_TOXIN_OF_MANDARA);
 	export_constant(SC_GOLDENE_TONE);
 	export_constant(SC_TEMPERING);
-	
+	export_constant(SC_GRADUAL_GRAVITY);
+	export_constant(SC_ALL_STAT_DOWN);
+	export_constant(SC_KILLING_AURA);
+	export_constant(SC_DAMAGE_HEAL);
+	export_constant(SC_IMMUNE_PROPERTY_NOTHING);
+	export_constant(SC_IMMUNE_PROPERTY_WATER);
+	export_constant(SC_IMMUNE_PROPERTY_GROUND);
+	export_constant(SC_IMMUNE_PROPERTY_FIRE);
+	export_constant(SC_IMMUNE_PROPERTY_WIND);
+	export_constant(SC_IMMUNE_PROPERTY_POISON);
+	export_constant(SC_IMMUNE_PROPERTY_SAINT);
+	export_constant(SC_IMMUNE_PROPERTY_DARKNESS);
+	export_constant(SC_IMMUNE_PROPERTY_TELEKINESIS);
+	export_constant(SC_IMMUNE_PROPERTY_UNDEAD);
+	export_constant(SC_RELIEVE_ON);
+	export_constant(SC_RELIEVE_OFF);
+
 	export_constant(SC_RUSH_QUAKE1);
 	export_constant(SC_RUSH_QUAKE2);
 
@@ -1945,22 +1961,7 @@
 	export_constant(SC_TEMPORARY_COMMUNION);
 	export_constant(SC_BLESSING_OF_M_CREATURES);
 	export_constant(SC_BLESSING_OF_M_C_DEBUFF);
-	export_constant(SC_RELIEVE_ON);
-	export_constant(SC_RELIEVE_OFF);
-	export_constant(SC_GRADUAL_GRAVITY);
-	export_constant(SC_ALL_STAT_DOWN);
-	export_constant(SC_KILLING_AURA);
-	export_constant(SC_DAMAGE_HEAL);
-	export_constant(SC_IMMUNE_PROPERTY_NOTHING);
-	export_constant(SC_IMMUNE_PROPERTY_WATER);
-	export_constant(SC_IMMUNE_PROPERTY_GROUND);
-	export_constant(SC_IMMUNE_PROPERTY_FIRE);
-	export_constant(SC_IMMUNE_PROPERTY_WIND);
-	export_constant(SC_IMMUNE_PROPERTY_POISON);
-	export_constant(SC_IMMUNE_PROPERTY_SAINT);
-	export_constant(SC_IMMUNE_PROPERTY_DARKNESS);
-	export_constant(SC_IMMUNE_PROPERTY_TELEKINESIS);
-	export_constant(SC_IMMUNE_PROPERTY_UNDEAD);
+
 
 #ifdef RENEWAL
 	export_constant(SC_EXTREMITYFIST2);
@@ -4594,8 +4595,8 @@
 	export_constant(IT_PETARMOR);
 	export_constant(IT_AMMO);
 	export_constant(IT_DELAYCONSUME);
-	export_constant(IT_CHARM);
 	export_constant(IT_SHADOWGEAR);
+	export_constant(IT_CHARM);
 	export_constant(IT_CASH);
 
 	/* weapon types */
@@ -6846,6 +6847,8 @@
 	export_constant(IG_CLASS_SHADOW_PD_CUBE);
 	export_constant(IG_CLASS_SHADOW_EA_CUBE);
 	export_constant(IG_ENCHANT_STONE_BOX30);
+
+	/* feature/kachua */
 	export_constant(IG_AEGIS_101920);
 	export_constant(IG_AEGIS_101921);
 	export_constant(IG_AEGIS_101923);

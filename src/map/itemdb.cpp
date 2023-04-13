@@ -1171,9 +1171,9 @@ void ItemDatabase::loadingFinished(){
 			item->look = 1;
 		}
 		// limit the sale value of all [null]
-		if (item->value_sell > battle_config.imited_sale_price) {
-            item->value_sell = battle_config.imited_sale_price;
-        } 
+		if (item->value_sell > battle_config.limit_sale_price){
+            item->value_sell = battle_config.limit_sale_price;
+        }
 	}
 
 	if( !this->exists( ITEMID_DUMMY ) ){
@@ -3093,8 +3093,8 @@ const char* itemdb_typename(enum item_types type)
 		case IT_PETARMOR:       return "Pet Accessory";
 		case IT_AMMO:           return "Arrow/Ammunition";
 		case IT_DELAYCONSUME:   return "Delay-Consume Usable";
-		case IT_CHARM:			return "Charm";
 		case IT_SHADOWGEAR:     return "Shadow Equipment";
+		case IT_CHARM:			return "Charm";
 		case IT_CASH:           return "Cash Usable";
 	}
 	return "Unknown Type";
@@ -3255,8 +3255,8 @@ char itemdb_isidentified(t_itemid nameid) {
 		case IT_WEAPON:
 		case IT_ARMOR:
 		case IT_PETARMOR:
-		case IT_CHARM:
 		case IT_SHADOWGEAR:
+		case IT_CHARM:
 			return 1; // [Start]
 		default:
 			return 1;

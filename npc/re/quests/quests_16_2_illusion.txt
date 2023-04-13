@@ -14,6 +14,7 @@
 //= 1.5 Added Illusion of Luanda [Capuche]
 //= 1.6 Added Illusion of Underwater [Capuche]
 //= 1.7 Added Illusion of Twins [Capuche]
+//============================================================
 
 //============================================================
 //= Illusion of Moonlight
@@ -2402,7 +2403,7 @@ OnInit:
 }
 
 // Jubilee Is the Priest's Name
-gef_d01_i,93,178,5	script	Marina#ilgf03	4_F_MONK,5,5,{
+gef_d01_i,93,178,5	script(CLOAKED)	Marina#ilgf03	4_F_MONK,5,5,{
 	end;
 OnTouch:
 	if (ill_vampire == 6) {
@@ -2428,9 +2429,6 @@ OnTouch:
 		setpcblock PCBLOCK_NPC, false;
 	}
 	end;
-OnInit:
-	cloakonnpc();
-	end;
 }
 gef_d01_i,127,153,5	duplicate(Marina#ilgf03)	Marina#ilgf04	4_F_MONK,5,5
 gef_d01_i,213,237,5	duplicate(Marina#ilgf03)	Marina#ilgf05	4_F_MONK,5,5
@@ -2453,7 +2451,7 @@ gef_d01_i,254,162,1	duplicate(dummy_cloaked_npc)	Undead#ilgf08	ILL_ZOMBIE
 gef_d01_i,252,160,1	duplicate(dummy_cloaked_npc)	Undead#ilgf09	ILL_ZOMBIE
 gef_d01_i,253,165,3	duplicate(dummy_cloaked_npc)	Marina#ilgf10	4_F_MONK
 
-gef_d01_i,250,164,5	script	Priest#ilgf01	4_M_MINISTER,5,5,{
+gef_d01_i,250,164,5	script(CLOAKED)	Priest#ilgf01	4_M_MINISTER,5,5,{
 	if (ill_vampire != 6)
 		end;
 	.@char_id = .@char_id;
@@ -2628,10 +2626,6 @@ OnTouch:
 	if (ill_vampire == 6)
 		npctalk "This is bad, really bad!", "", bc_self;
 	end;
-
-OnInit:
-	cloakonnpc();
-	end;
 }
 
 /*
@@ -2642,7 +2636,7 @@ gef_d01_i,113,97,7	duplicate(dummy_npc)	Wizard#ilgf05	2_M_SAGE_B,5,5
 gef_d01_i,116,96,1	duplicate(dummy_npc)	Undead#ilgf07	GHOUL
 */
 
-gef_d01_i,49,113,3	script	Wizard#ilgf06	4_GEFFEN_01,5,5,{
+gef_d01_i,49,113,3	script(CLOAKED)	Wizard#ilgf06	4_GEFFEN_01,5,5,{
 	end;
 OnTouch:
 	setpcblock PCBLOCK_NPC, true;
@@ -2666,15 +2660,12 @@ OnTouch:
 	cloakonnpcself( "Wizard#ilgf06" );
 	cloakonnpcself( "Wizard#ilgf07" );
 	end;
-OnInit:
-	cloakonnpc();
-	end;
 }
 gef_d01_i,46,112,5	duplicate(dummy_cloaked_npc)	Wizard#ilgf07	4_M_ARUNA_NFM1
 gef_d01_i,47,110,7	duplicate(dummy_cloaked_npc)	Undead#ilgf06	GHOUL
 
 
-gef_d01_i,137,60,3	script	Wizard#ilgf08	1_M_WIZARD,5,5,{
+gef_d01_i,137,60,3	script(CLOAKED)	Wizard#ilgf08	1_M_WIZARD,5,5,{
 	end;
 OnTouch:
 	setpcblock PCBLOCK_NPC, true;
@@ -2690,14 +2681,11 @@ OnTouch:
 	cloakonnpcself( "Wizard#ilgf08" );
 	cloakonnpcself( "Nameless Catacomb#ilgf01" );
 	end;
-OnInit:
-	cloakonnpc();
-	end;
 }
 gef_d01_i,136,58,5	duplicate(dummy_cloaked_npc)	Nameless Catacomb#ilgf01	4_SOIL
 
 
-gef_d01_i,67,85,5	script	Wizard#ilgf09	4_M_JOB_WIZARD,5,5,{
+gef_d01_i,67,85,5	script(CLOAKED)	Wizard#ilgf09	4_M_JOB_WIZARD,5,5,{
 	end;
 OnTouch:
 	setpcblock PCBLOCK_NPC, true;
@@ -2723,14 +2711,11 @@ OnTouch:
 	cloakonnpcself( "Wizard#ilgf09" );
 	cloakonnpcself( "Wizard#ilgf10" );
 	end;
-OnInit:
-	cloakonnpc();
-	end;
 }
 gef_d01_i,67,83,1	duplicate(dummy_cloaked_npc)	Wizard#ilgf10	4_GEFFEN_05
 
 
-gef_d01_i,156,234,3	script	Wizard#ilgf11	4_M_SIT_NOVICE,5,5,{
+gef_d01_i,156,234,3	script(CLOAKED)	Wizard#ilgf11	4_M_SIT_NOVICE,5,5,{
 	end;
 OnTouch:
 	setpcblock PCBLOCK_NPC, true;
@@ -2746,13 +2731,10 @@ OnTouch:
 	specialeffect EF_GUARD2;
 	cloakonnpcself( "Wizard#ilgf11" );
 	end;
-OnInit:
-	cloakonnpc();
-	end;
 }
 
 
-gef_d01_i,48,255,5	script	Wizard#ilgf12	1_M_WIZARD,5,5,{
+gef_d01_i,48,255,5	script(CLOAKED)	Wizard#ilgf12	1_M_WIZARD,5,5,{
 	end;
 OnTouch:
 	setpcblock PCBLOCK_NPC, true;
@@ -2777,15 +2759,12 @@ OnTouch:
 	cloakonnpcself( "Wizard#ilgf13" );
 	cloakonnpcself( "Nameless Catacomb#ilgf02" );
 	end;
-OnInit:
-	cloakonnpc();
-	end;
 }
 gef_d01_i,50,257,5	duplicate(dummy_cloaked_npc)	Wizard#ilgf13	2_F_MAGICMASTER
 gef_d01_i,50,254,5	duplicate(dummy_cloaked_npc)	Nameless Catacomb#ilgf02	4_SOIL
 
 
-gef_d01_i,112,267,3	script	Wizard#ilgf14	4_M_JOB_WIZARD,5,5,{
+gef_d01_i,112,267,3	script(CLOAKED)	Wizard#ilgf14	4_M_JOB_WIZARD,5,5,{
 	end;
 OnTouch:
 	setpcblock PCBLOCK_NPC, true;
@@ -2810,15 +2789,12 @@ OnTouch:
 	cloakonnpcself( "Wizard#ilgf15" );
 	cloakonnpcself( "Nameless Catacomb#ilgf03" );
 	end;
-OnInit:
-	cloakonnpc();
-	end;
 }
 gef_d01_i,110,266,5	duplicate(dummy_cloaked_npc)	Wizard#ilgf15	4_M_ARUNA_NFM1
 gef_d01_i,111,264,5	duplicate(dummy_cloaked_npc)	Nameless Catacomb#ilgf03	4_SOIL
 
 
-gef_d01_i,55,167,3	script	Wizard#ilgf16	4_M_ARUNA_NFM1,5,5,{
+gef_d01_i,55,167,3	script(CLOAKED)	Wizard#ilgf16	4_M_ARUNA_NFM1,5,5,{
 	end;
 OnTouch:
 	setpcblock PCBLOCK_NPC, true;
@@ -2834,14 +2810,11 @@ OnTouch:
 	cloakonnpcself( "Wizard#ilgf16" );
 	cloakonnpcself( "Wizard#ilgf17" );
 	end;
-OnInit:
-	cloakonnpc();
-	end;
 }
 gef_d01_i,53,166,7	duplicate(dummy_cloaked_npc)	Wizard#ilgf17	2_F_MAGICMASTER
 
 
-gef_d01_i,236,235,1	script	Wizard#ilgf18	1_M_WIZARD,5,5,{
+gef_d01_i,236,235,1	script(CLOAKED)	Wizard#ilgf18	1_M_WIZARD,5,5,{
 	end;
 OnTouch:
 	setpcblock PCBLOCK_NPC, true;
@@ -2857,14 +2830,11 @@ OnTouch:
 	cloakonnpcself( "Wizard#ilgf18" );
 	cloakonnpcself( "Someone's Dream#ilgf18" );
 	end;
-OnInit:
-	cloakonnpc();
-	end;
 }
 gef_d01_i,233,237,5	duplicate(dummy_cloaked_npc)	Someone's Dream#ilgf18	NIGHTMARE
 
 
-gef_d01_i,255,201,5	script	Wizard#ilgf19	4_GEFFEN_05,5,5,{
+gef_d01_i,255,201,5	script(CLOAKED)	Wizard#ilgf19	4_GEFFEN_05,5,5,{
 	end;
 OnTouch:
 	setpcblock PCBLOCK_NPC, true;
@@ -2886,15 +2856,12 @@ OnTouch:
 	cloakonnpcself( "Wizard#ilgf20" );
 	cloakonnpcself( "Undead#ilgf05" );
 	end;
-OnInit:
-	cloakonnpc();
-	end;
 }
 gef_d01_i,254,200,5	duplicate(dummy_cloaked_npc)	Wizard#ilgf20	2_F_MAGICMASTER
 gef_d01_i,256,198,1	duplicate(dummy_cloaked_npc)	Undead#ilgf05	GHOUL
 
 
-gef_d01_i,204,146,1	script	Wizard#ilgf21	4_GEFFEN_05,5,5,{
+gef_d01_i,204,146,1	script(CLOAKED)	Wizard#ilgf21	4_GEFFEN_05,5,5,{
 	end;
 OnTouch:
 	setpcblock PCBLOCK_NPC, true;
@@ -2923,9 +2890,6 @@ OnTouch:
 	cloakonnpcself( "Wizard#ilgf21" );
 	cloakonnpcself( "Wizard#ilgf22" );
 	end;
-OnInit:
-	cloakonnpc();
-	end;
 }
 gef_d01_i,202,149,5	duplicate(dummy_cloaked_npc)	Wizard#ilgf22	4_M_ARUNA_NFM1
 gef_d01_i,202,152,5	duplicate(dummy_cloaked_npc)	Undead#ilgf02	GHOUL
@@ -2933,7 +2897,7 @@ gef_d01_i,200,151,5	duplicate(dummy_cloaked_npc)	Undead#ilgf03	ZOMBIE
 gef_d01_i,204,151,3	duplicate(dummy_cloaked_npc)	Undead#ilgf04	GHOUL
 
 
-gef_d01_i,257,110,1	script	Wizard#ilgf23	4_F_BOMI,5,5,{
+gef_d01_i,257,110,1	script(CLOAKED)	Wizard#ilgf23	4_F_BOMI,5,5,{
 	end;
 OnTouch:
 	setpcblock PCBLOCK_NPC, true;
@@ -2951,14 +2915,11 @@ OnTouch:
 	cloakonnpcself( "Wizard#ilgf23" );
 	cloakonnpcself( "Fast Undead#ilgf01" );
 	end;
-OnInit:
-	cloakonnpc();
-	end;
 }
 gef_d01_i,253,112,5	duplicate(dummy_cloaked_npc)	Fast Undead#ilgf01	GHOUL
 
 
-gef_d01_i,230,76,3	script	Wizard#ilgf24	4_M_BIBI,5,5,{
+gef_d01_i,230,76,3	script(CLOAKED)	Wizard#ilgf24	4_M_BIBI,5,5,{
 	end;
 OnTouch:
 	setpcblock PCBLOCK_NPC, true;
@@ -2976,14 +2937,11 @@ OnTouch:
 	cloakonnpcself( "Wizard#ilgf24" );
 	cloakonnpcself( "Shining Mushroom#ilgf01" );
 	end;
-OnInit:
-	cloakonnpc();
-	end;
 }
 gef_d01_i,228,75,3	duplicate(dummy_cloaked_npc)	Shining Mushroom#ilgf01	ILL_BLACK_MUSHROOM
 
 
-gef_d01_i,93,34,1	script	Wizard#ilgf25	4_F_BOMI,5,5,{
+gef_d01_i,93,34,1	script(CLOAKED)	Wizard#ilgf25	4_F_BOMI,5,5,{
 	end;
 OnTouch:
 	setpcblock PCBLOCK_NPC, true;
@@ -3009,16 +2967,13 @@ OnTouch:
 	cloakonnpcself( "Wizard#ilgf26" );
 	cloakonnpcself( "Undead#ilgf01" );
 	end;
-OnInit:
-	cloakonnpc();
-	end;
 }
 gef_d01_i,94,37,3	duplicate(dummy_cloaked_npc)	Wizard#ilgf26	1_M_WIZARD
 gef_d01_i,91,35,5	duplicate(dummy_cloaked_npc)	Undead#ilgf01	GHOUL
 
 // gef_d01_i,101,124,3	duplicate(dummy_cloaked_npc)	Wizard#ilgf27	4_F_BOMI,5,5	// npc has official range. Effect ?
 gef_d01_i,101,124,3	duplicate(dummy_cloaked_npc)	Wizard#ilgf27	4_F_BOMI
-gef_d01_i,99,122,7	script	Wizard#ilgf28	4_F_BOMI,5,5,{
+gef_d01_i,99,122,7	script(CLOAKED)	Wizard#ilgf28	4_F_BOMI,5,5,{
 	end;
 OnTouch:
 	setpcblock PCBLOCK_NPC, true;
@@ -3040,9 +2995,6 @@ OnTouch:
 	specialeffect EF_GUARD2, AREA, "Wizard#ilgf28";
 	cloakonnpcself( "Wizard#ilgf27" );
 	cloakonnpcself( "Wizard#ilgf28" );
-	end;
-OnInit:
-	cloakonnpc();
 	end;
 }
 // End of the "Wizard illusions"
@@ -4604,7 +4556,7 @@ OnInit:
 	end;
 }
 
-gef_d01_i,189,98,3	script	Dracula#ilgf02	4_DRACULA,{
+gef_d01_i,189,98,3	script(CLOAKED)	Dracula#ilgf02	4_DRACULA,{
 	if (ill_vampire < 10) {
 		mes "[Dracula]";
 		mes "What brings you? I suggest you stay away out of this place.";
@@ -4866,9 +4818,6 @@ gef_d01_i,189,98,3	script	Dracula#ilgf02	4_DRACULA,{
 	mes "[Dracula]";
 	mes "The bat blood she drinks sometimes causes her to go out of her mind. She calms down after a while, but if the people from the Church see her in that vulnerable state, they will try to kill her.";
 	close;
-OnInit:
-	cloakonnpc();
-	end;
 }
 
 
@@ -4982,7 +4931,7 @@ OnTouch:
 	end;
 }
 
-ice_d03_i,155,43,3	script	Zeith#frozen01	4_M_FROZEN_GC,{
+ice_d03_i,155,43,3	script(CLOAKED)	Zeith#frozen01	4_M_FROZEN_GC,{
 	if (checkweight(1201,1) == 0 || (MaxWeight - Weight) < 2000) {
 		mes "I'm carrying too many types of items. I should lighten my bag first.";
 		close;
@@ -5326,13 +5275,9 @@ ice_d03_i,155,43,3	script	Zeith#frozen01	4_M_FROZEN_GC,{
 		close;
 	}
 	end;
-
-OnInit:
-	cloakonnpc();
-	end;
 }
 
-ice_d03_i,155,43,3	script	Zeith#frozen02	4_M_GUILLOTINE,{
+ice_d03_i,155,43,3	script(CLOAKED)	Zeith#frozen02	4_M_GUILLOTINE,{
 	if (illusion_frozen == 3) {
 		if (checkquest(15112,HUNTING) == 2) {
 			mes "[^0000ffZeith^000000]";
@@ -5471,13 +5416,9 @@ OnZeithDead:
 		specialeffect EF_ICECRASH;
 	}
 	end;
-
-OnInit:
-	cloakonnpc();
-	end;
 }
 
-ice_d03_i,150,43,5	script	Vrid#frozen01	4_M_FROZEN_KN,{
+ice_d03_i,150,43,5	script(CLOAKED)	Vrid#frozen01	4_M_FROZEN_KN,{
 	if (illusion_frozen == 3) {
 		if (checkquest(15112,HUNTING) == 2) {
 			cloakoffnpcself( "Zeith#frozen02" );
@@ -5492,21 +5433,15 @@ ice_d03_i,150,43,5	script	Vrid#frozen01	4_M_FROZEN_KN,{
 		close;
 	}
 	end;
-OnInit:
-	cloakonnpc();
-	end;
 }
 
-ice_d03_i,150,43,5	script	Vrid#frozen02	4_M_KNIGHT_BLACK,{
+ice_d03_i,150,43,5	script(CLOAKED)	Vrid#frozen02	4_M_KNIGHT_BLACK,{
 	end;
 OnVridDead:
 	if (illusion_frozen == 4) {
 		cloakonnpcself();
 		specialeffect EF_ICECRASH;
 	}
-	end;
-OnInit:
-	cloakonnpc();
 	end;
 }
 
@@ -5569,8 +5504,6 @@ ice_d03_i,150,104,3	duplicate(Heap of Dry Soil#frozen1)	Heap of Dry Soil#frozen2
 ice_d03_i,110,150,3	duplicate(Heap of Dry Soil#frozen1)	Heap of Dry Soil#frozen28	4_SOIL
 ice_d03_i,150,187,3	duplicate(Heap of Dry Soil#frozen1)	Heap of Dry Soil#frozen29	4_SOIL
 ice_d03_i,187,149,3	duplicate(Heap of Dry Soil#frozen1)	Heap of Dry Soil#frozen30	4_SOIL
-
-
 
 
 //============================================================
@@ -7393,6 +7326,7 @@ tur_d04_i,135,133,1	script	#illturg24	CLEAR_NPC,{
 tur_d04_i,137,126,0	duplicate(#illturgg11)	#illturgg24	HIDDEN_WARP_NPC,3,3
 
 
+
 //============================================================
 //= Illusion of Luanda
 //============================================================
@@ -8981,7 +8915,7 @@ prt_elib,57,18,4	script	Jerrymon#jerry	1_M_01,{
 		mes "The problem is... the amount of essence on a fishing rod can't make a whirlpool large enough for a person to fit in.";
 		next;
 		select( "Is this amount okay?" );
-		mes "- Showed the ^4d4dffAbyssal Essence^000000 received from Gein to Jerrymon. - ";
+		mes "- Showed the ^4d4dff" + getitemname(25899) + "^000000 received from Gein to Jerrymon. - ";
 		next;
 		mes "[Jerrymon]";
 		mes "Oh, just in case, I actually found it!";
@@ -9033,10 +8967,6 @@ izlude,126,53,4	script	Sirood#SRD2	1_M_04,{
 	mes "[Sirood]";
 	mes "I thought I'd never come back...";
 	close;
-
-OnInit:
-	cloakonnpc();
-	end;
 }
 
 izlude,129,49,4	script	Soup#Soup	1_M_02,{
@@ -9355,7 +9285,7 @@ OnInit:
 	end;
 }
 
-izlude,132,54,4	script	Jerrymon#jerry2	1_M_01,{
+izlude,132,54,4	script(CLOAKED)	Jerrymon#jerry2	1_M_01,{
 	if (ill_underwater < 4)
 		end;
 	if (ill_underwater == 4) {
@@ -9430,7 +9360,6 @@ izlude,132,54,4	script	Jerrymon#jerry2	1_M_01,{
 	end;
 
 OnInit:
-	cloakonnpc();
 	questinfo( QTYPE_QUEST, QMARK_YELLOW, "isbegin_quest(3409) == 1" );
 	end;
 }
@@ -9465,17 +9394,17 @@ iz_d04_i,127,228,4	script	Jerrymon#jerry3	1_M_01,{
 			mes "Ah, ah... that, right? That should take precedence.";
 			next;
 			mes "[Jerrymon]";
-			mes "In order to bring Sirood back ashore, we need an additional ^4d4dffAbyssal Essence^000000. The question is how to get it...";
+			mes "In order to bring Sirood back ashore, we need an additional ^4d4dff" + getitemname(25899) + "^000000. The question is how to get it...";
 			next;
 			mes "[Jerrymon]";
 			mes "I've been watching the deep sea creatures here, and I've seen some of them glow with the essence of the abyss.";
 			mes "And they seem to threaten us sometimes.";
 			next;
 			mes "[Jerrymon]";
-			mes "In that sense, could you handle some of the deep sea creatures? Maybe we can get ^4d4dffAbyssal Essence^000000 from them.";
+			mes "In that sense, could you handle some of the deep sea creatures? Maybe we can get ^4d4dff" + getitemname(25899) + "^000000 from them.";
 			next;
 			mes "[Jerrymon]";
-			mes "Please take out 10 each of ^4d4dffDeep Sea Sropho^000000, ^4d4dffDeep Sea Deviace^000000, and ^4d4dffDeep Sea Marse^000000.";
+			mes "Please take out 10 each of ^4d4dff" + getmonsterinfo("ILL_SROPHO", MOB_NAME) + "^000000, ^4d4dff" + getmonsterinfo("ILL_DEVIACE", MOB_NAME) + "^000000, and ^4d4dff" + getmonsterinfo("ILL_MARSE", MOB_NAME) + "^000000.";
 			next;
 			if (select( "Okay", "I'll do it next time" ) == 2) {
 				mes "[Jerrymon]";
@@ -9490,17 +9419,17 @@ iz_d04_i,127,228,4	script	Jerrymon#jerry3	1_M_01,{
 		case 0:
 		case 1:
 			mes "[Jerrymon]";
-			mes "Please take out 10 each of ^4d4dffDeep Sea Sropho^000000, ^4d4dffDeep Sea Deviace^000000, and ^4d4dffDeep Sea Marse^000000.";
+			mes "Please take out 10 each of ^4d4dff" + getmonsterinfo("ILL_SROPHO", MOB_NAME) + "^000000, ^4d4dff" + getmonsterinfo("ILL_DEVIACE", MOB_NAME) + "^000000, and ^4d4dff" + getmonsterinfo("ILL_MARSE", MOB_NAME) + "^000000.";
 			next;
 			mes "[Jerrymon]";
 			mes "I'll be waiting for you here.";
 			close;
 		case 2:
 			mes "[Jerrymon]";
-			mes "Thank you for your hard work, you also brought ^4d4dffAbyssal Essence^000000!! As expected, my prediction was correct.";
+			mes "Thank you for your hard work, you also brought ^4d4dff" + getitemname(25899) + "^000000!! As expected, my prediction was correct.";
 			next;
 			mes "[Jerrymon]";
-			mes "It looks like we only need about 10 ^4d4dffAbyssal Essence^000000 to send Sirood back ashore.";
+			mes "It looks like we only need about 10 ^4d4dff" + getitemname(25899) + "^000000 to send Sirood back ashore.";
 			next;
 			mes "[Jerrymon]";
 			mes "If you collect them, I'll create a whirlpool for you.";
@@ -9523,14 +9452,14 @@ iz_d04_i,127,228,4	script	Jerrymon#jerry3	1_M_01,{
 	if (ill_underwater == 6) {
 		if (countitem(25899) < 10) {
 			mes "[Jerrymon]";
-			mes "Please bring ^4d4dff10 Abyssal Essence^000000.";
+			mes "Please bring ^4d4dff10 " + getitemname(25899) + "^000000.";
 			next;
 			mes "[Jerrymon]";
 			mes "I'd like to save it myself, but as you can see I'm weak, heck.";
 			close;
 		}
 		mes "[Jerrymon]";
-		mes "Thank you for your hard work!! You brought 10 ^4d4dffAbyssal Essence^000000.";
+		mes "Thank you for your hard work!! You brought 10 ^4d4dff" + getitemname(25899) + "^000000.";
 		next;
 		mes "[Jerrymon]";
 		mes "Would you like to go ashore now?";
@@ -9604,7 +9533,7 @@ iz_d04_i,127,228,4	script	Jerrymon#jerry3	1_M_01,{
 	mes "So, can you help me a bit more?";
 	next;
 	mes "[Jerrymon]";
-	mes "I need more ^4d4dffAbyssal Essence^000000, and I'd like you to take care of the ^4d4dffDeep Sea Creatures^000000 that get in the way of my research.";
+	mes "I need more ^4d4dff" + getitemname(25899) + "^000000, and I'd like you to take care of the ^4d4dffDeep Sea Creatures^000000 that get in the way of my research.";
 	next;
 	switch( select( "Okay", "I'll do it next time", "I want to go back to Izlude" ) ) {
 	case 1:
@@ -9616,13 +9545,13 @@ iz_d04_i,127,228,4	script	Jerrymon#jerry3	1_M_01,{
 		case -1:
 			switch( isbegin_quest(3413) ) {
 			case 0:
-				.@menu$[0] = "Collect Abyssal Essence";
+				.@menu$[0] = "Collect " + getitemname(25899) + "";
 				break;
 			case 1:
 				if (countitem(25899) < 10)
-					.@menu$[0] = "Collecting Abyssal Essence - In Progress";
+					.@menu$[0] = "Collecting " + getitemname(25899) + " - In Progress";
 				else
-					.@menu$[0] = "Collect Abyssal Essence - Done";
+					.@menu$[0] = "Collect " + getitemname(25899) + " - Done";
 				break;
 			case 2:
 				end;
@@ -9630,7 +9559,7 @@ iz_d04_i,127,228,4	script	Jerrymon#jerry3	1_M_01,{
 			break;
 		case 0:
 		case 1:
-			.@menu$[0] = "^999999Abyssal Essence Collection - Pending^000000";
+			.@menu$[0] = "^999999" + getitemname(25899) + " Collection - Pending^000000";
 			break;
 		case 2:
 			break;
@@ -9674,7 +9603,7 @@ iz_d04_i,127,228,4	script	Jerrymon#jerry3	1_M_01,{
 			switch( isbegin_quest(3413) ) {
 			case 0:
 				mes "[Jerrymon]";
-				mes "^4d4dffAbyssal Essence^000000 can be obtained from all the deep sea creatures here.";
+				mes "^4d4dff" + getitemname(25899) + "^000000 can be obtained from all the deep sea creatures here.";
 				mes "I need 10 right now.";
 				next;
 				mes "[Jerrymon]";
@@ -9685,14 +9614,14 @@ iz_d04_i,127,228,4	script	Jerrymon#jerry3	1_M_01,{
 			case 1:
 				if (countitem(25899) < 10) {
 					mes "[Jerrymon]";
-					mes "I need 10 ^4d4dffAbyssal Essence^000000.";
+					mes "I need 10 ^4d4dff" + getitemname(25899) + "^000000.";
 					next;
 					mes "[Jerrymon]";
 					mes "Come back to me when you've collected all the essences!";
 					close;
 				}
 				mes "[Jerrymon]";
-				mes "You've collected all the Abyssal Essence!!";
+				mes "You've collected all the " + getitemname(25899) + "!!";
 				next;
 				mes "[Jerrymon]";
 				mes "Thank you, I'll put it to good use in my research.";
@@ -9721,7 +9650,7 @@ iz_d04_i,127,228,4	script	Jerrymon#jerry3	1_M_01,{
 			switch( checkquest(3415,HUNTING) ) {
 			case -1:
 				mes "[Jerrymon]";
-				mes "Please kill 10 each of ^4d4dffDeep Sea Sropho^000000, ^4d4dffDeep Sea Deviace^000000 and ^4d4dffDeep Sea Marse^000000 that roam around here.";
+				mes "Please kill 10 each of ^4d4dff" + getmonsterinfo("ILL_SROPHO", MOB_NAME) + "^000000, ^4d4dff" + getmonsterinfo("ILL_DEVIACE", MOB_NAME) + "^000000 and ^4d4dff" + getmonsterinfo("ILL_MARSE", MOB_NAME) + "^000000 that roam around here.";
 				next;
 				mes "[Jerrymon]";
 				mes "Then take care of yourself~~!!";
@@ -9731,7 +9660,7 @@ iz_d04_i,127,228,4	script	Jerrymon#jerry3	1_M_01,{
 			case 0:
 			case 1:
 				mes "[Jerrymon]";
-				mes "Please kill 10 each of ^4d4dffDeep Sea Sropho^000000, ^4d4dffDeep Sea Deviace^000000, and ^4d4dffDeep Sea Marse^000000.";
+				mes "Please kill 10 each of ^4d4dff" + getmonsterinfo("ILL_SROPHO", MOB_NAME) + "^000000, ^4d4dff" + getmonsterinfo("ILL_DEVIACE", MOB_NAME) + "^000000, and ^4d4dff" + getmonsterinfo("ILL_MARSE", MOB_NAME) + "^000000.";
 				close;
 			case 2:
 				mes "[Jerrymon]";
@@ -9856,7 +9785,7 @@ OnTouch:
 	end;
 }
 
-iz_d04_i,125,226,5	script	Sirood#SRD4	1_M_04,{
+iz_d04_i,125,226,5	script(CLOAKED)	Sirood#SRD4	1_M_04,{
 	if (ill_underwater != 5 && ill_underwater != 6)
 		end;
 	switch( isbegin_quest(3410) ) {
@@ -9914,10 +9843,6 @@ iz_d04_i,125,226,5	script	Sirood#SRD4	1_M_04,{
 	case 2:
 		end;
 	}
-	end;
-
-OnInit:
-	cloakonnpc();
 	end;
 }
 
@@ -10035,7 +9960,7 @@ iz_d05_i,138,186,5	script	Kena#Kena	4_M_02,{
 		switch( checkquest(3417,HUNTING) ) {
 		case -1:
 			mes "[Kena]";
-			mes "Please kill 10 each of ^4d4dffDeep Sea Swordfish^000000, ^4d4dffDeep Sea Phen^000000, and ^4d4dffDeep Sea King Dramoh^000000.";
+			mes "Please kill 10 each of ^4d4dff" + getmonsterinfo("ILL_SWORD_FISH", MOB_NAME) + "^000000, ^4d4dff" + getmonsterinfo("ILL_PHEN", MOB_NAME) + "^000000, and ^4d4dff" + getmonsterinfo("ILL_KING_DRAMOH", MOB_NAME) + "^000000.";
 			next;
 			mes "[Kena]";
 			mes "These monsters are quite ferocious, so be very careful.";
@@ -10048,7 +9973,7 @@ iz_d05_i,138,186,5	script	Kena#Kena	4_M_02,{
 		case 0:
 		case 1:
 			mes "[Kena]";
-			mes "^4d4dffDeep Sea Swordfish^000000, ^4d4dffDeep Sea Phen^000000, and ^4d4dffDeep Sea King Dramoh^000000";
+			mes "^4d4dff" + getmonsterinfo("ILL_SWORD_FISH", MOB_NAME) + "^000000, ^4d4dff" + getmonsterinfo("ILL_PHEN", MOB_NAME) + "^000000, and ^4d4dff" + getmonsterinfo("ILL_KING_DRAMOH", MOB_NAME) + "^000000.";
 			next;
 			mes "[Kena]";
 			mes "Please kill 10 of each.";
@@ -10083,7 +10008,7 @@ iz_d05_i,138,186,5	script	Kena#Kena	4_M_02,{
 		switch( checkquest(3419,HUNTING) ) {
 		case -1:
 			mes "[Kena]";
-			mes "Please take out 15 ^4d4dffDeep Sea Sedora^000000 and ^4d4dffDeep Sea Strouf^000000 each.";
+			mes "Please take out 15 ^4d4dff" + getmonsterinfo("ILL_SEDORA", MOB_NAME) + "^000000 and ^4d4dff" + getmonsterinfo("ILL_STROUF", MOB_NAME) + "^000000 each.";
 			next;
 			mes "[Kena]";
 			mes "They are quite annoying, so be careful.";
@@ -10093,7 +10018,7 @@ iz_d05_i,138,186,5	script	Kena#Kena	4_M_02,{
 		case 0:
 		case 1:
 			mes "[Kena]";
-			mes "Please take out 15 ^4d4dffDeep Sea Sedora^000000 and ^4d4dffDeep Sea Strouf^000000 each.";
+			mes "Please take out 15 ^4d4dff" + getmonsterinfo("ILL_SEDORA", MOB_NAME) + "^000000 and ^4d4dff" + getmonsterinfo("ILL_STROUF", MOB_NAME) + "^000000 each.";
 			close;
 		case 2:
 			mes "[Kena]";

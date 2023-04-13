@@ -943,10 +943,8 @@ public:
 	} captcha_upload;
 
 	s_macro_detect macro_detect;
-
 	std::vector<uint32> party_booking_requests;
 	int goldpc_tid;
-
 	// The last item the player used before getgroupitem script command is called. Used in broadcast packet only
 	t_itemid opened_box_id;
 };

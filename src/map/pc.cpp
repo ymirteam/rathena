@@ -3431,7 +3431,8 @@ void pc_delautobonus(map_session_data &sd, std::vector<std::shared_ptr<s_autobon
 			}
 		} else {
 			// Not all required items equipped anymore
-			restore = false;
+			it = bonus.erase(it);
+			continue;
 		}
 
 		if( restore ){
@@ -6023,8 +6024,8 @@ enum e_additem_result pc_additem(map_session_data *sd,struct item *item,int amou
 		if (!itemdb_isstackable2(id) || id->flag.guid)
 			sd->inventory.u.items_inventory[i].unique_id = item->unique_id ? item->unique_id : pc_generate_unique_id(sd);
 
-        if ( id->type == IT_CHARM )
-            sd->inventory.u.items_inventory[i].favorite = 1;
+		if ( id->type == IT_CHARM )
+            sd->inventory.u.items_inventory[i].favorite = 1; // [Memory of Thanatos#0702]
 
 		clif_additem(sd,i,amount,0);
 	}
@@ -6091,8 +6092,9 @@ char pc_delitem(map_session_data *sd,int n,int amount,int type, short reason, e_
 	if(!(type&2))
 		clif_updatestatus(sd,SP_WEIGHT);
 
-	if (mem == IT_CHARM) status_calc_pc(sd, SCO_NONE);
 	pc_show_questinfo(sd);
+
+	if (mem == IT_CHARM) status_calc_pc(sd, SCO_NONE);
 
 	return 0;
 }

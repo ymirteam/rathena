@@ -2796,8 +2796,8 @@ void char_set_defaults(){
 	charserv_config.autosave_interval = DEFAULT_AUTOSAVE_INTERVAL;
 	charserv_config.start_zeny = 0;
 	charserv_config.guild_exp_rate = 100;
-	charserv_config.guild_extension = 6;
 	charserv_config.guild_member = 16;
+	charserv_config.guild_extension = 6;
 
 	charserv_config.clan_remove_inactive_days = 14;
 	charserv_config.mail_return_days = 14;

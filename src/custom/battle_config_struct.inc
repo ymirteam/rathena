@@ -12,7 +12,5 @@
  *	 <datatype> name;
  **/
 
-
-int item_1,item_2;	// Item ID for the box [null]
-int imited_sale_price;	// limit the sale value of all [null]
-
+int item_the_box,item_1,item_2; // item the box mobs drop all [null]
+int limit_sale_price;	// limit the sale value of all [null]

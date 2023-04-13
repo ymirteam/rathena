@@ -101,14 +101,15 @@ Body:
     Flags:
       DropEffect: RED_PILLAR
     Script: |
-      .@i = 30001; dispbottom "[System] : You got "+ callfunc("F_InsertComma",(countitem(.@i)+1)) +" Cash Points";
+      .@i = 30001;
+      dispbottom "[System] : You got "+ callfunc("F_InsertComma",(countitem(.@i)+1)) +" Cash Points";
       #CASHPOINTS += (countitem(.@i) + 1);
       delitem .@i,countitem(.@i);
       dispbottom  "[System] : You have "+ callfunc("F_InsertComma",#CASHPOINTS) +" Cash Points";
   - Id: 30002
     AegisName: Cash_1MP
     Name: Cash 1000000 Points
-    Type: Usable
+    Type: CASH
     Flags:
       DropEffect: RED_PILLAR
     Script: |

@@ -8268,13 +8268,13 @@ int skill_castend_nodamage_id (struct block_list *src, struct block_list *bl, ui
 	case TR_MYSTIC_SYMPHONY:
 	case TR_KVASIR_SONATA:
 	case EM_SPELL_ENCHANTING:
+	case NPC_DAMAGE_HEAL:
+	case NPC_RELIEVE_ON:
+	case NPC_RELIEVE_OFF:
 	case SKE_ENCHANTING_SKY:
 	case HN_BREAKINGLIMIT:
 	case HN_RULEBREAK:
 	case SH_TEMPORARY_COMMUNION:
-	case NPC_RELIEVE_ON:
-	case NPC_RELIEVE_OFF:
-	case NPC_DAMAGE_HEAL:
 		clif_skill_nodamage(src,bl,skill_id,skill_lv,
 			sc_start(src,bl,type,100,skill_lv,skill_get_time(skill_id,skill_lv)));
 		break;
@@ -8283,10 +8283,12 @@ int skill_castend_nodamage_id (struct block_list *src, struct block_list *bl, ui
 			sc_start(src,bl,type,100,skill_lv,skill_get_time(skill_id,skill_lv)));
 		sc_start2(src,bl,SC_KYRIE,100,skill_lv,skill_id,skill_get_time(skill_id,skill_lv));
 		break;
+
 	case NPC_GRADUAL_GRAVITY:
-		status_change_start(src, bl, type, 10000, skill_lv, 0, 0, 0, skill_get_time(skill_id, skill_lv), SCSTART_NOAVOID | SCSTART_NOTICKDEF | SCSTART_NORATEDEF);
+		status_change_start(src, bl, type, 10000, skill_lv, 0, 0, 0, skill_get_time(skill_id, skill_lv), SCSTART_NOAVOID|SCSTART_NOTICKDEF|SCSTART_NORATEDEF);
 		clif_skill_nodamage(src, bl, skill_id, skill_lv, 1);
 		break;
+
 	case NPC_ALL_STAT_DOWN: 
 		status_change_start(src, bl, type, 10000, skill_lv, 0, 0, 0, skill_get_time(skill_id, skill_lv), SCSTART_NOAVOID|SCSTART_NOTICKDEF|SCSTART_NORATEDEF);
 		clif_skill_nodamage(src, bl, skill_id, skill_lv, 1);
@@ -8496,21 +8498,7 @@ int skill_castend_nodamage_id (struct block_list *src, struct block_list *bl, ui
 	case NPC_ANTIMAGIC:
 		clif_skill_nodamage(src,bl,skill_id,skill_lv,
 			sc_start2(src,bl,type,100,skill_lv,skill_id,skill_get_time(skill_id,skill_lv)));
-		break;/* #7024
-	case NPC_MOVE_COORDINATE:
-		if (src != bl) {
-			int x = src->x, y = src->y;
-			if (unit_movepos(src,bl->x,bl->y,0,0)) {
-				clif_skill_nodamage(src,src,skill_id,skill_lv,1);
-				clif_blown(src);
-				if (unit_movepos(bl,x,y,0,0)) {
-					clif_skill_nodamage(bl,bl,skill_id,skill_lv,1);
-					clif_blown(bl);
-				}
-				map_foreachinallrange(unit_changetarget,src,AREA_SIZE,BL_MOB,bl,src);
-			}
-		}
-		break;*/
+		break;
 	case HLIF_AVOID:
 	case HAMI_DEFENCE:
 		sc_start(src,bl,type,100,skill_lv,skill_get_time(skill_id,skill_lv)); // Master
@@ -14217,9 +14205,9 @@ int skill_castend_pos2(struct block_list* src, int x, int y, uint16 skill_id, ui
 		case LG_EARTHDRIVE:
 		case SC_ESCAPE:
 		case SU_CN_METEOR:
+		case NPC_RAINOFMETEOR:
 		case NW_GRENADES_DROPPING:
 		case HN_METEOR_STORM_BUSTER:
-		case NPC_RAINOFMETEOR:
 			break; //Effect is displayed on respective switch case.
 		default:
 			if(skill_get_inf(skill_id)&INF_SELF_SKILL)
@@ -15314,7 +15302,7 @@ int skill_castend_pos2(struct block_list* src, int x, int y, uint16 skill_id, ui
 		map_foreachinallarea(skill_area_sub, src->m, x - i, y - i, x + i, y + i, BL_CHAR,
 			src, skill_id, skill_lv, tick, flag | BCT_ENEMY | 1, skill_castend_damage_id);
 		break;
- 
+
 	case NPC_RAINOFMETEOR:
 		{
 			int area = skill_get_splash(skill_id, skill_lv);
@@ -22137,8 +22125,8 @@ static int skill_unit_timer_sub(DBKey key, DBData *data, va_list ap)
 
 			default:
 				if (group->val2 == 1 && (group->skill_id == WZ_METEOR || group->skill_id == SU_CN_METEOR || group->skill_id == SU_CN_METEOR2 || 
-					group->skill_id == AG_VIOLENT_QUAKE_ATK || group->skill_id == AG_ALL_BLOOM_ATK || group->skill_id == AG_ALL_BLOOM_ATK2 || 
-					group->skill_id == HN_METEOR_STORM_BUSTER ||  group->skill_id == NPC_RAINOFMETEOR)) {
+					group->skill_id == AG_VIOLENT_QUAKE_ATK || group->skill_id == AG_ALL_BLOOM_ATK || group->skill_id == AG_ALL_BLOOM_ATK2 ||
+					group->skill_id == NPC_RAINOFMETEOR || group->skill_id == HN_METEOR_STORM_BUSTER)) {
 					// Deal damage before expiration
 					break;
 				}
@@ -22195,7 +22183,7 @@ static int skill_unit_timer_sub(DBKey key, DBData *data, va_list ap)
 			default:
 				if (group->skill_id == WZ_METEOR || group->skill_id == SU_CN_METEOR || group->skill_id == SU_CN_METEOR2 || 
 					group->skill_id == AG_VIOLENT_QUAKE_ATK || group->skill_id == AG_ALL_BLOOM_ATK || group->skill_id == AG_ALL_BLOOM_ATK2 ||
-					group->skill_id == HN_METEOR_STORM_BUSTER || group->skill_id == NPC_RAINOFMETEOR) {
+					group->skill_id == NPC_RAINOFMETEOR || group->skill_id == HN_METEOR_STORM_BUSTER ) {
 					if (group->val2 == 0 && (DIFF_TICK(tick, group->tick) >= group->limit - group->interval || DIFF_TICK(tick, group->tick) >= unit->limit - group->interval)) {
 						// Unit will expire the next interval, start dropping Meteor
 						block_list *src = map_id2bl(group->src_id);
@@ -22237,7 +22225,7 @@ static int skill_unit_timer_sub(DBKey key, DBData *data, va_list ap)
 		}
 		else if (group->skill_id == WZ_METEOR || group->skill_id == SU_CN_METEOR || group->skill_id == SU_CN_METEOR2 || 
 			group->skill_id == AG_VIOLENT_QUAKE_ATK || group->skill_id == AG_ALL_BLOOM_ATK || group->skill_id == AG_ALL_BLOOM_ATK2 ||
-			group->skill_id == HN_METEOR_STORM_BUSTER || group->skill_id == NPC_RAINOFMETEOR ||
+			group->skill_id == NPC_RAINOFMETEOR ||group->skill_id == HN_METEOR_STORM_BUSTER ||
 			((group->skill_id == CR_GRANDCROSS || group->skill_id == NPC_GRANDDARKNESS) && unit->val1 <= 0)) {
 			skill_delunit(unit);
 			return 0;
