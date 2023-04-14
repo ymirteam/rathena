@@ -37,6 +37,9 @@ tb4_damage_rate: 1
 // Flee, Perfect Dodge Penalty (1 = Decrease by 1%)
 tb4_flee_penalty: 99
 
+// Randomly drop all MVP items. [null]
+mvp_random_item_drop: yes
+
 // item the box mobs drop all
 item_the_box: no
 

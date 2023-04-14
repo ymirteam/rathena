@@ -2877,6 +2877,27 @@ int mob_dead(struct mob_data *md, struct block_list *src, int type)
 				}
 			}
 
+			// Randomly drop all MVP items. [null]
+			if (md->db->mexp > 0) {
+
+			t_itemid dropid = 0;
+            std::shared_ptr<item_data> all_i_data;
+            all_i_data = item_db.find(rnd_value(500, INT_MAX));
+				while (all_i_data == nullptr) 
+			all_i_data = item_db.find(rnd_value(500, INT_MAX));
+
+            dropid = all_i_data->nameid;
+
+			drop_rate = mob_getdroprate(src, md->db, cap_value(battle_config.item_rate_mvp_random * (rnd() % (md->level / 10)), 0, 10000), drop_modifier);
+			if (rnd() % 10000 < drop_rate){
+				
+                struct s_mob_drop mobdrop;
+                memset(&mobdrop, 0, +sizeof(struct s_mob_drop));
+				mobdrop.nameid = dropid;
+				mob_item_drop(md, dlist, mob_setdropitem(&mobdrop, 1, md->mob_id), 0, drop_rate, +homkillonly || merckillonly);
+				}
+			}
+
 			// THE BOX KEY [Start]
 			if(battle_config.item_the_box && md->level) {
 			drop_rate = mob_getdroprate(src, md->db, cap_value(battle_config.item_rate_the_box_key * (rnd() % md->level), 0, 10000), drop_modifier);
@@ -2889,7 +2910,7 @@ int mob_dead(struct mob_data *md, struct block_list *src, int type)
 			}
 			// MvP Refine [Start]
 			if (md->db->mexp > 0) {
-				drop_rate = mob_getdroprate(src, md->db, cap_value(battle_config.item_rate_mvp_refine * (rnd() % (md->level / 9)), 0, 10000), drop_modifier);
+				drop_rate = mob_getdroprate(src, md->db, cap_value(battle_config.item_rate_mvp_refine * (rnd() % (md->level / 10)), 0, 10000), drop_modifier);
 				if (rnd() % 10000 < drop_rate)
 				{
 					struct s_mob_drop mobdrop = {};
