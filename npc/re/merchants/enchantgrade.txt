@@ -64,6 +64,7 @@ grademk,34,184,4	script	Sratos#sratos	4_JP_GARM_H,{
 
 OnInit:
 	setunittitle(getnpcid(0), "<Grade Enhancer>");
+		waitingroom "[#] Enchant Grade",0;
 	end;
 }
 
@@ -129,3 +130,6 @@ prontera,50,293,0	warp	Grademk_Int	1,1,grademk,13,172
 grademk,9,172,0	warp	Grademk_Out	1,1,prontera,50,290
 paramk,8,171,0	warp	grade_in	1,1,paramk,141,64
 paramk,145,64,0	warp	grade_out	1,1,paramk,11,171
+
+//============================================================
+morocc,123,76,5	duplicate(Sratos#sratos)	Sratos	4_JP_GARM_H

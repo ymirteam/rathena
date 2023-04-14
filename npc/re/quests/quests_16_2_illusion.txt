@@ -19,92 +19,89 @@
 //============================================================
 //= Illusion of Moonlight
 //============================================================
-payon,164,229,5	script	Elder Sanyul#illusion_moonlight	1_F_ORIENT_04,{
+payon,164,229,5	script	Payon Elder Sanyul#illusion_moonlight	1_F_ORIENT_04,{
 	if (BaseLevel < 100) {
-		mes "[ Sanyul ]";
-		mes "Mm, I have a feeling something suspicious is about to happen.";
-		mes "I wish you were stronger. Then, I would've been able to tell you about it.";
+		mes "[Sanyul]";
+		mes "อืม ข้ารู้สึกเหมือนว่ามันมีอะไรบางอย่างที่น่าสงสัยเกิดขึ้นเลยน่ะ ถ้ามีนัก  ผจญภัยที่แข็งแกร่งกว่าเจ้าอีกสัก หน่อยข้าคงจะลองเล่าให้ฟังอยู่หรอก... น่าเสียดายจังนะ";
 		next;
-		mes "^4D4DFFYou must be Level 100 or above to perform this quest.^000000";
+		mes "^0000FFเควสสำหรับผู้เล่นที่มีเลเวล 100 ขึ้นไปเท่านั้น^000000";
 		close;
 	}
 	if (illusion_moonlight == 0) {
 	OnStart:
-		mes "[ Jagyeom ]";
-		mes "This matter is out of our hands now.";
-		mes "We can't let it keep happening like this.";
+		mes "[Sanyul]";
+		mes "เหมือนว่าเรื่องนี้คงจะหลุดมือเราไปแล้วล่ะ";
+		mes "ครั้งนี้เป็นครั้งที่เท่าไหร่แล้วนะ";
 		next;
-		mes "[ Sanyul ]";
-		mes "Let's wait for ^0000FFMuyeon^000000 now.";
-		mes "Her safety is more important than anything else.";
+		mes "[Jagyeom]";
+		mes "รอ Muyeon ก่อนเถอะ";
+		mes "เด็กคนนั้นจะต้องปลอดภัยอยู่แล้วไม่ใช่เหรอ";
 		next;
-		select("Excuse me.");
-		mes "[ Sanyul ]";
-		mes "Hm? You're an adventurer.";
-		mes "Did you happen to hear our conversation?";
+		select("คือว่า ท่านผู้อาวุโส...");
+		mes "[Sanyul]";
+		mes "หืม? นั่นนักผจญภัยไม่ใช่เหรอ?";
+		mes "ได้ยินที่พวกเราคุยกัยด้วยงั้นเหรอ?";
 		next;
-		mes "[ Sanyul ]";
-		mes "I see.";
-		mes "Maybe it's faith that you overheard us.";
+		mes "[Sanyul]";
+		mes "อืม อย่างนี้นี่เอง";
+		mes "นี่ก็คงจะเป็นประสงค์ของฟ้าสินะ ยังไงก็เถอะ เจ้าอาจจะช่วยพวกเราได้ก็ได้";
 		next;
-		mes "[ Sanyul ]";
-		mes "There's a cave near the Archer Village in the back of Payon.";
-		mes "It's a haunted cave, so we've been preforming rituals and exorcism there regularly.";
+		mes "[Sanyul]";
+		mes "เจ้ารู้ไหมว่าที่ด้านหลังของ Payon ในหมู่บ้านนักธนูน่ะ มีถ้ำอยู่ถ้ำหนึ่ง? ที่นั่นน่ะ  มักจะมีวิญญาณของคนตายออกมาเป็นประจำ ก็เลยต้องทำพิธีชำระล้างอยู่ตลอดเลยน่ะ";
 		next;
-		mes "[ Sanyul ]";
-		mes "But the Nine-tailed foxes spirits are more enraged than we thought.";
-		mes "Every time someone tries to preform a ritual to the fox beads, they get nightmares.";
-		npctalk "It's as if the spirits were antagonized by them.","Elder Jagyeom#illusion_moonlight",bc_self;
+		mes "[Sanyul]";
+		mes "แต่ไม่รู้ว่าจะเป็นเพราะความอาฆาตของจิ้กจอกเก้าหางมันฝังลึกกว่าที่เราคิด";
+		mes "หรือเป็นเพราะถูกวิญญาณจิ้กจอก ที่ตายไปสิง ตอนที่กำลังชำระล้างลูกแก้วจิ้กจอก...";
+		npctalk "ข้ามักจะฝันร้ายถึงจิ้กจอกตลอดเลยล่ะ","Payon Elder Jagyeom#illusion_moonlight",bc_self;
 		next;
-		mes "[ Sanyul ]";
-		mes "And this time, she's completely lost her mind and entered the cave.";
-		mes "That's why we're worried about her.";
+		mes "[Sanyul]";
+		mes "แต่ครั้งนี้น่ะ";
+		mes "เขาวิ่งเข้าไปในถ้ำอย่างไม่ได้สติน่ะ เพราะอย่างนั้น จะไม่ให้ข้าเป็นห่วงได้ยังไงกัน";
 		next;
-		select("Is it about Muyeon?");
-		npctalk "Maybe we should send someone else.","Elder Jagyeom#illusion_moonlight",bc_self;
-		mes "[ Sanyul ]";
-		mes "Yes. She's the Soul Linker who performs the ritual regularly.";
-		mes "We've asked a soldier to find her.";
-		mes "They must be near the cave by now.";
+		select("คนที่ชื่อ Muyeon น่ะเหรอ?");
+		npctalk "อย่างนั้นก็น่าจะส่งคนไปหน่อยไม่ใช่เหรอ?","Payon Elder Jagyeom#illusion_moonlight",bc_self;
+		mes "[Sanyul]";
+		mes "Muyeon คือ Soul Linker";
+		mes "ที่คอยทำพิธีชำระล้างน่ะ";
+		mes "มีทหารออกไปตามหาแล้วล่ะ ตอนนี้น่าจะไปถึงแถวถ้ำนั้นแล้วล่ะมั้ง?";
 		next;
-		mes "[ Jagyeom ]";
-		mes "Could you go check up ^0000FFMuyeon^000000 for us?";
+		mes "[Jagyeom]";
+		mes "นั่นสินะ เจ้าจะช่วยไปดูให้หน่อยได้ มั้ยว่าเขาปลอดภัยดีหรือเปล่า?";
 		next;
-		npctalk "Yes. could you?","",bc_self;
-		if (select("Sure, I will:Sorry, I'm afraid of ghost.") == 2) {
-			mes "[ Sanyul ]";
-			mes "Huh? We didn't say anything about ghost. Or did we?";
+		npctalk "นั่นสิ ข้าก็ขอร้องด้วยคน","",bc_self;
+		if (select("เข้าใจแล้ว:คงไม่ได้หรอก คือว่าข้ากลัวผีน่ะ") == 2) {
+			mes "[Sanyul]";
+			mes "หืม? พวกเราพูดตอนไหนเหรอว่ามีผีออกมา? ข้าพูดเหรอ?";
+			npctalk "ข้าเคยพูดด้วยเหรอ?","Payon Elder Jagyeom#illusion_moonlight",bc_self;
 			close;
 		}
-		mes "[ Jagyeom ]";
-		mes "I hope the soldier will find her before she goes deep inside the ruined village.";
+		mes "[Sanyul]";
+		mes "ถ้าทหารหาตัวเจอแล้วก็คงจะสบายใจ ได้แต่ถ้าหาไม่เจอ ก็แปลว่าเขาอาจจะหลงเข้าไปจนถึงหมู่บ้านร้างที่อยู่ ลึกไปในถ้ำนั้นก็ได้";
 		next;
-		mes "[ Jagyeom ]";
-		mes "Please go to the cave and see if Muyeon and the soldier are outside already.";
-		mes "A young scholar followed the soldier, but she doesn't seem reliable at all.";
+		mes "[Sanyul]";
+		mes "เจ้าช่วยไปดูแถว ๆ ถ้ำนั้นให้ก่อนได้มั้ยว่า Muyeon กับทหารออกมาอย่างปลอดภัย แล้วหรือยัง ถึงจะมีเจ้าหนุ่มนักวิชาการตามไปด้วยอีกคนแล้ว แต่พูดตามตรง ว่าข้าไม่ค่อยวางใจสักเท่าไหร่หรอก";
 		next;
-		mes "[ Jagyeom ]";
-		mes "Talk to the scholar, maybe he could give you an information on the situation.";
+		mes "[Sanyul]";
+		mes "ถ้าเจ้าเจอนักวิชาการคนนั้น ก็ลองถามเกี่ยวกับสถานการณ์กับเขาดูก็ได้";
 		illusion_moonlight = 1;
 		setquest 7776;
 		close;
 	}
 	if (illusion_moonlight == 1) {
-		mes "[ Jagyeom ]";
-		mes "I hope the soldier will find her before she goes deep inside the ruined village.";
+		mes "[Sanyul]";
+		mes "ถ้าทหารหาตัวเจอแล้วก็คงจะสบายใจ ได้แต่ถ้าหาไม่เจอ ก็แปลว่าเขาอาจจะหลงเข้าไปจนถึงหมู่บ้านร้างที่อยู่ ลึกไปในถ้ำนั้นก็ได้";
 		next;
-		mes "[ Jagyeom ]";
-		mes "Please go to the cave and see if Muyeon and the soldier are outside already.";
-		mes "A young scholar followed the soldier, but she doesn't seem reliable at all.";
+		mes "[Sanyul]";
+		mes "เจ้าช่วยไปดูแถว ๆ ถ้ำนั้นให้ก่อนได้มั้ยว่า Muyeon กับทหารออกมาอย่างปลอดภัย แล้วหรือยัง ถึงจะมีเจ้าหนุ่มนักวิชาการตามไปด้วยอีกคนแล้ว แต่พูดตามตรง ว่าข้าไม่ค่อยวางใจสักเท่าไหร่หรอก";
 		next;
-		mes "[ Jagyeom ]";
-		mes "Talk to the scholar, maybe he could give you an information on the situation.";
+		mes "[Sanyul]";
+		mes "ถ้าเจ้าเจอนักวิชาการคนนั้น ก็ลองถามเกี่ยวกับสถานการณ์กับเขาดูก็ได้";
 		close;
 	}
-	mes "[ Sanyul ]";
-	mes "I hope everything will be okay.";
-	mes "Huh? I was talking about the cave in the back.";
-	mes "I'm worried about what's happening there.";
+	mes "[Sanyul]";
+	mes "มันต้องไม่มีเรื่องอะไรเกิดขึ้นสิ";
+	mes "อืม? มันเป็นเรื่องของถ้ำที่อยู่หลังเขานั่นน่ะ";
+	mes "เรื่องที่เกิดขึ้นที่นั่นทำให้ข้ากังวลมากเลยล่ะ";
 	close;
 
 OnInit:
@@ -112,149 +109,157 @@ OnInit:
 	end;
 }
 
-payon,167,229,3	script	Elder Jagyeom#illusion_moonlight	4_M_HUOLDARMY,{
+payon,167,229,3	script	Payon Elder Jagyeom#illusion_moonlight	4_M_HUOLDARMY,{
 	if (BaseLevel < 100) {
-		mes "[ Jagyeom ]";
-		mes "I hope everything will be okay.";
-		mes "Seeing that you're an adventurer, I assume you're familiar with the ^0000FFPayon Cave^000000.";
-		mes "Be careful, something bad is happening inside.";
+		mes "[Jagyeom]";
+		mes "มันต้องไม่มีเรื่องอะไรเกิดขึ้นสิ เจ้าเองก็เป็นนักผจญภัย";
+		mes "คงจะรู้จัก Payon Cave สินะ?";
+		mes "ระวังตัวด้วยล่ะ ช่วงนี้ข้าสังหรณ์ใจไม่ค่อยดีเลย";
 		next;
-		mes "^0000FFYou must be Level 100 or above to perform this quest.";
+		mes "^0000FFเควสสำหรับผู้เล่นที่มีเลเวล 100 ขึ้นไปเท่านั้น^000000";
 		close;
 	}
 	if (illusion_moonlight == 0) {
-		doevent "Elder Sanyul#illusion_moonlight::OnStart";
+		doevent "Payon Elder Sanyul#illusion_moonlight::OnStart";
 		end;
 	}
 	if (illusion_moonlight == 1) {
-		mes "[ Sanyul ]";
-		mes "Please go to the cave's entrance in the Archer Village.";
-		mes "Ask the young scholar there about Muyeon's whereabouts.";
+		mes "[Jagyeom]";
+		mes "เจ้าลองไปที่ปากทางเข้าถ้ำที่  อยู่ในหมู่บ้านนักธนูดูก่อนเถอะ";
+		mes "ถ้าเจอเจ้าหนุ่มนักวิชาการ ก็ลองหาร่องรอยของ Muyeon กับเขาดู";
 		close;
 	}
-	mes "[ Jagyeom ]";
-	mes "Maybe it's time we leave things to the younger generations.";
-	mes "There is nothing we old folk could do.";
+	mes "[Jagyeom]";
+	mes "ถึงยังไง";
+	mes "เรื่องในวันหน้าก็คงต้องฝากไว้กับพวกคนหนุ่มสาวล่ะนะ พวกคนแก่ ๆ คงจะไม่มีที่ยืนแล้วล่ะ";
 	close;
 }
 
 pay_arche,48,137,4	script	Young Scholar#ill_moon_arch	4_F_03,{
 	if (illusion_moonlight == 0) {
-		npctalk "Why aren't they coming out already...","",bc_self;
+		npctalk "ทำไมถึงไม่ออกมาล่ะ....","",bc_self;
 		end;
 	}
 	if (illusion_moonlight == 1) {
-		npctalk "Why are they still not coming out...","",bc_self;
-		mes "[ Young Scholar ]";
-		mes "Ah, today must be my lucky day!";
-		mes "An adventurer showed up, just when I needed one!";
+		npctalk "ทำไมถึงไม่ออกมาล่ะ....","",bc_self;
+		mes "[Young Scholar]";
+		mes "อ๊ะ! อะไรกันนี่! ช่างโชคดีอะไรอย่างนี้!";
+		mes "ในตอนที่กำลังเผชิญกับเรื่องเดือดร้อน ก็มีนักผจญภัยผู้สง่างามปรากฏตัวออก มาอยู่ต่อหน้าเลยเหรอเนื่ย!";
 		next;
-		mes "[ Young Scholar ]";
-		mes "Excuse me.";
-		mes "I've heard adventurers do many things for others. Is that true?";
+		mes "[Young Scholar]";
+		mes "สวัสดี";
+		mes "ได้ยินมาว่านักผจญภัยจะรับงานที่หลากหลาย แล้วก็ทำงานแทนด้วย เป็นความจริงหรือเปล่า?";
 		next;
-		select("It is, but I'm pretty busy for now.:Decline.");
-		mes "[ Young Scholar ]";
-		mes "...Oh, I see.";
-		mes "You must be busy.";
-		mes "I'm sorry I bothered you.";
-		mes "By the way, what brings you here?";
+		select("ข้ารับงานมาแล้วล่ะ:ไม่ใช่");
+		mes "[Young Scholar]";
+		mes "มะ.. ไม่นะ อย่างนั้นสินะ";
+		mes "คงจะกำลังยุ่งอยู่สินะ";
+		mes "ขอโทษด้วยที่เสียมารยาท";
+		mes "ว่าแต่ท่านมาที่นี่ได้ยังไงน่ะ?";
 		next;
-		select("Have you seen someone named Muyeon?");
-		mes "[ Young Scholar ]";
-		mes "Muyeon? Do you mean Muyeon the Soul Linker?";
-		mes "Well, technically, she's still an apprentice, but that's not important.";
+		select("ท่านเห็นคนที่ชื่อ Muyeon บ้างไหม?");
+		mes "[Young Scholar]";
+		mes "Muyeon? หมายถึง Soul Linker Muyeon งั้นเหรอ?";
+		mes "อ่า ไม่สิ ถึงจะยังไม่ได้เป็น Soul Linker อย่างเป็นทางการ แต่ก็กำลังฝึกอยู่ล่ะนะ...";
 		next;
-		mes "[ Young Scholar ]";
-		mes "I'm waiting for her right now.";
-		mes "She ran into the cave, as if she was possessed by something.";
+		mes "[Young Scholar]";
+		mes "อันที่จริง ข้าเองก็กำลังรอ Muyeon อยู่น่ะ";
+		mes "เขาโดนอะไรบางอย่างทำให้ไม่ได้สติ แล้วก็วิ่งเข้าไปในถ้ำลึกแห่งนี้นี่ล่ะ";
 		next;
-		mes "[ Young Scholar ]";
-		mes "Junghee? I mean, a soldier followed her in, but neither of them came out yet.";
-		mes "I was debating if I should go after them.";
+		mes "[Young Scholar]";
+		mes "Junghee.. ข้าหมายถึง";
+		mes "มีทหารออกไปตามหาแล้ว แต่ก็ยังไม่ได้ข่าว ข้าเลยคิดอยู่ว่าจะส่งคนเข้าไปอีกดีไหม";
 		next;
-		mes "[ Young Scholar ]";
-		mes "I hope nothing bad happens to those two.";
-		cloakoffnpcself( "Payon Soldier#ill_moon_arch" );
-		cloakoffnpcself( "Muyeon#ill_moon_arch" );
+		mes "[Young Scholar]";
+		mes "ข้างในนั้นคงไม่มีเรื่องอะไรเกิดขึ้นหรอกนะ...";
+		cloakoffnpc "Payon Soldier#ill_moon_arch",getcharid(0);
+		cloakoffnpc "Muyeon#ill_moon_arch",getcharid(0);
 		sleep2 750;
-		npctalk "There they are! They look fine!","Young Scholar#ill_moon_arch",bc_self;
+		npctalk "ออกมาแล้ว! ดูเหมือนว่าจะปลอดภัยดีนะ!","Young Scholar#ill_moon_arch",bc_self;
 		sleep2 1500;
-		npctalk "Ugh, I don't want to train anymore!","Muyeon#ill_moon_arch",bc_self;
-		npctalk "...","Payon Soldier#ill_moon_arch",bc_self;
+		npctalk "อ๊า! ข้าไม่เอาแล้ว! จะการฝึกหรืออะไรก็เถอะ ข้าจะเลิกมันทั้งหมดดดดด!!!!","Muyeon#ill_moon_arch",bc_self;
+		npctalk "....","Payon Soldier#ill_moon_arch",bc_self;
 		next;
-		mes "[ Muyeon ]";
-		mes "Chunghae, what are you doing out here?";
-		npctalk "I was worried about you..","",bc_self;
+		mes "[Muyeon]";
+		mes "อะไรกัน? Chunghae ทำไมเจ้ามาโผล่ที่นี่ล่ะ?";
+		npctalk "นั่นก็เพราะข้าเป็นห่วง...","",bc_self;
 		next;
-		mes "[ Muyeon ]";
-		mes "You were worried about me, but this is as far you were willing to follow me?";
-		mes "Forget it. No matter how miserable I am, I don't need your help!";
+		npctalk "หา? เป็นห่วง? ห่วงข้าเหรอ?","Muyeon#ill_moon_arch",bc_self;
 		sleep2 500;
-		npctalk "Now, that's enough.","Payon Soldier#ill_moon_arch",bc_self;
+		npctalk "อะ..อะไรกัน ทำเกินไปแล้วนะ","",bc_self;
 		sleep2 500;
-		npctalk "Th-this is unfair...","",bc_self;
+		npctalk "อย่าให้มันมากเกินไปสิ","Payon Soldier#ill_moon_arch",bc_self;
+		sleep2 500;
+		mes "[Muyeon]";
+		mes "จะบอกว่าเจ้าเป็นห่วงข้า";
+		mes "เลยมาอยู่ที่นี่งั้นเหรอ?";
+		mes "ไม่จำเป็นหรอก";
+		mes "ถึงข้าจะอยู่ในสภาพนี้ก็ไม่ได้ถึงขนาด";
+		mes "จะต้องการให้เจ้าช่วยหรอกนะ~~!";
 		next;
-		npctalk "Bye!","Muyeon#ill_moon_arch",bc_self;
-		mes "[ Muyeon ]";
-		mes "Ah, I'm not going to do this anymore. Tell that to the old geezers!";
+		npctalk "ถ้าอย่างนั้นข้าไปล่ะ","Muyeon#ill_moon_arch",bc_self;
+		mes "[Muyeon]";
+		mes "อ๊า! ตั้งแต่นี้ไปข้าจะไม่ทำพิธีแล้ว ฝากไปบอกใต้เท้าให้ด้วยล่ะว่าข้าไม่ทำแล้ว!";
 		next;
-		npctalk "Sigh. I'll go after her. Talk to the Elders, will you?","Payon Soldier#ill_moon_arch",bc_self;
+		cloakonnpc "Muyeon#ill_moon_arch",getcharid(0);
+		npctalk "เฮ้อ ถ้าอย่างนั้นข้าก็ขอตัวล่ะ ข้าจะตาม Muyeon ไปก่อน เจ้าก็ช่วยบอกท่านผู้อาวุโสให้ด้วยแล้วกัน","Payon Soldier#ill_moon_arch",bc_self;
 		sleep2 1500;
-		cloakonnpcself( "Payon Soldier#ill_moon_arch" );
-		cloakonnpcself( "Muyeon#ill_moon_arch" );
-		mes "[ Young Scholar ]";
-		mes "That's....!";
-		mes "She left without telling us what happened.";
+		cloakonnpc "Payon Soldier#ill_moon_arch",getcharid(0);
+		mes "[Young Scholar]";
+		mes "...อะไรน่ะ...";
+		mes "พูดยังไม่ทันรู้เรื่องเลย ไปซะแล้ว";
 		next;
-		mes "[ Young Scholar ]";
-		mes "Ah, Junghee!";
-		mes "By the way adventurer, weren't you looking for Muyeon?";
+		mes "[Young Scholar]";
+		mes "อ๊าก! แม้แต่ Junghee";
+		mes "ก็จะไปด้วยเหรอ! จะว่าไปแล้ว ท่านนักผจญภัย ท่านไม่ได้มีธุระกับ Muyeon หรอกเหรอ?";
 		next;
-		select("I guess I have to leave now.");
-		mes "[ Young Scholar ]";
-		mes "Muyeon must have gone to the ^0000CDDetached Payon Palace.^000000";
-		mes "I'm going there do you want to come with me?";
-		next;
+		select("ก็คงต้องกลับไปล่ะนะ");
+		mes "[Young Scholar]";
+		mes "ข้าว่า Muyeon น่าจะไปที่ ^0000CDDetached Payon Palace^000000 แล้วล่ะ ท่านจะไปด้วยกันไหม?";
 		illusion_moonlight = 2;
 		erasequest 7776;
 		setquest 7777;
-        if (select("Go with him.:Go separately.") == 2) {
-			mes "[ Young Scholar ]";
-			mes "Muyeon must have gone to the ^0000CDDetached Payon Palace.^000000";
-			mes "Why don't you go talk to her?";
-			mes "I'll talk to the Elders.";
+		next;
+        if (select("ไปด้วย:แยกกันไป") == 2) {
+			mes "[Young Scholar]";
+			mes "ข้าว่า Muyeon น่าจะไปที่ ^0000CDDetached Payon Palace^000000 แล้วล่ะ";
+			mes "เราก็ไปที่นั่นแล้วถามเขาให้รู้เรื่องเถอะ";
+			mes "ส่วนทางท่านผู้อาวุโสน่ะ ข้าจะบอกให้เอง";
 			close;
         }
-		mes "[ Young Scholar ]";
-		mes "Then let's go to the ^0000CDDetached Payon Palace.^000000";
+		mes "[Young Scholar]";
+		mes "ถ้าอยากนั้นก็ไปที่ Detached Payon Palace....";
         close2;
         warp "payon",105,320;
         end;
 	}
 	if (illusion_moonlight == 2) {
-		mes "[ Young Scholar ]";
-		mes "Muyeon must have gone to the ^0000CDDetached Payon Palace.^000000";
-		mes "Why don't you go talk to her?";
-		mes "I'll talk to the Elders.";
+		mes "[Young Scholar]";
+		mes "ข้าว่า Muyeon น่าจะไปที่ ^0000CDDetached Payon Palace^000000 แล้วล่ะ";
+		mes "เราก็ไปที่นั่นแล้วถามเขาให้รู้เรื่องเถอะ";
+		mes "ส่วนทางท่านผู้อาวุโสน่ะ ข้าจะบอกให้เอง";
 		close;
 	}
 	if (illusion_moonlight < 6) {
-		mes "[ Young Scholar ]";
-		mes "Legend says a nine-tailed fox gained enlightment and became a sacred creature, and that Moonlight Flowers have descended from her.  I think it's a story worth looking into.";
+		mes "[Young Scholar]";
+		mes "ว่ากันว่าสัยก่อนเยมีจิ้กจอกเก้า หางที่สะสมบุญมาอย่างยาวนานจน";
+		mes "กลายร่างเป็นสัตว์ในตำนานแล้วยังมีเรื่องที่เล่ากันว่า";
+		next;
+		mes "[Young Scholar]";
+		mes "ทายาทของจิ้กจอกตนนั้นก็คือ Moonlight Flower อีกด้วย ข้าว่ามันเป็นเรื่องราวที่ควรค่าแก่การศึกษามาก ๆ เลยล่ะ";
 		close;
 	}
-	mes "[ Young Scholar ]";
-	mes "Let's go investigate the ruined village!";
-	mes "Would you like to come with me?";
+	mes "[Young Scholar]";
+	mes "รีบไปสำรวจที่หมู่บ้านร้างเถอะ";
+	mes "ท่านจะไปด้วยกันไหม?";
 	next;
-	if (select("Go with him.:Go separately.") == 2) {
+	if (select("ไปด้วย:แยกกันไป") == 2) {
 		mes "[ Young Scholar ]";
-		mes "I'll call Junghee, and we'll follow you soon.";
+		mes "ถ้าอย่างนั้นข้าจะไปเรียก Junghee แล้วจะรีบตามไปนะ!";
 		close;
 	}
-	mes "[ Young Scholar ]";
-	mes "Let's go!";
+	mes "[Young Scholar]";
+	mes "เอาล่ะ รีบไปกันเถอะ!";
 	close2;
 	warp "pay_dun03",145,43;
 	end;
@@ -264,55 +269,89 @@ OnInit:
 	end;
 }
 
+payon,103,322,3	script	Payon Soldier#illusion_moonlight	4_M_PAY_SOLDIER,{
+	if (illusion_moonlight == 2) {
+		mes "[Junghee]";
+		mes "นักผจญภัยที่เจอกันที่หน้าถ้ำเมื่อกี้นี้สินะ";
+		mes "ถ้ามาหา Muyeon ก็เข้าไปข้างในเถอะ";
+		close;
+	}
+	mes "[Soldier]";
+	mes "ที่นี่ืคือ Detached Payon Palace";
+	close;
+
+}
+
+pay_arche,41,133,3	script	Gurard#1	4_M_PAY_SOLDIER,{
+	mes "[Gurard]";
+	mes "สวัสดี";
+	mes "ที่นี่คือหมู่บ้าน Archer";
+	mes "อยู่ทางทิสเหนือของ Payon";
+	mes "ถ้ำนี้อันตรายมาก โปรดอย่าเข้าไป";
+	close;
+
+}
+
+pay_arche,38,134,3	script	Gurard#2	4_M_PAY_SOLDIER,{
+	npctalk "กำลังปฏิบัติหน้าที่ เหตุการณ์ปกติ!","",bc_self;
+	mes "[Gurard]";
+	mes "ถ้ำแห่งนี้เกิดขึ้นจากการถล่มของหมู่บ้านเล็กๆ";
+	mes "ที่ถูกสร้างขึ้นก่อนที่จะมี Payon ในตอนนี้";
+	mes "กล่าวคือมันเป็นสถานที่ที่เหล่าบรรพบุรุษเคยอาศัยอยู่...";
+	mes "ตอนนี้กลายเป็นถ้ำผีไปซะแล้ว..เฮ้อ..";
+	close;
+
+}
+
 pay_arche,44,133,7	duplicate(dummy_cloaked_npc)	Payon Soldier#ill_moon_arch	4_M_PAY_SOLDIER
 pay_arche,46,135,5	duplicate(dummy_cloaked_npc)	Muyeon#ill_moon_arch	4_F_TAEKWON
 
 payon_in03,33,95,3	script	Muyeon#ill_moon_pin	4_F_TAEKWON,{
 	if (checkweight(25271,1) == 0 || (MaxWeight - Weight) < 1000) {
-		mes "- You're carrying too many items to proceed with this quest. -";
+		mes "- คุณมีไอเท็มมากเกินไปที่จะทำภารกิจนี้ต่อ -";
 		close;
 	}
 	if (illusion_moonlight < 2) {
-		mes "[ Muyeon ]";
-		mes "If you're looking for the teacher, she's in the other room.";
+		mes "[Muyeon]";
+		mes "ถ้ามาหาอาจารย์สอนมารยาทก็เข้าไป ห้องด้านในเลย";
 		close;
 	}
 	if (illusion_moonlight == 2) {
 		.@elder$ = "Jagyeom#ill_moon_pin";
 		.@scholar$ = "Young Scholar#ill_moon_pin";
 		setpcblock PCBLOCK_ALL,true;
-		npctalk "Whatever you say, I'm not doing it anymore.","",bc_self;
+		npctalk "ข้าบอกแล้วไง ว่าไม่ว่าท่านจะพูดยังไง ข้าก็จะไม่ทำพิธีอีกแล้ว?","",bc_self;
 		sleep2 2500;
-		npctalk "This is the third time I had nightmares. I can't take it anymore!","",bc_self;
+		npctalk "นี่มันครั้งที่สามแล้วนะ การถูกกลืนเข้าไปในฝันร้ายมันก็ถึงขีดจำกัดแล้วด้วย!","",bc_self;
 		sleep2 1000;
-		unittalk getcharid(3),"What nightmares?",bc_self;
-		npctalk "What nightmares?",.@scholar$,bc_self;
+		unittalk getcharid(3),"" + strcharinfo(0) + " : ฝันร้าย?",bc_self;
+		npctalk "ฝันร้าย?",.@scholar$,bc_self;
 		sleep2 2000;
-		npctalk "Nightmares about about the foxes? Nine tails and Moonlight flowers?","",bc_self;
+		npctalk "มันเป็นฝันร้ายของจิ้กจอกน่ะ ที่นั่นมีทั้ง Nine Tail มีทั้ง Moonlight Flower เลยนะ","",bc_self;
 		sleep2 2000;
-		npctalk "Those nightmares are just too horrifying. I don't want to experience it anymore.","",bc_self;
+		npctalk "มันเป็นฝันร้ายที่น่ากลัวมาก ๆ เลยล่ะ ข้าไม่อยากจะประสบกับมันอีกเป็นครั้งที่สองหรอก","",bc_self;
 		sleep2 2000;
-		npctalk "But we have no one else left to perform the ritual.",.@elder$,bc_self;
+		npctalk "แต่ถ้าไม่ใช่เจ้า แล้วใครจะเป็นคนชำระล้างล่ะ?",.@elder$,bc_self;
 		sleep2 2000;
-		npctalk "Everyone gave up after the first try. You did it three times.",.@elder$,bc_self;
+		npctalk "ทุกคนต่างก็บอกว่าทำไม่ได้แล้วก็หายหน้ากันไปหมด มีเพียงเจ้า Muyeon เจ้าทำไป 3 ครั้งแล้วไม่ใช่เหรอ",.@elder$,bc_self;
 		sleep2 2000;
-		npctalk "Elder Jaegyom, nightmares weren't the only thing occurred to me this time.","",bc_self;
+		npctalk "คือว่านะใต้เท้า ครั้งนี้มันไม่ได้จบแค่ฝันร้ายน่ะสิ","",bc_self;
 		sleep2 2000;
-		npctalk "It was different from the other two times I performed the ritual.","",bc_self;
+		npctalk "ปกติแล้วพอชำระล้างพลังแห่งฝันร้ายที่ก่อตัวขึ้นในลูกแก้ว ข้าก็เพียงแค่ฝันร้ายเฉย ๆ ...","",bc_self;
 		sleep2 2000;
-		npctalk "How different?",.@scholar$,bc_self;
+		npctalk "หมายความว่าครั้งนี้มีอะไรที่ต่างออกไปงั้นเหรอ?",.@scholar$,bc_self;
 		sleep2 2000;
 		npctalk "...","",bc_self;
 		sleep2 2000;
-		npctalk "It felt as if the nightmares is happening in reality.","",bc_self;
+		npctalk "ข้าเกิดความรู้สึกเหมือนว่าเส้นแบ่งความจริงกับความฝัน มันจะถูกทำลายลงน่ะ","",bc_self;
 		sleep2 2000;
-		npctalk "What do you mean? You were only trying to give peace to the angered spirits of the nine tailed foxes.",.@elder$,bc_self;
+		npctalk "....หมายความว่ายังไงกัน! ปกติขอแค่ปลอบโยนวิญญาณอาฆาตของจิ้กจอกเก้าหางได้ก็พอแล้วนี่นา",.@elder$,bc_self;
 		sleep2 2000;
-		npctalk "What did you see in the cave?",.@elder$,bc_self;
+		npctalk "เจ้าเห็นอะไรในถ้ำนั้นกันแน่?",.@elder$,bc_self;
 		sleep2 2000;
-		npctalk "I can't explain what I saw. You have to see it to believe it.","",bc_self;
+		npctalk "ให้ข้าพูดเป็นร้อยรอบก็คงไม่สู้ให้ท่านไปเห็นด้วยตาตัวเองหรอก","",bc_self;
 		sleep2 2000;
-		npctalk "We need someone strong to go in there, like that adventurer over there, should go in the cave.","",bc_self;
+		npctalk "ไหน ๆ ตอนนี้ก็มีคนที่แข็งแกร่งอย่างนักผจญภัยอยู่ด้วยแล้ว","",bc_self;
 		illusion_moonlight = 3;
 		completequest 7777;
 		setquest 7778;
@@ -320,105 +359,116 @@ payon_in03,33,95,3	script	Muyeon#ill_moon_pin	4_F_TAEKWON,{
 		end;
 	}
 	if (illusion_moonlight == 3) {
-		mes "[ Muyeon ]";
-		mes "Okay, I'll tell you the story.";
-		mes "The Payon Cave is used to be a part of a village that was buried under a landslide.";
+		mes "[Muyeon]";
+		mes "เอาล่ะ ข้าจะบอกให้นะ Payon Cave";
+		mes "เกิดขึ้นจากเหตุการณ์ภูเขาถล่ม  อย่างไม่ทราบสาเหตุ ซึ่งมันได้ฝังกลบหมู่บ้านส่วนหนึ่งลงไปน่ะ";
 		next;
-		mes "[ Muyeon ]";
-		mes "As you can guess many people were buried with it, and their spirits are hunting the cave.";
+		mes "[Muyeon]";
+		mes "แน่นอนว่ามีคนตายอย่างไม่ได้รับ  ความเป็นธรรมมากมายในเหตุการณ์ครั้งนั้น ดังนั้นถึงได้มีวิญญาณมาปรากฏตัว  มากมายเลยยังไงล่ะ";
 		next;
-		mes "[ Muyeon ]";
-		mes "Some of them were the nine-tailed foxes. The foxes anger is beyond normal.";
-		mes "That's the reason we have been performing a ritual in regular basis.";
+		mes "[Muyeon]";
+		mes "โดยเฉพาะวิญญาณอาฆาตของพวกจิ้ก  จอกเก้าหางที่อาศัยอยู่ในหมู่บ้านร้างนั่น มีมากมายมหาศาลเลยล่ะ เพราะอย่างนั้น เลยต้องมีการทำพิธีชำระล้างอยู่เป็นประจำ....";
+		mes "";
 		next;
-		mes "[ Muyeon ]";
-		mes "But now the problem is,";
-		mes "The foxes spirits are getting more resentful by time, and no one knows the reason why.";
-		mes "Maybe the ritual is the reason they are angry, it's not working as we hoped it would.";
+		mes "[Muyeon]";
+		mes "ซึ่งปัญหามันอยู่ตรงนี้ล่ะ เมื่อไม่นานนี้";
+		mes "วิญญาณอาฆาตของพวกจิ้กจอกได้   แข็งแกร่งขึ้น ไม่มีใครรู้ว่ามันเกิดจากอะไร";
+		mes "แทนที่จะพูดว่ามันแข็งแกร่งขึ้น คงต้องบอก ว่าเราไม่สามารถชำระล้างมันได้อย่างหมดจด";
 		next;
-		mes "[ Muyeon ]";
-		mes "And, every time I performed the ritual, I had nightmares about the resentful spirits and wailing nine-tailed foxes.";
+		mes "[Muyeon]";
+		mes "ยังไงก็ตาม ทันทีที่ข้าทำพิธีขำระล้างตาม";
+		mes "ปกติแบบที่เคยทำมา ข้าก็ถูกวิญญาณ";
+		mes "อาฆาตนั้นทำให้ฝันร้าย แล้วในฝันนั้นก็มี";
+		mes "จิ้กจอกเก้าหางปรากฏตัวออกมาร้อง คร่ำครวญ.. มันเป็นอะไรที่ทำให้";
+		mes "รู้สึกแย่แบบนั้นล่ะ";
 		next;
-		mes "[ Muyeon ]";
-		mes "Soul Linkers communicates with the spirits for a living, Having nightmares is just occurs normally.";
+		mes "[Muyeon]";
+		mes "Soul Linker น่ะ";
+		mes "เป็นอาชีพที่ต้องเชื่อมต่อกับวิญญาณทำให้บางครั้งพอมีการทำพิธีไล่ผีก็จะทำให้ฝันร้ายน่ะ";
 		next;
-		mes "[ Muyeon ]";
-		mes "So when my first nightmare occurred, I thought it was under the same boat as the others.";
-		mes "But now I know the difference, It also has nothing to do with my health.";
+		mes "[Muyeon]";
+		mes "ข้าเองก็คิดว่าเป็นเพราะตัวเองเหนื่อยเกินไปเลยทำให้ฝันร้าย....";
+		mes "แต่การทำพิธีครั้งนี้ก็ทำให้ข้าได้รู้ นั่นมันไม่ใช่สักหน่อย!";
 		next;
-		mes "[ Muyeon ]";
-		mes "Whatever it is the reason that agitates the spirits of the nine-tailed foxes.";
-		mes "It drove me from sanity and sent me going to the ruined village.";
+		mes "[Muyeon]";
+		mes "ข้าไม่รู้หรอกว่าอะไรทำให้ความอาฆาตของพวกจิ้กจอกรุนแรงขึ้น...";
+		mes "แต่มันทำให้สมาธิของข้าหลุดไป";
+		mes "แล้วก็เข้าไปยังหมู่บ้านร้างที่  เต็มไปด้วยเสียงร่ำไห้ของจิ้กจอกโดยไม่รู้ตัว";
 		next;
-		mes "[ Muyeon ]";
-		mes "And, I saw something.";
-		mes "It's an image of another world, different from ours.";
-		mes "We must shut that place down, so no one will be able to access it.";
+		mes "[Muyeon]";
+		mes "แล้วก็ได้ไปเห็นเข้า";
+		mes "อีกด้านหนึ่งของโลกใบนี้น่ะ";
+		mes "จะให้ใครเข้าไปใกล้ที่นั่นไม่ได้อีกเด็ดขาด!";
 		next;
-		mes "[ Muyeon ]";
-		mes "I have an uneasy feeling that a dreadful is going to take place.";
-		mes "Or maybe it's already taking place..";
+		mes "[Muyeon]";
+		mes "ข้ารู้สึกว่ามันอาจจะมีเรื่องอะไร บางอย่างที่เลวร้ายเกิดขึ้น";
+		mes "ไม่สิ มันอาจจะเกิดขึ้นไปแล้วก็ได้";
 		next;
-		mes "[ Muyeon ]";
-		mes "The vague image I saw is indistinguishable from hell.";
-		mes "I saw it after the last ritual that I did.";
+		mes "[Muyeon]";
+		mes "ที่ที่ข้าเห็นข้างหลังภาพอันเลือนรางนั่น";
+		mes "ใช่แล้ว มันคือนรกดี ๆ นี่เอง";
+		mes "พอข้าชำระล้างจิตที่อาฆาตแล้ว";
+		mes "ก็ฝันร้ายมาโดยตลอด";
+		mes "เป็นฝันร้ายที่ของพวกจิ้กจอกน่ะ";
 		next;
-		mes "[ Muyeon ]";
-		mes "I beg of you, don't ask me to return doing that again.";
-		mes "I'm not mentally strong enough to handle such nightmares.";
+		mes "[Muyeon]";
+		mes "...ดังนั้นอย่ามาสั่งให้ข้าไปทำ อีกเป็นครั้งที่สองเลย";
+		mes "ถ้าฝันร้ายเกิดจากจิตใจข้าอ่อนแอ มันก็เป็นเรื่องที่ยอมทนได้อยู่หรอก";
 		next;
-		mes "[ Muyeon ]";
-		mes "Much less on what's taking place inside the cave.";
+		mes "[Muyeon]";
+		mes "แต่ข้าไม่อยากเข้าไปในฝันร้ายของ พวกจิ้กจอกนี่หรอกนะ";
 		next;
-		mes "[ Muyeon ]";
-		mes "If you want to go, you'll have to go alone and see it for yourself.";
-		mes "I still carry the fox bead that I tried to purify. Let me know when you are ready.";
+		mes "[Muyeon]";
+		mes "ถ้าหากท่านอยากรู้";
+		mes "ก็ลองเข้าไปดูด้วยตาตัวเองเถอะ";
+		mes "ข้ามีลูกแก้วจิ้กจอกที่จะชำระล้างอยู่พอดี";
+		mes "ถ้าพร้อมแล้วก็บอกข้านะ";
 		illusion_moonlight = 4;
 		completequest 7778;
 		setquest 7779;
 		close;
 	}
 	if (illusion_moonlight == 4) {
-		mes "[ Muyeon ]";
-		mes "Are you ready?";
+		mes "[Muyeon]";
+		mes "พอแล้วเหรอ?";
 		next;
-		if (select("Yes.:Not yet.") == 2) {
-			mes "[ Muyeon ]";
-			mes "Let me know when you're ready.";
+		if (select("พร้อมแล้ว:ยังเลย") == 2) {
+			mes "[Muyeon]";
+			mes "ข้าจะรอท่าน ถ้าพร้อมแล้วก็บอกนะ";
 			close;
 		}
-		mes "[ Muyeon ]";
-		mes "Okay, this fox bead is not completely purged yet.";
-		mes "Place it in your hand.";
+		mes "[Muyeon]";
+		mes "ดีล่ะ นี่คือลูกแก้วจิ้กจอกที่ยังชำระล้างไม่เสร็จดี";
+		mes "วางมันไว้บนมือ...";
 		next;
-		mes "[ Muyeon ]";
-		mes "Relax... and focus your mind on it ... open your mind to its energy.";
+		mes "[Muyeon]";
+		mes "แล้วตั้งสมาธิ ปล่อยใจให้สบาย ท่านต้องเปิดใจรับมันเข้ามา";
 		close2;
 		setpcblock PCBLOCK_ALL,true;
-		npctalk "Wandering souls, listen and behold!","",bc_self;
+		npctalk "จงดู จงฟัง เจ้าวิญญาณร่อนเร่เอ๋ย","",bc_self;
 		sleep2 250;
 		specialeffect EF_PORTAL4;
 		specialeffect EF_GROUNDSAMPLE;
 		sleep2 1800;
-		npctalk "Look at the other side of the Netherworld River.","",bc_self;
+		npctalk "จงมองดูอีกฝากฝั่งของแม่น้ำข้ามปรโลก","",bc_self;
 		sleep2 250;
 		specialeffect EF_PORTAL5;
 		specialeffect EF_QUAKEBODY2;
 		for (.@i = 0; .@i < 4; .@i++) {
-			cloakoffnpcself( "Nine Tail Spirit#ill_moon_" + .@i );
+			cloakoffnpc "Nine Tail Spirit#ill_moon_" + .@i,getcharid(0);
 			specialeffect EF_REDBODY,AREA,"Nine Tail Spirit#ill_moon_" + .@i;
 			specialeffect EF_QUAKEBODY2,AREA,"Nine Tail Spirit#ill_moon_" + .@i;
 			sleep2 250;
 		}
 		sleep2 1500;
-		npctalk "Poor souls, cover your eyes and block your ears.","",bc_self;
+		npctalk "จงอย่าดู จงอย่าฟัง เจ้าวิญญาณผู้เศร้าสร้อย","",bc_self;
 		sleep2 150;
 		specialeffect2 EF_DEVIL1;
 		for (.@i = 0; .@i < 4; .@i++) {
 			specialeffect EF_QUAKEBODY2,AREA,"Nine Tail Spirit#ill_moon_" + .@i;
 			sleep2 30;
 		}
-		npctalk "Die!","Nine Tail Spirit#ill_moon_0",bc_self;
+		npctalk "ตายซะ","Nine Tail Spirit#ill_moon_0",bc_self;
 		sleep2 100;
 		specialeffect2 EF_DEVIL6;
 		sleep2 100;
@@ -427,48 +477,48 @@ payon_in03,33,95,3	script	Muyeon#ill_moon_pin	4_F_TAEKWON,{
 			sleep2 30;
 		}
 		sleep2 150;
-		npctalk "Die!","Nine Tail Spirit#ill_moon_1",bc_self;
+		npctalk "ตายซะ","Nine Tail Spirit#ill_moon_1",bc_self;
 		sleep2 1000;
-		npctalk "Leave this realm.","",bc_self;
+		npctalk "จงหันหลังให้กับโลกนี้","",bc_self;
 		sleep2 150;
 		specialeffect2 EF_DEVIL10;
 		for (.@i = 0; .@i < 4; .@i++) {
 			specialeffect EF_QUAKEBODY2,AREA,"Nine Tail Spirit#ill_moon_" + .@i;
 			sleep2 30;
 		}
-		npctalk "Die!","Nine Tail Spirit#ill_moon_2",bc_self;
+		npctalk "ตายซะ","Nine Tail Spirit#ill_moon_2",bc_self;
 		sleep2 150;
 		specialeffect EF_BLUELINE;
 		sleep2 150;
-		npctalk "Die!","Nine Tail Spirit#ill_moon_3",bc_self;
+		npctalk "ตายซะ","Nine Tail Spirit#ill_moon_3",bc_self;
 		sleep2 700;
-		npctalk "Unload your burden.","",bc_self;
+		npctalk "จงวางบ่วงที่เหนี่ยวรั้งเจ้าลงไว้ ณ ที่แห่งนี้","",bc_self;
 		sleep2 150;
 		for (.@i = 0; .@i < 4; .@i++) {
 			specialeffect EF_MAP_GHOST,AREA,"Nine Tail Spirit#ill_moon_" + .@i;
 			sleep2 30;
 		}
 		for (.@i = 0; .@i < 4; .@i++)
-			npctalk "DIE!!!","Nine Tail Spirit#ill_moon_" + .@i,bc_self;
+			npctalk "ตายซะ!!","Nine Tail Spirit#ill_moon_" + .@i,bc_self;
 		sleep2 1200;
 		specialeffect EF_BLUELINE;
 		sleep2 500;
 		specialeffect EF_SCREEN_QUAKE;
 		sleep2 1200;
-		npctalk "Fly to the other side of the river.","",bc_self;
+		npctalk "แล้วข้ามแม่น้ำไปสู่ปรภพเถอะ","",bc_self;
 		for (.@i = 0; .@i < 4; .@i++) {
 			specialeffect EF_MADNESS_RED,AREA,"Nine Tail Spirit#ill_moon_" + .@i;
 			sleep2 30;
 		}
 		for (.@i = 0; .@i < 4; .@i++) {
-			npctalk "DIEEE!", "Nine Tail Spirit#ill_moon_" + .@i, bc_self;
+			npctalk "ตายซะ!!!!", "Nine Tail Spirit#ill_moon_" + .@i, bc_self;
 			sleep2 50;
 			specialeffect EF_SCREEN_QUAKE;
 			sleep2 300;
 		}
 		sleep2 1000;
 		for (.@i = 0; .@i < 4; .@i++) {
-			npctalk "DIEEE!", "Nine Tail Spirit#ill_moon_" + .@i, bc_self;
+			npctalk "ตายซะ!!!!!!!!!!", "Nine Tail Spirit#ill_moon_" + .@i, bc_self;
 			sleep2 100;
 		}
 		specialeffect2 EF_JUMPBODY1;
@@ -481,68 +531,82 @@ payon_in03,33,95,3	script	Muyeon#ill_moon_pin	4_F_TAEKWON,{
 		end;
 	}
 	if (illusion_moonlight == 5) {
-		mes "[ Muyeon ]";
-		mes "Now you know what I've been through.";
-		mes "If you want to look further into this, you'll have to visit the ruined village.";
+		mes "[Muyeon]";
+		mes "..ทีนี้ก็เข้าใจแล้วใช่มั้ย?";
+		mes "ว่าข้าไปเจอกับอะไรมา";
+		mes "ถ้าอยากจะหาความจริงเพิ่ม";
+		mes "ก็คงมีแต่จะต้องไปที่หมู่บ้านร้างนั่น";
+		mes "อีกครั้งเท่านั้น";
 		next;
-		mes "[ Muyeon ]";
-		mes "If you decide to do it, it'll make you one of us, very ecstatic. Probably because he is a fool.";
+		mes "[Muyeon]";
+		mes "ถ้าหากว่าท่านนักผจญภัยอยากจะ";
+		mes "หาข้อเท็จจริง เกี่ยวกับเรื่องนั้น";
+		mes "เจ้าโง่ที่อยู่ที่นี่คงจะดีใจน่าดู";
 		close;
 	}
 	if (illusion_moonlight < 8) {
-		mes "[ Muyeon ]";
-		mes "If you're looking for the teacher, she's in the other room.";
+		mes "[Muyeon]";
+		mes "ถ้ามาหาอาจารย์สอนมารยาทก็เข้าไป ห้องด้านในเลย";
 		close;
 	}
 	if (illusion_moonlight == 8) {
-		mes "[ Muyeon ]";
-		mes "I see.";
-		mes "So They've come true.";
-		mes "You don't know why, do you?";
+		mes "[Muyeon]";
+		mes "อย่างนี้เองสินะ";
+		mes "ในที่สุดก็กลายเป็นจริงขึ้นมาแล้วสินะ";
+		mes "ไม่รู้ใช่มั้ยว่าทำไมมันถึงเป็นจริงขึ้นมาน่ะ?";
 		next;
-		mes "[ Muyeon ]";
-		mes "Maybe it's because the walls between reality and dreams have collapsed.";
-		mes "Otherwise, how could you go in and out of someone else's dream?";
+		mes "[Muyeon]";
+		mes "ยิ่งกว่าที่มันกลายเป็นจริงก็คือ";
+		mes "เส้นแบ่งความจริงกับความฝันถูกทำลาย";
+		mes "ลงแล้ว จริง ๆ น่ะเหรอ?";
+		mes "ไม่มีทางที่คนปกติจะไปเข้า ๆ ออก ๆ";
+		mes "ความฝันของคนอื่นได้นี่นา";
 		next;
-		mes "[ Muyeon ]";
-		mes "I know they're ^0000FFdreamt by the Moonlight Flowers.^000000";
-		mes "I don't know how they've become reality. I doubt anyone knows, really.";
+		mes "[Muyeon]";
+		mes "ข้ารู้ว่ามันคือ ^0000FFIllusion of Moonlight^000000";
+		mes "แต่ก็ไม่มีใครรู้อยู่ดีว่ามันเชื่อมต่อกับความเป็นจริงได้ยังไง";
 		next;
-		mes "[ Muyeon ]";
-		mes "As far as I remember, nothing like this has ever happened before. If we want to figure this out, we're on our own.";
+		mes "[Muyeon]";
+		mes "ถ้าหากมีเรื่องแบบนี้เคยเกิดขึ้นก้ง";
+		mes "จะใช้อ้างอิงได้อยู่หรอก";
+		mes "แต่จนถึงตอนนี้ก็ยังไม่เยได้ยินมากก่อนเลย";
 		next;
-		mes "[ Muyeon ]";
-		mes "Well, I'll let Chunghae figure it out.";
-		mes "Alright, then I'd better go get some rest.";
+		mes "[Muyeon]";
+		mes "อืม แต่เดี๋ยว Chunghae";
+		mes "คงจะไปค้นหาในส่วนนั้นเองแหละ ดีบ่ะ-!";
+		mes "ถ้าอย่างนั้นเราไปพักสักหน่อยเถอะ";
+		mes "ไม่ได้พักมานานเลยนี่นา!";
 		next;
-		mes "[ Muyeon ]";
-		mes "Now that I know that those nightmares really originated from Moonlight Flowers, I feel better.";
-		mes "I can sleep at last.";
+		mes "[Muyeon]";
+		mes "นั่นมันคือ Illusion of Moonlight";
+		mes "เองเหรอเนื่ย";
+		mes "พอได้รู้แล้วก็รู้สึกโล่งใจขึ้นนะ?";
+		mes "ที่นี้ก็คงจะข่มตาหลับได้สักทีนะ!";
 		next;
-		mes "[ Muyeon ]";
-		mes "We won't need more rituals once we deal with the nightmares.";
-		mes "Does this mean I'm free? Free at last!";
-		mes "I don't even know how to thank you.";
-		next;
-		mes "[ Muyeon ]";
-		mes "I've found this strange stones while I was there. It's not much,";
-		mes "but maybe you can find an use for those?";
-		mes "Thank you so much adventurer.";
+		mes "[Muyeon]";
+		mes "จะมาชำระล้างอะไรอีก";
+		mes "ในเมื่อถ้าจัดการกับความฝันนั้นได้";
+		mes "ก็จะแก้ปัญหาได้ทีเดียวเลยนี่";
+		mes "ข้าเป็นอิสระแล้ว! อิสรภาพ!";
+		mes "ขอบคุณนะ ท่านนักผจญภัย!";
 		illusion_moonlight = 9;
 		completequest 7788;
 		getitem 25271,5;
 		getexp 500000,500000;
 		close;
 	}
-	mes "[ Muyeon ]";
-	mes "Good luck investigating the phenomenon with Chunghae!";
-	mes "Once the nightmares are gone, we won't need to perform the ritual anymore!";
+	mes "[Muyeon]";
+	mes "ได้โปรดช่วยไปศึกษาค้นคว้ากับ";
+	mes "Chunghae ด้วยเถอะ!";
+	mes "ถ้าฝันร้ายของจิ้กจอกเก้าหางหายไป";
+	mes "พิธีกรรมน่าเบื่อนี่ก็น่าจะหายไปด้วยนะ~!";
 	next;
-	mes "[ Muyeon ]";
-	mes "How can I be sure, you ask?";
-	mes "I'm not sure. Heh heh.";
-	mes "They might not go away completely.";
-	mes "Who knows?";
+	mes "[Muyeon]";
+	mes "ข้ารู้ได้ยังไงน่ะเหรอ? ก็ความรู้สึกมันบอกไง!";
+	mes "วะฮะฮะฮ่า!";
+	mes "แต่มันอาจจะไม่หายไป";
+	mes "แล้วก็อยู่อย่างนั้นไปทั้งชีวิตเลยก็ได้!";
+	mes "ซึ่งมันก็ไม่ได้เกี่ยวอะไรกับข้านี่นา!";
 	close;
 
 OnInit:
@@ -555,64 +619,78 @@ OnInit:
 
 payon_in03,30,96,5	script	Jagyeom#ill_moon_pin	4_M_HUOLDARMY,{
 	if (illusion_moonlight == 2) {
-		npctalk "Muyeon... If you can't do it, no one else can!","",bc_self;
+		npctalk "Muyeon ถ้าเจ้าไม่ทำแล้วใครจะทำได้อีกล่ะ?","",bc_self;
 		end;
 	}
 	if (illusion_moonlight == 3 || illusion_moonlight == 4) {
-		npctalk "Let's listen for now.","",bc_self;
+		npctalk "เรามาฟังที่ Muyeon จะบอกก่อนเถอะ","",bc_self;
 		end;
 	}
 	if (illusion_moonlight == 5 || illusion_moonlight == 8) {
-		mes "[ Jagyeom ]";
-		mes "We should grasp the situation first.";
-		mes "It'll be great if you can help us, Adventurer.";
+		mes "[Jagyeom]";
+		mes "...ถึงยังไงการเข้าใจสถานการณ์ก็เป็น";
+		mes "เรื่องสำคัญล่ะนะ";
+		mes "ถ้ามีนักผจญภัยอย่างเจ้ามาช่วย";
+		mes "คงจะดีมาก ๆ เลยล่ะ...";
 		close;
 	}
 	if (illusion_moonlight == 9) {
-		mes "[ Jagyeom ]";
-		mes "The Moonlight Flower are recreating the past in their nightmares.";
-		mes "In a way, they're also victims.";
+		mes "[Jagyeom]";
+		mes "หมายความว่า Moonlight Flower";
+		mes "ยังคงทำเรื่องในอดีตซ้ำไปซ้ำมาอยู่ใน";
+		mes "ฝันร้ายอย่างนั้นเหรอ";
+		mes "...พอมองอีกมุมแล้ว";
+		mes "เขาก็เป็นเหยื่อคนหนึ่งสินะ";
 		next;
-		mes "[ Jagyeom ]";
-		mes "I'll make sure no villagers gets close to the collapsed walls of reality and dreams.";
+		mes "[Jagyeom]";
+		mes "เราต้องเตือนคนในหมู่บ้านไม่ให้เข้าไปใกล้..";
+		mes "ต้องเรียกว่า";
+		mes "เส้นแบ่งความฝันที่กลายเป็นจริงเหรอ? ที่นั่นนะ";
 		close;
 	}
-	mes "[ Jagyeom ]";
-	mes "Please observe proper manners inside the palace.";
+	mes "[Jagyeom]";
+	mes "เงียบ ๆ หน่อยสิ นี่ในพระราชวังนะ";
 	close;
 }
 
 payon_in03,33,93,1	script	Young Scholar#ill_moon_pin	4_F_03,{
 	if (illusion_moonlight < 2) {
-		mes "[ Young Scholar ]";
-		mes "Payon is home for sacred creatures since ancient times.";
-		mes "A town isolated from the world by the mountains, the people of Payon way of thinking is different from the outside.";
+		mes "[Young Scholar]";
+		mes "Payon เป็นหมู่บ้านที่พวกสัตว์ในตำนานช่วยกันสร้างขึ้นมาตั้งแต่สมัยโบราณน่ะ มันถูกภูเขาแบ่งแยกออกไป";
+		mes "เลยมีรูปแบบที่แตกต่างไปจากที่ อื่นมากเลยน่ะ";
 		close;
 	}
 	if (illusion_moonlight == 2) {
-		npctalk "Muyeon is really upset. We should ask her what happened.","",bc_self;
+		npctalk "Muyeon ตื่นเต้นมากเลยล่ะ ก่อนอื่นมาฟังเรื่องราวกันก่อนดีกว่า...","",bc_self;
 		end;
 	}
 	if (illusion_moonlight < 5) {
-		npctalk "We should ask Muyeon what happened.";
+		npctalk "ดูเหมือนว่าต้องฟังเรื่องที่ Muyeon เล่าก่อนนะ";
 		end;
 	}
 	if (illusion_moonlight == 5) {
-		mes "[ Young Scholar ]";
-		mes "This is terrible.";
-		mes "I can't belive Muyeon had to deal with it on her own.";
-		mes "Those foxes must be angrier than I thought.";
+		mes "[Young Scholar]";
+		mes "มันน่ากลัวมากเลยนะ";
+		mes "นี่ Muyeon";
+		mes "จัดการเรื่องนี้ด้วยตัวคนเดียวเลยงั้นเหรอ?";
+		mes "ความอาฆาตของจิ้กจอกเก้าหางมันน่า";
+		mes "ตกใจกว่าที่คิดไว้อีกนะเนื่ย";
 		next;
-		mes "[ Young Scholar ]";
-		mes "We need to look into this further. I'd better go to the ruined village.";
+		mes "[Young Scholar]";
+		mes "ดูเหมือนว่าเราคงต้องศึกษาเพิ่มอีกสักหน่อย";
+		mes "ยังไงก็คงต้องไปที่หมู่บ้านร้างนั่นสินะ";
 		close;
 	}
-	mes "[ Young Scholar ]";
-	mes "I'm going to stay in the ruined village and investigate this phenomenon.";
-	mes "But I'll need some form of protection. I'm going to take Junghee with me.";
+	mes "[Young Scholar]";
+	mes "ข้าจะไปศึกษาเรื่องประหลาดนี่ที่หมู่";
+	mes "บ้านร้างนั่นสักพัก";
+	mes "แต่ไปคนเดียวคงจะไม่ไหว เลยจะไปกับ";
+	mes "Junghee ที่อยู่ข้างนอกนั่นน่ะ";
 	next;
-	mes "[ Young Scholar ]";
-	mes "It'd be great if you join us again. See you at the ruined village.";
+	mes "[Young Scholar]";
+	mes "ถ้าท่านนักผจญภัยช่วยไปด้วยกันเหมือน";
+	mes "ก่อนหน้านี้ ก็คงจะวิเศษณ์ไปเลยล่ะ";
+	mes "ถ้างั้นก็ไว้เจอกันที่หมู่บ้านร้างนะ";
 	close;
 }
 
@@ -628,51 +706,53 @@ pay_dun03,140,46,0	script	Shimmering Portal#ill_moon_in	4_ENERGY_BLUE,{
 		close;
 	}
 	if (illusion_moonlight == 5) {
-		mes "There's a shimmering portal in the air.";
+		mes "ในช่องว่างนั้น เหมือนจะมีส่วนที่ดูบิดเบี้ยวอยู่";
 		next;
-		cloakoffnpcself( "Young Scholar#ill_moon_pdun" );
-		cloakoffnpcself( "Junghee#ill_moon_pdun" );
-		npctalk "*Panting* You're here.","Young Scholar#ill_moon_pdun",bc_self;
-		mes "[ Young Scholar ]";
-		mes "I was alarmed when you suddenly disappeared.";
-		mes "Do you think this is one of the nightmares that Muyeon...";
+		cloakoffnpc "Young Scholar#ill_moon_pdun",getcharid(0);
+		cloakoffnpc "Junghee#ill_moon_pdun",getcharid(0);
+		npctalk "แฮ่ก แฮ่ก มาอยู่นี่เองเหรอ","Young Scholar#ill_moon_pdun",bc_self;
+		mes "[Young Scholar]";
+		mes "จู่ ๆ ก็หายตัวไป ทำข้าตกใจแย่เลย";
+		mes "นี่น่ะเหรอ ที่ Muyeon บอกว่าเป็นฝันร้ายที่กลายเป็นจริงน่ะ ?";
 		next;
-		select("I'll have to figure that out.");
-		npctalk "Me? What if I don't want to?","Junghee#ill_moon_pdun",bc_self;
-		mes "[ Young Scholar ]";
-		mes "Then, do you mind if I tag along?";
-		mes "You don't have to worry about me. Junghee can keep me safe.";
+		select("จะลองสำรวจดูตอนนี้ล่ะ");
+		npctalk "ถึงจะคิดไว้แล้วแต่... Chunghae เจ้านี่มันฉาบฉวยสมชื่อเลยนะ?","Junghee#ill_moon_pdun",bc_self;
+		mes "[Young Scholar]";
+		mes "ถ้าอย่างนั้น ให้ข้าสำรวจด้วยได้ไหม?";
+		mes "แน่นอนว่ามีข้าคนเดียวคงจะอันตรายเกินไป";
+		mes "ถ้างั้นให้ Junghee สำรวจด้วย";
+		mes "ท่านคงจะไม่ว่าอะไรสินะ?!";
 		next;
-		npctalk "D-Don't touch anything!","Junghee#ill_moon_pdun",bc_self;
-		mes "[ Young Scholar ]";
-		mes "Then... should I touch this?";
+		npctalk "อย่าแตะอะไรมั่วซั่วสิ!","Junghee#ill_moon_pdun",bc_self;
+		mes "[Young Scholar]";
+		mes "ถ้าอย่างนั้นนี่น่ะ..";
+		mes "แตะดูได้มั้ยนะ";
 		illusion_moonlight = 6;
 		completequest 7780;
 		setquest 7781;
 		close2;
 		setpcblock PCBLOCK_NPC, true;
 		specialeffect EF_SPINMOVE,AREA,"Young Scholar#ill_moon_pdun";
-		specialeffect EF_DQ9_CHARGE,AREA,"Young Scholar#ill_moon_pdun";
 		sleep2 350;
-		npctalk "Arghhhhh-!","",bc_self;
-		cloakonnpcself( "Young Scholar#ill_moon_pdun" );
+		npctalk "อ๊าาาาาา-!!!","",bc_self;
+		cloakonnpc "Young Scholar#ill_moon_pdun",getcharid(0);
 		sleep2 500;
-		npctalk "Chunghae!","Junghee#ill_moon_pdun",bc_self;
+		npctalk "เฮ้ย-! Chunghae!!!","Junghee#ill_moon_pdun",bc_self;
 		sleep2 2000;
-		npctalk "That careless klutz!","Junghee#dun_dummy",bc_self;
+		npctalk "...เจ้านี่มันไม่รู้จักระวังเลยจริง ๆ นะ!!!","Junghee#dun_dummy",bc_self;
 		sleep2 500;
 		specialeffect EF_SPINMOVE,AREA,"Junghee#ill_moon_pdun";
-		specialeffect EF_DQ9_CHARGE,AREA,"Junghee#ill_moon_pdun";
 		sleep2 350;
 		setpcblock PCBLOCK_NPC, false;
-		cloakonnpcself( "Junghee#ill_moon_pdun" );
+		cloakonnpc "Junghee#ill_moon_pdun",getcharid(0);
 		end;
 	}
-	mes "There is something on the other side of the shimmering portal.";
-	mes "What should I do?";
+	mes "อีกฝั่งของพื้นที่ที่บิดเบี้ยวนั้น";
+	mes "มีแสงบางอย่างวูบวาบอยู่";
+	mes "จะทำยังไงดี?";
 	next;
-	if (select("Enter the portal.:Quit.") == 2) {
-		mes "Quit investigating.";
+	if (select("เข้าไป:ล้มเลิก") == 2) {
+		mes "เลิกการสำรวจ";
 		close;
 	}
 	warp "pay_d03_i",140,44;
@@ -687,10 +767,10 @@ pay_dun03,143,45,4	duplicate(dummy_cloaked_npc)	Junghee#ill_moon_pdun	4_M_PAY_SO
 pay_dun03,138,43,7	duplicate(dummy_cloaked_npc)	Young Scholar#ill_moon_pdun	4_F_03
 
 pay_d03_i,140,46,0	script	Shimmering Portal#ill_moon_out	4_ENERGY_BLUE,{
-	mes "I can go back to the ruined village.";
-	mes "What should I do?";
+	mes "สามารถเดินทางกลับไปยังหมู่บ้านร้างได้";
+	mes "ต้องการทำอย่างไร?";
 	next;
-	if (select("Exit.:Do not exit.") == 2)
+	if (select("ออกไป:ไม่ออกไป") == 2)
 		end;
 	warp "pay_dun03",140,44;
 	end;
@@ -700,30 +780,37 @@ pay_d03_i,149,45,4	script	Scholar Chunghae#ill_moon_ind	4_F_03,{
 	if (illusion_moonlight < 6)
 		end;
 	if (illusion_moonlight == 6) {
-		mes "[ Chunghae ]";
-		mes "Look at this place!";
-		mes "It looks exactly like the ruined village we were in a moments ago, and yet... it's different!";
+		mes "[Chunghae]";
+		mes "มาดูตรงนี้สิ!";
+		mes "มันคือหมู่บ้านร้างที่เราอยู่กันเมื่อ";
+		mes "กี้นี้แน่ ๆ แต่ก็ดูเหมือนจะไม่ใช่!";
 		next;
-		mes "[ Chunghae ]";
-		mes "Also, there's something off about people and foxes here, and I saw a strange-looking mage among them.";
-		mes "What if he's responsible for this incident.";
+		mes "[Chunghae]";
+		mes "คนที่นี่";
+		mes "แล้วก็จิ้กจอกเก้าหางดูท่าทางแปลก ๆ";
+		mes "โดยเฉพาะพ่อมดท่าทางแปลก ๆ";
+		mes "คนนึงที่เดินไปเดินมาอยู่นั่นน่ะ...";
+		mes "ไม่ใช่ว่าเป็นต้นเหตุของเรื่องนี้เหรอ?";
 		next;
-		mes "[ Chunghae ]";
-		mes "These foxes, villagers, and angry spirits...";
-		mes "They reminded me of the time when the village was buried under landslide.";
+		mes "[Chunghae]";
+		mes "แล้วพวกจิ้กจอกเก้าหาง! คนในหมู่บ้าน!";
+		mes "แล้วก็พวกวิญญาณร้ายน่ะ!";
+		mes "เหมือนกับตอนนั้นเลย";
+		mes "ตอนที่เกิดภูเขาถล่มฝังหมู่บ้านไปน่ะ...";
+		mes "มันทำให้ข้านึกถึงเรื่องราวที่เคยแต่ฟังเขาเล่ากันมา..";
 		next;
-		mes "[ Chunghae ]";
-		mes "We need to look around for more clues.";
-		mes "You'll help, won't you?";
+		mes "[Chunghae]";
+		mes "สำรวจ! คงจะต้องสำรวจเสียหน่อยแล้ว";
+		mes "ท่านจะช่วยข้าใช่ไหม?";
 		next;
-		mes "[ Chunghae ]";
-		mes "Let me know when you're ready.";
+		mes "[Chunghae]";
+		mes "ถ้าเตรียมพร้อมแล้ว ก็มาบอกข้าล่ะ";
 		illusion_moonlight = 7;
 		completequest 7781;
 		close;
 	}
 	if (checkweight(25271,1) == 0 || (MaxWeight - Weight) < 1000) {
-		mes "- You're carrying too many items to proceed with this quest. -";
+		mes "- คุณมีไอเท็มมากเกินไปที่จะทำภารกิจนี้ต่อ -";
 		close;
 	}
 	switch (checkquest(7783,PLAYTIME)) {
@@ -732,115 +819,148 @@ pay_d03_i,149,45,4	script	Scholar Chunghae#ill_moon_ind	4_F_03,{
 
 		case 0:
 		case 1:
-			mes "[ Chunghae ]";
-			mes "Now I know this is not the ruined village.";
-			mes "Are we really inside a Moonlight Flower's nightmare?";
+			mes "[Chunghae]";
+			mes "ข้ารู้ได้เลยว่าที่นี่ต่างกับหมู่บ้านร้างเดิม";
+			mes "พวกเราเข้ามาอยู่ใน Illusion of Moonlight";
+			mes "จริง ๆ เหรอเนื่ย?";
 			next;
-			mes "[ Chunghae ]";
-			mes "That's what Muyeon said.";
-			mes "Their nightmares are coming true.";
+			mes "[Chunghae]";
+			mes "Muyeon ก็บอกเช่นนั้นไม่ใช่เหรอ?";
+			mes "เหมือนฝันร้ายจะกลายเป็นจริงขึ้นมา...";
 			next;
-			mes "[ Chunghae ]";
-			mes "This place is a worth of a serious study.";
+			mes "[Chunghae]";
+			mes "คงจะดีถ้าได้ลองสำรวจแถว ๆ นี้ดูสักหน่อย";
 			close;
 
 		case 2:
-			mes "[ Chunghae ]";
-			mes "Let's begin our investigation for the day, shall we?";
-			mes "Maybe it's because this is a dream, but nothing about it has changed.";
+			mes "[Chunghae]";
+			mes "วันนี้ก็มาเริ่มสำรวจกันเลยดีไหม?";
+			mes "ดูเหมือนสถานการณ์มันจะไม่ได้มีอะไร";
+			mes "เปลี่ยนแปลงไปสักเท่าไหร่";
+			mes "อาจจะเพราะมันเป็นฝันร้ายล่ะมั้ง...";
 			erasequest 7783;
 			next;
-			mes "[ Chunghae ]";
-			mes "Let me know when you're ready.";
+			mes "[Chunghae]";
+			mes "ถ้าเตรียมพร้อมแล้ว ก็มาบอกข้าล่ะ";
 			close;
 	}
 	switch (checkquest(7782,HUNTING)) {
 		case -1:
-			mes "[ Chunghae ]";
-			mes "I've talked to the villagers,";
-			mes "and many of them told me about some strange mage.";
+			mes "[Chunghae]";
+			mes "ข้าไปฟังที่คนที่นี่พูดกัน";
+			mes "พวกเขาพูดเกี่ยวกับพ่อมดประหลาดคนนั้น";
+			mes "กันมากเลยล่ะ";
 			next;
-			mes "[ Chunghae ]";
-			mes "They said he casts powerful spells wherever he goes, and it was one of his spells that shook the ground and caused the fatal landslide. As a result, a lot of the villagers and foxes died.";
+			mes "[Chunghae]";
+			mes "แบบว่า จอมนักเวทย์นั่นทำลายทุกอย่าง";
+			mes "ที่ขวางหน้า แล้วก็เป็นสาเหตุทำให้ดินภูเขา";
+			mes "ถล่มลงมา ถ้าเป็นเช่นนั้นจริง ๆ ทั้งผู้คน";
+			mes "ทั้งสัตว์ป่าคงจะล้มตายกันเยอะแน่ ๆ";
 			next;
-			mes "[ Chunghae ]";
-			mes "I'm convinced that the mage is responsible for these rampant nightmares.";
-			mes "Maybe the nightmares would stop materializing if we get rid of their cause.";
+			mes "[Chunghae]";
+			mes "ไม่ว่าจะคิดยังไง ตัวการของฝันร้ายนี้";
+			mes "จะต้องเป็นพ่อมดประหลาดคนนั้นไม่ผิดแน่";
+			mes "ถ้าหากเรากำจัดต้นเหตุของฝันร้ายออกไปได้";
+			mes "ฝันร้ายจะไม่กลายเป็นจริงแล้วหายไปไหมนะ?";
 			next;
-			mes "[ Chunghae ]";
-			mes "Of course, I could be wrong.";
-			mes "He could just be another character in the nightmares.";
+			mes "[Chunghae]";
+			mes "แต่ว่าแน่นอนว่าเรื่องที่พ่อมดคนนั้น";
+			mes "เป็นเหตุของเรื่องนี้ก็เป็นเพียงข้อสันนิษฐาน";
+			mes "ของข้าเท่านั้น เพราะพ่อมดคนนั้นอาจจะเป็น";
+			mes "แค่ตัวละครหนึ่งที่ออกมาในความฝันนี้ก็ได้";
 			next;
-			mes "[ Chunghae ]";
-			mes "I want to know more than anything what tore the walls between reality and dreams.";
-			mes "Maybe this is even happening in other places too?";
+			mes "[Chunghae]";
+			mes "สิ่งสำคัญคือ";
+			mes "ทำไมเส้นระหว่างความฝันและโลกความ";
+			mes "เป็นจริงถูกพังลงเช่นนี้";
+			mes "และที่อื่นจะเกิดเรื่องแบบนี้บ้างไหม?";
 			next;
-			mes "[ Chunghae ]";
-			mes "Anyway, please take care of the ^0000FFWizard of the Truth^000000 in this place.";
-			mes "It's time we deal with this quasi-reality.";
+			mes "[Chunghae]";
+			mes "ยังไงก็ตาม ท่านช่วยไปต่อสู้กับ";
+			mes "^0000FFWizard of the Truth^000000 ";
+			mes "ที่เตร็ดเตร่อยู่ที่นี่ให้หน่อยเถอะ";
+			mes "เพราะถึงยังไงเราก็ต้องทำอะไรสักอย่าง";
+			mes "กับความจริงที่เหมือนกับความฝันนี้ล่ะนะ";
 			next;
-			mes "[ Chunghae ]";
-			mes "He is pretty formidable. I wouldn't recommend ^0000FFfight him alone.^000000";
+			mes "[Chunghae]";
+			mes "เข้าดูแข็งแกร่งเอามาก ๆ";
+			mes "เพราะฉะนั้นข้าแนะนำให้";
+			mes "^0000FFท่านนักผจญภัยและเพื่อนร่วมทีม^000000";
+			mes "ต่อสู้ร่วมกัน";
 			next;
-			if (select("Will do.:No, thanks.") == 2) {
-				mes "[ Chunghae ]";
-				mes "Err, then I'll have to investigate something else.";
-				mes "But I won't resent you for this. I promise.";
+			if (select("เข้าใจแล้ว:ขอปฏิเสธ") == 2) {
+				mes "[Chunghae]";
+				mes "อืม.. เช่นนั้นแล้ว";
+				mes "คงต้องไปสำรวจปัจจัยอื่น ๆ แทน..";
+				mes "ก็ช่วยไม่ได้ล่ะนะ..!";
+				mes "แน่นอนว่าข้าไม่ขุ่นเคืองใจกับท่านนักผจญภัยหรอกนะ!";
 				close;
 			}
-			mes "[ Chunghae ]";
-			mes "Good luck.";
-			mes "That wizard looks pretty strong.";
-			mes "Please be careful.";
+			mes "[Chunghae]";
+			mes "ถ้าเช่นนั้น ข้าฝากด้วยแล้วกันนะ";
+			mes "เขาดูเป็นนักเวทย์ที่มีมากความสามารถทีเดียว";
+			mes "ขอให้ท่านระวังตัวไว้ด้วย";
+			mes "";
 			setquest 7782;
 			close;
 
 		case 0:
 		case 1:
-			mes "[ Chunghae ]";
-			mes "That ^0000CDenlightened mage^000000 looks dangerous.";
-			mes "Please stop him.";
+			mes "[Chunghae]";
+			mes "^0000CDWizard of Truth^000000 ดูอันตรายนะ";
+			mes "อันดับแรกช่วยไปหยุดเขาไว้ที";
 			close;
 
 		case 2:
-			mes "[ Chunghae ]";
-			mes "You're as experienced as I've heard.";
-			mes "Now, let's see how this affects the situation.";
+			mes "[Chunghae]";
+			mes "นักผจญภัยผู้มากประสบการณ์นี่มันคนละ";
+			mes "ชั้นเลยจริง ๆ นะ";
+			mes "ตอนนี้คงต้องจับตาดูว่าจะมีสถานการณ์";
+			mes "อะไรเปลี่ยนแปลงหรือเปล่า";
 			next;
 			if (illusion_moonlight == 7) {
-				mes "[ Chunghae ]";
-				mes "Remember what Muyeon said?";
-				mes "About the foxes' nightmares coming true, I mean.";
+				mes "[Chunghae]";
+				mes "จำที่ Muyeon พูดได้ไหม? ที่ว่า";
+				mes "ฝันร้ายของจิ้กจอกเหมือนจะกลายเป็น";
+				mes "จริงขึ้นมาแล้ว";
 				next;
-				mes "[ Chunghae ]";
-				mes "I was thinking while looking around.";
-				mes "I think it's possible we're inside a Moonlight Flower's dream.";
+				mes "[Chunghae]";
+				mes "พอได้ลองสำรวจที่นี่แล้วข้าก็คิดได้ว่า";
+				mes "ไม่ว่ายังไง ที่นี่ก็เป็นฝันร้ายที่สร้างขึ้นโดย";
+				mes "Moonlight Flower แน่ ๆ";
 				next;
-				mes "[ Chunghae ]";
-				mes "I don't know how it has been connected to reality,";
-				mes "but I'm certain of one thing:";
+				mes "[Chunghae]";
+				mes "แม้ว่าจะไม่รู้ว่าฝันร้ายนี้จะเชื่อมกับ";
+				mes "โลกความเป็นจริงอย่างไร";
+				mes "...แต่มีสิ่งหนึ่งที่ข้ามั่นใจ";
 				next;
-				mes "[ Chunghae ]";
-				mes "The spirits of the Moonlight Flowers are still living in the past.";
-				mes "Back when their village was buried..";
+				mes "[Chunghae]";
+				mes "Moonlight Flower นั้น";
+				mes "ไม่สามารถลืมเรื่องราวในอดีตได้";
+				mes "ซึ่งก็คือตอนที่หมู่บ้านถูกฝังไปยังไงล่ะ";
 				next;
-				mes "[ Chunghae ]";
-				mes "They died such a horrible death that they're unable to move on to the Netherworld.";
-				mes "And something has ignited their pent-up anger.";
+				mes "[Chunghae]";
+				mes "เหตุการณ์ในครั้งนั้น";
+				mes "ทิ้่งความเจ็บปวดเอาไว้อย่างมาก";
+				mes "และถูกสะสมเป็นแรงแค้นมาถึงปัจจุบัน";
+				mes "มันอาจจะเป็นสาเหตุที่ระเบิด ตูม-!";
+				mes "ออกมาก็ได้ แต่ว่า...";
 				next;
-				mes "[ Chunghae ]";
-				mes "Here, there are truths that we cannot find anywhere else.";
-				mes "I guess I'll be staying here until I find them all.";
+				mes "[Chunghae]";
+				mes "...มันคงจะมีข้อเท็จจริงบางอย่างที่";
+				mes "สืบหาได้เฉพาะที่นี่อีก ว่าไหม?";
+				mes "ข้าคงจะต้องใช้เวลาสำรวจที่นี่สักระยะหนึ่ง";
 				next;
-				mes "[ Chunghae ]";
-				mes "Please deliver the news to Muyeon in the Detached Payon Palace.";
-				mes "Junghee and I will explore this place further.";
+				mes "[Chunghae]";
+				mes "ช่วยกลับไปบอก Muyeon ที่อยู่ใน";
+				mes "Detached Payon Palace ให้ข้าที";
+				mes "ข้ากับ Junghee จะอยู่ดูรอบ ๆ อีกสักพัก";
 				illusion_moonlight = 8;
 				setquest 7788;
 				next;
 			}
-			mes "[ Chunghae ]";
-			mes "I hope we can find an answer to this phenomenon.";
+			mes "[Chunghae]";
+			mes "ถ้าได้คำตอบของเหตุการณ์นี้กลับมาล่ะก็ คงจะดีไม่น้อยเลยนะ";
 			erasequest 7782;
 			setquest 7783;
 			getitem 25271,1;
@@ -863,136 +983,169 @@ pay_d03_i,152,45,4	script	Soldier Junghee#ill_moon_ind	4_M_PAY_SOLDIER,{
 	if (illusion_moonlight < 6)
 		end;
 	if (illusion_moonlight == 6) {
-		mes "[ Junghee ]";
-		mes "I knew coming in that I'd better stay close to Chunghae.";
-		mes "I was right.";
+		mes "[Junghee]";
+		mes "ถึงจะเป็นสิ่งที่คิดเอาไว้อยู่แล้ว";
+		mes "ตั้งแต่แรกเข้ามาสุ่มสี่สุ่มห้า";
+		mes "คงจะต้องอยู่กับ Chunghae";
+		mes "ไปอีกสักพักล่ะนะ";
 		next;
-		mes "[ Junghee ]";
-		mes "I'm sensing really bad vibes from these foxes and ghosts.";
-		mes "This is not good.";
+		mes "[Junghee]";
+		mes "แต่ว่า..";
+		mes "รู้สึกได้ถึงพลังงานที่ไม่ดีจากจิ้กจอก";
+		mes "เก้าหางและพวกดวงวิญญาณ";
+		mes "..... กลายเป็นเรื่องลำบากแล้วล่ะ";
 		close;
 	}
 	if (checkweight(25271,1) == 0 || (MaxWeight - Weight) < 1000) {
-		mes "- You're carrying too many items to proceed with this quest. -";
+		mes "- คุณมีไอเท็มมากเกินไปที่จะทำภารกิจนี้ต่อ -";
 		close;
 	}
 	if (checkquest(7784,HUNTING) == 2) {
-		mes "[ Junghee ]";
-		mes "It doesn't matter if they're real or not. They're just as threatening.";
-		mes "Good Job.";
+		mes "[Junghee]";
+		mes "ไม่ว่านี่จะเป็นเรื่องจริงหรือไม่";
+		mes "แต่ยังไงพวกมันก็เป็นอันตรายต่อพวกเรา";
+		mes "ท่านทำได้ดีมาก";
 		next;
-		mes "[ Junghee ]";
-		mes "Chunghae's almost done investigating this place. I'd better get ready to leave.";
+		mes "[Junghee]";
+		mes "ดูเหมือนการสำรวจของ Chunghae";
+		mes "ก็จะเรียบร้อยแล้วเช่นกัน";
+		mes "คงใกล้จะถึงเวลาเตรียมตัวกลับแล้วล่ะ";
 		erasequest 7784;
 		setquest 7785;
 		getitem 25271,1;
 		close;
 	}
 	if (checkquest(7786,HUNTING)  == 2) {
-		mes "[ Junghee ]";
-		mes "It doesn't matter if they're real or not.";
-		mes "I can symphatize with the soldier.";
+		mes "[Junghee]";
+		mes "ไม่ว่าจะเป็นเรื่องจริง";
+		mes "หรือเป็นภาพลวงตา";
+		mes "แต่ข้าก็เข้าใจความรู้สึกของทหารเหล่านั้น";
 		next;
-		mes "[ Junghee ]";
-		mes "All he wanted to do was protect others, and he died without fulfilling that wish.";
-		mes "Thank you for helping them rest.";
+		mes "[Junghee]";
+		mes "ทั้ง ๆ ที่อยากจะปกป้องให้ได้";
+		mes "แต่ทำได้เพียงตายจากไปอย่างสูญเปล่า";
+		mes "ขอบคุณที่ช่วยทำให้พวกเขาได้พักผ่อน";
 		erasequest 7786;
 		setquest 7787;
 		getitem 25271,1;
 		close;
 	}
-	mes "[ Junghee ]";
-	mes "There's another portal that looks just like the one we came through.";
-	mes "I touched it, and it sent me back to the original ruined village.";
+	mes "[Junghee]";
+	mes "ที่นี่ก็มีจุดวาร์ปที่เหมือนกับตอนเข้ามาอยู่";
+	mes "ถ้าเอามือไปแตะมัน";
+	mes "จะออกไปยังหมู่บ้านร้างได้";
 	next;
-	switch( select( "About the angry Nine Tails.", "About the angry Soldiers." ) ) {
+	switch( select( "เรื่องเกี่ยวกับ Angry Nine Tails", "เกี่ยวกับ Resentful Soldier" ) ) {
 	case 1:
 		switch( checkquest(7785,PLAYTIME) ) {
 		case -1:
 			if (checkquest(7784,HUNTING) == -1) {
-				mes "[ Junghee ]";
-				mes "Chunghae is having a problem investigating this place because of the angry foxes.";
-				mes "I'll appreciate if you can take care of them.";
+				mes "[Junghee]";
+				mes "ดูเหมือน Chunghae จะมีปัญหากับ";
+				mes "การไปสำรวจ เพราะพวกจิ้กจอกเก้าหางที่ดู";
+				mes "เกี้ยวกราดรอบ ๆ นี่ ข้าอยากจะขอร้อง";
+				mes "ให้ท่านช่วยกำจัดพวกจิ้กจอกเก้าหางได้หรือเปล่า...";
 				break;
 			}
-			mes "[ Junghee ]";
-			mes "Please hunt the ^0000FFAngry Nine Tails^000000 around this place.";
-			mes "That'll ensure Chunghae's safety during his investigation.";
+			mes "[Junghee]";
+			mes "ท่านช่วยจำกัด ^0000FFAngry Nine Tails^000000";
+			mes "ที่เห็นแถว ๆ นี้หน่อยได้ไหม";
+			mes "การสำรวจของ Chunghae";
+			mes "คงจะราบรื่นขึ้นเยอะ";
 			close;
 		case 0:
 		case 1:
-			mes "[ Junghee ]";
-			mes "Chunghae said we're inside a Moonlight Flower's nightmare.";
-			mes "They may not be real, but if they pose any threat to the living, then they must be taken care of.";
+			mes "[Junghee]";
+			mes "ตามที่ได้ยินจาก Chunghae ที่นี่คงเป็นฝันร้ายของ Moonlight แม้ว่าจิ้กจอกเก้าหางจะมีเพียงในภาพลวงตา แต่ถ้ายังสร้างความทุกข์ทรมานให้กับคนที่ยังมีชีวิตอยู่ล่ะก็ คงจำเป็นจะต้องกำจัดทิ้ง";
 			next;
-			mes "[ Junghee ]";
-			mes "And that has nothing to do with the symphathy I feel for them.";
-			mes "Now if you'll excuse me, Chunghae and I'll go investigate other places.";
+			mes "[Junghee]";
+			mes "และคงไม่สามารถรู้สึกเสียใจกับสิ่งที่";
+			mes "ข้าทำลงไปกับดวงวิญญาณที่น่าสงสารเหล่านั้น";
+			mes "ถ้างั้นข้ากับ Chunghae";
+			mes "จะลองสำรวจที่อื่นรอบ ๆ ดูก่อนล่ะ";
 			close;
 		case 2:
 			erasequest 7785;
-			mes "[ Junghee ]";
-			mes "Did you get some rest?";
-			mes "Everything's just the same as when you left it, but I want to clear this place,";
-			mes "so Chunghae can investigate it.";
-			mes "Could you hunt some ^4d4dffAngry Nine Tails^000000?";
+			mes "[Junghee]";
+			mes "ไปพักมาแล้วเหรอ?";
+			mes "ถึงจะเป็นกิจวัตรที่ไม่เปลี่ยนแปลง";
+			mes "แต่เพื่อให้ Chunghae ได้สำรวจรอบ ๆ นี้";
+			mes "ข้าอยากจะจัดการรอบ ๆ นี้เสียหน่อย";
+			mes "ช่วยกำจัด ^4d4dffAngry Nine Tails^000000 ให้หน่อยได้ไหม?";
 			break;
 		}
 		next;
-		if (select( "Accept.", "Decline." ) == 2) {
-			mes "[ Junghee ]";
-			mes "Then Chunghae won't be able to fully investigate this place.";
+		if (select( "ยอมรับ", "ปฏิเสธ" ) == 2) {
+			mes "[Junghee]";
+			mes "คงจะไปสำรวจไกลกว่านี้ไม่ได้แล้วสินะ";
 			close;
 		}
-		mes "[ Junghee ]";
-		mes "Thank you.";
-		mes "I understand why those ^0000FFfoxes are angry^000000, but this has to be done.";
+		mes "[Junghee]";
+		mes "ถ้าเช่นนั้น ข้าขอรบกวนท่าน";
+		mes "ข้าเข้าใจได้ว่าทำไม";
+		mes "^0000FFเหล่าจิ้กจอกเก้าหางถึงเกี้ยวกราด^000000";
+		mes "แต่มันก็เป็นคนละเรื่องกัน";
 		setquest 7784;
 		close;
 	case 2:
 		switch( checkquest(7787,PLAYTIME) ) {
 		case -1:
 			if (checkquest(7786,HUNTING) == -1) {
-				mes "[ Junghee ]";
-				mes "These soldiers tried to protect their villagers until the last moment,";
-				mes "and got buried with them. No wonder they're so angry.";
+				mes "[Junghee]";
+				mes "เหล่าทหารที่เห็นแถว ๆ นี้";
+				mes "คงจะเป็นทหารที่ปกป้องหมู่บ้านจนสุดชีวิต";
+				mes "แต่สุดท้ายก็เสียชีวิตกันหมด";
+				mes "และคงจะมีแต่ความอาฆาตแค้น";
 				break;
 			}
-			mes "[ Junghee ]";
-			mes "Please take care of the ^0000FFAngry Soldiers^000000 in this place.";
-			mes "I mean... send them to Heaven.";
+			mes "[Junghee]";
+			mes "ท่านช่วยกำจัด ^0000FFResentful Soldier^000000";
+			mes "ที่เห็นแถว ๆ นี้หน่อยได้ไหม";
+			mes "กำจัดงั้นเหรอ แปลก ๆ จัง";
+			mes "ช่วยทำให้พวกเขาจากไปอย่างสงบด้วยเถิด";
 			close;
 		case 0:
 		case 1:
-			mes "[ Junghee ]";
-			mes "If we're really inside Moonlight Flower's nightmare, like Chunghae thinks,";
-			mes "then the angry soldier over there must have been the guard of this village.";
+			mes "[Junghee]";
+			mes "ถ้าที่นี่เป็นฝันร้ายของ Moonlight";
+			mes "Flower ตามที่ Chunghae บอกล่ะก็";
+			mes "Resentful Soldier ที่เห็นตรงนั้น";
+			mes "คงเป็นทหารของหมู่บ้านที่อยู่ในเหตุ";
+			mes "การณ์ตอนนั้นสินะ";
 			next;
-			mes "[ Junghee ]";
-			mes "It doesn't matter if this is real or not. Watching my ancestors suffer is difficult.";
-			mes "I may end up wasting our time, but I want to try to help them rest.";
+			mes "[Junghee]";
+			mes "ไม่ว่านี่จะเป็นจริงหรือฝัน";
+			mes "การที่เห็นบรรบุรุษทุกข์ทรมานต่างก็";
+			mes "เจ็บปวดทั้งนั้น อาจจะเป็นการเสียเวลา";
+			mes "แต่ข้าอยากให้พวกเขาไปสู่ที่ดี ๆ กว่านี้";
 			close;
 		case 2:
 			erasequest 7787;
-			mes "[ Junghee ]";
-			mes "What can we do to get rid of these nightmares?";
-			mes "I told you it's difficult for me to look at those soldiers without feeling pain.";
+			mes "[Junghee]";
+			mes "วิธีที่จะทำให้ออกจากฝันร้ายได้คืออะ";
+			mes "ไรงั้นเหรอ?";
+			mes "ท่านจำที่ข้าพูดตอนที่เห็นเหล่าทหาร";
+			mes "ที่ทุกข์ทรมานได้ไหม?";
 			break;
 		}
 		next;
-		mes "[ Junghee ]";
-		mes "Would you be so kind as to put them to rest for me?";
+		mes "[Junghee]";
+		mes "ถ้าเป็นไปได้";
+		mes "ข้าอยากจะให้ท่านช่วยส่งพวกเขาไปยังที่ดี ๆ";
+		mes "ได้หรือเปล่า...";
 		next;
-		if (select( "Accept.", "Decline." ) == 2) {
-			mes "[ Junghee ]";
-			mes "I really don't want to deal with them myself,";
-			mes "but I guess I'll have to.";
+		if (select( "ยอมรับ", "ขอปฏิเสธ" ) == 2) {
+			mes "[Junghee]";
+			mes "ถ้าให้ทำด้วยตัวเองคงจะลำบาก";
+			mes "แต่ช่วยไม่ได้นะ";
+			mes "ข้าจะพยายามมากกว่านี้";
 			close;
 		}
-		mes "[ Junghee ]";
-		mes "Thank you.";
-		mes "I'll leave the ^0000FFAngry Soldiers^000000 to you.";
-		mes "Please send them to heaven.";
+		mes "[Junghee]";
+		mes "ถ้าเช่นนั้น ข้าขอรบกวนท่าน";
+		mes "ข้าขอฝาก ^0000FFResentful Soldier^000000";
+		mes "ไว้กับท่านนักผจญภัย";
+		mes "ช่วยส่งพวกเขาไปยังที่ชอบ ๆ ด้วย";
 		setquest 7786;
 		close;
 	}
@@ -1010,23 +1163,14 @@ OnInit:
 
 //= Illusion Moonlight Spawn
 pay_d03_i,43,150,5	script	Villager#ill_moon_0	1_F_ORIENT_01,{
-	mes "[ Villager ]";
-	mes "Adventurer?";
-	mes "Are you with the subjugation party?";
-	mes "Why can't you just leave us alone?";
-	next;
-	mes "[ Villager ]";
-	mes "We don't worship monsters.";
-	mes "We're not enthralled by monsters!";
-	next;
-	mes "[ Villager ]";
-	mes "Ah...";
-	mes "The light... The magic... Please stop that magic...";
+	mes "[Villager]";
+	mes "อ๊า...";
+	mes "แสงสว่าง... เวทย์มนต์... โปรดหยุดเวทย์มนต์นั้นเสียที...";
 	close2;
 	initnpctimer;
 	disablenpc();
 	specialeffect EF_QUAKEBODY2;
-	npctalk "Ah... Ah... Aaahhh...";
+	npctalk "อ๊า... อ๊า... อ๊ากกกก...";
 	areamonster "pay_d03_i",42,149,44,151,"Resentful Sohee",3762,3;
 	end;
 
@@ -1041,7 +1185,7 @@ pay_d03_i,82,237,3	script	Villager#ilp17	1_F_ORIENT_01,5,5,{
 
 OnTouch:
 	specialeffect EF_QUAKEBODY2;
-	npctalk "Ahhh... Ahhhhh!!";
+	npctalk "อ๊าาา... อ๊าาาาา!!";
 	initnpctimer;
 	disablenpc();
 	areamonster "pay_d03_i",81,236,83,238,"Resentful Sohee",3762,3;
@@ -1058,9 +1202,9 @@ pay_d03_i,254,206,3	script	Villager#ilp18	4_F_01,5,5,{
 
 OnTouch:
 	specialeffect EF_QUAKEBODY2;
-	npctalk "Something is not right!";
+	npctalk "..มันไม่ใช่แบบนี้สิ..!";
 	sleep2 2000;
-	npctalk "Stop it... It's coming, agh!!";
+	npctalk "....เวทย์มนต์.. ช่วยหยุดเวทย์..! .. มันพัง..พังลงมาแล้ว!! อ้ากกก!!!";
 	areamonster "pay_d03_i",252,204,255,208,"Resentful Munak",3760,3;
 	disablenpc();
 	end;
@@ -1072,17 +1216,17 @@ OnTimer60000:
 }
 
 pay_d03_i,81,136,3	script	Villager#ill_moon_3	1_M_ORIENT01,{
-	mes "[ Villager ]";
-	mes "Are you here to subjugate us?!";
-	mes "We've done nothing wrong!";
-	mes "Can't you tell from the sacred creatures!";
+	mes "[Villager]";
+	mes "กองพิชิตงั้นเหรอ!";
+	mes "แล้วมันเป็นเป็นความผิดของพวกเรายังไง?";
+	mes "ที่ไม่สามารถแยกระหว่างเทพเจ้ากับปีศาจออกได้!!!";
 	next;
-	mes "[ Villager ]";
-	mes "Ah... The fox lady...";
+	mes "[Villager]";
+	mes "อา...ท่านจิ้กจอก....";
 	close2;
 	initnpctimer;
 	disablenpc();
-	npctalk "H-help!! I don't want to die!";
+	npctalk "..ชะ..ช่วยด้วย.. ช่วยข้าด้วย..!!";
 	areamonster "pay_d03_i",79,136,81,138,"Resentful Bongun",3761,3;
 	end;
 
@@ -1093,18 +1237,17 @@ OnTimer60000:
 }
 
 pay_d03_i,160,260,3	script	Villager#ill_moon_4	1_M_ORIENT01,{
-	mes "[ Villager ]";
-	mes "You...";
-	mes "Who's that strange mage?";
-	mes "Why do you...?";
+	mes "[Villager]";
+	mes "อะไรของพวกเจ้า ..";
+	mes "พ่อมดแปลก ๆ ตรงนั้น...?";
+	mes "ทำไมพวกเรา....";
 	next;
-	mes "[ Villager ]";
-	mes "You! You're no better than them!";
-	mes "What have we done to you?";
+	mes "[Villager]";
+	mes "เจ้าก็.. เจ้าก็เหมือนกับพวกนั้น!!! พวกเราทำอะไรผิด!!!";
 	close2;
 	initnpctimer;
 	disablenpc();
-	npctalk "Arrgghh-!";
+	npctalk "อ๊าาาาา..!!";
 	areamonster "pay_d03_i",158,258,162,262,"Resentful Bongun",3761,3;
 	end;
 
@@ -1113,7 +1256,6 @@ OnTimer60000:
 	enablenpc();
 	end;
 }
-
 
 //============================================================
 //= Illusion of Vampire
