@@ -15,4 +15,4 @@
 int item_the_box,item_1,item_2; // item the box mobs drop all [null]
 int limit_sale_price;			// limit the sale value of all [null]
 int mvp_random_item_drop;		// Randomly drop all MVP items. [null]
-int item_rate_mvp_random		// rate Random drop all MVP items. [null]
+int item_rate_mvp_random;		// rate Random drop all MVP items. [null]
