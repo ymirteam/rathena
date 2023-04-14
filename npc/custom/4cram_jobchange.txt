@@ -113,4 +113,8 @@ Xlowlevel:
 	mes "[Special Job Changer]";
 	mes "Sorry but your base level must be "+@reqbaselv+" and your job level must be "+@reqjoblv+".";
 	close;
+
+OnInit:
+	waitingroom "Special Job Changer",0;
+	end;
 }
