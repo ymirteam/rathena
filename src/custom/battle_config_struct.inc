@@ -13,8 +13,8 @@
  **/
 
 /**
-+* Extended Vending system [Lilith]
-+**/
+* Extended Vending system [Lilith]
+**/
 int extended_vending;
 int show_broadcast_info;
 int show_item_vending;
