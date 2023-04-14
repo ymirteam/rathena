@@ -18,8 +18,8 @@ int mvp_random_item_drop;		// Randomly drop all MVP items. [null]
 int item_rate_mvp_random		// rate Random drop all MVP items. [null]
 
 /**
-+* Extended Vending system [Lilith]
-+**/
+* Extended Vending system [Lilith]
+**/
 int extended_vending;
 int show_broadcast_info;
 int show_item_vending;
