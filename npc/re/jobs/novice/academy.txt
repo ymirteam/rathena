@@ -170,6 +170,14 @@ int_land,78,103,5	script	Captain Carocc#intro_npc03	4_M_REINDEER,{
 		sc_start SC_BLESSING,240000,10;
 		skilleffect 29,0;
 		sc_start SC_INCREASEAGI,240000,10;
+		//add SC_FOOD
+		sc_start SC_FOOD_STR_CASH,240000,10;
+		sc_start SC_FOOD_AGI_CASH,240000,10;
+		sc_start SC_FOOD_VIT_CASH,240000,10;
+		sc_start SC_FOOD_INT_CASH,240000,10;
+		sc_start SC_FOOD_DEX_CASH,240000,10;
+		sc_start SC_FOOD_LUK_CASH,240000,10;
+
 		if (isbegin_quest(21001) == 1) {
 			completequest 21001;
 			getexp 600,600;
@@ -206,6 +214,14 @@ int_land,78,103,5	script	Captain Carocc#intro_npc03	4_M_REINDEER,{
 		sc_start SC_BLESSING,240000,10;
 		skilleffect 29,0;
 		sc_start SC_INCREASEAGI,240000,10;
+		//add SC_FOOD
+		sc_start SC_FOOD_STR_CASH,240000,10;
+		sc_start SC_FOOD_AGI_CASH,240000,10;
+		sc_start SC_FOOD_VIT_CASH,240000,10;
+		sc_start SC_FOOD_INT_CASH,240000,10;
+		sc_start SC_FOOD_DEX_CASH,240000,10;
+		sc_start SC_FOOD_LUK_CASH,240000,10;
+		
 		mes "^4d4dffThe Ship^000000 is anchored in the southwest. It will take you to Izlude.";
 		mes "Don't forget to ^4d4dffget some Lumber^000000 for the ship.";
 		next;

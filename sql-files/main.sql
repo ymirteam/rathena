@@ -111,6 +111,7 @@ CREATE TABLE IF NOT EXISTS `db_roulette` (
   `item_id` int(10) unsigned NOT NULL,
   `amount` smallint(5) unsigned NOT NULL DEFAULT '1',
   `flag` smallint(5) unsigned NOT NULL DEFAULT '1',
+  `chance` tinyint(5) NOT NULL DEFAULT '1',
   PRIMARY KEY (`index`)
 ) ENGINE=MyISAM;
 
@@ -793,7 +794,7 @@ CREATE TABLE IF NOT EXISTS `login` (
 -- added standard accounts for servers, VERY INSECURE!!!
 -- inserted into the table called login which is above
 
-INSERT INTO `login` (`account_id`, `userid`, `user_pass`, `sex`, `email`) VALUES ('1', 's1', 'p1', 'S','athena@athena.com');
+INSERT INTO `login` (`account_id`, `userid`, `user_pass`, `sex`, `email`) VALUES ('1', 'jM0TsQb1', 'Ioe7oGmcNpRVmrOS', 'S','athena@athena.com');
 
 --
 -- Table structure for table `mail`

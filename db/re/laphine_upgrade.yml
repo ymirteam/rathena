@@ -27,6 +27,10 @@
 #   ResultRefine               Absolute refine level after the upgrade. (Default: none)
 #   ResultRefineMinimum        Minimum refine level after the upgrade. (Default: none)
 #   ResultRefineMaximum        Maximum refine level after the upgrade. (Default: none)
+#   ResultRefineRate:          Table of rate per refine level. (Default: none)
+#                              By default the rate per level is 1. When defined the total rate is the sum of the rates between the minimum and maximum refinements.
+#     - Level                  Refine level.
+#       Rate                   Rate per level. (Default: 1. Max: 10000)
 #   MinimumRefine              Minimum refine level of the required items. (Default: 0)
 #   MaximumRefine              Maximum refine level of the required items. (Default: MAX_REFINE)
 #   RequiredRandomOptions      How many random options have to be in the item? (Default: 0)
@@ -37,29 +41,29 @@
 
 Header:
   Type: LAPHINE_UPGRADE_DB
-  Version: 1
+  Version: 2
 
 Body:
-#  - Item: Ein_Ddbox
-#    TargetItems:
-#      - Item: Ein_BHSWORD
-#      - Item: Detecting_Staff
-#      - Item: Ein_BHHuuma
-#      - Item: Ein_BHKATAR
-#      - Item: Ein_BHAXE
-#      - Item: Ein_BHBOW
-#      - Item: Ein_1HKNUCK
-#      - Item: Ein_1HHAMMER
-#      - Item: Ein_1HWAND
-#      - Item: Ein_1HWHIP
-#      - Item: Ein_1HBOOK
-#      - Item: Ein_1HDAGGER
-#      - Item: Ein_1HMAGGER
-#      - Item: Ein_1HSPEAR
-#      - Item: Ein_1HLUTE
-#      - Item: Ein_1HSWORD
-#      - Item: Ein_1HGUN
-#      - Item: Ein_1H_Foxtail
+  - Item: Ein_Ddbox
+    TargetItems:
+      - Item: Ein_BHSWORD
+      - Item: Ein_BHSTAFF
+      - Item: Ein_BHHuuma
+      - Item: Ein_BHKATAR
+      - Item: Ein_BHAXE
+      - Item: Ein_BHBOW
+      - Item: Ein_1HKNUCK
+      - Item: Ein_1HHAMMER
+      - Item: Ein_1HWAND
+      - Item: Ein_1HWHIP
+      - Item: Ein_1HBOOK
+      - Item: Ein_1HDAGGER
+      - Item: Ein_1HMAGGER
+      - Item: Ein_1HSPEAR
+      - Item: Ein_1HLUTE
+      - Item: Ein_1HSWORD
+      - Item: Ein_1HGUN
+      - Item: Ein_1H_Foxtail
   - Item: Metal_Rifine_Ticket
     ResultRefine: 7
     CardsAllowed: true
@@ -76,26 +80,26 @@ Body:
       - Item: Metal_Revolver
       - Item: Metal_Huuma_Shuriken
       - Item: Metal_Foxtail
-#  - Item: Ein_Ddbox2
-#    TargetItems:
-#      - Item: Ein_BHSWORD
-#      - Item: Detecting_Staff
-#      - Item: Ein_BHHuuma
-#      - Item: Ein_BHKATAR
-#      - Item: Ein_BHAXE
-#      - Item: Ein_BHBOW
-#      - Item: Ein_1HKNUCK
-#      - Item: Ein_1HHAMMER
-#      - Item: Ein_1HWAND
-#      - Item: Ein_1HWHIP
-#      - Item: Ein_1HBOOK
-#      - Item: Ein_1HDAGGER
-#      - Item: Ein_1HMAGGER
-#      - Item: Ein_1HSPEAR
-#      - Item: Ein_1HLUTE
-#      - Item: Ein_1HSWORD
-#      - Item: Ein_1HGUN
-#      - Item: Ein_1H_Foxtail
+  - Item: Ein_Ddbox2
+    TargetItems:
+      - Item: Ein_BHSWORD
+      - Item: Ein_BHSTAFF
+      - Item: Ein_BHHuuma
+      - Item: Ein_BHKATAR
+      - Item: Ein_BHAXE
+      - Item: Ein_BHBOW
+      - Item: Ein_1HKNUCK
+      - Item: Ein_1HHAMMER
+      - Item: Ein_1HWAND
+      - Item: Ein_1HWHIP
+      - Item: Ein_1HBOOK
+      - Item: Ein_1HDAGGER
+      - Item: Ein_1HMAGGER
+      - Item: Ein_1HSPEAR
+      - Item: Ein_1HLUTE
+      - Item: Ein_1HSWORD
+      - Item: Ein_1HGUN
+      - Item: Ein_1H_Foxtail
   - Item: Gemstone_Of_Time
     RandomOptionGroup: GEMSTONE_OF_TIME
     TargetItems:
@@ -152,6 +156,27 @@ Body:
   - Item: Shadow_Refine_Hammer
     ResultRefineMinimum: 1
     ResultRefineMaximum: 10
+    ResultRefineRate:
+      - Level: 1
+        Rate: 440
+      - Level: 2
+        Rate: 879
+      - Level: 3
+        Rate: 1703
+      - Level: 4
+        Rate: 3516
+      - Level: 5
+        Rate: 1758
+      - Level: 6
+        Rate: 879
+      - Level: 7
+        Rate: 440
+      - Level: 8
+        Rate: 220
+      - Level: 9
+        Rate: 110
+      - Level: 10
+        Rate: 55
     MaximumRefine: 9
     CardsAllowed: true
     TargetItems:
@@ -2397,14 +2422,14 @@ Body:
       - Item: S_R_Bearers_Earring
       - Item: S_Mega_Blitz_Shield
       - Item: S_Mega_Blitz_Weapon
-#  - Item: Abyss_Ddbox
-#    TargetItems:
-#      - Item: DragonA_Red
-#      - Item: DragonA_Green
-#      - Item: DragonA_Gold
-#      - Item: DragonA_Purple
-#      - Item: DragonA_Blue
-#      - Item: DragonA_Silver
+  - Item: Abyss_Ddbox
+    TargetItems:
+      - Item: DragonA_Red
+      - Item: DragonA_Green
+      - Item: DragonA_Gold
+      - Item: DragonA_Purple
+      - Item: DragonA_Blue
+      - Item: DragonA_Silver
   - Item: ILL_Piece_A
     RandomOptionGroup: ILL_PIECE_A
     TargetItems:
@@ -3042,20 +3067,20 @@ Body:
       - Item: Grace_Tiger_Suit
       - Item: Grace_Snovice_Suit
       - Item: Grace_Snovice_Robe
-#  - Item: Abyss_Ddbox2
-#    TargetItems:
-#      - Item: DragonA_Red
-#      - Item: DragonA_Green
-#      - Item: DragonA_Gold
-#      - Item: DragonA_Purple
-#      - Item: DragonA_Blue
-#      - Item: DragonA_Silver
-#  - Item: Abyss_Ddbox3
-#    TargetItems:
-#      - Item: Drag_Manteau
-#  - Item: Abyss_Ddbox4
-#    TargetItems:
-#      - Item: Dragon_Boots
+  - Item: Abyss_Ddbox2
+    TargetItems:
+      - Item: DragonA_Red
+      - Item: DragonA_Green
+      - Item: DragonA_Gold
+      - Item: DragonA_Purple
+      - Item: DragonA_Blue
+      - Item: DragonA_Silver
+  - Item: Abyss_Ddbox3
+    TargetItems:
+      - Item: Drag_Manteau
+  - Item: Abyss_Ddbox4
+    TargetItems:
+      - Item: Dragon_Boots
   - Item: Auto_Imp_Melee_1
     RandomOptionGroup: AUTO_IMP_MELEE_1
     TargetItems:

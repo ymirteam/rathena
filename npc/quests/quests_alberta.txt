@@ -782,7 +782,7 @@ alberta,136,79,1	script	Hat store girl#new30	71,{
 							next;
 							delitem 2252,1; //Star_Sparkling
 							delitem 1036,400; //Dragon_Scale
-							delitem 4052,1; //Elder_Wilow_Card
+							delitem 4052,1; //Elder_Willow_Card
 							delitem 7001,50; //Mould_Powder
 							mes "[Tempestra]";
 							mes "Here it is, tee hee~";

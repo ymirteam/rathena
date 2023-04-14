@@ -58789,7 +58789,7 @@ Body:
   - Id: 23919
     AegisName: K_Secret_Key
     Name: Kachua's Secret Key
-    Type: Usable
+    Type: Delayconsume
     Trade:
       NoDrop: true
       NoTrade: true
@@ -58799,7 +58799,7 @@ Body:
       NoMail: true
       NoAuction: true
     Script: |
-      /* callfunc "F_Kachua_Key"; */
+      duplicate_dynamic("Kachua's Secret Box#bm");
   - Id: 23921
     AegisName: Season_Evt_Reward
     Name: Event Reward Box
@@ -58916,6 +58916,7 @@ Body:
     AegisName: Odin_itembox
     Name: Odin Relic
     Type: Usable
+    Buy: 20
     Weight: 100
     Flags:
       Container: true
@@ -64731,6 +64732,13 @@ Body:
     Script: |
       specialeffect2 EF_POTION_BERSERK;
       sc_start SC_INFINITY_DRINK,1800000,0;
+  - Id: 101099
+    AegisName: ClockTower_Regulator
+    Name: Spring Regulator
+    Type: DelayConsume
+    Weight: 10
+    Script: |
+      item_enchant(24);
   - Id: 101103
     AegisName: Enchant_Stone_Box25
     Name: Costume Enchant Stone Box 25
@@ -66199,6 +66207,65 @@ Body:
       Container: true
     Script: |
       getgroupitem(IG_Enchant_Stone_Box29);
+  - Id: 101919
+    AegisName: aegis_101919
+    Name: Experience Shadow Selection Box    # !todo check english name
+    Type: Usable
+    Weight: 10
+    Flags:
+      BuyingStore: true
+  - Id: 101920
+    AegisName: aegis_101920
+    Name: Experience Weapon Shadow Box    # !todo check english name
+    Type: Usable
+    Weight: 10
+    Flags:
+      Container: true
+    Script: |
+      getgroupitem(IG_AEGIS_101920);
+  - Id: 101921
+    AegisName: aegis_101921
+    Name: Experience Shield Shadow Box    # !todo check english name
+    Type: Usable
+    Weight: 10
+    Flags:
+      Container: true
+    Script: |
+      getgroupitem(IG_AEGIS_101921);
+  - Id: 101922
+    AegisName: aegis_101922
+    Name: Mega Blitz Shadow Selection Box    # !todo check english name
+    Type: Usable
+    Weight: 10
+    Flags:
+      BuyingStore: true
+  - Id: 101923
+    AegisName: aegis_101923
+    Name: Mega Blitz Weapon Shadow Box    # !todo check english name
+    Type: Usable
+    Weight: 10
+    Flags:
+      Container: true
+    Script: |
+      getgroupitem(IG_AEGIS_101923);
+  - Id: 101924
+    AegisName: aegis_101924
+    Name: Mega Blitz Shield Shadow Box    # !todo check english name
+    Type: Usable
+    Weight: 10
+    Flags:
+      Container: true
+    Script: |
+      getgroupitem(IG_AEGIS_101924);
+  - Id: 101925
+    AegisName: aegis_101925
+    Name: Convertible Wing Box    # !todo check english name
+    Type: Usable
+    Flags:
+      BuyingStore: true
+      Container: true
+    Script: |
+      getgroupitem(IG_AEGIS_101925);
   - Id: 101933
     AegisName: Barmund_Soul_Reform
     Name: Soul Rune Upgrade    # !todo check english name

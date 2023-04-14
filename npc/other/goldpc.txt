@@ -1,0 +1,283 @@
+//===== rAthena Script =======================================
+//= Gold PC Bonus NPC
+//===== Description: =========================================
+//= NPC that can be spawned via the Gold PC Timer Button.
+//===== Changelog: ===========================================
+//= 1.0 Initial release [Lemongrass]
+//= 1.1 Replay version [eppc0330]
+//= 1.2 Translation of the replay version [Lemongrass]
+//= 1.3 Cleanup of NPC logic [Lemongrass]
+//= 1.4 Added replay version of buff NPC [eppc0330]
+//= 1.5 Translation English [slammer86]
+//============================================================
+
+prontera,0,0,0	script	Goldpoint Manager::GOLDPCCAFE	4_F_02,{
+	// ID:AMOUNT:PRICE
+	setarray .items$[1],
+		"30001:1:1", // cash coin 1
+		"25464:1:2", // World_Tour_Ticket 1
+		"23919:1:10",  // K_Secret_Key 1
+		"23919:11:100",// K_Secret_Key 11
+		"23919:33:300";// K_Secret_Key 33
+
+	mes "[Goldpoint Manager]";
+	mes "You currently have ^0000ff"+Goldpc_Points+"^000000 points.";
+	mes "What reward do you want?";
+	next;
+
+	.@menu$ = "View current points";
+
+	for(.@i = 1; .@i < getarraysize(.items$); .@i++) {
+		explode(.@array$, .items$[.@i], ":");
+		.@cost = atoi(.@array$[2]);
+		.@menu$ += ":" + .@cost + " points gift "+atoi(.@array$[1])+" ea "+getitemname(atoi(.@array$[0]));
+		if( Goldpc_Points < .@cost ){
+			.@menu$ += " ^ff0000(not enough points)^000000";
+		}
+	}
+
+	.@s = select(.@menu$)-1;
+
+	if(.@s == 0) {
+		mes "[Goldpoint Manager]";
+		mes "You currently have ^0000ff"+Goldpc_Points+"^000000 points.";
+		close;
+	}
+
+	explode(.@array$, .items$[.@s], ":");
+	.@itemid = atoi(.@array$[0]);
+	.@amount = atoi(.@array$[1]);
+	.@cost = atoi(.@array$[2]);
+
+	if(Goldpc_Points < .@cost) {
+		mes "[Goldpoint Manager]";
+		mes "You have ^0000ff"+Goldpc_Points+"^000000 points remaining.";
+		mes "You cannot get the prize with this amount of points.";
+		close;
+	}
+
+	mes "[Goldpoint Manager]";
+	mes "You chose the "+.@cost+" points gift. We will reward you immediately.";
+	Goldpc_Points -= .@cost;
+	getitem .@itemid,.@amount;
+	mes "You have ^0000ff"+Goldpc_Points+"^000000 points remaining.";
+	close;
+}
+
+prontera,146,93,5	script	Fever Banshee	4_M_MANAGER,{
+	mes "[Fever Banshee]";
+	mes "Yeah~ I'll keep seeing you, friend.";
+	mes "so much that it needs no introduction";
+	mes "I think I've seen it a lot, but anyway...";
+	mes "..It's annoying to say something that hurts your mouth,";
+	mes "I'm sure you already know that";
+	mes "Do you think so, I'll talk briefly.";
+	next;
+	mes "[Fever Banshee]";
+	mes "Depending on where you are,";
+	mes "I have many things for you";
+	mes "I'm going to serve you.";
+	next;
+	mes "[Fever Banshee]";
+	mes "Anyway you are now serving";
+	mes "Check if you can receive it";
+	mes "I'll take a look. Wait a minute";
+	mes "Wait.";
+	next;
+	if(vip_status(VIP_STATUS_ACTIVE)==1||getgroupid()==99)
+		goto VIP; //Custom. In KRo there's two PC cafe grade : gold and silver.
+	else
+		goto Normal;
+		
+Normal:
+	mes "[Fever Banshee]";
+	mes "Unfortunately you have no service";
+	mes "exists where it can be received";
+	mes "There's no... I'm getting regular service";
+	mes "If you would like to contact us elsewhere";
+	mes "Let it be";
+	next;
+	mes "[Fever Banshee]";
+	mes "Why, so many people gathered";
+	mes "He who encounters different worlds";
+	mes "You know a place? Go there";
+	mes "Come into this world.";
+	next;
+	mes "[Fever Banshee]";
+	mes "Then talk again";
+	mes "Let's do it. Have a nice day.";
+	close;
+	
+Vip:
+	// ID:Quantity:Price:Name:Investigation
+	setarray .items$[1],
+	"14529:10:2000:Greed Scroll", //Greed Scroll
+	"12274:1:10000:Daehwandan",	//Daehwandan
+	"12275:1:10000:Taecheongdan", //Taecheongdan
+	"12262:10:10000:Authoritative Badge"; // 	Authoritative Badge
+
+	mes "[Fever Banshee]";
+	mes "Okay. You get service";
+	mes "A place where you can ... rank there";
+	mes "Gold level to share?";
+	mes "Scroll of Greed, Daehwandan, Taecheongdan,";
+	mes "You can get a Authoritative Badge...";
+	next;
+	mes "[Fever Banshee]";
+	mes "Greed Scroll is 2000 Zenny.";
+	mes "Daehwandan is 10000 Zenny";
+	mes "Taecheongdan is 10000 Zenny";
+	mes "Authoritative Badge is 10000 Zenny";
+	mes "Hey, what are you getting for double";
+	mes "Do you want to?";
+	next;
+
+	for(.@i = 1; .@i < getarraysize(.items$); .@i++) {
+		explode(.@array$, .items$[.@i], ":");
+		.@menu$ += ":"+getitemname(atoi(.@array$[0]));
+	}
+	.@s = select(.@menu$+":do not accept.")-1;
+	if(.@s == getarraysize(.items$)) {
+		mes "[Fever Banshee]";
+		mes "You're a solid man. Okay.";
+		mes "I'm not trying to force anything.";
+		mes "Then have a nice day.";
+		close;
+	}
+	explode(.@array$, .items$[.@s], ":");
+	.@itemid = atoi(.@array$[0]);
+	.@amount = atoi(.@array$[1]);
+	.@cost = atoi(.@array$[2]);
+	.@name$ = getitemname(atoi(.@array$[0]));
+	.@part$ = (.@array$[3]);
+	if(zeny < .@cost) {
+	mes "[Fever Banshee]";
+	mes "Unfortunately, you are called "+.@cost+"Jenny";
+	mes "I don't have money... but to get service";
+	mes "That's wrong. Even if it's a service";
+	mes "It's decided that way, so do it for free";
+	mes "I can't give it to you.";
+	close;
+	}
+	if(countitem(.@itemid) > 0) {
+	mes "[Fever Banshee]";
+	mes "Unfortunately, um... you are";
+	mes "Already one "+.@name$+""+.@part$+"";
+	mes "I have it. I'm talking about it";
+	mes "Didn't you do this? Ah..I want this lately";
+	mes "Because I am forgetful.";
+	mes "Hot hot hot.";
+	next;
+	mes "[Fever Banshee]";
+	mes "It depends, but not a lot of stuff";
+	mes "possessing things in a relationship";
+	mes "I can't pay people";
+	next;
+	mes "[Fever Banshee]";
+	mes "Please use the next opportunity.";
+	mes "See you next time!";
+	close;
+	}
+	mes "[Fever Banshee]";
+	mes "Okay. Good idea. Really";
+	mes "Excellent choice. Hot hot hot.";
+	mes "Use well!";
+	set Zeny, Zeny - .@cost;
+	getitem .@itemid,.@amount;
+	next;
+	mes "[Fever Banshee]";
+	mes "And... the promised service!";
+	next;
+	mes "[Fever Banshee]";
+	mes "Gold-ranked guests here";
+	mes "Surprising choice for ! 4 kinds of service";
+	mes "You can choose one of these!";
+	next;
+	mes "[Fever Banshee]";
+	mes "First, ^FF0000STR+8, AGI+6, DEX+4,";
+	mes "^FF0000ATK+32, FLEE+5!";
+	mes "^000000Second, ^FF0000INT+8, DEX+6,";
+	mes "^FF0000VIT+4, MATK+40!^000000";
+	next;
+	mes "[Fever Banshee]";
+	mes "third, ^FF0000DEX+8, AGI+6, LUK+4,";
+	mes "^FF0000ATK+24, MATK+24!";
+	mes "^000000fourth, ^FF0000+6 ATK+24, MATK+24!!^000000";
+	next;
+	mes "[Fever Banshee]";
+	mes "Which of the four would you like to receive?!";
+	next;
+	.@s2 = (select("first:second:third:fourth"));
+
+	mes "[Fever Banshee]";
+	mes "Yaaaaaaaaaaa!";	
+	if(.@s2 == 1) {
+		sc_start SC_STRFOOD,5400000,8;
+		sc_start SC_AGIFOOD,5400000,6;
+		sc_start SC_DEXFOOD,5400000,4;
+		sc_start SC_ATKPOTION,5400000,32;
+		sc_start SC_FLEEFOOD,5400000,5;
+	} else if(.@s2 == 2) {
+		sc_start SC_INTFOOD,5400000,8;
+		sc_start SC_DEXFOOD,5400000,6;
+		sc_start SC_VITFOOD,5400000,4;
+		sc_start SC_MATKPOTION,5400000,40;
+	} else if(.@s2 == 3) {
+		sc_start SC_DEXFOOD,5400000,8;
+		sc_start SC_AGIFOOD,5400000,6;
+		sc_start SC_LUKFOOD,5400000,4;
+		sc_start SC_ATKPOTION,5400000,24;
+		sc_start SC_MATKPOTION,5400000,24;
+	} else {
+		sc_start SC_STRFOOD,5400000,6;
+		sc_start SC_AGIFOOD,5400000,6;
+		sc_start SC_VITFOOD,5400000,6;
+		sc_start SC_INTFOOD,5400000,6;
+		sc_start SC_DEXFOOD,5400000,6;
+		sc_start SC_LUKFOOD,5400000,6;
+		sc_start SC_ATKPOTION,5400000,24;
+		sc_start SC_MATKPOTION,5400000,24;
+	}
+	next;
+	mes "[Fever Banshee]";
+	mes "You gave me strength. How is it?";
+	mes "Even if the thought of losing money dies";
+	mes "Doesn't it cost? Hot hot hot. Well, there's more";
+	mes "The surplus business also surplus like this";
+	mes "There is no business.";
+	next;
+	mes "[Fever Banshee]";
+	mes "Okay then next time";
+	close;
+}
+
+alberta,104,60,5	duplicate(Fever Banshee)	Fever Banshee#alb	4_M_MANAGER
+aldebaran,146,116,5	duplicate(Fever Banshee)	Fever Banshee#ald	4_M_MANAGER
+amatsu,102,152,5	duplicate(Fever Banshee)	Fever Banshee#ama	4_M_MANAGER
+ayothaya,212,173,5	duplicate(Fever Banshee)	Fever Banshee#ayo	4_M_MANAGER
+brasilis,200,224,5	duplicate(Fever Banshee)	Fever Banshee#bra	4_M_MANAGER
+comodo,199,149,5	duplicate(Fever Banshee)	Fever Banshee#com	4_M_MANAGER
+dewata,202,188,5	duplicate(Fever Banshee)	Fever Banshee#dew	4_M_MANAGER
+dicastes01,193,191,5	duplicate(Fever Banshee)	Fever Banshee#dic	4_M_MANAGER
+einbroch,235,207,5	duplicate(Fever Banshee)	Fever Banshee#ein	4_M_MANAGER
+geffen,126,64,5	duplicate(Fever Banshee)	Fever Banshee#gef	4_M_MANAGER
+gonryun,156,122,5	duplicate(Fever Banshee)	Fever Banshee#gon	4_M_MANAGER
+hugel,80,152,5	duplicate(Fever Banshee)	Fever Banshee#hug	4_M_MANAGER
+izlude,125,148,5	duplicate(Fever Banshee)	Fever Banshee#izl	4_M_MANAGER
+lighthalzen,167,97,5	duplicate(Fever Banshee)	Fever Banshee#lig	4_M_MANAGER
+louyang,210,107,5	duplicate(Fever Banshee)	Fever Banshee#lou	4_M_MANAGER
+malangdo,178,139,5	duplicate(Fever Banshee)	Fever Banshee#mld	4_M_MANAGER
+malaya,234,218,5	duplicate(Fever Banshee)	Fever Banshee#mly	4_M_MANAGER
+manuk,296,147,5	duplicate(Fever Banshee)	Fever Banshee#man	4_M_MANAGER
+mid_camp,201,237,5	duplicate(Fever Banshee)	Fever Banshee#mid	4_M_MANAGER
+mora,113,112,5	duplicate(Fever Banshee)	Fever Banshee#mra	4_M_MANAGER
+morocc,164,255,5	duplicate(Fever Banshee)	Fever Banshee#mro	4_M_MANAGER
+moscovia,220,191,5	duplicate(Fever Banshee)	Fever Banshee#mos	4_M_MANAGER
+niflheim,206,179,5	duplicate(Fever Banshee)	Fever Banshee#nif	4_M_MANAGER
+payon,184,102,5	duplicate(Fever Banshee)	Fever Banshee#pay	4_M_MANAGER
+prontera,145,174,5	duplicate(Fever Banshee)	Fever Banshee#ptr	4_M_MANAGER
+rachel,111,143,5	duplicate(Fever Banshee)	Fever Banshee#rah	4_M_MANAGER
+splendide,201,153,5	duplicate(Fever Banshee)	Fever Banshee#spl	4_M_MANAGER
+umbala,93,160,5	duplicate(Fever Banshee)	Fever Banshee#umb	4_M_MANAGER
+veins,210,109,5	duplicate(Fever Banshee)	Fever Banshee#vei	4_M_MANAGER
+yuno,149,187,5	duplicate(Fever Banshee)	Fever Banshee#yun	4_M_MANAGER

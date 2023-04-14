@@ -1835,6 +1835,13 @@ enum e_random_item_group {
 	IG_CLASS_SHADOW_EA_CUBE,
 	IG_ENCHANT_STONE_BOX30,
 
+	// feature/kachua
+	IG_AEGIS_101920,
+	IG_AEGIS_101921,
+	IG_AEGIS_101923,
+	IG_AEGIS_101924,
+	IG_AEGIS_101925,
+
 	IG_MAX,
 };
 
@@ -2019,6 +2026,7 @@ struct s_item_group_random
 struct s_item_group_db
 {
 	uint16 id; /// Item Group ID
+	t_itemid announce_box_id; /// Item ID to be used in ZC_BROADCASTING_SPECIAL_ITEM_OBTAIN packet
 	std::unordered_map<uint16, std::shared_ptr<s_item_group_random>> random;	/// group ID, s_item_group_random
 };
 
@@ -2028,6 +2036,7 @@ struct s_roulette_db {
 	unsigned short *qty[MAX_ROULETTE_LEVEL]; /// Amount of Item ID
 	int *flag[MAX_ROULETTE_LEVEL]; /// Whether the item is for loss or win
 	int items[MAX_ROULETTE_LEVEL]; /// Number of items in the list for each
+	std::vector<int8> chance_table[MAX_ROULETTE_LEVEL];
 };
 extern struct s_roulette_db rd;
 
@@ -2163,7 +2172,7 @@ extern ItemDatabase item_db;
 
 class ItemGroupDatabase : public TypesafeCachedYamlDatabase<uint16, s_item_group_db> {
 public:
-	ItemGroupDatabase() : TypesafeCachedYamlDatabase("ITEM_GROUP_DB", 2, 1) {
+	ItemGroupDatabase() : TypesafeCachedYamlDatabase("ITEM_GROUP_DB", 3, 1) {
 
 	}
 
@@ -2218,11 +2227,12 @@ struct s_laphine_upgrade{
 	uint16 resultRefine;
 	uint16 resultRefineMinimum;
 	uint16 resultRefineMaximum;
+	std::unordered_map<uint16, uint16> resultRefineRate;
 };
 
 class LaphineUpgradeDatabase : public TypesafeYamlDatabase<t_itemid, s_laphine_upgrade>{
 public:
-	LaphineUpgradeDatabase() : TypesafeYamlDatabase( "LAPHINE_UPGRADE_DB", 1 ){
+	LaphineUpgradeDatabase() : TypesafeYamlDatabase( "LAPHINE_UPGRADE_DB", 2 ){
 
 	}
 

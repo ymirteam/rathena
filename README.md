@@ -1,10 +1,11 @@
 <img src="doc/logo.png" align="right" height="90" />
 
-# rAthena
-![clang](https://img.shields.io/github/actions/workflow/status/rathena/rathena/build_servers_clang.yml?label=clang%20build&logo=llvm) ![cmake](https://img.shields.io/github/actions/workflow/status/rathena/rathena/build_servers_cmake.yml?label=cmake%20build&logo=cmake) ![gcc](https://img.shields.io/github/actions/workflow/status/rathena/rathena/build_servers_gcc.yml?label=gcc%20build&logo=gnu) ![ms](https://img.shields.io/github/actions/workflow/status/rathena/rathena/build_servers_msbuild.yml?label=ms%20build&logo=visualstudio) ![GitHub](https://img.shields.io/github/license/rathena/rathena.svg) ![commit activity](https://img.shields.io/github/commit-activity/w/rathena/rathena) ![GitHub repo size](https://img.shields.io/github/repo-size/rathena/rathena.svg)
+# rAthena MOD By. nullptr
+# 🪙🏧 Donate :coffee: : TTB : 9212483326 🙏🏽🙏🏽
+# Dowload Client Game : [Dive](https://bit.ly/3MKVOTN)
+# MS Build : โปรตรวจสอบที่ห้อง [Discord](https://bit.ly/3zY8jDP)
+![GitHub](https://img.shields.io/github/license/iberryRO/MiX.svg) ![commit activity](https://img.shields.io/github/commit-activity/w/iberryRO/MiX) ![GitHub repo size](https://img.shields.io/github/repo-size/iberryRO/MiX.svg)
 > rAthena is a collaborative software development project revolving around the creation of a robust massively multiplayer online role playing game (MMORPG) server package. Written in C, the program is very versatile and provides NPCs, warps and modifications. The project is jointly managed by a group of volunteers located around the world as well as a tremendous community providing QA and support. rAthena is a continuation of the eAthena project.
-
-[Forum](https://rathena.org/board)|[Discord](https://rathena.org/discord)|[Wiki](https://github.com/rathena/rathena/wiki)|[FluxCP](https://github.com/rathena/FluxCP)|[Crowdfunding](https://rathena.org/board/crowdfunding/)|[Fork and Pull Request Q&A](https://rathena.org/board/topic/86913-pull-request-qa/)
 --------|--------|--------|--------|--------|--------
 
 ### Table of Contents
@@ -22,9 +23,9 @@ differs between the varying operating systems available.
 ### Hardware
 Hardware Type | Minimum | Recommended
 ------|------|------
-CPU | 1 Core | 2 Cores
-RAM | 1 GB | 2 GB
-Disk Space | 300 MB | 500 MB
+CPU | 2 Core | 4 Cores
+RAM | 2 GB | 4 GB
+Disk Space | 2 GB | 4 GB
 
 ### Operating System & Preferred Compiler
 Operating System | Compiler

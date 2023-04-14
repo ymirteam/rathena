@@ -2282,6 +2282,38 @@ bool pc_set_hate_mob(map_session_data *sd, int pos, struct block_list *bl)
 	return true;
 }
 
+TIMER_FUNC(pc_goldpc_update){
+	map_session_data* sd = map_id2sd( id );
+
+	if( sd == nullptr ){
+		return 0;
+	}
+
+	sd->goldpc_tid = INVALID_TIMER;
+
+	// Check if feature is still active
+	if( !battle_config.feature_goldpc_active ){
+		return 0;
+	}
+
+	// TODO: add mapflag to disable?
+
+	int64 points = pc_readparam( sd, SP_GOLDPC_POINTS );
+
+	if( battle_config.feature_goldpc_vip && pc_isvip( sd ) ){
+		points += 2;
+	}else{
+		points += 1;
+	}
+
+	// Reset the seconds
+	pc_setreg2( sd, GOLDPC_SECONDS_VAR, 0 );
+	// Update the points and trigger a new timer if necessary
+	pc_setparam( sd, SP_GOLDPC_POINTS, points );
+
+	return 0;
+}
+
 /*==========================================
  * Invoked once after the char/account/account2 registry variables are received. [Skotlex]
  * We didn't receive item information at this point so DO NOT attempt to do item operations here.
@@ -2389,6 +2421,15 @@ void pc_reg_received(map_session_data *sd)
 	// Before those clients you could send out the instance info even when the client was still loading the map, afterwards you need to send it later
 	clif_instance_info( *sd );
 #endif
+
+	if( battle_config.feature_goldpc_active && pc_readreg2( sd, GOLDPC_POINT_VAR ) < battle_config.feature_goldpc_max_points && !sd->state.autotrade ){
+		sd->goldpc_tid = add_timer( gettick() + ( battle_config.feature_goldpc_time - pc_readreg2( sd, GOLDPC_SECONDS_VAR ) ) * 1000, pc_goldpc_update, sd->bl.id, (intptr_t)nullptr );
+#ifndef VIP_ENABLE
+		clif_goldpc_info( *sd );
+#endif
+	}else{
+		sd->goldpc_tid = INVALID_TIMER;
+	}
 
 	// pet
 	if (sd->status.pet_id > 0)
@@ -2829,7 +2870,7 @@ uint64 pc_calc_skilltree_normalize_job_sub( map_session_data *sd ){
 	int skill_point = pc_calc_skillpoint( sd );
 
 	if( sd->class_ & MAPID_SUMMONER ){
-		// Novice's skill points for basic skill.
+		// Summoner's skill points for base skills.
 		std::shared_ptr<s_job_info> summoner_job = job_db.find( JOB_SUMMONER );
 
 		int summoner_skills = summoner_job->max_job_level - 1;
@@ -3388,6 +3429,10 @@ void pc_delautobonus(map_session_data &sd, std::vector<std::shared_ptr<s_autobon
 				// Not all required items equipped anymore
 				restore = false;
 			}
+		} else {
+			// Not all required items equipped anymore
+			it = bonus.erase(it);
+			continue;
 		}
 
 		if( restore ){
@@ -5513,6 +5558,7 @@ int pc_insert_card(map_session_data* sd, int idx_card, int idx_equip)
 	t_itemid nameid;
 	struct item_data* item_eq = sd->inventory_data[idx_equip];
 	struct item_data* item_card = sd->inventory_data[idx_card];
+	bool is_enchantment = sd->inventory_data[idx_card]->equip == 0;
 
 	if(item_eq == nullptr)
 		return 0; //Invalid item index.
@@ -5522,7 +5568,9 @@ int pc_insert_card(map_session_data* sd, int idx_card, int idx_equip)
 		return 0; // target item missing
 	if( sd->inventory.u.items_inventory[idx_card].nameid == 0 || sd->inventory.u.items_inventory[idx_card].amount < 1 )
 		return 0; // target card missing
-	if( item_eq->type != IT_WEAPON && item_eq->type != IT_ARMOR )
+	if( !is_enchantment && item_eq->type != IT_WEAPON && item_eq->type != IT_ARMOR )
+		return 0; // only weapons and armor are allowed
+	if (is_enchantment && item_eq->type != IT_WEAPON && item_eq->type != IT_ARMOR && item_eq->type != IT_SHADOWGEAR)
 		return 0; // only weapons and armor are allowed
 	if( item_card->type != IT_CARD )
 		return 0; // must be a card
@@ -5530,7 +5578,7 @@ int pc_insert_card(map_session_data* sd, int idx_card, int idx_equip)
 		return 0; // target must be identified
 	if( itemdb_isspecial(sd->inventory.u.items_inventory[idx_equip].card[0]) )
 		return 0; // card slots reserved for other purposes
-	if( (item_eq->equip & item_card->equip) == 0 )
+	if( !is_enchantment && (item_eq->equip & item_card->equip) == 0 )
 		return 0; // card cannot be compounded on this item type
 	if( item_eq->type == IT_WEAPON && item_card->equip == EQP_SHIELD )
 		return 0; // attempted to place shield card on left-hand weapon.
@@ -5539,9 +5587,16 @@ int pc_insert_card(map_session_data* sd, int idx_card, int idx_equip)
 	if( sd->inventory.u.items_inventory[idx_equip].equip != 0 )
 		return 0; // item must be unequipped
 
-	ARR_FIND( 0, item_eq->slots, i, sd->inventory.u.items_inventory[idx_equip].card[i] == 0 );
-	if( i == item_eq->slots )
-		return 0; // no free slots
+	if (is_enchantment) {
+		ARR_FIND(item_eq->slots, 4, i, sd->inventory.u.items_inventory[idx_equip].card[i] == 0);
+		if (i == 4)
+			return 0; // no free slots
+	}
+	else {
+		ARR_FIND(0, item_eq->slots, i, sd->inventory.u.items_inventory[idx_equip].card[i] == 0);
+		if (i == item_eq->slots)
+			return 0; // no free slots
+	}
 
 	// remember the card id to insert
 	nameid = sd->inventory.u.items_inventory[idx_card].nameid;
@@ -5556,6 +5611,8 @@ int pc_insert_card(map_session_data* sd, int idx_card, int idx_equip)
 		sd->inventory.u.items_inventory[idx_equip].card[i] = nameid;
 		log_pick_pc(sd, LOG_TYPE_OTHER,  1, &sd->inventory.u.items_inventory[idx_equip]);
 		clif_insert_card(sd,idx_equip,idx_card,0);
+		nullpo_retv(sd);
+		clif_inventorylist(sd);
 	}
 
 	return 0;
@@ -5967,6 +6024,9 @@ enum e_additem_result pc_additem(map_session_data *sd,struct item *item,int amou
 		if (!itemdb_isstackable2(id) || id->flag.guid)
 			sd->inventory.u.items_inventory[i].unique_id = item->unique_id ? item->unique_id : pc_generate_unique_id(sd);
 
+		if ( id->type == IT_CHARM )
+            sd->inventory.u.items_inventory[i].favorite = 1; // [Memory of Thanatos#0702]
+
 		clif_additem(sd,i,amount,0);
 	}
 
@@ -5977,6 +6037,8 @@ enum e_additem_result pc_additem(map_session_data *sd,struct item *item,int amou
 	//Auto-equip
 	if(id->flag.autoequip)
 		pc_equipitem(sd, i, id->equip);
+
+	if (id->type == IT_CHARM) status_calc_pc(sd, SCO_NONE); //dh
 
 	/* rental item check */
 	if( item->expire_time ) {
@@ -6008,6 +6070,7 @@ enum e_additem_result pc_additem(map_session_data *sd,struct item *item,int amou
  *------------------------------------------*/
 char pc_delitem(map_session_data *sd,int n,int amount,int type, short reason, e_log_pick_type log_type)
 {
+	int mem = 0;
 	nullpo_retr(1, sd);
 
 	if(n < 0 || sd->inventory.u.items_inventory[n].nameid == 0 || amount <= 0 || sd->inventory.u.items_inventory[n].amount<amount || sd->inventory_data[n] == NULL)
@@ -6020,6 +6083,7 @@ char pc_delitem(map_session_data *sd,int n,int amount,int type, short reason, e_
 	if( sd->inventory.u.items_inventory[n].amount <= 0 ){
 		if(sd->inventory.u.items_inventory[n].equip)
 			pc_unequipitem(sd,n,2|(!(type&4) ? 1 : 0));
+		mem = sd->inventory_data[n]->type;
 		memset(&sd->inventory.u.items_inventory[n],0,sizeof(sd->inventory.u.items_inventory[0]));
 		sd->inventory_data[n] = NULL;
 	}
@@ -6029,6 +6093,8 @@ char pc_delitem(map_session_data *sd,int n,int amount,int type, short reason, e_
 		clif_updatestatus(sd,SP_WEIGHT);
 
 	pc_show_questinfo(sd);
+
+	if (mem == IT_CHARM) status_calc_pc(sd, SCO_NONE);
 
 	return 0;
 }
@@ -10219,6 +10285,7 @@ int64 pc_readparam(map_session_data* sd,int64 type)
 #endif
 		case SP_CRIT_DEF_RATE: val = sd->bonus.crit_def_rate; break;
 		case SP_ADD_ITEM_SPHEAL_RATE: val = sd->bonus.itemsphealrate2; break;
+		case SP_GOLDPC_POINTS: val = pc_readreg2( sd, GOLDPC_POINT_VAR ); break;
 		default:
 			ShowError("pc_readparam: Attempt to read unknown parameter '%lld'.\n", type);
 			return -1;
@@ -10469,6 +10536,28 @@ bool pc_setparam(map_session_data *sd,int64 type,int64 val_tmp)
 		val = cap_value(val, 0, 1999);
 		sd->cook_mastery = val;
 		pc_setglobalreg(sd, add_str(COOKMASTERY_VAR), sd->cook_mastery);
+		return true;
+	case SP_GOLDPC_POINTS:
+		val = cap_value( val, 0, battle_config.feature_goldpc_max_points );
+
+		pc_setreg2( sd, GOLDPC_POINT_VAR, val );
+
+		// If you do not check this, some funny things happen (circle logics, timer mismatches, etc...)
+		if( !sd->state.connect_new ){
+			// Make sure to always delete the timer
+			if( sd->goldpc_tid != INVALID_TIMER ){
+				delete_timer( sd->goldpc_tid, pc_goldpc_update );
+				sd->goldpc_tid = INVALID_TIMER;
+			}
+
+			// If the system is enabled and the player can still earn some points restart the timer
+			if( battle_config.feature_goldpc_active && val < battle_config.feature_goldpc_max_points && !sd->state.autotrade ){
+				sd->goldpc_tid = add_timer( gettick() + ( battle_config.feature_goldpc_time - pc_readreg2( sd, GOLDPC_SECONDS_VAR ) ) * 1000, pc_goldpc_update, sd->bl.id, (intptr_t)nullptr );
+			}
+
+			// Update the client
+			clif_goldpc_info( *sd );
+		}
 		return true;
 	default:
 		ShowError("pc_setparam: Attempted to set unknown parameter '%lld'.\n", type);
@@ -14026,7 +14115,7 @@ void JobDatabase::loadingFinished() {
 				}
 			}
 
-			// Summoner
+			// Summoner / Spirit Handler
 			if( ( class_ & MAPID_BASEMASK ) == MAPID_SUMMONER ){
 				max = battle_config.max_summoner_parameter;
 				break;
@@ -15877,6 +15966,7 @@ void do_init_pc(void) {
 	add_timer_func_list(pc_autotrade_timer, "pc_autotrade_timer");
 	add_timer_func_list(pc_on_expire_active, "pc_on_expire_active");
 	add_timer_func_list(pc_macro_detector_timeout, "pc_macro_detector_timeout");
+	add_timer_func_list( pc_goldpc_update, "pc_goldpc_update" );
 
 	add_timer(gettick() + autosave_interval, pc_autosave, 0, 0);
 
