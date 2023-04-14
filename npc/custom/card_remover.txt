@@ -146,4 +146,7 @@ prt_in,28,73,4	script	Wise Old Woman#eAcustom	78,{
 		mes "Very well. Return at once if you seek my services.";
 		close;
 	}
+OnInit:
+	waitingroom "Card Removes",0;
+	end;
 }

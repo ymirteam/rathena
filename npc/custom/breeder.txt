@@ -36,4 +36,8 @@ prontera,139,173,6	script	Universal Rental NPC	726,{
 	}
 	specialeffect2 EF_TEIHIT3;
 	end;
+OnInit:
+	waitingroom "Universal Rental",0;
+	end;
 }
+

@@ -478,6 +478,9 @@ function	Get_Job_Equip	{
 }
 
 OnInit:
+	waitingroom "Job Master",0;
+	end;
+
 	// Initialisation, do not edit these
 	.NPCName$ = "[Job Master]";
 	

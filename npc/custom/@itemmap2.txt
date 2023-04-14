@@ -1,0 +1,167 @@
+
+-	script	#at_itemmap	-1,{
+    
+	OnInit:
+		bindatcmd "itemmap2",strnpcinfo(3)+"::OnItemMap",99,99;
+    end;
+    
+    OnItemMap:
+        message strcharinfo(0),"โปรดเลือก คำสั่งที่ท่านต้องการใช้งาน.";
+        switch(select("01. ^0000FFแจก Zeny ในแมพที่อยู่^000000 :02. ^008000แจก Item & Zeny ในแมพที่อยู่^000000:03. ^FF0000แจก Item ในแมพที่อยู่^000000:04. ^0000FFแจก Zeny ทั้ง Server^000000 :05. ^008000แจก Item & Zeny  ทั้ง Server^000000:06. ^FF0000แจก Item  ทั้ง Server^000000")) {
+            
+        case 1:
+        message strcharinfo(0),"Input Zeny.";
+        input $@zeny;
+
+        message strcharinfo(0),"ท่านได้มอบ "+callfunc("F_InsertComma",$@zeny)+"  Zeny ให้แก่ผู้เล่น";
+		
+        if(select("- ^FF0000No^000000 :- ^008000Yes^000000")-2){
+		message strcharinfo(0),"คุณได้ทำการยกเลิก";
+		end;}
+		
+        addrid(1);
+		.@charid = getcharid(0);
+		.@sender$ = "ทีมงาน M!X";
+		.@title$ = "Zeny Reward";
+		.@body$ = "คุณได้รับ "+callfunc("F_InsertComma",$@zeny)+" Zeny. จากทีมงาน M!X RO.";
+		.@zeny = $@zeny;
+        message strcharinfo(0),"คุณได้รับ "+callfunc("F_InsertComma",$@zeny)+" Zeny จากทีมงาน M!X RO โปรดกดรับใน RodEx.";
+		
+		mail .@charid, .@sender$, .@title$, .@body$, .@zeny;
+        end;
+        
+        case 2:
+        message strcharinfo(0),"Input Item ID.";
+        input $@item;
+        message strcharinfo(0),"Input Item Amount.";
+        input $@amount;
+
+        message strcharinfo(0),"Input Zeny.";
+        input $@zeny;
+        message strcharinfo(0),"คุณได้มอบ "+getitemname($@item)+" จำนวน "+$@amount+" ea. และได้มอบ "+callfunc("F_InsertComma",$@zeny)+" Zeny.";
+		
+        if(select("- ^FF0000No^000000 :- ^008000Yes^000000")-2){
+		message strcharinfo(0),"คุณได้ทำการยกเลิก";
+		end;}
+		
+		addrid(1);
+		.@charid = getcharid(0);
+		.@sender$ = "ทีมงาน M!X";
+		.@title$ = "Reward";
+		.@body$ = "คุณได้รับ "+callfunc("F_InsertComma",$@zeny)+" zeny &  "+getitemname($@item)+" x "+$@amount+" ea จากทีมงาน M!X RO.";
+		.@zeny = $@zeny;
+		setarray .@mailitem[0], $@item;
+		setarray .@mailamount[0], $@amount;
+        message strcharinfo(0),"คุณได้รับ "+getitemname($@item)+" จำนวน "+$@amount+" ea. และได้รับ "+callfunc("F_InsertComma",$@zeny)+" Zeny.";
+        message strcharinfo(0),"จากทีมงาน M!X RO โปรดกดรับใน RodEx.";
+
+			mail .@charid, .@sender$, .@title$, .@body$, .@zeny, .@mailitem, .@mailamount;
+		end;
+        
+        case 3:
+        message strcharinfo(0),"Input Item ID.";
+        input $@item;
+        message strcharinfo(0),"Input Item Amount.";
+        input $@amount;
+
+        message strcharinfo(0),"คุณได้มอบ "+getitemname($@item)+" จำนวน "+$@amount+" ea.";
+		
+        if(select("- ^FF0000No^000000 :- ^008000Yes^000000")-2){
+		message strcharinfo(0),"คุณได้ทำการยกเลิก";
+		end;}
+
+		addrid(1);
+		.@charid = getcharid(0);
+		.@sender$ = "ทีมงาน M!X";
+		.@title$ = "Item Reward";
+		.@body$ = "คุณได้รับ "+getitemname($@item)+" x "+$@amount+" ea จากทีมงาน M!X RO.";
+		
+		setarray .@mailitem[0], $@item;
+		setarray .@mailamount[0], $@amount;       
+        message strcharinfo(0),"คุณได้รับ "+getitemname($@item)+" จำนวน "+$@amount+" ea.";
+        message strcharinfo(0),"จากทีมงาน M!X RO โปรดกดรับใน RodEx.";
+
+			mail .@charid, .@sender$, .@title$, .@body$, .@zeny, .@mailitem, .@mailamount;
+		end;
+		       
+        case 4:
+        message strcharinfo(0),"Input Zeny.";
+        input $@zeny;
+
+        message strcharinfo(0),"ท่านได้มอบ "+callfunc("F_InsertComma",$@zeny)+"  Zeny ให้แก่ผู้เล่น";
+		
+        if(select("- ^FF0000No^000000 :- ^008000Yes^000000")-2){
+		message strcharinfo(0),"คุณได้ทำการยกเลิก";
+		end;}
+		
+        addrid(0);
+		.@charid = getcharid(0);
+		.@sender$ = "ทีมงาน M!X";
+		.@title$ = "Zeny Reward";
+		.@body$ = "คุณได้รับ "+callfunc("F_InsertComma",$@zeny)+" Zeny. จากทีมงาน M!X RO.";
+		.@zeny = $@zeny;
+		
+        message strcharinfo(0),"คุณได้รับ "+callfunc("F_InsertComma",$@zeny)+" Zeny จากทีมงาน M!X RO โปรดกดรับใน RodEx.";
+		
+		mail .@charid, .@sender$, .@title$, .@body$, .@zeny;
+        end;
+        
+        case 5:
+        message strcharinfo(0),"Input Item ID.";
+        input $@item;
+        message strcharinfo(0),"Input Item Amount.";
+        input $@amount;
+
+        message strcharinfo(0),"Input Zeny.";
+        input $@zeny;
+        message strcharinfo(0),"คุณได้มอบ "+getitemname($@item)+" จำนวน "+$@amount+" ea. และได้มอบ "+callfunc("F_InsertComma",$@zeny)+" Zeny.";
+		
+        if(select("- ^FF0000No^000000 :- ^008000Yes^000000")-2){
+		message strcharinfo(0),"คุณได้ทำการยกเลิก";
+		end;}
+		
+		addrid(0);
+		.@charid = getcharid(0);
+		.@sender$ = "ทีมงาน M!X";
+		.@title$ = "Reward";
+		.@body$ = "คุณได้รับ "+callfunc("F_InsertComma",$@zeny)+" zeny &  "+getitemname($@item)+" x "+$@amount+" ea จากทีมงาน M!X RO.";
+		.@zeny = $@zeny;
+		setarray .@mailitem[0], $@item;
+		setarray .@mailamount[0], $@amount;
+       
+        message strcharinfo(0),"คุณได้รับ "+getitemname($@item)+" จำนวน "+$@amount+" ea. และได้รับ "+callfunc("F_InsertComma",$@zeny)+" Zeny.";
+        message strcharinfo(0),"จากทีมงาน M!X RO โปรดกดรับใน RodEx.";
+
+			mail .@charid, .@sender$, .@title$, .@body$, .@zeny, .@mailitem, .@mailamount;
+		end;
+        
+        case 6:
+        message strcharinfo(0),"Input Item ID.";
+        input $@item;
+        message strcharinfo(0),"Input Item Amount.";
+        input $@amount;
+
+        message strcharinfo(0),"คุณได้มอบ "+getitemname($@item)+" จำนวน "+$@amount+" ea.";
+		
+        if(select("- ^FF0000No^000000 :- ^008000Yes^000000")-2){
+		message strcharinfo(0),"คุณได้ทำการยกเลิก";
+		end;}
+
+		addrid(0);
+		.@charid = getcharid(0);
+		.@sender$ = "ทีมงาน M!X";
+		.@title$ = "Item Reward";
+		.@body$ = "คุณได้รับ "+getitemname($@item)+" x "+$@amount+" ea จากทีมงาน M!X RO.";
+		
+		setarray .@mailitem[0], $@item;
+		setarray .@mailamount[0], $@amount;
+       
+        message strcharinfo(0),"คุณได้รับ "+getitemname($@item)+" จำนวน "+$@amount+" ea.";
+        message strcharinfo(0),"จากทีมงาน M!X RO โปรดกดรับใน RodEx.";
+
+			mail .@charid, .@sender$, .@title$, .@body$, .@zeny, .@mailitem, .@mailamount;
+		end;
+		
+		}
+close;
+}
