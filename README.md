@@ -1,8 +1,8 @@
 <img src="doc/logo.png" align="right" height="90" />
+
 # rAthena MOD By. nullptr
 # 🪙🏧 Donate :coffee: : TTB : 9212483326 🙏🏽🙏🏽
 # Dowload Client Game : https://shorturl.asia/JLNsS
-
 ![clang](https://img.shields.io/github/actions/workflow/status/rathena/rathena/build_servers_clang.yml?label=clang%20build&logo=llvm) ![cmake](https://img.shields.io/github/actions/workflow/status/rathena/rathena/build_servers_cmake.yml?label=cmake%20build&logo=cmake) ![gcc](https://img.shields.io/github/actions/workflow/status/rathena/rathena/build_servers_gcc.yml?label=gcc%20build&logo=gnu) ![ms](https://img.shields.io/github/actions/workflow/status/rathena/rathena/build_servers_msbuild.yml?label=ms%20build&logo=visualstudio) ![GitHub](https://img.shields.io/github/license/rathena/rathena.svg) ![commit activity](https://img.shields.io/github/commit-activity/w/rathena/rathena) ![GitHub repo size](https://img.shields.io/github/repo-size/rathena/rathena.svg)
 > rAthena is a collaborative software development project revolving around the creation of a robust massively multiplayer online role playing game (MMORPG) server package. Written in C, the program is very versatile and provides NPCs, warps and modifications. The project is jointly managed by a group of volunteers located around the world as well as a tremendous community providing QA and support. rAthena is a continuation of the eAthena project.
 
@@ -24,9 +24,9 @@ differs between the varying operating systems available.
 ### Hardware
 Hardware Type | Minimum | Recommended
 ------|------|------
-CPU | 1 Core | 2 Cores
-RAM | 1 GB | 2 GB
-Disk Space | 300 MB | 500 MB
+CPU | 2 Core | 4 Cores
+RAM | 2 GB | 4 GB
+Disk Space | 2 GB | 4 GB
 
 ### Operating System & Preferred Compiler
 Operating System | Compiler
