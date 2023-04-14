@@ -23,7 +23,7 @@ jawaii_in,83,117,5,5	monster	Thief Bug	1051,1,4800000,2400000
 // Wild Rose City Spawns
 //==================================================
 prontera,0,0	monster	Wild Rose	1261,1,7200000,3600000
-morocc,0,0	monster	Wild Rose	1261,1,7200000,3600000
+//morocc,0,0	monster	Wild Rose	1261,1,7200000,3600000
 alberta,0,0	monster	Wild Rose	1261,1,7200000,3600000
 aldebaran,0,0	monster	Wild Rose	1261,1,7200000,3600000
 geffen,0,0	monster	Wild Rose	1261,1,7200000,3600000

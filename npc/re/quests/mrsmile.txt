@@ -21,4 +21,4 @@ izlude_b,125,175,4	duplicate(SmileHelper)	Smile Assistance#iz_b	92
 izlude_c,125,175,4	duplicate(SmileHelper)	Smile Assistance#iz_c	92
 izlude_d,125,175,4	duplicate(SmileHelper)	Smile Assistance#iz_d	92
 
-morocc,159,107,4	duplicate(SmileHelper)	Smile Assistance#moc2	92
+//morocc,159,107,4	duplicate(SmileHelper)	Smile Assistance#moc2	92

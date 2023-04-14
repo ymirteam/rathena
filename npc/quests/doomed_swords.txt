@@ -157,7 +157,7 @@ prontera,197,188,2	script	Veeyop#magum	50,{
 	set dmdswrd_Q2,dmdswrd_Q2 | 1;
 	close;
 }
-
+/*
 morocc,281,178,2	script	Cetsu#magum	97,{
 	if (dmdswrd_Q2 & 2) {
 		mes "[Cetsu]";
@@ -209,7 +209,7 @@ morocc,281,178,2	script	Cetsu#magum	97,{
 	set dmdswrd_Q2,dmdswrd_Q2 | 2;
 	close;
 }
-
+*/
 izlude_in,173,88,2	script	Nain#magum	102,{
 	if (dmdswrd_Q2 == 4) {
 		mes "[Nain]";

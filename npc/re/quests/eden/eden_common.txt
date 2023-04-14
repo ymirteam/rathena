@@ -266,7 +266,7 @@ gonryun,162,122,5	duplicate(eto)	Eden Teleport Officer#25	729
 moscovia,209,197,5	duplicate(eto)	Eden Teleport Officer#26	729
 brasilis,191,224,3	duplicate(eto)	Eden Teleport Officer#27	729
 dewata,192,193,5	duplicate(eto)	Eden Teleport Officer#28	729
-morocc,161,97,5	duplicate(eto)	Eden Teleport Officer#29	729
+//morocc,161,97,5	duplicate(eto)	Eden Teleport Officer#29	729
 izlude,131,148,4	duplicate(eto)	Eden Teleport Officer#30	729
 izlude_a,131,148,4	duplicate(eto)	Eden Teleport Officer#30::eto_iz_a	729
 izlude_b,131,148,4	duplicate(eto)	Eden Teleport Officer#30::eto_iz_b	729

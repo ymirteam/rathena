@@ -1367,7 +1367,7 @@ S_StorySong:
 		goto L_End;
 	}
 }
-
+/*
 morocc,134,111,3	script	Bard#3	741,{
 	set @name$,strcharinfo(0);
 	if (gef_bard_q == 31) {
@@ -2132,7 +2132,7 @@ morocc,132,111,3	script	Little Girl#Jorti	703,{
 		close;
 	}
 }
-
+*/
 yuno_in01,172,100,3	script	Old Man#bq1	712,{
 	if (gef_bard_q > 11 && gef_bard_q < 20) {
 		mes "[Sketzi Bundin]";

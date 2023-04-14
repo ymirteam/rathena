@@ -271,7 +271,7 @@ malaya,234,218,5	duplicate(Fever Banshee)	Fever Banshee#mly	4_M_MANAGER
 manuk,296,147,5	duplicate(Fever Banshee)	Fever Banshee#man	4_M_MANAGER
 mid_camp,201,237,5	duplicate(Fever Banshee)	Fever Banshee#mid	4_M_MANAGER
 mora,113,112,5	duplicate(Fever Banshee)	Fever Banshee#mra	4_M_MANAGER
-morocc,164,255,5	duplicate(Fever Banshee)	Fever Banshee#mro	4_M_MANAGER
+//morocc,164,255,5	duplicate(Fever Banshee)	Fever Banshee#mro	4_M_MANAGER
 moscovia,220,191,5	duplicate(Fever Banshee)	Fever Banshee#mos	4_M_MANAGER
 niflheim,206,179,5	duplicate(Fever Banshee)	Fever Banshee#nif	4_M_MANAGER
 payon,184,102,5	duplicate(Fever Banshee)	Fever Banshee#pay	4_M_MANAGER

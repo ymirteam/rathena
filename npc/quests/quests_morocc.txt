@@ -1274,7 +1274,7 @@ aldebaran,135,128,3	duplicate(ConMessenger)	Continental Messenger#05	998,3,3
 		close;
 	}
 }
-
+/*
 morocc,159,113,3	script	Chief Balrog	752,{
 	if (rebirth_moc_edq == 0) {
 		mes "[Chief Balrog]";
@@ -1850,7 +1850,7 @@ morocc,159,113,3	script	Chief Balrog	752,{
 		close;
 	}
 }
-
+*/
 moc_fild21,38,193,0	script	Morocc Timer#edq	-1,6,6,{
 //OnInit:
 //	set $@re_moc,0;

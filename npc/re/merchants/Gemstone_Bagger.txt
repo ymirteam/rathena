@@ -46,8 +46,8 @@ lhz_in03,243,106,5	duplicate(#GemstoneBagger)	Gemstone Bagger#14	4_M_EINMAN
 lou_in02,244,175,5	duplicate(#GemstoneBagger)	Gemstone Bagger#15	4_F_CHNWOMAN
 malangdo,233,160,3	duplicate(#GemstoneBagger)	Gemstone Bagger#16	4_CAT_ADV2
 moc_ruins,95,128,3	duplicate(#GemstoneBagger)	Gemstone Bagger#17	1_F_01
-morocc,153,241,7	duplicate(#GemstoneBagger)	Gemstone Bagger#18	4W_M_03
-morocc,143,101,5	duplicate(#GemstoneBagger)	Gemstone Bagger#19	4_F_04
+//morocc,153,241,7	duplicate(#GemstoneBagger)	Gemstone Bagger#18	4W_M_03
+//morocc,143,101,5	duplicate(#GemstoneBagger)	Gemstone Bagger#19	4_F_04
 payon,163,96,3	duplicate(#GemstoneBagger)	Gemstone Bagger#20	1_F_ORIENT_01
 payon_in01,12,47,3	duplicate(#GemstoneBagger)	Gemstone Bagger#21	1_F_ORIENT_01
 payon_in02,84,40,3	duplicate(#GemstoneBagger)	Gemstone Bagger#22	4_M_ORIENT01

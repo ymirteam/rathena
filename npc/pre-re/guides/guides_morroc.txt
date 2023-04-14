@@ -17,7 +17,7 @@
 //= 1.4a Fixed some errors with the loop[Samuray22]
 //	-Thanks to $ephiroth.
 //============================================================
-
+/*
 morocc,153,286,6	script	Guide#moc::MocGuide	707,{
 	cutin "moc_soldier",2;
 	mes "[Morocc Guide]";
@@ -162,3 +162,4 @@ morocc,153,286,6	script	Guide#moc::MocGuide	707,{
 }
 
 morocc,54,97,0	duplicate(MocGuide)	Guide#2moc	707
+*/

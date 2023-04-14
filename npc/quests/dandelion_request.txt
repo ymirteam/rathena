@@ -1333,7 +1333,7 @@ OnTouch:
 		}
 	}
 }
-
+/*
 morocc,155,56,3	script	Miya	93,3,3,{
 
 	if(checkweight(7416,1) != 1)
@@ -1622,7 +1622,7 @@ OnTouch:
 		}
 	}
 }
-
+*/
 payon,231,323,3	script	Guildsman#3	59,3,3,{
 
 	if(checkweight(7416,1) != 1)
@@ -2081,7 +2081,7 @@ OnTouch:
 		}
 	}
 }
-
+/*
 morocc,43,108,5	script	Sharp-Looking Kid	82,{
 
 	if((Class == Job_Assassin) || (Class == Job_Assassin_Cross))
@@ -2229,7 +2229,7 @@ OnTouch_:
 		end;
 	}
 }
-
+*/
 que_job01,6,94,1	warp	#maobar2	2,2,morocc,45,103
 que_job01,17,48,1	warp	#maobar3	2,2,que_job01,68,92
 que_job01,68,96,1	warp	#maobar4	2,2,que_job01,17,53

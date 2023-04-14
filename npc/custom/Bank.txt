@@ -27,3 +27,79 @@ OnInit:
 	waitingroom "[#] TCG Card Exchange",0;
 	end;
 }
+
+morocc,139,76,5	script	Noble Set Equipments	4_EP16_CRUX,{
+	mes "[" + strnpcinfo(1) + "]";
+	mes "คุณต้องการจะทำอะไร";
+	switch(select("Noble Set EP 16.1 - Noblesse","Noble Set EP 16.2 - Imperial","Noble Set EP 17.1 - Grace")) {
+		case 1:switch(select("Guillotine Cross","Ranger","Shadow Chaser","Rune Knight","Arch Bishop","Genetic","Summoner","Warlock","Sorcerer","Soul Reaper","Rebellion","Royal Guard","Sura","Kagerou","Star Emperor","Minstrel","Super Novice","Mechanic")) {
+				close2; case 1:	sleep2 100;	callshop "shop_ext161_JOB_GUILLOTINE_CROSS",1;		break;
+				close2; case 2:	sleep2 100;	callshop "shop_ext161_JOB_RANGER",1;		break;
+				close2; case 3:	sleep2 100;	callshop "shop_ext161_JOB_SHADOW_CHASER",1;		break;
+				close2; case 4:	sleep2 100;	callshop "shop_ext161_JOB_RUNE_KNIGHT",1;		break;
+				close2; case 5:	sleep2 100;	callshop "shop_ext161_JOB_ARCH_BISHOP",1;		break;
+				close2; case 6:	sleep2 100;	callshop "shop_ext161_JOB_GENETIC",1;		break;
+				close2; case 7:	sleep2 100;	callshop "shop_ext161_JOB_SUMMONER",1;		break;
+				close2; case 8:	sleep2 100;	callshop "shop_ext161_JOB_WARLOCK",1;		break;
+				close2; case 9:	sleep2 100;	callshop "shop_ext161_JOB_SORCERER",1;		break;
+				close2; case 10:	sleep2 100;	callshop "shop_ext161_JOB_SOUL_REAPER",1;		break;
+				close2; case 11:	sleep2 100;	callshop "shop_ext161_JOB_REBELLION",1;		break;
+				close2; case 12:	sleep2 100;	callshop "shop_ext161_JOB_ROYAL_GUARD",1;		break;
+				close2; case 13:	sleep2 100;	callshop "shop_ext161_JOB_SURA",1;		break;
+				close2; case 14:	sleep2 100;	callshop "shop_ext161_JOB_KAGEROU",1;		break;
+				close2; case 15:	sleep2 100;	callshop "shop_ext161_JOB_STAR_EMPEROR",1;		break;
+				close2; case 16:	sleep2 100;	callshop "shop_ext161_JOB_MINSTREL",1;		break;
+				close2; case 17:	sleep2 100;	callshop "shop_ext161_JOB_SUPER_NOVICE_E",1;		break;
+				close2; case 18:	sleep2 100;	callshop "shop_ext161_JOB_MECHANIC",1;		break;
+			}
+			end;
+		case 2:	switch(select("Guillotine Cross","Ranger","Shadow Chaser","Rune Knight","Arch Bishop","Genetic","Summoner","Warlock","Sorcerer","Soul Reaper","Rebellion","Royal Guard","Sura","Kagerou","Star Emperor","Minstrel","Super Novice","Mechanic")) {
+				close2; case 1:	sleep2 100;	callshop "shop_ext162_JOB_GUILLOTINE_CROSS",1;	break;
+				close2; case 2:	sleep2 100;	callshop "shop_ext162_JOB_RANGER",1;	break;
+				close2; case 3:	sleep2 100;	callshop "shop_ext162_JOB_SHADOW_CHASER",1;	break;
+				close2; case 4:	sleep2 100;	callshop "shop_ext162_JOB_RUNE_KNIGHT",1;	break;
+				close2; case 5:	sleep2 100;	callshop "shop_ext162_JOB_ARCH_BISHOP",1;	break;
+				close2; case 6:	sleep2 100;	callshop "shop_ext162_JOB_GENETIC",1;	break;
+				close2; case 7:	sleep2 100;	callshop "shop_ext162_JOB_SUMMONER",1;	break;
+				close2; case 8:	sleep2 100;	callshop "shop_ext162_JOB_WARLOCK",1;	break;
+				close2; case 9:	sleep2 100;	callshop "shop_ext162_JOB_SORCERER",1;	break;
+				close2; case 10:	sleep2 100;	callshop "shop_ext162_JOB_SOUL_REAPER",1;	break;
+				close2; case 11:	sleep2 100;	callshop "shop_ext162_JOB_REBELLION",1;	break;
+				close2; case 12:	sleep2 100;	callshop "shop_ext162_JOB_ROYAL_GUARD",1;	break;
+				close2; case 13:	sleep2 100;	callshop "shop_ext162_JOB_SURA",1;	break;
+				close2; case 14:	sleep2 100;	callshop "shop_ext162_JOB_KAGEROU",1;	break;
+				close2; case 15:	sleep2 100;	callshop "shop_ext162_JOB_STAR_EMPEROR",1;	break;
+				close2; case 16:	sleep2 100;	callshop "shop_ext162_JOB_MINSTREL",1;	break;
+				close2; case 17:	sleep2 100;	callshop "shop_ext162_JOB_SUPER_NOVICE_E",1;	break;
+				close2; case 18:	sleep2 100;	callshop "shop_ext162_JOB_MECHANIC",1;	break;
+			}
+			end;
+		case 3:	switch(select("Guillotine Cross","Ranger","Shadow Chaser","Rune Knight","Arch Bishop","Genetic","Summoner","Warlock","Sorcerer","Soul Reaper","Rebellion","Royal Guard","Sura","Kagerou","Star Emperor","Minstrel","Super Novice","Mechanic")) {
+				close2; case 1:	sleep2 100;	callshop "shop_ext171_JOB_GUILLOTINE_CROSS",1;	break;
+				close2; case 2:	sleep2 100;	callshop "shop_ext171_JOB_RANGER",1;	break;
+				close2; case 3:	sleep2 100;	callshop "shop_ext171_JOB_SHADOW_CHASER",1;	break;
+				close2; case 4:	sleep2 100;	callshop "shop_ext171_JOB_RUNE_KNIGHT",1;	break;
+				close2; case 5:	sleep2 100;	callshop "shop_ext171_JOB_ARCH_BISHOP",1;	break;
+				close2; case 6:	sleep2 100;	callshop "shop_ext171_JOB_GENETIC",1;	break;
+				close2; case 7:	sleep2 100;	callshop "shop_ext171_JOB_SUMMONER",1;	break;
+				close2; case 8:	sleep2 100;	callshop "shop_ext171_JOB_WARLOCK",1;	break;
+				close2; case 9:	sleep2 100;	callshop "shop_ext171_JOB_SORCERER",1;	break;
+				close2; case 10:	sleep2 100;	callshop "shop_ext171_JOB_SOUL_REAPER",1;	break;
+				close2; case 11:	sleep2 100;	callshop "shop_ext171_JOB_REBELLION",1;	break;
+				close2; case 12:	sleep2 100;	callshop "shop_ext171_JOB_ROYAL_GUARD",1;	break;
+				close2; case 13:	sleep2 100;	callshop "shop_ext171_JOB_SURA",1;	break;
+				close2; case 14:	sleep2 100;	callshop "shop_ext171_JOB_KAGEROU",1;	break;
+				close2; case 15:	sleep2 100;	callshop "shop_ext171_JOB_STAR_EMPEROR",1;	break;
+				close2; case 16:	sleep2 100;	callshop "shop_ext171_JOB_MINSTREL",1;	break;
+				close2; case 17:	sleep2 100;	callshop "shop_ext171_JOB_SUPER_NOVICE_E",1;	break;
+				close2; case 18:	sleep2 100;	callshop "shop_ext171_JOB_MECHANIC",1;	break;
+			}
+			end;			
+	}
+	
+	
+OnInit:
+	waitingroom "[#] Noble Set Equipments",0;
+	questinfo( QTYPE_EVENT2 );
+	end;
+}

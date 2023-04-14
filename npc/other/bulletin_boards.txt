@@ -141,7 +141,7 @@ prontera,148,49,5	script	Bulletin Board#09	837,{
 	mes "Enjoy your time in Prontera.";
 	close;
 }
-
+/*
 morocc,152,110,5	script	Bulletin Board#11	837,{
 	mes "[Morocc: The Frontier Town]";
 	mes "Welcome to Morocc, the City of the Desert. Morocc was built on an oasis, so this town can accomodate its many visitors and travelers.";
@@ -156,7 +156,7 @@ morocc,152,110,5	script	Bulletin Board#11	837,{
 	mes "The Assassin Guild is rumored to be located to the Southeast. When you head East from Morocc, and then North, you will arrive at ^3355FFProntera^000000.";
 	close;
 }
-
+*/
 comodo,210,148,5	script	Bulletin Board#12	837,{
 	mes "[Comodo: The Beach City]";
 	mes "Welcome! This town of Comodo is";

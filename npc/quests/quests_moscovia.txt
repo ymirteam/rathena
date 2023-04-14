@@ -8811,7 +8811,7 @@ prontera,228,279,3	script	Wanderer#rus24	4_M_RUSMAN2,{
 	mes "Let me know somewhere.";
 	close;
 }
-
+/*
 //----------------------------------------------------------------------------
 // Morocc Villager (Lusalka's Hair)
 //----------------------------------------------------------------------------
@@ -8883,7 +8883,7 @@ morocc,165,82,0	script	Morocc Villager#rus25	1_M_02,{
 	mes "Many travellers in the village and I feel fun to see them. Even though I am here, I feel like that I travel all around the world?";
 	close;
 }
-
+*/
 //----------------------------------------------------------------------------
 // Soldier/Igor (Lusalka's Hair)
 //----------------------------------------------------------------------------

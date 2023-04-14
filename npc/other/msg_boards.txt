@@ -92,7 +92,7 @@ prontera,145,304,1	script	Sign#Prt7	111,{
 	mes "I lost my cart in Mt. Mjolnir, if someone finds it please tell me, my life was in that bucket of goods!";
 	close;
 }
-
+/*
 // Morocc
 //============================================================
 morocc,144,84,1	script	Sign#Moc1	111,{
@@ -146,7 +146,7 @@ morocc,298,211,1	script	Sign#Moc7	111,{
 	mes "Welcome to Morocc.";
 	close;
 }
-
+*/
 // Geffen
 //============================================================
 geffen,116,58,1	script	Geffen Bulletin#Gef1	111,{

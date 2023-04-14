@@ -16,7 +16,7 @@
 //= 1.3 Updated to official script. [Euphy]
 //= 1.4 Added VIP features. [Euphy]
 //============================================================
-
+/*
 morocc,156,70,3	script	Girl#sc00	93,3,3,{
 	mes "[Girl]";
 	if (BaseJob == Job_Rogue) {
@@ -75,7 +75,7 @@ OnTouch_:
 	}
 	end;
 }
-
+*/
 in_rogue,376,100,5	script	Guild Member#sc01	828,{
 	if (BaseJob == Job_Rogue) {
 		if (job_sha < 2) {
