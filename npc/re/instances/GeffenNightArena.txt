@@ -1,0 +1,809 @@
+//===== rAthena Script =======================================
+//= Instance: Geffen Night Arena.
+//===== Description: =========================================
+//- [Walkthrough conversion]
+//- Note: maybe the mob atk/matk scale with the round ?
+//  Settings under OnInstanceInit at the end of the file.
+//===== Changelogs: ==========================================
+//= 1.0 First version. [Capuche]
+//============================================================
+
+1@ge_sn	mapflag	nobranch
+1@ge_sn	mapflag	hidemobhpbar
+1@ge_sn	mapflag	nomemo
+1@ge_sn	mapflag	pvp	off
+1@ge_sn	mapflag	noteleport
+1@ge_sn	mapflag	monster_noteleport
+1@ge_sn	mapflag	nowarpto
+1@ge_sn	mapflag	partylock
+1@ge_sn	mapflag	nosave	Savepoint
+1@ge_sn	mapflag	restricted	6
+
+geffen_in,82,62,3	script	Naughty Man#1	4_M_YURI,{
+	mes "[Naughty Man]";
+	mes "Hey, I've seen you in magic contests before, and you've won a lot, maybe?";
+	next;
+	select("I'm new to this, do you know me?");
+	mes "[Naughty Man]";
+	mes "I know very well, I've seen quite a few scenes of you playing. So how do you feel?";
+	mes "Was it difficult to fight in a magic contest or is it worth it?";
+	next;
+	select("Isn't everyone but a few bastards?", "Isn't there a particularly strong one?");
+	mes "[Naughty Man]";
+	mes "Ugh~ It's better to look like that than lack of confidence, let's keep talking, in the world of magic contests, your opponent in the first round is Arhi, right?";
+	next;
+	select("I did", "I am not");
+	mes "[Naughty Man]";
+	mes "Yeah, that guy who pretends to be a beginner. Actually, he's pretty strong, and he's really good at hitting the back of the head after cosplaying Novice.";
+	next;
+	select("I can't. You're good at joking");
+	mes "[Naughty Man]";
+	mes "I'm not kidding. Appearing as the first opponent in a magic contest and playing the role of a shivering beginner. That's the condition he received";
+	next;
+	select("Where did that friend borrow money from?");
+	mes "[Naughty Man]";
+	mes "I'm not kidding. Appearing as the first opponent in a magic contest and playing the role of a shivering beginner. That's the condition he received";
+	next;
+	select("On condition that you do that crazy thing every day?");
+	mes "[Naughty Man]";
+	mes "He claims to be a broadband as a condition of accessing the back world, hiding his powers. Where is he the only one, Dio Anemos, Geffen gangster, Pemon... They're all bad losers." ;
+	next;
+	mes "[Naughty Man]";
+	mes "Why would they accept such a job? It's all about money, quack";
+	next;
+	mes "[Naughty Man]";
+	mes "But their appearance in the magic contest is just a mask in a bright world, in reality they are my fighters of the night. You might think it's crazy";
+	mes "It doesn't matter, I'll just pay the money and tell you";
+	next;
+	mes "[Naughty Man]";
+	mes "There is a competition where talented people like Arghina Pemont wanted to enter even after hiding their true identity, and it's a game the real wealthy watch at the Geffen Arena at night.";
+	next;
+	mes "[Naughty Man]";
+	mes "Party party, one-on-one duels, there's no such thing as soft water, it's a place where you fight instinctively and get rewarded for your skills. We'd like to invite you there. How about it? Are you interested?";
+	next;
+	if (select("You're tempted.", "Not really, I'll obey the law.") == 2)
+		end;
+	mes "[Naughty Man]";
+	mes "Okay, I'm glad you got it right, let's get out of here for now and go to the dimensional rift.";
+	next;
+	mes "[Naughty Man]";
+	mes "And find the portal to be demolished there, and you can ignore the warning signs posted there, because we occupied an abandoned dimension and changed it to our liking";
+	next;
+	select("The dimension dummy is not the past world");
+	mes "[Naughty Man]";
+	mes "It's accurate, so it was a bit difficult to recruit people from beyond the dimension who lived through events that had already happened. But as you can see, I succeeded, the problem is the recruitment of people from this world like you";
+	next;
+	mes "[Naughty Man]";
+	mes "If there is only a stage, the play will not be completed. There must be an actor who can match the match, and I came to cast you.";
+	next;
+	mes "[Naughty Man]";
+	mes "Be prepared, and if you have a colleague, don't forget to introduce me to it.";
+	close2;
+	warp "dali02",82,62;
+	end;
+OnInit:
+	questinfo( QTYPE_QUEST2, QMARK_NONE, "checkquest(12511,PLAYTIME) == -1" );
+	end;
+}
+
+dali02,83,63,3	script	Warning#1	4_BOARD3,{
+	mes "^ff0000[To be removed. Do not touch or use the portal]^000000";
+	close;
+}
+
+dali02,79,60,3	script	Deprecated portal#gna	PORTAL,{
+	if (BaseLevel < 210) {	// custom text
+		mes "You must be Level 210 or highter for this instance.";
+		close;
+	}
+	switch( checkquest(12511,PLAYTIME) ) {
+	case -1:
+		break;
+	case 0:
+	case 1:
+		mes "Please wait the end of the delay.";	// custom text
+		close;
+	case 2:
+		erasequest 12511;
+		mes "^0000ff All the aftereffects of entering the dungeon are gone. You can now communicate normally.^000000";
+		close;
+	}
+	.@md_name$ = "Geffen Night Arena";
+	mes "--- Danger ---";
+	mes "This is a type of dungeon that collapses if all party members do not enter.";
+	next;
+	if (is_party_leader() == true)
+		.@menu$ = "^0000ffNight Arena^000000 Create dimension";
+	switch( select( "Entry", .@menu$ ) ) {
+	case 1:
+		switch( instance_enter(.@md_name$) ) {
+		case IE_NOMEMBER:
+		case IE_NOINSTANCE:
+		case IE_OTHER:
+			mes "^0000ff The dungeon has not been created or you are trying to enter a dungeon different from the party leader^000000";
+			close;
+		case IE_OK:
+			setquest 12511;
+			if (isbegin_quest(12512) == 0)
+				setquest 12512;
+			mapannounce "dali02", "It appears that a member of the " + getpartyname( getcharid(1) ) + " party used an illegal portal to " + .@md_name$ + ".", bc_map, 0xFF99;
+			// warp "1@ge_sn",89,48;
+			end;
+		}
+		end;
+	case 2:
+		instance_create(.@md_name$);
+		end;
+	}
+}
+
+dali02,84,69,5	script	Abandoned vending machine#1	2_VENDING_MACHINE1,{
+	mes "^003355 This is a vending machine that looks like it's going to go out at any time. It looks like someone abandoned it.^000000";
+	next;
+	switch( select( "Do not touch", "Basic product list", "Special product list", "Card product list" ) ) {
+	case 1:
+		mes "^003355The vending machine's lamp flickers nervously.^000000";
+		close;
+	case 2:
+		close2;
+		callshop "gna_exchange_1";	// barter shop
+		end;
+	case 3:
+		close2;
+		callshop "gna_exchange_2";	// barter shop
+		end;
+	case 4:
+		close2;
+		callshop "gna_exchange_3";	// barter shop
+		end;
+	}
+}
+
+
+
+// 1@ge_sn,111,62,3	script	#boss_start	4_M_YURI,3,0,{	// useless OnTouch ?
+1@ge_sn,111,62,3	script	#boss_start	4_M_YURI,{
+	if ('reward_npc == true)
+		end;
+	if (is_party_leader() == false && 'step != 99) {	// custom text
+		mes "[Naughty Host]";
+		mes "I would like to talk to your leader.";
+		close;
+	}
+	.@current_step = 'step;
+	switch( 'step ) {
+	case 0:
+		mes "[Naughty Host]";
+		mes "Oh, are you a new challenger? Let's check the number of participants first.";
+		next;
+		getpartymember( getcharid(1) );
+		mes "[Naughty Host]";
+		mes "There is " + $@partymembercount + " people. Are you going to register and proceed as is? Or do you need a little preparation time?";
+		next;
+		if (select( "Wait a minute!", "Start right away" ) == 1)
+			end;
+		mes "[Naughty Host]";
+		mes "You can think of the first match as warming up. The guy with the worst condition will appear against you today. Have fun.";
+		close2;
+		if ('step != 0 || is_party_leader() == false)
+			end;
+		'step = 1;
+		getpartymember( getcharid(1) );
+		'party_count = $@partymembercount;	// party count can't be changed starting now
+		'party_id = getcharid(1);
+		'player_name$ = strcharinfo(0);
+		mapannounce 'map_ge_sn$, "From now on " + strcharinfo(0) + ", and " + ('party_count - 1) + " of his dwarves will delight the eyes of ladies and gentlemen in the arena of darkness!", bc_map , 0xFFFF00;
+		disablenpc instance_npcname("#boss_start");
+		sleep 4500;
+		mapannounce 'map_ge_sn$, "There is a fair amount of explosives around the fences of this stadium for your entertainment.", bc_map, 0xFFFF00;
+		sleep 4000;
+		mapannounce 'map_ge_sn$, "Enjoy the burning and tormenting of players being pushed out of the arena during the match.", bc_map, 0xFFFF00;
+		sleep 4000;
+		mapannounce 'map_ge_sn$, "Let's start this game!", bc_map, 0xFFFF00;
+		donpcevent instance_npcname("#boss_start") + "::OnStart";
+		end;
+	case 1:
+	case 2:
+	case 3:
+	case 4:
+	case 5:
+	case 6:
+	case 7:
+	case 8:
+	case 9:
+		mes "[Naughty Host]";
+		mes "The opponent in the next match will be much stronger than the previous match, if you are confident that you can defeat it, challenge it you have ^ff00001 minute^000000.";
+		mes "Well, if you're going to give up on this level of difficulty, you don't deserve to come here.";
+		next;
+		mes "[Naughty Host]";
+		mes "I warn you in advance, but if you exceed ^ff00001 minute of play time^000000, you will be judged as a loser. If you lose ^ff0000, you will lose all the rewards you have accumulated so far, so make sure to defeat your opponent within 1 minute^000000.";
+		next;
+		switch( select( "View the next opponent's profile", "^ff0000Receive accumulated rewards and give up here^000000", "^0000ffChallenge the next round^000000" ) ) {
+		case 1:
+			// note: display mob hp and stars of the next round
+			mes "^0000ffROUND " + ('step+1) + "^000000, Arhi";
+			mes "Health Estimate " + 'mob_hpmax['step+1] + "";
+			mes "Estimate Castle Aura Barrier " + 'mob_stars['step+1] + "";
+			next;
+			// note: display rewards of the previous and next round
+			mes "^0000ffROUND " + 'step + ", Accumulated reward up to ^000000 ------";
+			mes "" + getitemname(1000316) + " - ^0000ff" + 'coin['step] + "^000000";
+			if ('certificate['step] > 0)
+				mes "" + getitemname(1000317) + " - ^0000ff" + 'certificate['step] + "^000000";
+			if ('champion_certificate['step] > 0)
+				mes "" + getitemname(1000366) + " - ^0000ff" + 'champion_certificate['step] + "^000000";
+			mes "^0000ffROUND " + ('step+1) + "^000000, accumulative reward for kills ----";
+			mes "" + getitemname(1000316) + " - ^0000ff" + 'coin['step+1] + "^000000";
+			if ('certificate['step+1] > 0)
+				mes "" + getitemname(1000317) + " - ^0000ff" + 'certificate['step+1] + "^000000";
+			if ('champion_certificate['step+1] > 0)
+				mes "" + getitemname(1000366) + " - ^0000ff" + 'champion_certificate['step+1] + "^000000";
+			close;
+		case 2:
+			callsub( S_CallReward, .@current_step );	// call the reward npc
+		case 3:
+			mes "[Naughty Host]";
+			mes "I dare to go down a difficult road, but I have no intention of stopping it. I'm looking forward to a good spectacle!";
+			close2;
+			if ('step == .@current_step && is_party_leader() == true) {
+				'step++;
+				disablenpc instance_npcname("#boss_start");
+				donpcevent instance_npcname("#boss_start") + "::OnStart";
+			}
+			end;
+		}
+		end;
+	case 10:	// round 10 completed, call the reward npc
+		callsub( S_CallReward, .@current_step );
+	case 99:	// special value for timeout (lose)
+		mes "[Naughty Host]";
+		mes "Hmm... Unfortunately all your reward are going to ^0000ff" + strmobinfo(1, 'mob_spawn['step]) + "^000000";
+		next;
+		mes "[Naughty Host]";
+		mes "Don't be too discouraged, there'll be a good chance later. You'll have to get out of here for the next match.";
+		if (isbegin_quest(12512) > 0)
+			erasequest 12512;
+		close2;
+		warp "dali02",82,63;
+		end;
+	default:
+		end;
+	}
+	end;
+
+OnStart:
+	donpcevent instance_npcname("#champ") + "::OnStart";
+	sleep 2000;
+	mapannounce 'map_ge_sn$, "Introduce your opponent for the round " + 'step + "", bc_map, 0xFFFF00;
+	sleep 2000;
+	mapannounce 'map_ge_sn$, "Health! " + 'mob_hpmax['step] + " , Castle Auror Barrier " + 'mob_stars['step] + "!", bc_map, 0xFFFF00;
+	sleep 2000;
+	if ('description$['step] != "") {
+		mapannounce 'map_ge_sn$, 'description$['step], bc_map, 0xFFFF00;
+		sleep 3500;
+	}
+	if ('effect['step] > 0)
+		specialeffect 'effect['step], AREA, instance_npcname("#champ");
+	if ('spectator$['step] != "" && 'spectator_name$['step] != "")
+		npctalk replacestr('spectator$['step], "REPLACE_ME_PLAYERNAME", 'player_name$), instance_npcname('spectator_name$['step]);
+	sleep 3000;
+	monster 'map_ge_sn$,111,48,"--ja--",'mob_spawn['step],1, instance_npcname("#gna_playercheck") + "::OnMobDead";
+	if ('relieve['step] > 0)	// shouldn't happen
+		unitskilluseid $@mobid[0], 771, 'relieve['step];	// NPC_RELIEVE_ON
+	'mob_id = $@mobid[0];
+	if ('mob_hpmax['step] > 0)	// shouldn't happen
+		setunitdata 'mob_id, UMOB_HP, 'mob_hpmax['step];
+	for ( .@i = 1; .@i < 27; .@i++ )
+		enablenpc instance_npcname("#gna_trap_" + .@i);
+	disablenpc instance_npcname("#champ");
+	movenpc instance_npcname("#champ"),128,48;
+	initnpctimer;	// round timer (1 minute)
+	donpcevent instance_npcname("#gna_playercheck") + "::OnStart";	// check if all party member alive (every 1 second)
+	if ('mob_spawn['step] == 20871)
+		donpcevent instance_npcname("#mini_MD_ALPHONSE_N") + "::OnStart";
+	end;
+
+OnTimer40000:
+	mapannounce 'map_ge_sn$, "20 seconds left until the end of the match", bc_map, 0xFFFF00;
+	end;
+OnTimer50000:
+	mapannounce 'map_ge_sn$, "10 seconds left until the end of the match", bc_map, 0xFFFF00;
+	end;
+OnTimer60000:
+	donpcevent instance_npcname("#boss_start") + "::OnStop";
+	donpcevent instance_npcname("#gna_playercheck") + "::OnStop";
+	killmonster 'map_ge_sn$, instance_npcname("#gna_playercheck") + "::OnMobDead";
+	'mob_spawn[99] = 'mob_spawn['step];	// save the last mob to display the sprite on #champ
+	'step = 99;
+	enablenpc instance_npcname("#boss_start");
+	mapannounce 'map_ge_sn$, "Stop! Time over. All accumulated prize goes back to winner " + strmobinfo(1, 'mob_spawn['step]) + "!", bc_map, 0xFFFF00;
+	for ( .@i = 1; .@i < 27; .@i++ )
+		disablenpc instance_npcname("#gna_trap_" + .@i);
+	donpcevent instance_npcname("#champ") + "::OnStart";
+	end;
+
+OnStop:
+	stopnpctimer;
+	end;
+
+S_CallReward:
+	mes "[Naughty Host]";
+	mes "Ha! Gee, I'm sure I'll see the winner of the final with my own eyes. I'm going to write a diary before going to bed tonight.";
+	close2;
+	if ('step != getarg(0) || is_party_leader() == false || 'reward_npc == true)
+		end;
+	'reward_npc = true;
+	enablenpc instance_npcname("#reward_npc");
+	mapannounce 'map_ge_sn$, "You must have watched the finals!!, Fenryl's team is still the strongest!!!!", bc_map, 0xFFFF00;
+	sleep 3000;
+	mapannounce 'map_ge_sn$, "Prepare rewards for champions", bc_map, 0xFFFF00;
+	sleep 4000;
+	mapannounce 'map_ge_sn$, "Come on, guests, the exit door is on the left.", bc_map, 0xFFFF00;
+	end;
+}
+
+1@ge_sn,1,1,4	script	#gna_playercheck	-1,{
+	end;
+OnStart:
+	'mob_is_immune = false;
+	initnpctimer;
+	end;
+OnTimer1000:
+	getpartymember( 'party_id, 1, .@char_id );
+	if ('party_count != $@partymembercount)
+		callsub( S_Immune, true );
+	else if (instance_check_party('party_id, 'party_count) == 0)	// not all online
+		callsub( S_Immune, true );
+	else {
+		// all members must be on the same map and alive
+		for ( .@i = 0; .@i < 'party_count; .@i++ ) {
+			if (strcharinfo(3, .@char_id[.@i]) != 'map_ge_sn$)
+				break;
+			if (readparam(Hp, .@char_id[.@i]) < 1)
+				break;
+		}
+		callsub( S_Immune, (.@i < 'party_count) );
+	}
+	initnpctimer;
+	end;
+OnStop:
+	'mob_is_immune = false;
+	stopnpctimer;
+	end;
+
+S_Immune:
+	if (unitexists('mob_id) == false) {
+		donpcevent instance_npcname("#gna_playercheck") + "::OnStop";
+		end;
+	}
+	.@val = getarg(0);
+	if ('mob_is_immune == .@val)
+		return;
+	'mob_is_immune = .@val;
+	getunitdata 'mob_id, .@data;
+	if ('mob_is_immune == true)
+		.@data[UMOB_MODE] |= (MD_IGNOREMELEE|MD_IGNOREMAGIC|MD_IGNORERANGED|MD_IGNOREMISC);
+	else
+		.@data[UMOB_MODE] &= ~(MD_IGNOREMELEE|MD_IGNOREMAGIC|MD_IGNORERANGED|MD_IGNOREMISC);
+	setunitdata 'mob_id, UMOB_MODE, .@data[UMOB_MODE];
+	return;
+
+OnMobDead:
+	if (mobcount('map_ge_sn$, instance_npcname("#gna_playercheck") + "::OnMobDead") > 0)
+		end;
+	switch( 'step ) {
+	case 1:
+		mapannounce 'map_ge_sn$, "The unknown dwarves made it through round 1 safely. If you can't even do this, you shouldn't put your feet on the floor.", bc_map, 0xFF99FF;
+		break;
+	case 2:
+		mapannounce 'map_ge_sn$, "That's pretty good, I passed round 2 without any problems. It's going to be the mainstay of a country village guild.", bc_map, 0xFF99FF;
+		break;
+	case 3:
+		mapannounce 'map_ge_sn$, "Oh, what is this? I was very surprised that they would easily break through the 3rd round and climb up.", bc_map, 0xFF99FF;
+		break;
+	case 4:
+		mapannounce 'map_ge_sn$, "If you've come this far, you can't call them nameless ghouls anymore. But I'm not sure if they can keep going.", bc_map, 0xFF99FF;
+		break;
+	case 5:
+		mapannounce 'map_ge_sn$, "Unexpectedly. I didn't expect arena beginners to struggle this much. The stakes are getting bigger.", bc_map, 0xFF99FF;
+		break;
+	case 6:
+		mapannounce 'map_ge_sn$, "As a team preparing for the ground after round 6, they should be treated as experts from the early stage. Will they try the next round?", bc_map, 0xFF99FF;
+		break;
+	case 7:
+		mapannounce 'map_ge_sn$, "It doesn't seem like a normal skill. I guess I'll have to grab the prize and go outside.", bc_map, 0xFF99FF;
+		break;
+	case 8:
+		mapannounce 'map_ge_sn$, "Awesome. A team that has not lost until round 8 can be called an expert. I don't know if the next move will be a challenge or a harvest of fruit.", bc_map, 0xFF99FF;
+		break;
+	case 9:
+		mapannounce 'map_ge_sn$, "I'm not pushing. Fenryl's team has crossed the almost impossible territory. Wouldn't it be better to go home with the rewards now?", bc_map, 0xFF99FF;
+		break;
+	case 10:
+		mapannounce 'map_ge_sn$, "Oh my God! Can you believe it! A team that made it to the final round! Awesome. I don't know if we'll ever see a fight like this again.", bc_map, 0xFF99FF;
+		break;
+	}
+	enablenpc instance_npcname("#boss_start");
+	for ( .@i = 1; .@i < 27; .@i++ )
+		disablenpc instance_npcname("#gna_trap_" + .@i);
+	donpcevent instance_npcname("#gna_playercheck") + "::OnStop";
+	donpcevent instance_npcname("#boss_start") + "::OnStop";
+	end;
+}
+
+// 1@ge_sn,108,62,5	script	#reward_npc	4_GEFFEN_09,3,0,{	// useless OnTouch ?
+1@ge_sn,108,62,5	script	#reward_npc	4_GEFFEN_09,{
+	if ('reward_npc == false)
+		end;
+	if (isbegin_quest(12512) > 0) {
+		.@fail = (!checkweight(1201,3) || !checkweight(1000316,'coin['step]));
+		if ('certificate['step] > 0)
+			.@fail = (.@check || !checkweight(1000317,'certificate['step]));
+		if ('champion_certificate['step] > 0)
+			.@fail = (.@check || !checkweight(1000366,'champion_certificate['step]));
+		if (.@fail) {	// custom text
+			mes "- Wait a minute !! -";
+			mes "- Currently you're carrying -";
+			mes "- too many items with you. -";
+			mes "- Please try again -";
+			mes "- after you loose some weight. -";
+			close;
+		}
+		mes "[WS Rewarder]";	// a part of the name is missing
+		mes "There are very few people who have come this far. On behalf of WS, I pay my respects.";
+		erasequest 12512;
+		getitem 1000316, 'coin['step];	// Geffen Arena Coin
+		if ('certificate['step] > 0)
+			getitem 1000317, 'certificate['step];	// Geffen Arena Certificate
+		if ('champion_certificate['step] > 0)
+			getitem 1000366, 'champion_certificate['step];	// Geffen Arena Champion Certificate
+		close;
+	}
+	mes "[WS Rewarder]";
+	mes "Now, let me guide you outside. Come this way.";
+	next;
+	if (select( "I'll look around some more", "I'm leaving now" ) == 1) {
+		mes "[WS Rewarder]";
+		mes "I can't wait too long.";
+		close;
+	}
+	warp "dali02",82,63;
+	end;
+}
+
+1@ge_sn,1,1,4	script	#mini_MD_ALPHONSE_N	-1,{
+	end;
+OnStart:
+	initnpctimer;
+	end;
+OnTimer2000:
+	callsub( S_Spawn, 92,55 );
+OnTimer4000:
+	callsub( S_Spawn, 92,48 );
+OnTimer6000:
+	callsub( S_Spawn, 92,43 );
+OnTimer8000:
+	callsub( S_Spawn, 125,48 );
+OnTimer10000:
+	callsub( S_Spawn, 125,55 );
+OnTimer12000:
+	callsub( S_Spawn, 125,43 );
+OnTimer14000:
+	callsub( S_Spawn, 110,57 );
+OnTimer16000:
+	stopnpctimer;
+	callsub( S_Spawn, 110,39 );
+S_Spawn:
+	// unknown mob ID
+	monster 'map_ge_sn$,getarg(0),getarg(1),"--ja--",2566,1;	// no label
+	unitskilluseid $@mobid[0], 771,10;	// NPC_RELIEVE_ON (dummy level)
+	end;
+}
+
+1@ge_sn,89,54,3	script	#board1	4_BOARD3,{
+	unittalk getcharid(3), "" + strcharinfo(0) + " : It is written that the use of this area is prohibited during night maintenance... What are these guys here? Are you crazy about gambling?";
+	end;
+}
+1@ge_sn,89,42,3	duplicate(#board1)	#board2	4_BOARD3
+1@ge_sn,129,54,3	duplicate(#board1)	#board3	4_BOARD3
+1@ge_sn,129,42,3	duplicate(#board1)	#board4	4_BOARD3
+1@ge_sn,109,34,3	duplicate(#board1)	#board5	4_BOARD3
+1@ge_sn,121,62,3	duplicate(#board1)	#board6	4_BOARD3
+1@ge_sn,97,62,3	duplicate(#board1)	#board7	4_BOARD3
+
+1@ge_sn,100,62,5	duplicate(dummy_npc)	#guest1	4_F_ACROSS
+1@ge_sn,101,62,5	duplicate(dummy_npc)	#guest2	4_M_GUILLOTINE
+1@ge_sn,102,62,5	duplicate(dummy_npc)	#guest3	4_M_HUMERCHANT
+1@ge_sn,103,62,5	duplicate(dummy_npc)	#guest4	4_M_KHKYEL
+1@ge_sn,104,62,5	duplicate(dummy_npc)	#guest5	4_M_KNIGHT_BLACK
+1@ge_sn,105,62,5	duplicate(dummy_npc)	#guest6	4_F_GUILLOTINE
+1@ge_sn,114,62,3	duplicate(dummy_npc)	#guest7	4_M_JOB_WIZARD
+1@ge_sn,115,62,3	duplicate(dummy_npc)	#guest8	4_M_SEAMAN
+1@ge_sn,116,62,3	duplicate(dummy_npc)	#guest9	4_M_DWARF
+1@ge_sn,117,62,3	duplicate(dummy_npc)	#guest10	4_M_CRU
+1@ge_sn,118,62,3	duplicate(dummy_npc)	#guest11	4_M_GEF_SOLDIER
+1@ge_sn,98,64,5	duplicate(dummy_npc)	#guest12	4_M_ACROSS
+1@ge_sn,99,64,5	duplicate(dummy_npc)	#guest13	4_M_SAGE_A
+1@ge_sn,100,64,5	duplicate(dummy_npc)	#guest14	4_M_KHMAN
+1@ge_sn,101,64,5	duplicate(dummy_npc)	#guest15	4_F_SITDOWN
+1@ge_sn,102,64,5	duplicate(dummy_npc)	#guest16	4_F_MASK
+1@ge_sn,103,64,5	duplicate(dummy_npc)	#guest17	4_M_JOB_KNIGHT2
+1@ge_sn,104,64,5	duplicate(dummy_npc)	#guest18	4_M_JOB_KNIGHT1
+1@ge_sn,105,64,5	duplicate(dummy_npc)	#guest19	4_F_MASK1
+1@ge_sn,106,64,5	duplicate(dummy_npc)	#guest20	4_M_HUMAN_02
+1@ge_sn,107,64,5	duplicate(dummy_npc)	#guest21	4_M_HUMAN_01
+1@ge_sn,108,64,5	duplicate(dummy_npc)	#guest22	4_M_HUBOY
+1@ge_sn,109,64,5	duplicate(dummy_npc)	#guest23	4_M_SITDOWN
+1@ge_sn,110,64,3	duplicate(dummy_npc)	#guest24	4_M_LGTPOOR
+1@ge_sn,111,64,3	duplicate(dummy_npc)	#guest25	4_M_SAGE_C
+1@ge_sn,112,64,3	duplicate(dummy_npc)	#guest26	4_M_KNIGHT_GOLD
+1@ge_sn,113,64,3	duplicate(dummy_npc)	#guest27	4_M_ALCHE_D
+1@ge_sn,114,64,3	duplicate(dummy_npc)	#guest28	4_M_HUOLDARMY
+1@ge_sn,115,64,3	duplicate(dummy_npc)	#guest29	4_M_ROGUE
+1@ge_sn,116,64,3	duplicate(dummy_npc)	#guest30	4_F_EDEN_OFFICER
+1@ge_sn,117,64,3	duplicate(dummy_npc)	#guest31	4_M_HUGRANFA
+1@ge_sn,118,64,3	duplicate(dummy_npc)	#guest32	4_M_CRU_OLD
+1@ge_sn,119,64,3	duplicate(dummy_npc)	#guest33	4_M_EDEN_GUARDER
+1@ge_sn,120,64,3	duplicate(dummy_npc)	#guest34	GEFFEN_FENRIR
+
+1@ge_sn,128,48,4	script	#champ	CLEAR_NPC,{
+	end;
+OnStart:
+	setnpcdisplay( instance_npcname("#champ"), 'mob_spawn['step] );
+	enablenpc();
+	unitwalk getnpcid(0),111,48, instance_npcname("#champ") + "::OnMove";
+	end;
+OnMove:
+	// note: the first spawn doesn't have npctalk on official
+	if ('mob_talk$['step] != "" && 'step > 1)
+		npctalk strmobinfo(1,'mob_spawn['step]) + ": " + 'mob_talk$['step];
+	end;
+}
+
+1@ge_sn,94,58,0	script	#gna_trap_1	HIDDEN_WARP_NPC,2,2,{
+	end;
+OnTouch:
+	if (unitexists('mob_id) == false)
+		end;
+	getmapxy .@map$,.@x,.@y, BL_NPC;
+	unitskillusepos getnpcid(0),"WZ_HEAVENDRIVE",5,.@x,.@y, -10;
+	end;
+OnInstanceInit:
+	setunitdata getnpcid(0), UNPC_INT, 10000;
+	end;
+}
+1@ge_sn,99,58,0	duplicate(#gna_trap_1)	#gna_trap_2	HIDDEN_WARP_NPC,2,2
+1@ge_sn,104,58,0	duplicate(#gna_trap_1)	#gna_trap_3	HIDDEN_WARP_NPC,2,2
+1@ge_sn,109,58,0	duplicate(#gna_trap_1)	#gna_trap_4	HIDDEN_WARP_NPC,2,2
+1@ge_sn,114,58,0	duplicate(#gna_trap_1)	#gna_trap_5	HIDDEN_WARP_NPC,2,2
+1@ge_sn,119,58,0	duplicate(#gna_trap_1)	#gna_trap_6	HIDDEN_WARP_NPC,2,2
+1@ge_sn,124,58,0	duplicate(#gna_trap_1)	#gna_trap_7	HIDDEN_WARP_NPC,2,2
+1@ge_sn,94,38,0	duplicate(#gna_trap_1)	#gna_trap_8	HIDDEN_WARP_NPC,2,2
+1@ge_sn,99,38,0	duplicate(#gna_trap_1)	#gna_trap_9	HIDDEN_WARP_NPC,2,2
+1@ge_sn,104,38,0	duplicate(#gna_trap_1)	#gna_trap_10	HIDDEN_WARP_NPC,2,2
+1@ge_sn,109,38,0	duplicate(#gna_trap_1)	#gna_trap_11	HIDDEN_WARP_NPC,2,2
+1@ge_sn,114,38,0	duplicate(#gna_trap_1)	#gna_trap_12	HIDDEN_WARP_NPC,2,2
+1@ge_sn,119,38,0	duplicate(#gna_trap_1)	#gna_trap_13	HIDDEN_WARP_NPC,2,2
+1@ge_sn,124,38,0	duplicate(#gna_trap_1)	#gna_trap_14	HIDDEN_WARP_NPC,2,2
+1@ge_sn,94,38,0	duplicate(#gna_trap_1)	#gna_trap_15	HIDDEN_WARP_NPC,2,2
+1@ge_sn,94,43,0	duplicate(#gna_trap_1)	#gna_trap_16	HIDDEN_WARP_NPC,2,2
+1@ge_sn,94,48,0	duplicate(#gna_trap_1)	#gna_trap_17	HIDDEN_WARP_NPC,2,2
+1@ge_sn,94,53,0	duplicate(#gna_trap_1)	#gna_trap_18	HIDDEN_WARP_NPC,2,2
+1@ge_sn,94,58,0	duplicate(#gna_trap_1)	#gna_trap_19	HIDDEN_WARP_NPC,2,2
+1@ge_sn,124,38,0	duplicate(#gna_trap_1)	#gna_trap_20	HIDDEN_WARP_NPC,2,2
+1@ge_sn,124,43,0	duplicate(#gna_trap_1)	#gna_trap_21	HIDDEN_WARP_NPC,2,2
+1@ge_sn,124,48,0	duplicate(#gna_trap_1)	#gna_trap_22	HIDDEN_WARP_NPC,2,2
+1@ge_sn,124,53,0	duplicate(#gna_trap_1)	#gna_trap_23	HIDDEN_WARP_NPC,2,2
+1@ge_sn,124,58,0	duplicate(#gna_trap_1)	#gna_trap_24	HIDDEN_WARP_NPC,2,2
+1@ge_sn,90,48,0	duplicate(#gna_trap_1)	#gna_trap_25	HIDDEN_WARP_NPC,2,2
+1@ge_sn,128,48,0	duplicate(#gna_trap_1)	#gna_trap_26	HIDDEN_WARP_NPC,2,2
+
+// Settings
+1@ge_sn,1,1,5	script	#gna_initialization	-1,{
+	end;
+OnInstanceInit:
+	'step = 0;
+	'map_ge_sn$ = instance_mapname("1@ge_sn");
+	'reward_npc = false;	// whether the reward npc is called
+
+	for ( .@i = 1; .@i < 27; .@i++ )
+		disablenpc instance_npcname("#gna_trap_" + .@i);
+	disablenpc instance_npcname("#reward_npc");
+
+	// Shuffle the sprite of the spectator npcs (like on official)
+	// -------------------------------------------------------------------------------------------
+	setarray .@view[0],
+		466,467,468,469,705,
+		709,733,734,735,751,
+		752,754,755,826,828,
+		870,881,882,883,884,
+		885,896,897,898,899,
+		900,901,903,904,916,
+		917,952,953,2564;
+
+	.@size = 34;
+
+	for ( .@i = 1; .@i < 35; .@i++ ) {
+		.@r = rand(.@size);
+		setnpcdisplay( instance_npcname("#guest" + .@i), .@view[.@r] );
+		deletearray .@view[.@r],1;
+		.@size--;
+	}
+
+	// Build the mob ID, stars and max hp beforehand since the informations are displayed by a npc
+	// -------------------------------------------------------------------------------------------
+
+	// shuffle the mob ID by round like on official
+	setarray .@mob_array[0],
+		20856,20857,20858,20859,20860,
+		20861,20862,20863,20864,20865,
+		20866,20867,20868,20869,20870,
+		20871;
+	.@size = getarraysize(.@mob_array);
+
+	for ( .@i = 1; .@i < 10; .@i++ ) {
+		.@r = rand(.@size);
+		'mob_spawn[.@i] = .@mob_array[.@r];
+		.@mob_array[.@r] = .@mob_array[ .@size - 1 ];
+		.@size--;
+
+		// shuffle the 'stars', which seems to change nothing of the game actually
+		.@min = .@i;
+		.@max = min(.@i+5, 10);
+		'mob_stars[.@i] = rand(.@min, .@max);
+	}
+	'mob_spawn[10] = 20872;	// fenrir always last
+	'mob_stars[10] = 10;
+
+	// shuffle the 'max hp' of the mobs by round
+	// -------------------------------------------------------------------------------------------
+	// note:
+	//   - 2 same mobs ID in a round with the same 'stars' can have different hp max on official from what I saw
+	//   - The hp from round 7 to 10 are less accurate
+	'mob_hpmax[1] = rand(35, 50) * 100000;
+	'mob_hpmax[2] = rand(110, 150) * 100000;
+	'mob_hpmax[3] = rand(320, 450) * 100000;
+	'mob_hpmax[4] = rand(950, 1275) * 100000;
+	'mob_hpmax[5] = rand(2800, 4000) * 100000;
+	'mob_hpmax[6] = rand(3970, 5600) * 100000;
+	'mob_hpmax[7] = rand(5400, 7600) * 100000;
+	'mob_hpmax[8] = rand(9000, 11000) * 100000;
+	'mob_hpmax[9] = rand(11000, 11500) * 100000;
+	'mob_hpmax[10] = rand(18000, 18500) * 100000;
+
+	// Reward by round
+	// -------------------------------------------------------------------------------------------
+	setarray 'coin[1],2,3,4,6,9,14,22,35,56,89;				// Geffen Arena Coin (1000316)
+	setarray 'certificate[1],0,0,0,1,1,2,2,3,4,5;			// Geffen Arena Certificate (1000317)
+	setarray 'champion_certificate[1],0,0,0,0,0,0,1,1,2,3;	// Geffen Arena Champion Certificate (1000366)
+
+	// Relieve Level by round
+	// -------------------------------------------------------------------------------------------
+	setarray 'relieve[1],3,5,5,5,5,5,5,5,5,9;
+
+	// Texts and effects bind to the mob are saved by round
+	// -------------------------------------------------------------------------------------------
+	// note: the spectator npc may be wrong, need replay to be accurate.
+	for ( .@i = 1; .@i < 11; .@i++ ) {
+		switch( 'mob_spawn[.@i] ) {
+		case 20856:	// MD_N_ARENA_1
+			'mob_talk$[.@i] = "I have a bad feeling for some reason. I'm just taking a break today.";
+			'description$[.@i] = "A wild dog in the arena~Arhi!!!!";
+			'effect[.@i] = EF_LEXDIVINA;
+			'spectator$[.@i] = "Excited Gambler: Get it straight REPLACE_ME_PLAYERNAME~!!!! I'm your fan! Don't let me down!";
+			'spectator_name$[.@i] = "#guest21";
+			break;
+		case 20857:	// MD_N_ARENA_2
+			'mob_talk$[.@i] = "Let's take it easy. I'm not feeling well today.";
+			'description$[.@i] = "Cruel darkness~ Dio Anemos!!!!!";
+			// unknown effect
+			// unknown spectator
+			break;
+		case 20858:	// MD_N_ARENA_3_1
+			// unknown mob talk
+			'description$[.@i] = "Partisan party cool guy~ Geffen shoplifter!!!!!";
+			// unknown effect
+			// unknown spectator
+			break;
+		case 20859:	// MD_N_ARENA_3_2
+			'mob_talk$[.@i] = "I have a bad feeling for some reason.. I'm just taking a break today.";
+			'description$[.@i] = "The sweetest Geffen bully in the world!!!!";
+			'effect[.@i] = EF_LEXDIVINA;
+			'spectator$[.@i] = "Sufficient gamblers: Kill Som, Geffen rogue! I've been on a boat from afar to see you!";
+			'spectator_name$[.@i] = "#guest9";
+			break;
+		case 20860:	// MD_N_ARENA_3_3
+			// unknown mob talk
+			'description$[.@i] = "Actually, a very soft-hearted ~ Geffen thug!!!!!";
+			// unknown effect
+			'spectator$[.@i] = "Excited Gambler: Stay strong, Geffen thug!!!! If I win this game, I will change my life!";
+			'spectator_name$[.@i] = "#guest9";
+
+			break;
+		case 20861:	// MD_N_ARENA_4 (same text except number)
+			'mob_talk$[.@i] = "I'll be quick, you too.";
+			'description$[.@i] = "A glutton who likes hamon~ Pemong!!!!";
+			'effect[.@i] = EF_IMPOSITIO;
+			'spectator$[.@i] = "Excited Gambler: Fight Pemong!!! I'm a Dee fan! Don't let me down!";
+			'spectator_name$[.@i] = "#guest5";
+			break;
+		case 20862:	// MD_N_ARENA_5 (same text except number)
+			'mob_talk$[.@i] = "I have a bad feeling for some reason, I'm just taking a break today.";
+			'description$[.@i] = "Your personality is dirtier than it looks ~ Ordre!!!!";
+			// unknown effect
+			// unknown spectator
+			break;
+		case 20863:	// MD_N_ARENA_6
+			'mob_talk$[.@i] = "I have a bad feeling for some reason.. I'm just taking a break today.";
+			'description$[.@i] = "The sweetest Geffen bully in the world!!!!";
+			// unknown effect
+			'spectator$[.@i] = "Excited gambler: salsa blunt haze~!!!! I'm a fan of De! Don't let the moon disappoint!";
+			'spectator_name$[.@i] = "#guest27";
+			break;
+		case 20864:	// MD_N_ARENA_7
+			'mob_talk$[.@i] = "Don't worry, Windows Walk will finish it painlessly!!";
+			'description$[.@i] = "The weakest in this area~ Akuma Kuro!!!!";
+			'effect[.@i] = EF_IMPOSITIO;
+			'spectator$[.@i] = "Excited Gambler: Fight well, Pemong~!!!!! Just win! I lose half of my stake!";
+			'spectator_name$[.@i] = "#guest21";
+			break;
+		case 20865:	// MD_N_ARENA_8
+			'mob_talk$[.@i] = "Why don't we settle down gentlely with each other? I'm not feeling well today?";
+			'description$[.@i] = "I hate group activities~ Epodus!!!!";
+			'effect[.@i] = EF_LEXAETERNA;
+			'spectator$[.@i] = "Excited Gambler: Do it right! REPLACE_ME_PLAYERNAME~!!!! If you don't do it right I'll finish you off!";
+			'spectator_name$[.@i] = "#guest19";
+			break;
+		case 20866:	// MD_N_ARENA_9
+			'mob_talk$[.@i] = "I don't think the group is friendly with each other, buying everything...";
+			'description$[.@i] = "Lechenye will not forgive you for approaching behind your back!!!!!";
+			'effect[.@i] = EF_LEXAETERNA;
+			// unknown spectator
+			break;
+		case 20867:	// MD_N_ARENA_10
+			'mob_talk$[.@i] = "Why don't we settle down gentlely with each other? I'm not feeling well today?";
+			'description$[.@i] = "The one who hid his steps~ Odoriko!!!!";
+			'effect[.@i] = EF_IMPOSITIO;
+			'spectator$[.@i] = "Tidy Gambler: Let's be quiet! Don't you know this is an illegal game? What if the guards come";
+			'spectator_name$[.@i] = "#guest19";
+			break;
+		case 20868:	// MD_N_ARENA_11
+			'mob_talk$[.@i] = "Hey, I didn't really want to play today.";
+			'description$[.@i] = "Those who live a life faithful to the adage of getting close to the mace ~ Jew!!!!",	// text incomplete
+			'effect[.@i] = EF_IMPOSITIO;
+			// unknown spectator
+			break;
+		case 20869:	// MD_N_ARENA_12
+			'mob_talk$[.@i] = "Hmm? Where did we see it? It's okay";
+			'description$[.@i] = "Everything in the world is annoying~ D.Y!!!!";
+			// unknown effect
+			// unknown spectator
+			break;
+		case 20870:	// MD_KANABIAN_N
+			'mob_talk$[.@i] = "It's a sequel to playing solo rather than performing while matching a sum that doesn't go well with Pongs.";
+			'description$[.@i] = "Lonely lost homunculus, Faye Canavian!!!!";
+			// unknown effect
+			'spectator$[.@i] = "Excited Gambler: Fight well, D-Y~!!!! If you don't do it right, I'll finish you off!";	// todo seems wrong
+			'spectator_name$[.@i] = "#guest2";
+			break;
+		case 20871:	// MD_ALPHONSE_N
+			// note: some monster x6 spawn after the defeat (ss 522)
+			// unknown mob talk
+			// unknown description
+			// unknown effect
+			// unknown spectator
+			break;
+		case 20872:	// MD_GEFFEN_FENRIR_N
+			'mob_talk$[.@i] = "Don't worry, I'll finish it painlessly";
+			'description$[.@i] = "The Veiled One~ Fenryl!!!!";
+			// unknown effect
+			'spectator$[.@i] = "Excited gambler: Fight for the flesh, Fenryl~!!!!! If you lose this time, I will come down and break your neck!";
+			'spectator_name$[.@i] = "#guest9";
+			break;
+		}
+	}
+
+	// mob talk when fail
+	'mob_talk$[99] = "It's nothing more than a thought, yes.";
+	end;
+}
