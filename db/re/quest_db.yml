@@ -9030,6 +9030,11 @@ Body:
   - Id: 12506
     Title: Let's try again to seal the crack
     TimeLimit: 4h
+  - Id: 12511
+    Title: "[Waiting] No match today"
+    TimeLimit: 3d 4h
+  - Id: 12512
+    Title: "Proof of Survival"
   - Id: 13000
     Title: RWC2011Card Gathering
   - Id: 13001

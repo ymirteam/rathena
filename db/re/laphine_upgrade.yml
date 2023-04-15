@@ -4205,28 +4205,32 @@ Body:
       - Item: Antique_Cello
       - Item: Farthezan
       - Item: Estal
-#  - Item: MD_Geffen_Rarmor
-#    CardsAllowed: true
-#    TargetItems:
-#      - Item: MD_Geffen_Suits
-#      - Item: MD_Geffen_Robe
-#  - Item: MD_Geffen_Rhood
-#    CardsAllowed: true
-#    TargetItems:
-#      - Item: MD_Geffen_Hood
-#      - Item: MD_Geffen_Hood2
-#      - Item: MD_Geffen_Hood3
-#      - Item: MD_Geffen_Hood4
-#  - Item: MD_Geffen_Racc
-#    CardsAllowed: true
-#    TargetItems:
-#      - Item: MD_Geffen_Ring
-#      - Item: MD_Geffen_Ring2
-#  - Item: MD_Geffen_Rsheild
-#    CardsAllowed: true
-#    TargetItems:
-#      - Item: MD_Geffen_Shield
-#      - Item: MD_Geffen_Shield2
+  - Item: MD_Geffen_Rarmor
+    RandomOptionGroup: MD_GEFFEN_RARMOR
+    CardsAllowed: true
+    TargetItems:
+      - Item: MD_Geffen_Suits
+      - Item: MD_Geffen_Robe
+  - Item: MD_Geffen_Rhood
+    RandomOptionGroup: MD_GEFFEN_RHOOD
+    CardsAllowed: true
+    TargetItems:
+      - Item: MD_Geffen_Hood
+      - Item: MD_Geffen_Hood2
+      - Item: MD_Geffen_Hood3
+      - Item: MD_Geffen_Hood4
+  - Item: MD_Geffen_Racc
+    RandomOptionGroup: MD_GEFFEN_RACC
+    CardsAllowed: true
+    TargetItems:
+      - Item: MD_Geffen_Ring
+      - Item: MD_Geffen_Ring2
+  - Item: MD_Geffen_Rsheild
+    RandomOptionGroup: MD_GEFFEN_RSHEILD
+    CardsAllowed: true
+    TargetItems:
+      - Item: MD_Geffen_Shield
+      - Item: MD_Geffen_Shield2
   - Item: Moonlight_Box_IL
     ResultRefineMinimum: 7
     ResultRefineMaximum: 10
