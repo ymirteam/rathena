@@ -95,7 +95,7 @@ Body:
     Type: Etc
     Weight: 1
   - Id: 30001
-    AegisName: Cash
+    AegisName: CASH
     Name: Cash
     Type: Usable
     Flags:

@@ -1,0 +1,327 @@
+
+Header:
+  Type: BARTER_DB
+  Version: 1
+
+Body:
+ - Name: gna_exchange_1
+   Items:
+     - Index: 0
+       Item: Anti_Magic_Suit     # 15073
+       RequiredItems:
+         - Index: 0
+           Item: MD_Geffen_Coin     # 1000316
+           Amount: 30
+     - Index: 1
+       Item: Geffen_Mage_Robe     # 15074
+       RequiredItems:
+         - Index: 0
+           Item: MD_Geffen_Coin     # 1000316
+           Amount: 30
+     - Index: 2
+       Item: Anti_Magic_Manteau     # 20944
+       RequiredItems:
+         - Index: 0
+           Item: MD_Geffen_Coin     # 1000316
+           Amount: 30
+     - Index: 3
+       Item: Geffen_Magic_Muffler     # 20943
+       RequiredItems:
+         - Index: 0
+           Item: MD_Geffen_Coin     # 1000316
+           Amount: 30
+     - Index: 4
+       Item: Magic_Reflector     # 2185
+       RequiredItems:
+         - Index: 0
+           Item: MD_Geffen_Coin     # 1000316
+           Amount: 45
+     - Index: 5
+       Item: Encyclopedia_Revision     # 2186
+       RequiredItems:
+         - Index: 0
+           Item: MD_Geffen_Coin     # 1000316
+           Amount: 45
+     - Index: 6
+       Item: Body_Power_Up_Ring     # 2963
+       RequiredItems:
+         - Index: 0
+           Item: MD_Geffen_Coin     # 1000316
+           Amount: 60
+     - Index: 7
+       Item: Ring_Of_Spell_Explosion     # 2964
+       RequiredItems:
+         - Index: 0
+           Item: MD_Geffen_Coin     # 1000316
+           Amount: 60
+
+ - Name: gna_exchange_2
+   Items:
+     - Index: 0
+       Item: MD_Geffen_Suits     # 450149
+       RequiredItems:
+         - Index: 0
+           Item: MD_Geffen_Coin     # 1000316
+           Amount: 30
+         - Index: 1
+           Item: Anti_Magic_Suit     # 15073
+           Amount: 1
+     - Index: 1
+       Item: MD_Geffen_Robe     # 450150
+       RequiredItems:
+         - Index: 0
+           Item: MD_Geffen_Coin     # 1000316
+           Amount: 30
+         - Index: 1
+           Item: Geffen_Mage_Robe     # 15074
+           Amount: 1
+     - Index: 2
+       Item: MD_Geffen_Hood     # 480065
+       RequiredItems:
+         - Index: 0
+           Item: MD_Geffen_Coin     # 1000316
+           Amount: 30
+         - Index: 1
+           Item: Anti_Magic_Manteau     # 20944
+           Amount: 1
+     - Index: 3
+       Item: MD_Geffen_Hood2     # 480066
+       RequiredItems:
+         - Index: 0
+           Item: MD_Geffen_Coin     # 1000316
+           Amount: 30
+         - Index: 1
+           Item: Anti_Magic_Manteau     # 20944
+           Amount: 1
+     - Index: 4
+       Item: MD_Geffen_Hood3     # 480067
+       RequiredItems:
+         - Index: 0
+           Item: MD_Geffen_Coin     # 1000316
+           Amount: 30
+         - Index: 1
+           Item: Geffen_Magic_Muffler     # 20943
+           Amount: 1
+     - Index: 5
+       Item: MD_Geffen_Hood4     # 480068
+       RequiredItems:
+         - Index: 0
+           Item: MD_Geffen_Coin     # 1000316
+           Amount: 30
+         - Index: 1
+           Item: Geffen_Magic_Muffler     # 20943
+           Amount: 1
+     - Index: 6
+       Item: MD_Geffen_Shield     # 460005
+       RequiredItems:
+         - Index: 0
+           Item: MD_Geffen_Coin     # 1000316
+           Amount: 45
+         - Index: 1
+           Item: Magic_Reflector     # 2185
+           Amount: 1
+     - Index: 7
+       Item: MD_Geffen_Shield2     # 460006
+       RequiredItems:
+         - Index: 0
+           Item: MD_Geffen_Coin     # 1000316
+           Amount: 45
+         - Index: 1
+           Item: Encyclopedia_Revision     # 2186
+           Amount: 1
+     - Index: 8
+       Item: MD_Geffen_Ring     # 490077
+       RequiredItems:
+         - Index: 0
+           Item: MD_Geffen_Coin     # 1000316
+           Amount: 60
+         - Index: 1
+           Item: Body_Power_Up_Ring     # 2963
+           Amount: 1
+     - Index: 9
+       Item: MD_Geffen_Ring2     # 490078
+       RequiredItems:
+         - Index: 0
+           Item: MD_Geffen_Coin     # 1000316
+           Amount: 60
+         - Index: 1
+           Item: Ring_Of_Spell_Explosion     # 2964
+           Amount: 1
+     - Index: 10
+       Item: MD_Geffen_Rarmor     # 100365
+       Zeny: 150000
+       RequiredItems:
+         - Index: 0
+           Item: MD_Geffen_Coin     # 1000316
+           Amount: 15
+         - Index: 1
+           Item: MD_Geffen_Cert     # 1000317
+           Amount: 1
+     - Index: 11
+       Item: MD_Geffen_Rhood     # 100366
+       Zeny: 150000
+       RequiredItems:
+         - Index: 0
+           Item: MD_Geffen_Coin     # 1000316
+           Amount: 15
+         - Index: 1
+           Item: MD_Geffen_Cert     # 1000317
+           Amount: 1
+     - Index: 12
+       Item: MD_Geffen_Racc     # 100367
+       Zeny: 100000
+       RequiredItems:
+         - Index: 0
+           Item: MD_Geffen_Coin     # 1000316
+           Amount: 25
+         - Index: 1
+           Item: MD_Geffen_Cert     # 1000317
+           Amount: 1
+     - Index: 13
+       Item: MD_Geffen_Rsheild     # 100368
+       Zeny: 200000
+       RequiredItems:
+         - Index: 0
+           Item: MD_Geffen_Coin     # 1000316
+           Amount: 15
+         - Index: 1
+           Item: MD_Geffen_Cert     # 1000317
+           Amount: 1
+
+ - Name: gna_exchange_3
+   Items:
+     - Index: 0
+       Item: MD_Geffen_Archi_Card     # 300177
+       RequiredItems:
+         - Index: 0
+           Item: MD_Geffen_Win     # 1000366
+           Amount: 10
+         - Index: 1
+           Item: Archi_Card     # 27249
+           Amount: 7
+     - Index: 1
+       Item: MD_Geffen_Dio_Card     # 300178
+       RequiredItems:
+         - Index: 0
+           Item: MD_Geffen_Win     # 1000366
+           Amount: 10
+         - Index: 1
+           Item: Dio_Anemos_Card     # 27250
+           Amount: 7
+     - Index: 2
+       Item: MD_Geffen_Thief_Card     # 300179
+       RequiredItems:
+         - Index: 0
+           Item: MD_Geffen_Win     # 1000366
+           Amount: 10
+         - Index: 1
+           Item: Geffen_Thief_Card     # 27253
+           Amount: 7
+     - Index: 3
+       Item: MD_Geffen_Gang_Card     # 300180
+       RequiredItems:
+         - Index: 0
+           Item: MD_Geffen_Win     # 1000366
+           Amount: 10
+         - Index: 1
+           Item: Geffen_Gang_Card     # 27251
+           Amount: 7
+     - Index: 4
+       Item: MD_Geffen_Thug_Card     # 300181
+       RequiredItems:
+         - Index: 0
+           Item: MD_Geffen_Win     # 1000366
+           Amount: 10
+         - Index: 1
+           Item: Geffen_Thug_Card     # 27252
+           Amount: 7
+     - Index: 5
+       Item: MD_Geffen_Monk_Card     # 300182
+       RequiredItems:
+         - Index: 0
+           Item: MD_Geffen_Win     # 1000366
+           Amount: 10
+         - Index: 1
+           Item: Pa_Monk_Card     # 27254
+           Amount: 7
+     - Index: 6
+       Item: MD_Geffen_Ordre_Card     # 300183
+       RequiredItems:
+         - Index: 0
+           Item: MD_Geffen_Win     # 1000366
+           Amount: 10
+         - Index: 1
+           Item: Ordre_Card     # 27255
+           Amount: 7
+     - Index: 7
+       Item: MD_Geffen_Blut_Card     # 300184
+       RequiredItems:
+         - Index: 0
+           Item: MD_Geffen_Win     # 1000366
+           Amount: 10
+         - Index: 1
+           Item: Blut_Hase_Card     # 27256
+           Amount: 7
+     - Index: 8
+       Item: MD_Geffen_Akuma_Card     # 300185
+       RequiredItems:
+         - Index: 0
+           Item: MD_Geffen_Win     # 1000366
+           Amount: 10
+         - Index: 1
+           Item: Kuro_Akuma_Card     # 27257
+           Amount: 7
+     - Index: 9
+       Item: MD_Geffen_Hyper_Card     # 300186
+       RequiredItems:
+         - Index: 0
+           Item: MD_Geffen_Win     # 1000366
+           Amount: 10
+         - Index: 1
+           Item: Hyper_Death_Card     # 27258
+           Amount: 7
+     - Index: 10
+       Item: MD_Geffen_Odorico_Card     # 300187
+       RequiredItems:
+         - Index: 0
+           Item: MD_Geffen_Win     # 1000366
+           Amount: 10
+         - Index: 1
+           Item: Odorico_Card     # 27260
+           Amount: 7
+     - Index: 11
+       Item: MD_Geffen_Reche_Card     # 300188
+       RequiredItems:
+         - Index: 0
+           Item: MD_Geffen_Win     # 1000366
+           Amount: 10
+         - Index: 1
+           Item: Rechenier_Card     # 27259
+           Amount: 7
+     - Index: 12
+       Item: MD_Geffen_Jew_Card     # 300189
+       RequiredItems:
+         - Index: 0
+           Item: MD_Geffen_Win     # 1000366
+           Amount: 10
+         - Index: 1
+           Item: Jew_Card     # 27261
+           Amount: 7
+     - Index: 13
+       Item: MD_Geffen_Fei_Card     # 300190
+       RequiredItems:
+         - Index: 0
+           Item: MD_Geffen_Win     # 1000366
+           Amount: 10
+         - Index: 1
+           Item: Fei_Kanabian_Card     # 27263
+           Amount: 7
+     - Index: 14
+       Item: MD_Geffen_Dy_Card     # 300191
+       RequiredItems:
+         - Index: 0
+           Item: MD_Geffen_Win     # 1000366
+           Amount: 10
+         - Index: 1
+           Item: Dy_Card     # 27262
+           Amount: 7

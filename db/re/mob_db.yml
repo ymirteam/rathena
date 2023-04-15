@@ -103169,40 +103169,533 @@ Body:
     AttackMotion: 500
     DamageMotion: 300
     Ai: 20
-#  - Id: 20856
-#    AegisName: MD_N_ARENA_1
-#  - Id: 20857
-#    AegisName: MD_N_ARENA_2
-#  - Id: 20858
-#    AegisName: MD_N_ARENA_3_1
-#  - Id: 20859
-#    AegisName: MD_N_ARENA_3_2
-#  - Id: 20860
-#    AegisName: MD_N_ARENA_3_3
-#  - Id: 20861
-#    AegisName: MD_N_ARENA_4
-#  - Id: 20862
-#    AegisName: MD_N_ARENA_5
-#  - Id: 20863
-#    AegisName: MD_N_ARENA_6
-#  - Id: 20864
-#    AegisName: MD_N_ARENA_7
-#  - Id: 20865
-#    AegisName: MD_N_ARENA_8
-#  - Id: 20866
-#    AegisName: MD_N_ARENA_9
-#  - Id: 20867
-#    AegisName: MD_N_ARENA_10
-#  - Id: 20868
-#    AegisName: MD_N_ARENA_11
-#  - Id: 20869
-#    AegisName: MD_N_ARENA_12
-#  - Id: 20870
-#    AegisName: MD_KANABIAN_N
-#  - Id: 20871
-#    AegisName: MD_ALPHONSE_N
-#  - Id: 20872
-#    AegisName: MD_GEFFEN_FENRIR_N
+  - Id: 20856
+    AegisName: MD_N_ARENA_1
+    Name: "Midnight Archi"
+    Level: 210
+    Hp: 2000000000
+    Attack: 9237
+    Attack2: 9237
+    Defense: 64
+    MagicDefense: 38
+    Str: 250
+    Agi: 150
+    Vit: 150
+    Int: 250
+    Dex: 130
+    Luk: 50
+    AttackRange: 1
+    SkillRange: 10
+    ChaseRange: 12
+    Size: Medium
+    Race: Demihuman
+    Element: Neutral
+    ElementLevel: 1
+    WalkSpeed: 200
+    AttackDelay: 1000
+    AttackMotion: 864
+    DamageMotion: 480
+    Ai: 20
+    Mode:
+      KNOCKBACKIMMUNE: true
+      DETECTOR: true
+      STATUSIMMUNE: true
+  - Id: 20857
+    AegisName: MD_N_ARENA_2
+    Name: "Midnight Dio Anemos"
+    Level: 210
+    Hp: 2000000000
+    Attack: 9429
+    Attack2: 9429
+    Defense: 129
+    MagicDefense: 18
+    Str: 240
+    Agi: 140
+    Vit: 150
+    Int: 180
+    Dex: 230
+    Luk: 60
+    AttackRange: 1
+    SkillRange: 10
+    ChaseRange: 12
+    Size: Medium
+    Race: Demihuman
+    Element: Neutral
+    ElementLevel: 1
+    WalkSpeed: 200
+    AttackDelay: 900
+    AttackMotion: 672
+    DamageMotion: 480
+    Ai: 20
+    Mode:
+      KNOCKBACKIMMUNE: true
+      DETECTOR: true
+      STATUSIMMUNE: true
+  - Id: 20858
+    AegisName: MD_N_ARENA_3_1
+    Name: "Midnight Geffen Thief"
+    Level: 210
+    Hp: 2000000000
+    Attack: 9385
+    Attack2: 9385
+    Defense: 93
+    MagicDefense: 36
+    Str: 270
+    Agi: 170
+    Vit: 140
+    Int: 140
+    Dex: 240
+    Luk: 60
+    AttackRange: 1
+    SkillRange: 10
+    ChaseRange: 12
+    Size: Medium
+    Race: Demihuman
+    Element: Neutral
+    ElementLevel: 1
+    WalkSpeed: 200
+    AttackDelay: 800
+    AttackMotion: 672
+    DamageMotion: 480
+    Ai: 20
+    Mode:
+      KNOCKBACKIMMUNE: true
+      DETECTOR: true
+      STATUSIMMUNE: true
+  - Id: 20859
+    AegisName: MD_N_ARENA_3_2
+    Name: "Midnight Geffen Thug"
+    Level: 210
+    Hp: 2000000000
+    Attack: 9385
+    Attack2: 9385
+    Defense: 93
+    MagicDefense: 36
+    Str: 270
+    Agi: 150
+    Vit: 170
+    Int: 140
+    Dex: 240
+    Luk: 40
+    AttackRange: 1
+    SkillRange: 10
+    ChaseRange: 12
+    Size: Medium
+    Race: Demihuman
+    Element: Neutral
+    ElementLevel: 1
+    WalkSpeed: 200
+    AttackDelay: 900
+    AttackMotion: 672
+    DamageMotion: 480
+    Ai: 20
+    Mode:
+      KNOCKBACKIMMUNE: true
+      DETECTOR: true
+      STATUSIMMUNE: true
+  - Id: 20860
+    AegisName: MD_N_ARENA_3_3
+    Name: "Midnight Geffen Gangster"
+    Level: 210
+    Hp: 2000000000
+    Attack: 9385
+    Attack2: 9385
+    Defense: 93
+    MagicDefense: 36
+    Str: 260
+    Agi: 180
+    Vit: 130
+    Int: 130
+    Dex: 240
+    Luk: 70
+    AttackRange: 1
+    SkillRange: 10
+    ChaseRange: 12
+    Size: Medium
+    Race: Demihuman
+    Element: Neutral
+    ElementLevel: 1
+    WalkSpeed: 200
+    AttackDelay: 950
+    AttackMotion: 864
+    DamageMotion: 480
+    Ai: 20
+    Mode:
+      KNOCKBACKIMMUNE: true
+      DETECTOR: true
+      STATUSIMMUNE: true
+  - Id: 20861
+    AegisName: MD_N_ARENA_4
+    Name: "Midnight Pa - Monk"
+    Level: 210
+    Hp: 2000000000
+    Attack: 9390
+    Attack2: 9390
+    Defense: 114
+    MagicDefense: 21
+    Str: 260
+    Agi: 160
+    Vit: 160
+    Int: 160
+    Dex: 240
+    Luk: 60
+    AttackRange: 1
+    SkillRange: 10
+    ChaseRange: 12
+    Size: Medium
+    Race: Demihuman
+    Element: Neutral
+    ElementLevel: 1
+    WalkSpeed: 200
+    AttackDelay: 672
+    AttackMotion: 648
+    DamageMotion: 480
+    Ai: 20
+    Mode:
+      KNOCKBACKIMMUNE: true
+      DETECTOR: true
+      STATUSIMMUNE: true
+  - Id: 20862
+    AegisName: MD_N_ARENA_5
+    Name: "Midnight Ordre"
+    Level: 210
+    Hp: 2000000000
+    Attack: 9630
+    Attack2: 9630
+    Defense: 107
+    MagicDefense: 21
+    Str: 240
+    Agi: 170
+    Vit: 140
+    Int: 200
+    Dex: 250
+    Luk: 60
+    AttackRange: 1
+    SkillRange: 10
+    ChaseRange: 12
+    Size: Medium
+    Race: Demihuman
+    Element: Neutral
+    ElementLevel: 1
+    WalkSpeed: 200
+    AttackDelay: 768
+    AttackMotion: 672
+    DamageMotion: 480
+    Ai: 20
+    Mode:
+      KNOCKBACKIMMUNE: true
+      DETECTOR: true
+      STATUSIMMUNE: true
+  - Id: 20863
+    AegisName: MD_N_ARENA_6
+    Name: "Midnight Blut Hase"
+    Level: 210
+    Hp: 2000000000
+    Attack: 9301
+    Attack2: 9301
+    Defense: 66
+    MagicDefense: 47
+    Str: 220
+    Agi: 220
+    Vit: 120
+    Int: 250
+    Dex: 150
+    Luk: 60
+    AttackRange: 1
+    SkillRange: 10
+    ChaseRange: 12
+    Size: Medium
+    Race: Demihuman
+    Element: Ghost
+    ElementLevel: 2
+    WalkSpeed: 200
+    AttackDelay: 800
+    AttackMotion: 768
+    DamageMotion: 480
+    Ai: 20
+    Mode:
+      KNOCKBACKIMMUNE: true
+      DETECTOR: true
+      STATUSIMMUNE: true
+  - Id: 20864
+    AegisName: MD_N_ARENA_7
+    Name: "Midnight Kuro Akuma"
+    Level: 210
+    Hp: 2000000000
+    Attack: 7664
+    Attack2: 7664
+    Defense: 135
+    MagicDefense: 10
+    Str: 200
+    Agi: 200
+    Vit: 200
+    Int: 200
+    Dex: 145
+    Luk: 100
+    AttackRange: 1
+    SkillRange: 10
+    ChaseRange: 12
+    Size: Medium
+    Race: Demihuman
+    Element: Neutral
+    ElementLevel: 1
+    WalkSpeed: 200
+    AttackDelay: 1000
+    AttackMotion: 864
+    DamageMotion: 480
+    Ai: 20
+    Mode:
+      KNOCKBACKIMMUNE: true
+      DETECTOR: true
+      STATUSIMMUNE: true
+  - Id: 20865
+    AegisName: MD_N_ARENA_8
+    Name: "Midnight Ipodus"
+    Level: 210
+    Hp: 2000000000
+    Attack: 7483
+    Attack2: 7483
+    Defense: 120
+    MagicDefense: 60
+    Str: 250
+    Agi: 200
+    Vit: 200
+    Int: 150
+    Dex: 270
+    Luk: 100
+    AttackRange: 1
+    SkillRange: 10
+    ChaseRange: 12
+    Size: Medium
+    Race: Demihuman
+    Element: Neutral
+    ElementLevel: 1
+    WalkSpeed: 200
+    AttackDelay: 800
+    AttackMotion: 768
+    DamageMotion: 480
+    Ai: 20
+    Mode:
+      KNOCKBACKIMMUNE: true
+      DETECTOR: true
+      STATUSIMMUNE: true
+  - Id: 20866
+    AegisName: MD_N_ARENA_9
+    Name: "Midnight Rechenier"
+    Level: 210
+    Hp: 2000000000
+    Attack: 7711
+    Attack2: 7711
+    Defense: 140
+    MagicDefense: 57
+    Str: 250
+    Agi: 200
+    Vit: 150
+    Int: 200
+    Dex: 220
+    Luk: 75
+    AttackRange: 1
+    SkillRange: 10
+    ChaseRange: 12
+    Size: Medium
+    Race: Demihuman
+    Element: Neutral
+    ElementLevel: 1
+    WalkSpeed: 200
+    AttackDelay: 864
+    AttackMotion: 768
+    DamageMotion: 480
+    Ai: 20
+    Mode:
+      KNOCKBACKIMMUNE: true
+      DETECTOR: true
+      STATUSIMMUNE: true
+  - Id: 20867
+    AegisName: MD_N_ARENA_10
+    Name: "Midnight Odorico"
+    Level: 210
+    Hp: 2000000000
+    Attack: 5750
+    Attack2: 5750
+    Defense: 165
+    MagicDefense: 62
+    Str: 200
+    Agi: 150
+    Vit: 150
+    Int: 150
+    Dex: 270
+    Luk: 100
+    AttackRange: 1
+    SkillRange: 10
+    ChaseRange: 12
+    Size: Medium
+    Race: Demihuman
+    Element: Neutral
+    ElementLevel: 1
+    WalkSpeed: 200
+    AttackDelay: 800
+    AttackMotion: 672
+    DamageMotion: 480
+    Ai: 20
+    Mode:
+      KNOCKBACKIMMUNE: true
+      DETECTOR: true
+      STATUSIMMUNE: true
+  - Id: 20868
+    AegisName: MD_N_ARENA_11
+    Name: "Midnight Jew"
+    Level: 210
+    Hp: 2000000000
+    Attack: 11050
+    Attack2: 11050
+    Defense: 170
+    MagicDefense: 65
+    Str: 250
+    Agi: 200
+    Vit: 100
+    Int: 200
+    Dex: 220
+    Luk: 100
+    AttackRange: 1
+    SkillRange: 10
+    ChaseRange: 12
+    Size: Medium
+    Race: Demihuman
+    Element: Neutral
+    ElementLevel: 1
+    WalkSpeed: 200
+    AttackDelay: 800
+    AttackMotion: 672
+    DamageMotion: 480
+    Ai: 20
+    Mode:
+      KNOCKBACKIMMUNE: true
+      DETECTOR: true
+      STATUSIMMUNE: true
+  - Id: 20869
+    AegisName: MD_N_ARENA_12
+    Name: "Midnight D.Y."
+    Level: 210
+    Hp: 2000000000
+    Attack: 11500
+    Attack2: 11500
+    Defense: 175
+    MagicDefense: 65
+    Str: 250
+    Agi: 100
+    Vit: 100
+    Int: 250
+    Dex: 220
+    Luk: 100
+    AttackRange: 1
+    SkillRange: 10
+    ChaseRange: 12
+    Size: Medium
+    Race: Demihuman
+    Element: Ghost
+    ElementLevel: 2
+    WalkSpeed: 200
+    AttackDelay: 800
+    AttackMotion: 768
+    DamageMotion: 480
+    Ai: 20
+    Mode:
+      KNOCKBACKIMMUNE: true
+      DETECTOR: true
+      STATUSIMMUNE: true
+  - Id: 20870
+    AegisName: MD_KANABIAN_N
+    Name: "Midnight Fei Kanabian"
+    Level: 210
+    Hp: 2000000000
+    Attack: 11875
+    Attack2: 11875
+    Defense: 175
+    MagicDefense: 65
+    Str: 250
+    Agi: 100
+    Vit: 100
+    Int: 250
+    Dex: 220
+    Luk: 100
+    AttackRange: 1
+    SkillRange: 10
+    ChaseRange: 12
+    Size: Medium
+    Race: Demihuman
+    Element: Ghost
+    ElementLevel: 2
+    WalkSpeed: 200
+    AttackDelay: 720
+    AttackMotion: 672
+    DamageMotion: 480
+    Ai: 20
+    Mode:
+      KNOCKBACKIMMUNE: true
+      DETECTOR: true
+      STATUSIMMUNE: true
+  - Id: 20871
+    AegisName: MD_ALPHONSE_N
+    Name: "Midnight Alphonse"
+    Level: 210
+    Hp: 2000000000
+    Attack: 5500
+    Attack2: 5500
+    Defense: 100
+    MagicDefense: 20
+    Str: 200
+    Agi: 100
+    Vit: 150
+    Int: 150
+    Dex: 170
+    Luk: 100
+    AttackRange: 1
+    SkillRange: 10
+    ChaseRange: 12
+    Size: Medium
+    Race: Demihuman
+    Element: Earth
+    ElementLevel: 2
+    WalkSpeed: 200
+    AttackDelay: 1400
+    AttackMotion: 816
+    DamageMotion: 396
+    Ai: 20
+    Mode:
+      KNOCKBACKIMMUNE: true
+      DETECTOR: true
+      STATUSIMMUNE: true
+  - Id: 20872
+    AegisName: MD_GEFFEN_FENRIR_N
+    Name: "Midnight Fenrir"
+    Level: 210
+    Hp: 2000000000
+    Attack: 12250
+    Attack2: 12250
+    Defense: 200
+    MagicDefense: 70
+    Str: 200
+    Agi: 100
+    Vit: 200
+    Int: 200
+    Dex: 220
+    Luk: 100
+    AttackRange: 1
+    SkillRange: 10
+    ChaseRange: 12
+    Size: Medium
+    Race: Demihuman
+    Element: Ghost
+    ElementLevel: 2
+    WalkSpeed: 200
+    AttackDelay: 900
+    AttackMotion: 864
+    DamageMotion: 480
+    Ai: 20
+    Mode:
+      KNOCKBACKIMMUNE: true
+      DETECTOR: true
+      STATUSIMMUNE: true
 #  - Id: 20873
 #    AegisName: WAR_NUT
 #  - Id: 20874
