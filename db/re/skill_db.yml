@@ -36695,7 +36695,7 @@ Body:
           Amount: 85
   - Id: 5254
     Name: IQ_THIRD_EXOR_FLAME
-    Description: Third Exor Flame
+    Description: Third Exorcism Flame
     MaxLevel: 5
     TargetType: Self
     DamageFlags:
