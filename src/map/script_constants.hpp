@@ -1893,6 +1893,8 @@
 	export_constant(SC_IMMUNE_PROPERTY_UNDEAD);
 	export_constant(SC_RELIEVE_ON);
 	export_constant(SC_RELIEVE_OFF);
+	export_constant(SC_RUSH_QUAKE1);
+	export_constant(SC_RUSH_QUAKE2);
 
 	export_constant(SC_RUSH_QUAKE1);
 	export_constant(SC_RUSH_QUAKE2);
