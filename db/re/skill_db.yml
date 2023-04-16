@@ -35059,8 +35059,8 @@ Body:
       - Level: 10
         Area: 4
     CastCancel: true
-    AfterCastActDelay: 500
-    Cooldown: 300
+    AfterCastActDelay: 250
+    Cooldown: 700
     Requires:
       SpCost:
         - Level: 1
@@ -35244,7 +35244,7 @@ Body:
     GiveAp: 2
     CastCancel: true
     AfterCastActDelay: 500
-    Cooldown: 350
+    Cooldown: 300
     Requires:
       SpCost:
         - Level: 1

@@ -2772,18 +2772,6 @@ static int battle_range_type(struct block_list *src, struct block_list *target, 
 
 			if (sd && (sd->status.weapon == W_MACE || sd->status.weapon == W_2HMACE))
 				return BF_LONG;
-
-			break;
-		}
-		case DK_HACKANDSLASHER:
-		case DK_HACKANDSLASHER_ATK: {
-			map_session_data* sd = BL_CAST( BL_PC, src );
-
-			if( sd != nullptr && ( sd->status.weapon == W_1HSPEAR || sd->status.weapon == W_2HSPEAR ) ){
-				return BF_LONG;
-			}
-
-			break;
 		}
 			break;
 		case DK_HACKANDSLASHER:
@@ -4107,7 +4095,7 @@ static void battle_calc_skill_base_damage(struct Damage* wd, struct block_list *
 				if(status_get_lv(src) > 100)
 					damagevalue = damagevalue * status_get_lv(src) / 100;
 				if(sd) //TODO Need official scaling. [Muh]
-					damagevalue = damagevalue * ( 90 + 10 * pc_checkskill( sd, RK_DRAGONTRAINING ) + ( pc_checkskill( sd, DK_DRAGONIC_AURA ) >= 1 ? ( sstatus->pow / 4 + sstatus->patk / 2 ) : 0 ) ) / 100;
+					damagevalue = damagevalue * (90 + 10 * pc_checkskill(sd, RK_DRAGONTRAINING) + (pc_checkskill(sd, DK_DRAGONIC_AURA) >= 1 ? (sstatus->pow / 4 + sstatus->patk / 2 ): 0)) / 100;
 				if (sc && sc->getSCE(SC_DRAGONIC_AURA))// Need official damage increase. [Rytech]
 					damagevalue += damagevalue * 50 / 100;
 				ATK_ADD(wd->damage, wd->damage2, damagevalue);
@@ -4933,10 +4921,8 @@ static int battle_calc_attack_skill_ratio(struct Damage* wd, struct block_list *
 			if (sd)
 				skillratio += 50 * pc_checkskill(sd,LK_SPIRALPIERCE);
 			if (sc) {
-				if( sc->getSCE( SC_DRAGONIC_AURA ) ){
-					skillratio += sc->getSCE( SC_DRAGONIC_AURA )->val1 * 160;
-				}
-
+				if (sc->getSCE(SC_DRAGONIC_AURA))
+					skillratio += sc->getSCE(SC_DRAGONIC_AURA)->val1 * 160;
 				if (sc->getSCE(SC_CHARGINGPIERCE_COUNT) && sc->getSCE(SC_CHARGINGPIERCE_COUNT)->val1 >= 10)
 					skillratio *= 2;
 			}
@@ -5576,7 +5562,7 @@ static int battle_calc_attack_skill_ratio(struct Damage* wd, struct block_list *
 				skillratio += skillratio * sc->getSCE(SC_LIGHTOFSTAR)->val2 / 100;
 			break;
 		case DK_SERVANTWEAPON_ATK:
-			skillratio += -100 + 200 + 50 * skill_lv + 5 * sstatus->pow;
+			skillratio += -100 + 200 + 300 * skill_lv + 5 * sstatus->pow;
 			RE_LVL_DMOD(100);
 			break;
 		case DK_SERVANT_W_PHANTOM:
@@ -5589,24 +5575,21 @@ static int battle_calc_attack_skill_ratio(struct Damage* wd, struct block_list *
 			break;
 		case DK_HACKANDSLASHER:
 		case DK_HACKANDSLASHER_ATK:
-			skillratio += -100 + 500 + 250 * skill_lv;
-			skillratio += 5 * sstatus->pow;
+			skillratio += -100 + 300 + 700 * skill_lv;
+			skillratio += 7 * sstatus->pow;
 			RE_LVL_DMOD(100);
 			break;
 		case DK_DRAGONIC_AURA:
-			skillratio += 950 * skill_lv + 10 * sstatus->pow;
+			skillratio += -100 + 3650 * skill_lv + 10 * sstatus->pow;
 			if (tstatus->race == RC_DEMIHUMAN || tstatus->race == RC_ANGEL)
-				skillratio += 450 * skill_lv;
+				skillratio += 150 * skill_lv;
 			RE_LVL_DMOD(100);
 			break;
 		case DK_MADNESS_CRUSHER:
-			skillratio += -100 + 600 * skill_lv + 5 * sstatus->pow;
-			if( sd != nullptr ){
-				int16 index = sd->equip_index[EQI_HAND_R];
-
-				if( index >= 0 && sd->inventory_data[index] != nullptr ){
-					skillratio += sd->inventory_data[index]->weight / 10 * sd->inventory_data[index]->weapon_level;
-				}
+			skillratio += -100 + 400 + 800 * skill_lv + 7 * sstatus->pow;
+			if (sd) {
+				short index = sd->equip_index[EQI_HAND_R];
+				skillratio += sd->inventory_data[index]->weight / 10 * sd->inventory_data[index]->weapon_level;
 			}
 			RE_LVL_DMOD(100);
 			if (sc && sc->getSCE(SC_CHARGINGPIERCE_COUNT) && sc->getSCE(SC_CHARGINGPIERCE_COUNT)->val1 >= 10)
@@ -9862,19 +9845,12 @@ enum damage_lv battle_weapon_attack(struct block_list* src, struct block_list* t
 		}
 		if (sc->getSCE(SC_GIANTGROWTH) && (wd.flag&BF_SHORT) && rnd()%100 < sc->getSCE(SC_GIANTGROWTH)->val2 && !is_infinite_defense(target, wd.flag) && !vellum_damage)
 			wd.damage += wd.damage * 150 / 100; // 2.5 times damage
-		if( sc->getSCE( SC_VIGOR ) && ( wd.flag&BF_SHORT ) && !is_infinite_defense( target, wd.flag ) && !vellum_damage ){
-			int mod = 200;
+		if (sc->getSCE(SC_VIGOR) && (wd.flag&BF_SHORT) && !is_infinite_defense(target, wd.flag) && !vellum_damage) {
+			int mod = 100 + sc->getSCE(SC_VIGOR)->val1 * 15;
 
-			wd.damage += wd.damage * mod / 100;
-		}
 			if (tstatus->race == RC_DEMIHUMAN || tstatus->race == RC_ANGEL)
 				mod += sc->getSCE(SC_VIGOR)->val1 * 10;
 			wd.damage += wd.damage * (mod) / 100;
-		}
-		if( sc->getSCE( SC_VIGOR ) && ( wd.flag&BF_SHORT ) && !is_infinite_defense( target, wd.flag ) && !vellum_damage ){
-			int mod = 200;
-
-			wd.damage += wd.damage * mod / 100;
 		}
 		if( sd && battle_config.arrow_decrement && sc->getSCE(SC_FEARBREEZE) && sc->getSCE(SC_FEARBREEZE)->val4 > 0) {
 			short idx = sd->equip_index[EQI_AMMO];
@@ -10085,7 +10061,7 @@ enum damage_lv battle_weapon_attack(struct block_list* src, struct block_list* t
 		if( sc ){
 			// It has a success chance of triggering even tho the description says nothing about it.
 			// TODO: Need to find out what the official success chance is. [Rytech]
-			if( sc->getSCE( SC_SERVANTWEAPON ) && sd->servantball > 0 && rnd() % 100 < ( 3 * sc->getSCE( SC_SERVANTWEAPON )->val1 ) ){
+			if( sc->getSCE(SC_SERVANTWEAPON) && sd->servantball > 0 && rnd() % 100 < (10 + sc->getSCE(SC_SERVANTWEAPON)->val1 *5) ){
 				uint16 skill_id = DK_SERVANTWEAPON_ATK;
 				uint16 skill_lv = sc->getSCE(SC_SERVANTWEAPON)->val1;
 
