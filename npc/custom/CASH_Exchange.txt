@@ -1,0 +1,99 @@
+//=======================================================
+//ibery-ro
+//script by winnie
+//edit by nullptr
+//15-4-2023//
+//=======================================================
+prontera,143,178,6	script	Mill	90,{
+if(#CASHPOINTS >= 1000000000) {
+	mes "สวัสดีจร้า";
+	mes "ท่านมีจำนวนเยอะเกินไปแล้วละ";
+	mes "แลกได้ไม่เกิน 1,000 M CASH";
+	close;
+	}
+if( .rate_charge <100000) { set .rate_charge, 100000; }
+if( .Service_charge <10000) { set .Service_charge, 10000; }
+	cutin "kafra_09",2;
+set .@menu$, "แลกแคช";
+if (getgmlevel() >= 99) { 
+	set .@menu$, "•^FF3333"+.@menu$+"^000000" + ":GM Menu"; 
+	} 
+	
+	switch(select(.@menu$)) {
+	
+	case 1:
+	mes "สวัสดีจร้า";
+	mes "ต้องการแลกเซนีเป็นแคช ใช่ไหมจ๊ะ";  
+	next;
+	mes "ต้องเสียค่าธรรมเนียมในการเปลี่ยนเซนี เป็น แคชนะ";
+	mes "เรทราคาตอนนี้เป็น "+callfunc("F_InsertComma",.rate_charge)+" เซนี";
+	mes "เสียค่าธรรมเนียม "+callfunc("F_InsertComma",.Service_charge) +" เซนี";
+	next;
+	mes "ใส่จำนวน Cash  ที่ท่านต้องการแลก";
+	input   @zenytocash_1;
+	if(@zenytocash_1 > 1500) {
+		mes "คุณไม่สามารถแลกเกิน 1,500 แคชได้";
+		close;
+	}
+	set .@zenytocash, @zenytocash_1;
+	set .cost, .@zenytocash*(.rate_charge);
+	set .total,  .@zenytocash*(.Service_charge);
+	mes "ค่าแลกแคช : ^FF3333"+callfunc("F_InsertComma",.cost)+"^000000 เซนี";
+	mes "ค่าธรรมเนียมรวม : ^0F2A99"+callfunc("F_InsertComma",.total)+"^000000 เซนี";
+	mes "รวมค่าใช้จ่ายทั้งหมด : ^000099"+callfunc("F_InsertComma",.cost+.total)+"^000000 เซนี";
+	next;
+	if (((zeny - (.rate_charge+.Service_charge)*.@zenytocash)) < 0) {
+	mes "เจ้ามีเงินไม่พอ.";
+	cutin "kafra_09",255;
+	close;
+	}
+	mes "ขอบคุณที่ใช้บริการ";
+	set zeny, zeny-(.rate_charge+.Service_charge)*.@zenytocash;
+	set #CASHPOINTS, #CASHPOINTS+.@zenytocash;
+	dispbottom "คุณได้รับ   "+callfunc("F_InsertComma",.@zenytocash)+"  points";
+	cutin "kafra_09",255;
+	close;   
+
+	case 2:
+	mes "เปลี่ยนเรทราคา"; 
+	mes "โปรดจำไว้ว่าหากทำการ @reloadscript"; 
+	mes "เรทราคา จะกลับไปที่ Default"; 
+	mes "เรทราคา Default : ^FF3333"+callfunc("F_InsertComma",.rate_charge)+"^000000 เซนี";
+	mes "ค่าธรรมเนียม Default : ^000099"+callfunc("F_InsertComma",.Service_charge) +"^000000 เซนี";
+	switch(select("แก้ไขเรทราคา:แก้ไขค่าธรรมเนียม")){
+		case 1:
+	mes "เปลี่ยนเรทราคา"; 
+	next;
+	input .rate_charge_new;
+	set .rate_charge , .rate_charge_new;
+	mes "เรทราคาตอนนี้เป็น  "+callfunc("F_InsertComma",.rate_charge)+" เซนี";
+	announce "เรทราคานการแลกแคช คือ  "+callfunc("F_InsertComma",.rate_charge)+" เซนี",bc_all ,0x990F3F ,700 ,35 ;
+	cutin "kafra_09",255;
+	close;
+		case 2:
+	mes "เปลี่ยนค่าธรรมเนียม"; 
+	next;
+	input .Service_charge_new;
+	set .Service_charge, .Service_charge_new;
+	mes "ค่าธรรมเนียมตอนนี้เป็น  "+callfunc("F_InsertComma",.Service_charge)+" เซนี";
+	announce "ค่าธรรมเนียมในการแลกแคช คือ  "+callfunc("F_InsertComma",.Service_charge)+" เซนี",bc_all ,0x990F3F ,700 ,35 ;
+	cutin "kafra_09",255;
+	close;
+		}
+	}
+cutin "kafra_09",255;
+OnInit:
+
+    setunitdata getnpcid(0), UNPC_CLASS, JOB_HYPER_NOVICE;
+    setunitdata getnpcid(0), UNPC_SEX, SEX_FEMALE;
+    setunitdata getnpcid(0), UNPC_HAIRCOLOR, 6;
+    setunitdata getnpcid(0), UNPC_HAIRSTYLE, 18; // ห้ามใช้ 0
+    setunitdata getnpcid(0), UNPC_HEADTOP, 908;
+    setunitdata getnpcid(0), UNPC_HEADBOTTOM, 1255;
+    setunitdata getnpcid(0), UNPC_HEADMIDDLE, 355;
+    setunitdata (getnpcid(0), UNPC_GROUP_ID, 25);
+    setunittitle(getnpcid(0), "NULL Inc.");  //คลาย ๆ ชื่อกิลด์
+
+	waitingroom "CASH Exchange",0;
+end;
+}

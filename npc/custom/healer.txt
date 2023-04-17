@@ -43,6 +43,7 @@
 	end;
 OnInit:
 	waitingroom "[#] ¿×é¹¿Ù¾ÅÑ§ªÕÇÔµ",0;
+end;
 }
 
 
@@ -77,6 +78,35 @@ umbala,105,148,3	duplicate(Healer)	Healer#umb	909
 veins,217,121,4	duplicate(Healer)	Healer#ve	909
 xmas,143,136,4	duplicate(Healer)	Healer#xmas	909
 yuno,164,45,4	duplicate(Healer)	Healer#yuno	909
+alberta,25,240,6	duplicate(Healer)	Healer#alb	-1
+aldebaran,135,118,6	duplicate(Healer)	Healer#alde	-1
+amatsu,200,79,4	duplicate(Healer)	Healer#ama	-1
+ayothaya,207,169,6	duplicate(Healer)	Healer#ayo	-1
+comodo,184,158,6	duplicate(Healer)	Healer#com	-1
+einbech,57,36,6	duplicate(Healer)	Healer#einbe	-1
+einbroch,57,202,6	duplicate(Healer)	Healer#einbr	-1
+geffen,115,72,6	duplicate(Healer)	Healer#gef	-1
+gonryun,156,122,6	duplicate(Healer)	Healer#gon	-1
+hugel,89,150,6	duplicate(Healer)	Healer#hug	-1
+izlude,121,150,6	duplicate(Healer)	Healer#izl	-1	//Pre-RE: (125,118)
+jawaii,250,139,4	duplicate(Healer)	Healer#jaw	-1
+lighthalzen,152,100,6	duplicate(Healer)	Healer#lhz	-1
+louyang,226,103,4	duplicate(Healer)	Healer#lou	-1
+manuk,272,144,6	duplicate(Healer)	Healer#man	-1
+mid_camp,203,289,6	duplicate(Healer)	Healer#mid	-1
+moc_ruins,72,164,4	duplicate(Healer)	Healer#moc	-1
+morocc,153,97,4	duplicate(Healer)	Healer#mor	-1
+moscovia,220,191,4	duplicate(Healer)	Healer#mos	-1
+niflheim,212,182,5	duplicate(Healer)	Healer#nif	-1
+payon,179,106,4	duplicate(Healer)	Healer#pay	-1
+prontera,162,193,4	duplicate(Healer)	Healer#prt	-1
+rachel,125,116,6	duplicate(Healer)	Healer#rac	-1
+splendide,201,153,4	duplicate(Healer)	Healer#spl	-1
+thor_camp,249,74,4	duplicate(Healer)	Healer#thor	-1
+umbala,105,148,3	duplicate(Healer)	Healer#umb	-1
+veins,217,121,4	duplicate(Healer)	Healer#ve	-1
+xmas,143,136,4	duplicate(Healer)	Healer#xmas	-1
+yuno,164,45,4	duplicate(Healer)	Healer#yuno	-1
 
 // Duplicates (Renewal)
 //============================================================
