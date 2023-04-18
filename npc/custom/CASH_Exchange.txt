@@ -85,15 +85,18 @@ cutin "kafra_09",255;
 OnInit:
 
     setunitdata getnpcid(0), UNPC_CLASS, JOB_HYPER_NOVICE;
+    setunitdata getnpcid(0), UNPC_LEVEL, 9999;
     setunitdata getnpcid(0), UNPC_SEX, SEX_FEMALE;
     setunitdata getnpcid(0), UNPC_HAIRCOLOR, 6;
     setunitdata getnpcid(0), UNPC_HAIRSTYLE, 18; // ห้ามใช้ 0
-    setunitdata getnpcid(0), UNPC_HEADTOP, 908;
-    setunitdata getnpcid(0), UNPC_HEADBOTTOM, 1255;
-    setunitdata getnpcid(0), UNPC_HEADMIDDLE, 355;
+    setunitdata getnpcid(0), UNPC_HEADTOP, 2247;	//UPER
+    setunitdata getnpcid(0), UNPC_HEADMIDDLE, 1922;	//MID
+    setunitdata getnpcid(0), UNPC_HEADBOTTOM, 383;	//LOWER
+    setunitdata getnpcid(0), UNPC_WEAPON, 2247;	//WEAPON
+    setunitdata getnpcid(0), UNPC_SHIELD, 2130;	//SHIELD
+    setunitdata getnpcid(0), UNPC_ROBE, 1351;	//ROBE
     setunitdata (getnpcid(0), UNPC_GROUP_ID, 25);
-    setunittitle(getnpcid(0), "NULL Inc.");  //คลาย ๆ ชื่อกิลด์
-
+    setunittitle (getnpcid(0), "NULL Inc.");  //คลาย ๆ ชื่อกิลด์
 	waitingroom "CASH Exchange",0;
 end;
 }

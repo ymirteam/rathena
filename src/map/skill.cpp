@@ -5938,15 +5938,33 @@ int skill_castend_damage_id (struct block_list* src, struct block_list *bl, uint
 						return 0;
 					}
 					break;
-				case SHC_SAVAGE_IMPACT:
-					if (sc && sc->getSCE(SC_CLOAKINGEXCEED))
+				case SHC_SAVAGE_IMPACT: {
+					if( sc && sc->getSCE( SC_CLOAKINGEXCEED ) ){
 						skill_area_temp[0] = 2;
-					status_change_end(src, SC_CLOAKINGEXCEED);
-				case SHC_FATAL_SHADOW_CROW:
-					// Jump to the target before attacking.
-					if (skill_check_unit_movepos(5, src, bl->x, bl->y, 0, 1))
-						skill_blown(src, src, 1, (map_calc_dir(bl, src->x, src->y) + 4) % 8, BLOWN_NONE);
-					clif_skill_nodamage(src, bl, skill_id, skill_lv, 1);// Trigger animation on servants.
+						status_change_end( src, SC_CLOAKINGEXCEED );
+					}
+
+					uint8 dir = DIR_NORTHEAST;	// up-right when src is on the same cell of target
+
+					if (bl->x != src->x || bl->y != src->y)
+						dir = map_calc_dir(bl, src->x, src->y);	// dir based on target as we move player based on target location
+
+					// Move the player 1 cell near the target, between the target and the player
+					if (skill_check_unit_movepos(5, src, bl->x + dirx[dir], bl->y + diry[dir], 0, 1))
+						clif_blown(src);
+					clif_skill_nodamage(src, bl, skill_id, skill_lv, 1);
+					break;
+				}
+				case SHC_FATAL_SHADOW_CROW: {
+					uint8 dir = DIR_NORTHEAST;
+
+					if (bl->x != src->x || bl->y != src->y)
+						dir = map_calc_dir(bl, src->x, src->y);	// dir based on target as we move player based on target location
+
+					// Move the player 1 cell near the target, between the target and the player
+					if (skill_check_unit_movepos(5, src, bl->x + dirx[dir], bl->y + diry[dir], 0, 1))
+						clif_blown(src);
+					clif_skill_nodamage(src, bl, skill_id, skill_lv, 1);// Trigger animation
 					break;
 				case MT_RUSH_QUAKE:
 					// Jump to the target before attacking.
@@ -6700,7 +6718,10 @@ int skill_castend_damage_id (struct block_list* src, struct block_list *bl, uint
 		}
 		break;
 	case GC_CROSSIMPACT: {
-		uint8 dir = map_calc_dir(bl, src->x, src->y);	// dir based on target as we move player based on target location
+		uint8 dir = DIR_NORTHEAST;
+
+		if (bl->x != src->x || bl->y != src->y)
+			dir = map_calc_dir(bl, src->x, src->y);	// dir based on target as we move player based on target location
 
 		if (skill_check_unit_movepos(0, src, bl->x + dirx[dir], bl->y + diry[dir], 1, 1)) {
 			clif_blown(src);
