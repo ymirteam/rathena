@@ -1896,9 +1896,6 @@
 	export_constant(SC_RUSH_QUAKE1);
 	export_constant(SC_RUSH_QUAKE2);
 
-	export_constant(SC_RUSH_QUAKE1);
-	export_constant(SC_RUSH_QUAKE2);
-
 	// Hyper Novice
 	export_constant(SC_SHIELDCHAINRUSH);
 	export_constant(SC_MISTYFROST);

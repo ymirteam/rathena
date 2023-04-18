@@ -15497,6 +15497,63 @@ void pc_attendance_claim_reward( map_session_data* sd ){
 	clif_attendence_response( sd, attendance_counter );
 }
 
+void pc_battle_stats(map_session_data *sd, map_session_data *tsd, int flag)
+{
+	if (!sd || !tsd)
+		return;
+	char output[CHAT_SIZE_MAX];
+	
+	// Battleground Stats
+	if (flag == 1) {
+		clif_messagecolor(&sd->bl, color_table[COLOR_CYAN], "============ Player Status ============", false, SELF);
+		sprintf(output, "    Name: %s (%s)", tsd->status.name,job_name(tsd->status.class_));
+		clif_messagecolor(&sd->bl, color_table[COLOR_CYAN], output, false, SELF);
+		sprintf(output, "    Base LvL: %d",tsd->status.base_level);
+		clif_messagecolor(&sd->bl, color_table[COLOR_CYAN], output, false, SELF);
+		clif_messagecolor(&sd->bl, color_table[COLOR_CYAN], "|--- Basic Info ---|", false, SELF);
+		sprintf(output, "   -> Hp: %d", tsd->status.hp);
+		clif_messagecolor(&sd->bl, color_table[COLOR_CYAN], output, false, SELF);
+		sprintf(output, "   -> Maxhp: %d", tsd->status.max_hp);
+		clif_messagecolor(&sd->bl, color_table[COLOR_CYAN], output, false, SELF);
+		sprintf(output, "   -> Sp: %d", tsd->status.sp);
+		clif_messagecolor(&sd->bl, color_table[COLOR_CYAN], output, false, SELF);
+		sprintf(output, "   -> Maxsp: %d", tsd->status.max_sp);
+		clif_messagecolor(&sd->bl, color_table[COLOR_CYAN], output, false, SELF);
+		sprintf(output, "   -> Str: %d", tsd->status.str);
+		clif_messagecolor(&sd->bl, color_table[COLOR_CYAN], output, false, SELF);
+		sprintf(output, "   -> agi: %d", tsd->status.agi);
+		clif_messagecolor(&sd->bl, color_table[COLOR_CYAN], output, false, SELF);
+		sprintf(output, "   -> Vit: %d", tsd->status.vit);
+		clif_messagecolor(&sd->bl, color_table[COLOR_CYAN], output, false, SELF);
+		sprintf(output, "   -> Int: %d", tsd->status.int_);
+		clif_messagecolor(&sd->bl, color_table[COLOR_CYAN], output, false, SELF);
+		sprintf(output, "   -> Dex: %d", tsd->status.dex);
+		clif_messagecolor(&sd->bl, color_table[COLOR_CYAN], output, false, SELF);
+		sprintf(output, "   -> Luk: %d", tsd->status.luk);
+		clif_messagecolor(&sd->bl, color_table[COLOR_CYAN], output, false, SELF);
+		sprintf(output, "   -> ATK: %d + %d", pc_leftside_atk(tsd), pc_rightside_atk(tsd));
+		clif_messagecolor(&sd->bl, color_table[COLOR_CYAN], output, false, SELF);
+		sprintf(output, "   -> MATK: %d + %d", pc_leftside_matk(tsd), pc_rightside_matk(tsd));
+		clif_messagecolor(&sd->bl, color_table[COLOR_CYAN], output, false, SELF);
+		sprintf(output, "   -> HIT: %d", tsd->battle_status.hit);
+		clif_messagecolor(&sd->bl, color_table[COLOR_CYAN], output, false, SELF);
+		sprintf(output, "   -> CRIT: %d", tsd->battle_status.cri / 10);
+		clif_messagecolor(&sd->bl, color_table[COLOR_CYAN], output, false, SELF);
+		sprintf(output, "   -> DEF: %d + %d", pc_leftside_def(tsd), pc_rightside_def(tsd));
+		clif_messagecolor(&sd->bl, color_table[COLOR_CYAN], output, false, SELF);
+		sprintf(output, "   -> MDEF: %d + %d", pc_leftside_mdef(tsd), pc_rightside_mdef(tsd));
+		clif_messagecolor(&sd->bl, color_table[COLOR_CYAN], output, false, SELF);
+		sprintf(output, "   -> FLEE: %d + %d", tsd->battle_status.flee, tsd->battle_status.flee2 / 10);
+		clif_messagecolor(&sd->bl, color_table[COLOR_CYAN], output, false, SELF);
+		sprintf(output, "   -> ASPD: %d", (2000 - tsd->battle_status.amotion) / 10);
+		clif_messagecolor(&sd->bl, color_table[COLOR_CYAN], output, false, SELF);
+	}else{
+		clif_messagecolor(&sd->bl, color_table[COLOR_CYAN], "============ Check Zeny Info ============", false, SELF);
+		sprintf(output, "Zeny: %d", tsd->status.zeny);
+		clif_messagecolor(&sd->bl, color_table[COLOR_CYAN], output, false, SELF);
+	}
+}
+
 /**
  * Send a player to jail and determine the location to send in jail.
  * @param sd: Player data
