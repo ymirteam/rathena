@@ -15505,12 +15505,12 @@ void pc_battle_stats(map_session_data *sd, map_session_data *tsd, int flag)
 	
 	// Battleground Stats
 	if (flag == 1) {
-		clif_messagecolor(&sd->bl, color_table[COLOR_CYAN], "============ Player Status ============", false, SELF);
+		clif_messagecolor(&sd->bl, color_table[COLOR_RED], "============ Player Status ============", false, SELF);
 		sprintf(output, "    Name: %s (%s)", tsd->status.name,job_name(tsd->status.class_));
 		clif_messagecolor(&sd->bl, color_table[COLOR_CYAN], output, false, SELF);
 		sprintf(output, "    Base LvL: %d",tsd->status.base_level);
 		clif_messagecolor(&sd->bl, color_table[COLOR_CYAN], output, false, SELF);
-		clif_messagecolor(&sd->bl, color_table[COLOR_CYAN], "|--- Basic Info ---|", false, SELF);
+		clif_messagecolor(&sd->bl, color_table[COLOR_RED], "|--- Basic Info ---|", false, SELF);
 		sprintf(output, "   -> Hp: %d", tsd->status.hp);
 		clif_messagecolor(&sd->bl, color_table[COLOR_CYAN], output, false, SELF);
 		sprintf(output, "   -> Maxhp: %d", tsd->status.max_hp);
@@ -15518,6 +15518,7 @@ void pc_battle_stats(map_session_data *sd, map_session_data *tsd, int flag)
 		sprintf(output, "   -> Sp: %d", tsd->status.sp);
 		clif_messagecolor(&sd->bl, color_table[COLOR_CYAN], output, false, SELF);
 		sprintf(output, "   -> Maxsp: %d", tsd->status.max_sp);
+		clif_messagecolor(&sd->bl, color_table[COLOR_RED], "|--- Status Info ---|", false, SELF);
 		clif_messagecolor(&sd->bl, color_table[COLOR_CYAN], output, false, SELF);
 		sprintf(output, "   -> Str: %d", tsd->status.str);
 		clif_messagecolor(&sd->bl, color_table[COLOR_CYAN], output, false, SELF);
@@ -15530,6 +15531,22 @@ void pc_battle_stats(map_session_data *sd, map_session_data *tsd, int flag)
 		sprintf(output, "   -> Dex: %d", tsd->status.dex);
 		clif_messagecolor(&sd->bl, color_table[COLOR_CYAN], output, false, SELF);
 		sprintf(output, "   -> Luk: %d", tsd->status.luk);
+#ifdef RENEWAL
+		clif_messagecolor(&sd->bl, color_table[COLOR_RED], "|--- Trait Status Info ---|", false, SELF);
+		clif_messagecolor(&sd->bl, color_table[COLOR_CYAN], output, false, SELF);
+		sprintf(output, "   -> Pow: %d", tsd->status.pow);
+		clif_messagecolor(&sd->bl, color_table[COLOR_CYAN], output, false, SELF);
+		sprintf(output, "   -> Sta: %d", tsd->status.sta);
+		clif_messagecolor(&sd->bl, color_table[COLOR_CYAN], output, false, SELF);
+		sprintf(output, "   -> Wis: %d", tsd->status.wis);
+		clif_messagecolor(&sd->bl, color_table[COLOR_CYAN], output, false, SELF);
+		sprintf(output, "   -> Spl: %d", tsd->status.spl);
+		clif_messagecolor(&sd->bl, color_table[COLOR_CYAN], output, false, SELF);
+		sprintf(output, "   -> Con: %d", tsd->status.con);
+		clif_messagecolor(&sd->bl, color_table[COLOR_CYAN], output, false, SELF);
+		sprintf(output, "   -> Crt: %d", tsd->status.crt);
+#endif
+		clif_messagecolor(&sd->bl, color_table[COLOR_RED], "|--- ATK & MTK Info ---|", false, SELF);
 		clif_messagecolor(&sd->bl, color_table[COLOR_CYAN], output, false, SELF);
 		sprintf(output, "   -> ATK: %d + %d", pc_leftside_atk(tsd), pc_rightside_atk(tsd));
 		clif_messagecolor(&sd->bl, color_table[COLOR_CYAN], output, false, SELF);
@@ -15547,6 +15564,21 @@ void pc_battle_stats(map_session_data *sd, map_session_data *tsd, int flag)
 		clif_messagecolor(&sd->bl, color_table[COLOR_CYAN], output, false, SELF);
 		sprintf(output, "   -> ASPD: %d", (2000 - tsd->battle_status.amotion) / 10);
 		clif_messagecolor(&sd->bl, color_table[COLOR_CYAN], output, false, SELF);
+#ifdef RENEWAL
+		clif_messagecolor(&sd->bl, color_table[COLOR_RED], "|--- P.ATK Info ---|", false, SELF);
+		clif_messagecolor(&sd->bl, color_table[COLOR_CYAN], output, false, SELF);
+		sprintf(output, "   -> P.ATK: %d", tsd->battle_status.patk);
+		clif_messagecolor(&sd->bl, color_table[COLOR_CYAN], output, false, SELF);
+		sprintf(output, "   -> S.MATK: %d", tsd->battle_status.smatk);
+		clif_messagecolor(&sd->bl, color_table[COLOR_CYAN], output, false, SELF);
+		sprintf(output, "   -> RES: %d", tsd->battle_status.res);
+		clif_messagecolor(&sd->bl, color_table[COLOR_CYAN], output, false, SELF);
+		sprintf(output, "   -> MRES: %d", tsd->battle_status.mres);
+		clif_messagecolor(&sd->bl, color_table[COLOR_CYAN], output, false, SELF);
+		sprintf(output, "   -> H.PLUS: %d", tsd->battle_status.hplus);
+		clif_messagecolor(&sd->bl, color_table[COLOR_CYAN], output, false, SELF);
+		sprintf(output, "   -> C.RATE: %d", tsd->battle_status.crate);
+#endif
 	}else{
 		clif_messagecolor(&sd->bl, color_table[COLOR_CYAN], "============ Check Zeny Info ============", false, SELF);
 		sprintf(output, "Zeny: %d", tsd->status.zeny);
