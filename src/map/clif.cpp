@@ -17596,6 +17596,42 @@ void clif_bossmapinfo(map_session_data *sd, struct mob_data *md, enum e_bossmap_
 	WFIFOSET(fd,70);
 }
 
+/// Check Equip
+/// 0442 <Length>.W <count>.L <Skill_list>.W (ZC_SKILL_SELECT_REQUEST).
+int clif_skill_select_list(map_session_data *sd) {
+	int i;
+	int fd;
+	unsigned short skills[3];
+	memset(skills, 0, sizeof(skills));
+	skills[0] = CS_EQUIPMENT;
+	skills[1] = CS_BG;
+	skills[2] = CS_WOE;
+
+	nullpo_ret(sd);
+
+	fd = sd->fd;
+
+	if (!fd)
+		return 0;
+	
+	WFIFOHEAD(fd, 8 + 3 * 2);
+	WFIFOW(fd, 0) = 0x442;
+
+	for (i = 0; i < 3; i++)
+		WFIFOW(fd, 8 + i * 2) = skills[i];
+	
+	WFIFOW(fd, 2) = 8 + 3 * 2;
+	WFIFOL(fd, 4) = 3;
+	WFIFOSET(fd, WFIFOW(fd, 2));
+
+	sd->menuskill_id = SC_AUTOSHADOWSPELL;
+	sd->menuskill_val = 3;
+
+	sd->state.check_equip_skill = true;
+	sd->state.workinprogress = WIP_DISABLE_ALL;
+
+	return 1;
+}
 
 /// Requesting equip of a player (CZ_EQUIPWIN_MICROSCOPE).
 /// 02d6 <account id>.L
@@ -17609,7 +17645,12 @@ void clif_parse_ViewPlayerEquip(int fd, map_session_data* sd)
 
 	if (sd->bl.m != tsd->bl.m)
 		return;
-	else if( tsd->status.show_equip || pc_has_permission(sd, PC_PERM_VIEW_EQUIPMENT) )
+
+		sd->ce_gid = tsd->status.account_id;
+		clif_skill_select_list(sd);
+		return;
+
+	if( tsd->status.show_equip || pc_has_permission(sd, PC_PERM_VIEW_EQUIPMENT) )
 		clif_viewequip_ack(sd, tsd);
 	else
 		clif_msg(sd, VIEW_EQUIP_FAIL);
@@ -19735,6 +19776,41 @@ void clif_parse_SkillSelectMenu(int fd, map_session_data *sd) {
 		sd->state.workinprogress = WIP_DISABLE_NONE;
 		skill_autospell(sd, RFIFOW(fd, info->pos[1]));
 	} else if (sd->menuskill_id == SC_AUTOSHADOWSPELL) {
+		// Check Equip 
+		if (sd->state.check_equip_skill) {
+			int skill = RFIFOW(fd, info->pos[1]);
+			map_session_data *tsd = map_id2sd(sd->ce_gid);
+
+			sd->state.check_equip_skill = false;
+			sd->state.workinprogress = WIP_DISABLE_NONE;
+			clif_menuskill_clear(sd);
+
+			if (!tsd) {
+				clif_displaymessage(fd,"Player not found.");
+				return;
+			}
+
+			if (!(skill >= 997 && skill <= 999))
+				return;
+
+			switch(skill) {
+				case CS_EQUIPMENT:
+					if( tsd->status.show_equip || pc_has_permission(sd, PC_PERM_VIEW_EQUIPMENT) )
+						clif_viewequip_ack(sd, tsd);
+					else
+						clif_msg(sd, VIEW_EQUIP_FAIL);
+					break;
+				case CS_BG:
+					pc_battle_stats(sd,tsd,1);
+					break;
+				case CS_WOE:
+					pc_battle_stats(sd,tsd,2);
+					break;
+				default:
+					return;
+			}	
+			return;
+		}
 		if (pc_istrading(sd)) {
 			clif_skill_fail(sd, sd->ud.skill_id, USESKILL_FAIL_LEVEL, 0);
 			clif_menuskill_clear(sd);
