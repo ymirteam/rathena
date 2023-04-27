@@ -2,8 +2,7 @@
 
 # rAthena MOD By. nullptr
 # 🪙🏧 Donate :coffee: : TTB : 9212483326 🙏🏽🙏🏽
-# Dowload Client Game : [Ver.6.2.5](https://shorturl.asia/JLNsS)
-#
+# Dowload Client Game : [Ver.6.2.5](https://shorturl.asia/JLNsS)#
 | Platform       |Build Status          |
 |----------------|----------------------|
 | Windows        | ![ms](https://img.shields.io/github/actions/workflow/status/iberryRO/MiX/build_servers_msbuild.yml?label=ms%20build&logo=visualstudio) |
