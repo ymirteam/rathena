@@ -45,6 +45,7 @@ Header:
 
 Body:
   - Item: Ein_Ddbox
+    RandomOptionGroup: EIN_DDBOX
     TargetItems:
       - Item: Ein_BHSWORD
       - Item: Ein_BHSTAFF
@@ -81,6 +82,7 @@ Body:
       - Item: Metal_Huuma_Shuriken
       - Item: Metal_Foxtail
   - Item: Ein_Ddbox2
+    RandomOptionGroup: EIN_DDBOX2
     TargetItems:
       - Item: Ein_BHSWORD
       - Item: Ein_BHSTAFF
