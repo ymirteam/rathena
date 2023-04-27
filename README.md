@@ -46,10 +46,9 @@
 🤪 Dungeon ที่ยังไม่เข้า 🤟🏻
 1. Initial release of Illusion of Twins #7524
 2. Initial release of Abyss 4 dungeon #7601
-3. Einbech dungeon 3 #7209
-4. Clock tower unknown basement #7626
-5. 17.1 Dungeon - Odin Past. #6486
-6. เพิ่ม Geffen Night Arena by. @GS,.Editored
+3. Clock tower unknown basement #7626
+4. 17.1 Dungeon - Odin Past. #6486
+5. เพิ่ม Geffen Night Arena by. @GS,.Editored
 
 #🛠️ Tools 🧰 
 >1. adds rAthena Server Monitor - โหลดเร็วกว่า runser.bat
