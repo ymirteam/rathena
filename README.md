@@ -7,9 +7,9 @@
 | Platform       |Build Status          |
 |----------------|----------------------|
 | Windows        | ![ms](https://img.shields.io/github/actions/workflow/status/iberryRO/MiX/build_servers_msbuild.yml?label=ms%20build&logo=visualstudio) |
-| License | ![GitHub](https://img.shields.io/github/license/iberryRO/MiX.svg) |
 | Commit | ![commit activity](https://img.shields.io/github/commit-activity/w/iberryRO/MiX) |
 | Repo size | ![GitHub repo size](https://img.shields.io/github/repo-size/iberryRO/MiX.svg) |
+| License | ![GitHub](https://img.shields.io/github/license/iberryRO/MiX.svg) |
 
 > rAthena is a collaborative software development project revolving around the creation of a robust massively multiplayer online role playing game (MMORPG) server package. Written in C, the program is very versatile and provides NPCs, warps and modifications. The project is jointly managed by a group of volunteers located around the world as well as a tremendous community providing QA and support. rAthena is a continuation of the eAthena project.
 
