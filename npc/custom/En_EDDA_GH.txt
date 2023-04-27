@@ -1,0 +1,377 @@
+//===== Script =======================================
+//= EDDA Fall of Glast Heim enchant
+//= By JumBo
+//====================================================
+glast_01,243,295,4	script	OSC1127	2_SLOT_MACHINE,{
+	disable_items;
+	if ((MaxWeight - Weight) < 1000) {
+		mes "เจ้าแบกของมาหนักเกินไป. ลองลดน้ำหนักลงแล้วมาใหม่.";
+		close;
+	}
+	if (checkweight(501,1) == 0) {
+		mes "เจ้าพกของมามากเกินไป. ลองลดของลงแล้วมาใหม่.";
+		close;
+	}
+	mes "[OSC1127]";
+	mes "มาหาข้ามีอะไรรึ.";
+	mes "^FF0000คำเตือน: ลบออฟไม่ได้.^000000";
+	next;
+	switch( select( "รายละเอียด", "ออฟ King Schmidt's Suit", "ออฟ King Schmidt's Manteau", "ออฟ King Schmidt's Insignia" ) ) {
+	case 1:
+		mes "[OSC1127]";
+		mes "King Schmidt's Suit ออฟติด 100% .";
+		mes "ใช้ Curse-eroded Crystal 5 อัน.";
+		mes "และ Coagulated Spell 10 อัน ในการออฟ.";
+		mes "ในช่องที่ 2 มีโอกาสได้ออฟเกราะธาตุต่างๆ.";
+		next;
+		mes "[OSC1127]";
+		mes "King Schmidt's Manteau ออฟติด 100%.";
+		mes "ใช้ Curse-eroded Crystal 5 อัน.";
+		mes "และ Coagulated Spell 10 อัน ในการออฟ.";
+		next;
+		mes "[OSC1127]";
+		mes "King Schmidt's Insignia.";
+		mes "ใช้ Curse-eroded Gemstone 10 อัน.";
+		mes "และ Contaminated Magic 40 อัน.";
+		mes "ในการออฟ.";
+		next;
+		mes "[OSC1127]";
+		mes "ในช่องที่ 2 มีโอกาส 30%.";
+		mes "ที่จะออฟล้มเหลว.";
+		mes "หากล้มเหลว ของจะหายไป.";
+		mes "หากออฟสำเร็จ จะได้ออฟพิเศษแน่นอน.";
+		next;
+		mes "[OSC1127]";
+		mes "^FF0000คำเตือน: ลบออฟไม่ได้.^000000";
+		mes "ทุกครั้งที่ออฟจะสุ่มตลอด.";
+		close;
+	case 2:
+		if (getequipid(EQI_ARMOR) != 15388) {
+			mes "[OSC1127]";
+			mes "เจ้าไม่ได้ใส่ King Schmidt's Suit มา.";
+			close;
+		}
+	.@refine = getequiprefinerycnt(EQI_ARMOR);	
+	setarray .@card[0], getequipcardid(EQI_ARMOR,0), getequipcardid(EQI_ARMOR,1), getequipcardid(EQI_ARMOR,2), getequipcardid(EQI_ARMOR,3);
+	set @enarmor, callfunc("F_Rand",4702,4703,4704,4732,4733,4734,4742,4743,4744,4712,4713,4714,4722,4723,4724,4752,4753,4754);
+	set @enarmor2, callfunc("F_Rand",4702,4732,4742,4712,4722,4752,4054,4114,4119,4098,4141,4099,4101,4089);
+		mes "[OSC1127]";
+		mes "ในการออฟ King Schmidt's Suit.";
+		mes "ต้องใช้ Curse-eroded Crystal 5 อัน.";
+		mes "และ Coagulated Spell 10 อัน.";
+		mes "เจ้ายังอยากจะออฟไหม ?";
+		next;
+		if (select( "อยากออฟ.", "ไว้คราวหน้า." ) == 2) {
+			mes "[OSC1127]";
+			mes "ขอให้โชคดี.";
+			close;
+		}
+		if ((countitem(25739) < 5) || (countitem(6608) < 10)) {
+			mes "[OSC1127]";
+			mes "เจ้ามี Curse-eroded Crystal.";
+			mes "หรือ Coagulated Spell ไม่พอ.";
+			close;
+		}
+		if (.@card[3] == 0) {
+			mes "[OSC1127]";
+			mes "ออฟช่องที่ 4.";
+			mes "เจ้าพร้อมที่จะออฟแล้วรึยัง ?";
+		next;
+		if (select( "ออฟเลย.", "ไว้คราวหน้า." ) == 2) {
+			mes "[OSC1127]";
+			mes "ขอให้โชคดี.";
+			close;
+		}		
+	// anti-hack
+	if (callfunc("F_IsEquipIDHack", EQI_ARMOR, 15388) || callfunc("F_IsEquipCardHack", EQI_ARMOR, .@card[0], .@card[1], .@card[2], .@card[3]) || callfunc("F_IsEquipRefineHack", EQI_ARMOR, .@refine)) {
+		close;
+		}	
+		progressbar "000000",1;
+		specialeffect2 EF_REPAIRWEAPON;
+		delitem 25739, 5;// Curse-eroded Crystal
+		delitem 6608, 10;// Coagulated Spell
+		delequip EQI_ARMOR;
+		getitem2 15388,1,1,.@refine,0,.@card[0],.@card[1],.@card[2],@enarmor;
+			mes "[OSC1127]";
+			mes "^0000cdออฟเรียบร้อย.^000000";
+		close;
+	}	
+		else if (.@card[2] == 0) {
+			mes "[OSC1127]";	
+			mes "ออฟช่องที่ 3.";
+			mes "เจ้าพร้อมที่จะออฟแล้วรึยัง ?";
+		next;
+		if (select( "ออฟเลย.", "ไว้คราวหน้า." ) == 2) {
+			mes "[OSC1127]";
+			mes "ขอให้โชคดี.";
+			close;
+		}		
+	// anti-hack
+	if (callfunc("F_IsEquipIDHack", EQI_ARMOR, 15388) || callfunc("F_IsEquipCardHack", EQI_ARMOR, .@card[0], .@card[1], .@card[2], .@card[3]) || callfunc("F_IsEquipRefineHack", EQI_ARMOR, .@refine)) {
+		close;
+		}	
+		progressbar "000000",1;
+		specialeffect2 EF_REPAIRWEAPON;
+		delitem 25739, 5;// Curse-eroded Crystal
+		delitem 6608, 10;// Coagulated Spell
+		delequip EQI_ARMOR;
+		getitem2 15388,1,1,.@refine,0,.@card[0],.@card[1],@enarmor,.@card[3];
+			mes "[OSC1127]";
+			mes "^0000cdออฟเรียบร้อย.^000000";
+		close;
+	}
+		else if (.@card[1] == 0) {
+			mes "[OSC1127]";
+			mes "ออฟช่องที่ 2.";
+			mes "เจ้าพร้อมที่จะออฟแล้วรึยัง ?";
+		next;
+		if (select( "ออฟเลย.", "ไว้คราวหน้า." ) == 2) {
+			mes "[OSC1127]";
+			mes "ขอให้โชคดี.";
+			close;
+		}		
+	// anti-hack
+	if (callfunc("F_IsEquipIDHack", EQI_ARMOR, 15388) || callfunc("F_IsEquipCardHack", EQI_ARMOR, .@card[0], .@card[1], .@card[2], .@card[3]) || callfunc("F_IsEquipRefineHack", EQI_ARMOR, .@refine)) {
+		close;
+		}	
+		progressbar "000000",1;
+		specialeffect2 EF_REPAIRWEAPON;
+		delitem 25739, 5;// Curse-eroded Crystal
+		delitem 6608, 10;// Coagulated Spell
+		delequip EQI_ARMOR;
+		getitem2 15388,1,1,.@refine,0,.@card[0],@enarmor2,.@card[2],.@card[3];
+			mes "[OSC1127]";
+			mes "^0000cdออฟเรียบร้อย.^000000";
+		close;
+	}	
+		else
+			mes "[OSC1127]";
+			mes "^FF0000ออฟสูงสุดแล้วไม่สามารถออฟได้อีก.^000000";
+			close;	
+	case 3:
+		if (getequipid(EQI_GARMENT) != 15389) {
+			mes "[OSC1127]";
+			mes "เจ้าไม่ได้ใส่ King Schmidt's Manteau มา.";
+			close;
+		}
+	.@refine = getequiprefinerycnt(EQI_GARMENT);	
+	setarray .@card[0], getequipcardid(EQI_GARMENT,0), getequipcardid(EQI_GARMENT,1), getequipcardid(EQI_GARMENT,2), getequipcardid(EQI_GARMENT,3);
+	set @engarment, callfunc("F_Rand",4808,4820,4821,4813,4812,4826,4817,4816,4843,4834,4835,4836,4863,4864,4865);
+		mes "[OSC1127]";
+		mes "ในการออฟ King Schmidt's Manteau.";
+		mes "ต้องใช้ Curse-eroded Crystal 5 อัน.";
+		mes "และ Coagulated Spell 10 อัน.";
+		mes "เจ้ายังอยากจะออฟไหม ?";
+		next;
+		if (select( "อยากออฟ.", "ไว้คราวหน้า." ) == 2) {
+			mes "[OSC1127]";
+			mes "ขอให้โชคดี.";
+			close;
+		}
+		if ((countitem(25739) < 5) || (countitem(6608) < 10)) {
+			mes "[OSC1127]";
+			mes "เจ้ามี Curse-eroded Crystal.";
+			mes "หรือ Coagulated Spell ไม่พอ.";
+			close;
+		}
+		if (.@card[3] == 0) {
+			mes "[OSC1127]";
+			mes "ออฟช่องที่ 4.";
+			mes "เจ้าพร้อมที่จะออฟแล้วรึยัง ?";
+		next;
+		if (select( "ออฟเลย.", "ไว้คราวหน้า." ) == 2) {
+			mes "[OSC1127]";
+			mes "ขอให้โชคดี.";
+			close;
+		}		
+	// anti-hack
+	if (callfunc("F_IsEquipIDHack", EQI_GARMENT, 15389) || callfunc("F_IsEquipCardHack", EQI_GARMENT, .@card[0], .@card[1], .@card[2], .@card[3]) || callfunc("F_IsEquipRefineHack", EQI_GARMENT, .@refine)) {
+		close;
+		}	
+		progressbar "000000",1;
+		specialeffect2 EF_REPAIRWEAPON;
+		delitem 25739, 5;// Curse-eroded Crystal
+		delitem 6608, 10;// Coagulated Spell
+		delequip EQI_GARMENT;
+		getitem2 15389,1,1,.@refine,0,.@card[0],.@card[1],.@card[2],@engarment;
+			mes "[OSC1127]";
+			mes "^0000cdออฟเรียบร้อย.^000000";
+		close;
+	}	
+		else if (.@card[2] == 0) {	
+			mes "[OSC1127]";
+			mes "ออฟช่องที่ 3.";
+			mes "เจ้าพร้อมที่จะออฟแล้วรึยัง ?";
+		next;
+		if (select( "ออฟเลย.", "ไว้คราวหน้า." ) == 2) {
+			mes "[OSC1127]";
+			mes "ขอให้โชคดี.";
+			close;
+		}		
+	// anti-hack
+	if (callfunc("F_IsEquipIDHack", EQI_GARMENT, 15389) || callfunc("F_IsEquipCardHack", EQI_GARMENT, .@card[0], .@card[1], .@card[2], .@card[3]) || callfunc("F_IsEquipRefineHack", EQI_GARMENT, .@refine)) {
+		close;
+		}	
+		progressbar "000000",1;
+		specialeffect2 EF_REPAIRWEAPON;
+		delitem 25739, 5;// Curse-eroded Crystal
+		delitem 6608, 10;// Coagulated Spell
+		delequip EQI_GARMENT;
+		getitem2 15389,1,1,.@refine,0,.@card[0],.@card[1],@engarment,.@card[3];
+			mes "[OSC1127]";
+			mes "^0000cdออฟเรียบร้อย.^000000";
+		close;
+	}
+		else if (.@card[1] == 0) {	
+			mes "[OSC1127]";
+			mes "ออฟช่องที่ 2.";
+			mes "เจ้าพร้อมที่จะออฟแล้วรึยัง ?";
+		next;
+		if (select( "ออฟเลย.", "ไว้คราวหน้า." ) == 2) {
+			mes "[OSC1127]";
+			mes "ขอให้โชคดี.";
+			close;
+		}		
+	// anti-hack
+	if (callfunc("F_IsEquipIDHack", EQI_GARMENT, 15389) || callfunc("F_IsEquipCardHack", EQI_GARMENT, .@card[0], .@card[1], .@card[2], .@card[3]) || callfunc("F_IsEquipRefineHack", EQI_GARMENT, .@refine)) {
+		close;
+		}	
+		progressbar "000000",1;
+		specialeffect2 EF_REPAIRWEAPON;
+		delitem 25739, 5;// Curse-eroded Crystal
+		delitem 6608, 10;// Coagulated Spell
+		delequip EQI_GARMENT;
+		getitem2 15389,1,1,.@refine,0,.@card[0],@engarment,.@card[2],.@card[3];
+			mes "[OSC1127]";
+			mes "^0000cdออฟเรียบร้อย.^000000";
+		close;
+	}	
+		else
+			mes "[OSC1127]";
+			mes "^FF0000ออฟสูงสุดแล้วไม่สามารถออฟได้อีก.^000000";
+			close;			
+	case 4:
+		.@equip_id = getequipid(EQI_ACC_L);	
+		switch(.@equip_id) {
+			case 32228:// King Schmidt's Strong Insignia
+			case 32229:// King Schmidt's Divine Power Insignia
+			case 32230:// King Schmidt's White Cloud Insignia
+			case 32231:// King Schmidt's Rigid Insignia
+			case 32232:// King Schmidt's Flash Insignia
+			case 32233:// King Schmidt's Celestial Bow Insignia
+				break;
+			default:
+				mes "[OSC1127]";
+				mes "เจ้าไม่ได้ใส่ King Schmidt's Insignia มา.";
+				close;
+			}	
+	.@refine = getequiprefinerycnt(EQI_ACC_L);	
+	setarray .@card[0], getequipcardid(EQI_ACC_L,0), getequipcardid(EQI_ACC_L,1), getequipcardid(EQI_ACC_L,2), getequipcardid(EQI_ACC_L,3);
+	set @enacc4, callfunc("F_Rand",4702,4703,4704,4732,4733,4734,4742,4743,4744,4712,4713,4714,4722,4723,4724,4752,4753,4754);
+	set @enacc3, callfunc("F_Rand",4821,4822,4812,4826,4843,4844,4835,4836,4864,4865);
+	set @enacc2, callfunc("F_Rand",29587,29588,29589,29590,29591,29592);
+		mes "[OSC1127]";
+		mes "ในการออฟ King Schmidt's Insignia.";
+		mes "ต้องใช้ Curse-eroded Gemstone 10 อัน.";
+		mes "และ Contaminated Magic 40 อัน.";
+		mes "เจ้ายังอยากจะออฟไหม ?";
+		next;
+		if (select( "อยากออฟ.", "ไว้คราวหน้า." ) == 2) {
+			mes "[OSC1127]";
+			mes "ขอให้โชคดี.";
+			close;
+		}
+		if ((countitem(25740) < 10) || (countitem(6755) < 40)) {
+			mes "[OSC1127]";
+			mes "เจ้ามี Curse-eroded Gemstone.";
+			mes "หรือ Contaminated Magic ไม่พอ.";
+			close;
+		}	
+		if (.@card[3] == 0) {
+			mes "[OSC1127]";
+			mes "ออฟช่องที่ 4.";
+			mes "เจ้าพร้อมที่จะออฟแล้วรึยัง ?";
+		next;
+		if (select( "ออฟเลย.", "ไว้คราวหน้า." ) == 2) {
+			mes "[OSC1127]";
+			mes "ขอให้โชคดี.";
+			close;
+		}		
+	// anti-hack
+	if (callfunc("F_IsEquipIDHack", EQI_ACC_L, .@equip_id) || callfunc("F_IsEquipCardHack", EQI_ACC_L, .@card[0], .@card[1], .@card[2], .@card[3]) || callfunc("F_IsEquipRefineHack", EQI_ACC_L, .@refine)) {
+		close;
+		}	
+		progressbar "000000",1;
+		specialeffect2 EF_REPAIRWEAPON;
+		delitem 25740, 10;// Curse-eroded Gemstone
+		delitem 6755, 40;// Contaminated Magic
+		delequip EQI_ACC_L;
+		getitem2 .@equip_id,1,1,.@refine,0,.@card[0],.@card[1],.@card[2],@enacc4;
+			mes "[OSC1127]";
+			mes "^0000cdออฟเรียบร้อย.^000000";
+		close;
+	}	
+		if (.@card[2] == 0) {
+			mes "[OSC1127]";
+			mes "ออฟช่องที่ 3.";
+			mes "เจ้าพร้อมที่จะออฟแล้วรึยัง ?";
+		next;
+		if (select( "ออฟเลย.", "ไว้คราวหน้า." ) == 2) {
+			mes "[OSC1127]";
+			mes "ขอให้โชคดี.";
+			close;
+		}		
+	// anti-hack
+	if (callfunc("F_IsEquipIDHack", EQI_ACC_L, .@equip_id) || callfunc("F_IsEquipCardHack", EQI_ACC_L, .@card[0], .@card[1], .@card[2], .@card[3]) || callfunc("F_IsEquipRefineHack", EQI_ACC_L, .@refine)) {
+		close;
+		}	
+		progressbar "000000",1;
+		specialeffect2 EF_REPAIRWEAPON;
+		delitem 25740, 10;// Curse-eroded Gemstone
+		delitem 6755, 40;// Contaminated Magic
+		delequip EQI_ACC_L;
+		getitem2 .@equip_id,1,1,.@refine,0,.@card[0],.@card[1],@enacc3,.@card[3];
+			mes "[OSC1127]";
+			mes "^0000cdออฟเรียบร้อย.^000000";
+		close;
+	}	
+		if (.@card[1] == 0) {
+			mes "[OSC1127]";
+			mes "ออฟช่องที่ 2.";
+			mes "^FF0000มีโอกาส 30% ที่จะล้มเหลว.^000000";
+			mes "หากล้มเหลว ของจะหายไป.";
+			mes "เจ้าพร้อมที่จะออฟแล้วรึยัง ?";
+		next;
+		if (select( "ออฟเลย.", "ไว้คราวหน้า." ) == 2) {
+			mes "[OSC1127]";
+			mes "ขอให้โชคดี.";
+			close;
+		}
+		.rate = rand(100);
+	// anti-hack
+	if (callfunc("F_IsEquipIDHack", EQI_ACC_L, .@equip_id) || callfunc("F_IsEquipCardHack", EQI_ACC_L, .@card[0], .@card[1], .@card[2], .@card[3]) || callfunc("F_IsEquipRefineHack", EQI_ACC_L, .@refine)) {
+		close;
+		}
+		progressbar "000000",1;
+		specialeffect2 EF_REPAIRWEAPON;
+		delitem 25740, 10;// Curse-eroded Gemstone
+		delitem 6755, 40;// Contaminated Magic
+		delequip EQI_ACC_L;
+		if ( .rate > 30 ) {
+		getitem2 .@equip_id,1,1,.@refine,0,.@card[0],@enacc2,.@card[2],.@card[3];
+			mes "[OSC1127]";
+			mes "^0000cdออฟเรียบร้อย.^000000";
+		close;
+		}
+		else
+		specialeffect2 EF_SUI_EXPLOSION;
+			mes "[OSC1127]";
+			mes "โชคไม่ดีเอาซะเลย.";
+			close;
+	}	
+		else
+			mes "[OSC1127]";
+			mes "^FF0000ออฟสูงสุดแล้วไม่สามารถออฟได้อีก.^000000";
+			close;
+	}
+}	

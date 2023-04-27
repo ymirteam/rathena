@@ -18,7 +18,7 @@
 
 // Main NPC :: safety_Ref_NPC
 //============================================================
-prontera,184,177,6	script	Refine Master	851,{
+morocc,201,110,4	script	Refine Master	851,{
 	disable_items;
 	setarray .@cert_weapon[0],
 		6864,	// Guarantee_Weapon_19Up
@@ -62,38 +62,38 @@ prontera,184,177,6	script	Refine Master	851,{
 
 	if (.@check == 0) {
 		mes "[Refine Master]";
-		mes "Hello!";
-		mes "What's up?";
-		mes "I'm a specialist";
-		mes "for refining items,";
-		mes "but I don't work anymore.";
+		mes "สวัสดีครับ!";
+		mes "ว่าไง ?";
+		mes "ฉันเป็นผู้เชี่ยวชาญ";
+		mes "สำหรับปรับแต่งไอเทม,";
+		mes "แต่ฉันไม่ทำงานแล้ว.";
 		next;
-		switch(select("I'll go on my way.:Hmm... this makes me curious.")) {
+		switch(select("ฉันจะไปตามทางของฉัน.:อืม... นี่ทำให้ฉันสงสัย.")) {
 		case 1:
 			mes "[Refine Master]";
-			mes "Take care, adventurer.";
+			mes "ระวังตัวด้วย นักผจญภัย.";
 			close;
 		case 2:
 			mes "[Refine Master]";
-			mes "Actually, I sometimes provide refine services for adventurers with a ^006400Refine Ticket^000000...";
-			mes "Bye bye~!";
+			mes "อันที่จริง บางครั้งฉันก็ให้บริการปรับแต่งสำหรับนักผจญภัยด้วย ^006400Refine Ticket^000000...";
+			mes "บ๊าย บาย~!";
 			close;
 		}
 	}
 	emotion ET_SURPRISE;
 	mes "[Refine Master]";
-	mes "Greetings!";
-	mes "I can refine an item up to the ^006400same level as your ticket^000000.";
-	mes "You don't have to worry! There's no chance of breaking your item.";
+	mes "ว่าไงจ๊ะ!";
+	mes "ฉันสามารถปรับแต่งไอเท็มได้ถึง ^006400ระดับเดียวกับตั๋วของคุณ^000000.";
+	mes "คุณไม่ต้องกังวล! ไม่มีโอกาสที่จะทำลายไอเทมของคุณ";
 	next;
-	if(select("I'll come back later.:Refine item with ticket.") == 1) {
+	if(select("ไว้ฉันจะกลับมาอีกครั้ง.:อัพเกรดไอเทมของฉันด้วยตั๋ว.") == 1) {
 		mes "[Refine Master]";
-		mes "Okay.";
-		mes "You can come again later.";
+		mes "โอเค.";
+		mes "คุณจะกลับมาเมื่อไหร่ก็ได้.";
 		close;
 	}
 	mes "[Refine Master]";
-	mes "Which equipment would you like to refine?";
+	mes "คุณต้องการปรับแต่งอุปกรณ์ใด?";
 	next;
 	setarray .@position$[1],"Head upper","Armor","Left hand","Right hand","Robe","Shoes","Accessory 1","Accessory 2","Head middle","Head lower";
 	setarray .@indices[1], EQI_HEAD_TOP, EQI_ARMOR, EQI_HAND_L, EQI_HAND_R, EQI_GARMENT, EQI_SHOES, EQI_ACC_L, EQI_ACC_R, EQI_HEAD_MID, EQI_HEAD_LOW;
@@ -103,14 +103,14 @@ prontera,184,177,6	script	Refine Master	851,{
 	.@part = .@indices[ select(.@menu$) ];
 	if (!getequipisequiped(.@part)) {
 		mes "[Refine Master]";
-		mes "You have to equip the item you want to refine.";
+		mes "คุณต้องติดตั้งไอเท็มที่คุณต้องการปรับแต่ง.";
 		close;
 	}
 	if (!getequipisenableref(.@part)) {
 		emotion ET_OTL;
 		mes "[Refine Master]";
-		mes "Oh, I'm sorry.";
-		mes "This item is impossible to refine.";
+		mes "โอ้, ฉันขอโทษ.";
+		mes "ไอเทมนี้ไม่สามารถปรับแต่งได้.";
 		close;
 	}
 	.@refineitemid = getequipid(.@part); // save id of the item
@@ -154,12 +154,12 @@ prontera,184,177,6	script	Refine Master	851,{
 	if (.@check == 0) {
 		emotion ET_THINK;
 		mes "[Refine Master]";
-		mes "If you want to refine this ^006400"+.@type$+"^000000, please come along with ^006400"+.@type$+" Refine Ticket^000000.";
-		mes "See you later!";
+		mes "คุณต้องการอัพเกรด ^006400"+.@type$+"^000000, กรุณามาพร้อมกับ ^006400"+.@type$+" Refine Ticket^000000.";
+		mes "แล้วพบกันใหม่!";
 		close;
 	}
 	mes "[Refine Master]";
-	mes "Please choose which ^006400"+.@type$+" Refine Ticket^000000 you want to use.";
+	mes "โปรดเลือก ^006400"+.@type$+" Refine Ticket^000000 ที่คุณต้องการใช้.";
 	next;
 	.@menu$ = "";
 	for ( .@i = 0; .@i < .@size_cert; ++.@i )
@@ -171,40 +171,40 @@ prontera,184,177,6	script	Refine Master	851,{
 	if (countitem(.@ticket_id) == 0) {
 		emotion ET_QUESTION;
 		mes "[Refine Master]";
-		mes getitemname(.@ticket_id)+" is not in your inventory. Did you put it in your storage?";
-		mes "Please check again.";
-		mes "See you later!";
+		mes getitemname(.@ticket_id)+" ไม่อยู่ในกระเป๋าของคุณ คุณใส่ไว้ในที่คลังของคุณหรือไม่?";
+		mes "กรุณาตรวจสอบอีกครั้ง.";
+		mes "แล้วเจอกัน!";
 		close;
 	}
 	if (getequiprefinerycnt(.@part) >= .@ticket_lv) {
 		emotion ET_PROFUSELY_SWEAT;
 		mes "[Refine Master]";
-		mes "^8B4513This item is already refined as much as your deed.^000000";
-		mes "Please come along with an item refined less than your ticket.";
+		mes "^8B4513ไอเทมชิ้นนี้ได้รับการอัพเกรดมากกว่าระดับตั๋วของคุณ.^000000";
+		mes "โปรดมาพร้อมกับรายการที่ปรับแต่งน้อยกว่าตั๋วของคุณ.";
 		close;
 	}
 	mes "[Refine Master]";
-	mes "I'm going to refine ^006400"+getequipname(.@part)+"^8B4513 up to the +"+.@ticket_lv+" level^000000 with ^006400"+getitemname(.@ticket_id)+"^000000.";
-	mes "May I proceed?";
+	mes "ฉันจะปรับแต่ง ^006400"+getequipname(.@part)+"^8B4513 up to the +"+.@ticket_lv+" ระดับ^000000 with ^006400"+getitemname(.@ticket_id)+"^000000.";
+	mes "ดำเนินการต่อได้เลยใช่ไหม?";
 	next;
-	if(select("No.:Yes.") == 1) {
+	if(select("ไม่.:เอาเลยพวก.") == 1) {
 		emotion ET_THINK;
 		mes "[Refine Master]";
-		mes "Oh, you changed your mind.";
-		mes "Ok.";
-		mes "You can come back later.";
+		mes "โอ้, คุณเปลี่ยนใจ.";
+		mes "โอเค.";
+		mes "จะกลับมาเมื่อไหร่ก็ได้.";
 		close;
 	}
 	mes "[Refine Master]";
-	mes "Great.";
-	mes "As you wish!";
-	mes "I have my own special way to refine...";
-	mes ".......ka boom!";
+	mes "ยอดเยี่ยม.";
+	mes "ตามที่ขอ!";
+	mes "ฉันมีวิธีพิเศษของฉันในการปรับแต่ง...";
+	mes ".......บู๊มมมมม!";
 	specialeffect EF_SUI_EXPLOSION;
 	if (countitem(.@ticket_id) < 1) {
 		next;
 		mes "Error!";
-		mes "Please report this.";
+		mes "โปรดรายงานสิ่งนี้.";
 		close;
 	}
 	delitem .@ticket_id,1;
@@ -214,19 +214,22 @@ prontera,184,177,6	script	Refine Master	851,{
 		callfunc("F_IsEquipRefineHack", .@part, .@refinerycnt) || callfunc("F_IsEquipCardHack", .@part, .@card[0], .@card[1], .@card[2], .@card[3])) {
 		mes "[Refine Master]";
 		emotion ET_FRET;
-		mes "Wait a second...";
-		mes "Do you think I'm stupid?!";
-		mes "You switched the item while I wasn't looking! Get out of here!";
+		mes "รอสักครู่...";
+		mes "คุณคิดว่าฉันโง่?!";
+		mes "คุณเปลี่ยนของในขณะที่ฉันไม่ได้ดู! ออกไปจากที่นี่!";
 		close;
 	}
 	successrefitem .@part, .@ticket_lv - getequiprefinerycnt(.@part);
 	next;
 	emotion ET_DELIGHT;
 	mes "[Refine Master]";
-	mes "Alright, here it is~";
-	mes "Well, ^0000FF"+strcharinfo(0)+"^000000!";
-	mes "Congratulations on your shining "+.@type$+".";
-	mes "You look GREAT!";
-	mes "Farewell~!";
+	mes "เอาล่ะนี่คือ~";
+	mes "สุดยอม, ^0000FF"+strcharinfo(0)+"^000000!";
+	mes "ขอแสดงความยินดีกับการส่องแสงของคุณ "+.@type$+".";
+	mes "คุณดูดี!";
+	mes "ลาก่อน~!";
 	close;
+OnInit:
+		waitingroom "[#] ตีบวกโดยใช้ตั๋ว",0;
+	end;
 }

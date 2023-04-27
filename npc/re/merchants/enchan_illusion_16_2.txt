@@ -795,79 +795,79 @@ ice_dun02,153,18,3	script	Illusion Stone Research	4_M_ALCHE_B,{
 // note: unknown enhance rate
 prontera,90,115,5	script	Illusion Enchanter#0	4_GEFFEN_09,3,3,{
 	if (checkweight(1201,1) == 0 || MaxWeight - Weight < 2000) {
-		mes "I'm overweight. I'd better lighten my bag first.";
+		mes "ฉันมีน้ำหนักเกิน ฉันขอแบ่งเบากระเป๋าก่อนดีกว่า";
 		close;
 	}
 	disable_items;
 	if (isbegin_quest(12415) == 0) {
 		mes "[Illusion Enchanter]";
-		mes "Oh, do you have Illusion equipment?";
+		mes "โอ้ คุณมีอุปกรณ์ Illusion มาไหม?";
 		next;
-		select("No. I don't even know what Illusion equipment is.");
+		select("ไม่. ฉันไม่รู้ด้วยซ้ำว่าอุปกรณ์ Illusion คืออะไร.");
 		mes "[Illusion Enchanter]";
-		mes "Oops, I'm sorry. I should've introduced myself first.";
-		next;
-		mes "[Illusion Enchanter]";
-		mes "I'm a chemist specializing in the study of Illusion Stones, which have been circulating among adventurers.";
-		next;
-		select("Illusion Stones?");
-		mes "[Illusion Enchanter]";
-		mes "You don't know, don't you? They're the hottest trend these days.";
-		next;
-		select("I don't care about trends.");
-		mes "[Illusion Enchanter]";
-		mes "You must have heard about the strange places that have sprung up here and there lately. Illusion Stones are only found in those places,";
+		mes "อ๊ะ ฉันขอโทษ ฉันควรจะแนะนำตัวเองก่อน";
 		next;
 		mes "[Illusion Enchanter]";
-		mes "and their atomic structure is unlike any mineral I've seen. *Blah Blah* ...Their chemical chains... *Blah Blah*";
+		mes "ฉันเป็นนักเคมีที่เชี่ยวชาญในการศึกษา Illusion Stones ซึ่งแพร่หลายในหมู่นักผจญภัย";
 		next;
-		select("(Uh-oh, he's zoning out!)");
+		select("Illusion Stones คือ?");
 		mes "[Illusion Enchanter]";
-		mes "Anyway, I can enchant equipment that is exchanged for or purchased with Illusion Stones. I call them the Illusion equipment.";
+		mes "คุณไม่รู้ใช่ไหม เป็นเทรนด์ที่มาแรงที่สุดในตอนนี้.";
 		next;
-		select("(He has no sense when it comes to names.)");
+		select("ฉันไม่สนใจเทรนด์.");
 		mes "[Illusion Enchanter]";
-		mes "This equipment at least responds positively to Illusion Stones, or it has the potential to be enchanted successfully.";
-		next;
-		mes "[Illusion Enchanter]";
-		mes "Explore the worlds of illusions, collect Illusion Stones, and exchange them for equipment. I can enchant the equipment for you.";
+		mes "คุณต้องเคยได้ยินเกี่ยวกับสถานที่แปลก ๆ ที่ผุดขึ้นที่นี่และที่นั่นเมื่อเร็ว ๆ นี้ Illusion Stones สามารถพบได้ในสถานที่เหล่านั้นเท่านั้น,";
 		next;
 		mes "[Illusion Enchanter]";
-		mes "This benefits both of us. I need Illusion Stones for my studies, and you need powerful equipment for your adventures.";
+		mes "และโครงสร้างอะตอมของมันก็ไม่เหมือนแร่ใดๆ ที่ฉันเคยเห็น *บลา บลา* ...ห่วงโซ่เคมีของพวกมัน... *บลา บลา*";
+		next;
+		select("(เริ่มหลอนละ !)");
+		mes "[Illusion Enchanter]";
+		mes "อย่างไรก็ตาม ฉันสามารถร่ายมนตร์อุปกรณ์ที่แลกเปลี่ยนหรือซื้อด้วย Illusion Stones ได้ ฉันเรียกมันว่าอุปกรณ์ Illusion.";
+		next;
+		select("(เขาไม่มีเหตุผลเมื่อพูดถึงชื่อ.)");
+		mes "[Illusion Enchanter]";
+		mes "อย่างน้อยอุปกรณ์นี้ตอบสนองเชิงบวกต่อ Illusion Stones หรือมีศักยภาพในการร่ายมนตร์ได้สำเร็จ.";
 		next;
 		mes "[Illusion Enchanter]";
-		mes "That said, my service is not for free. It requires a few Illusion Stones and Zeny.";
+		mes "สำรวจโลกแห่งภาพลวงตา รวบรวม Illusion Stones และแลกเปลี่ยนเป็นอุปกรณ์ ฉันสามารถร่ายมนตร์อุปกรณ์ให้คุณได้";
 		next;
 		mes "[Illusion Enchanter]";
-		mes "If you're interested, how'd you like to get a membership for my service? You can get discounts that way!";
+		mes "สิ่งนี้เป็นประโยชน์ต่อเราทั้งคู่ ฉันต้องการ Illusion Stones เพื่อการศึกษาของฉัน และคุณต้องการอุปกรณ์ที่ทรงพลังสำหรับการผจญภัยของคุณ";
 		next;
-		if (select( "Sure!", "Not interested." ) == 2) {
+		mes "[Illusion Enchanter]";
+		mes "ที่กล่าวว่าบริการของฉันไม่ฟรี ต้องใช้ Illusion Stones และ Zeny เล็กน้อย.";
+		next;
+		mes "[Illusion Enchanter]";
+		mes "หากคุณสนใจ คุณต้องการสมัครสมาชิกเพื่อใช้บริการของฉันอย่างไร คุณสามารถรับส่วนลดด้วยวิธีนั้น!";
+		next;
+		if (select( "แน่ใจ!", "ไม่สนใจ." ) == 2) {
 			mes "[Illusion Enchanter]";
-			mes "Okay, but let me know if you change your mind.";
+			mes "ตกลง แต่โปรดแจ้งให้เราทราบหากคุณเปลี่ยนใจ";
 			close;
 		}
 		mes "[Illusion Enchanter]";
-		mes "Alright, then I'll add you to my member list. I hope you'll have some Illusion equipment next time I see you.";
+		mes "เอาล่ะ ฉันจะเพิ่มคุณในรายชื่อสมาชิกของฉัน ฉันหวังว่าคุณจะมีอุปกรณ์ Illusion ในครั้งต่อไปที่ฉันพบคุณ";
 		setquest 12415;
 		completequest 12415;
 		close;
 	}
 	mes "[Illusion Enchanter]";
-	mes "I can enchant Illusion equipment.";
+	mes "ฉันสามารถร่ายมนตร์อุปกรณ์ภาพลวงตา.";
 	next;
-	switch( select( "How much do you charge?", "Add stats to Illusion equipment.", "Reset enchanted Illusion equipment." ) ) {
+	switch( select( "ค่าบริการเท่าไหร่?", "เพิ่มพลังให้กับอุปกรณ์ Illusion.", "รีเซ็ตอุปกรณ์ Illusion" ) ) {
 	case 1:
 		mes "[Illusion Enchanter]";
-		mes "First, let me tell you that I can only enchant certain types of Illusion equipment.";
+		mes "ก่อนอื่น ให้ฉันบอกคุณว่าฉันสามารถร่ายมนตร์อุปกรณ์ Illusion ได้บางประเภทเท่านั้น.";
 		next;
 		mes "[Illusion Enchanter]";
-		mes "Up to 2 sockets can be enchanted, and enchanting each socket requires 5 Illusion Stones. You can reset enchanted Illusion equipment at any time.";
+		mes "สามารถเสริมพลังได้สูงสุด 2 ช่อง และการเสริมพลังแต่ละช่องต้องใช้ 5 Illusion Stones คุณสามารถรีเซ็ตพลังอุปกรณ์ Illusion ได้ทุกเมื่อ";
 		next;
 		mes "[Illusion Enchanter]";
-		mes "Enchanting never fails, but resetting sometimes failes. Even modern science can't change that.";
+		mes "การเสริมพลังไม่เคยล้มเหลว แต่บางครั้งการรีเซ็ตล้มเหลว แม้แต่วิทยาศาสตร์สมัยใหม่ก็ไม่สามารถเปลี่ยนแปลงได้";
 		next;
 		mes "[Illusion Enchanter]";
-		mes "Resetting requires a different amount of Zeny depending on the success chance you choose. Select the menu if you'd like to see the available payment options.";
+		mes "การรีเซ็ตต้องใช้จำนวน Zeny ที่แตกต่างกันขึ้นอยู่กับโอกาสสำเร็จที่คุณเลือก เลือกเมนูหากคุณต้องการดูตัวเลือกการชำระเงินที่ใช้ได้";
 		close;
 	case 2:
 		.@reset = false;
@@ -877,7 +877,7 @@ prontera,90,115,5	script	Illusion Enchanter#0	4_GEFFEN_09,3,3,{
 		break;
 	}
 	setarray .@location[0], EQI_HAND_R, EQI_ARMOR, EQI_SHOES, EQI_GARMENT, EQI_ACC_R, EQI_ACC_L, EQI_HEAD_TOP, EQI_HAND_L;
-	.@s = select( "Right-handed Weapon", "Armor", "Shoes", "Garment", "Right Accessory", "Left accessory", "Helm (Upper)", "Left-handed Weapon/Shield" ) - 1;
+	.@s = select( "อาวุธ", "เสื้อ", "รองเท้า", "ผ้าคลุม", "เครื่องประดับข้างขวา", "เครื่องประดับข้างซ้าย", "หมวก (Upper)", "โล่" ) - 1;
 	.@loc = .@location[.@s];
 	.@eq_id = getequipid(.@loc);
 
@@ -966,17 +966,17 @@ prontera,90,115,5	script	Illusion Enchanter#0	4_GEFFEN_09,3,3,{
 			break;
 		case -1:
 			mes "[Illusion Enchanter]";
-			mes "You must be equipped with an item in the selected location to have it enchanted.";
+			mes "คุณต้องติดตั้งไอเท็มในตำแหน่งที่เลือกเพื่อให้ร่ายมนตร์";
 			close;
 		default:
 			mes "[Illusion Enchanter]";
-			mes "This equipment is not from a world of fantastic illusions. I'm offended that you even showed it to me.";
+			mes "อุปกรณ์นี้ไม่ได้มาจากโลกแห่งภาพลวงตาอันน่าอัศจรรย์ ฉันโกรธที่คุณยังแสดงให้ฉันเห็น";
 			close;
 	}
 
 	for ( .@i = 0; .@i < MAX_ITEM_RDM_OPT-1; ++.@i ) {
 		if (getequiprandomoption(.@loc, .@i, ROA_ID) > 0) {
-			mes "^ff0000Random options are checked for that equipment. The equipment cannot be enchanted.^000000";
+			mes "^ff0000มีการตรวจสอบตัวเลือกแบบสุ่มสำหรับอุปกรณ์นั้น อุปกรณ์ไม่สามารถร่ายมนตร์ได้^000000";
 			close;
 		}
 	}
@@ -995,13 +995,13 @@ prontera,90,115,5	script	Illusion Enchanter#0	4_GEFFEN_09,3,3,{
 		break;
 	default:	// illusion weapon level 4 can't be enhanced
 		mes "[Illusion Enchanter]";
-		mes "This is the best of all Illusion equipment. There's no technology available in this day and age that can enchant it. Even the most skilled enchanter can't do that.";
+		mes "นี่คืออุปกรณ์ Illusion ที่ดีที่สุด ไม่มีเทคโนโลยีในยุคนี้ที่สามารถทำให้มันลุ่มหลงได้ แม้แต่นักเวทย์ที่เก่งที่สุดก็ทำไม่ได้.";
 		next;
 		mes "[Illusion Enchanter]";
-		mes "Well, not unless he's willing to risk his mental and physical health.";
+		mes "เว้นแต่เขาจะยอมเสี่ยงต่อสุขภาพจิตและร่างกายของเขา.";
 		next;
 		mes "[Illusion Enchanter]";
-		mes "But who knows? Maybe someday you'll meet someone who is talented enough to handle this precious equipment.";
+		mes "แต่ใครจะรู้ล่ะ? บางทีสักวันหนึ่งคุณอาจจะได้พบกับคนที่มีความสามารถพอที่จะจัดการอุปกรณ์ล้ำค่านี้ได้.";
 		close;
 	}
 
@@ -1018,14 +1018,14 @@ prontera,90,115,5	script	Illusion Enchanter#0	4_GEFFEN_09,3,3,{
 
 		if (.@card[2] > 0 && .@card[3] > 0) {
 			mes "[Illusion Enchanter]";
-			mes "This equipment is already enchanted to the maximum limit.";
+			mes "อุปกรณ์นี้ได้รับการร่ายมนต์ถึงขีดจำกัดสูงสุดแล้ว.";
 			close;
 		}
 		if (.@weapon_lvl > 0) {
 			mes "[Illusion Enchanter]";
-			mes "What kind of effect would you like to add?";
+			mes "คุณต้องการเพิ่มเอฟเฟกต์แบบใด";
 			next;
-			.@weapon_enchant_type = select( "Melee", "Ranged", "Magic" );
+			.@weapon_enchant_type = select( "ระยะใกล้", "ระยะไกล", "เวทย์มนต์" );
 		}
 		mes "[Illusion Enchanter]";
 		if (.@card[3] > 0) {
@@ -1036,16 +1036,16 @@ prontera,90,115,5	script	Illusion Enchanter#0	4_GEFFEN_09,3,3,{
 			.@slot = 3;
 			.@string$ = "first";
 		}
-		mes "I'll try to enchant the " + .@string$ + " ability for your item. ^ff0000Its existing Refining level and cards will not be damaged. It will not be destroyed, even if this attempt fails.^000000 Do you want to continue?";
+		mes "ฉันจะพยายามร่ายมนตร์ " + .@string$ + " ความสามารถสำหรับรายการของคุณ. ^ff0000ระดับการตีบวกที่มีอยู่และการ์ดจะไม่เสียหาย มันจะไม่ถูกทำลาย แม้ว่าความพยายามนี้จะล้มเหลวก็ตาม.^000000 คุณต้องการดำเนินการต่อหรือไม่?";
 		next;
-		if (select( "I'll come back later.", "Sure!" ) == 1) {
+		if (select( "ฉันจะกลับมาในภายหลัง.", "แน่ใจ!" ) == 1) {
 			mes "[Illusion Enchanter]";
-			mes "No problem. Come back if you change your mind.";
+			mes "ไม่มีปัญหา. กลับมาถ้าคุณเปลี่ยนใจ.";
 			close;
 		}
 		if (countitem(.@item_req) < .@item_req_count) {
 			mes "[Illusion Enchanter]";
-			mes "This item requires " + .@item_req_count + " " + getitemname(.@item_req) + ", and you don't have all that I need from you.";
+			mes "รายการนี้ต้องการ " + .@item_req_count + " " + getitemname(.@item_req) + ", และคุณไม่มีทุกสิ่งที่ฉันต้องการจากคุณ";
 			close;
 		}
 
@@ -1058,23 +1058,23 @@ prontera,90,115,5	script	Illusion Enchanter#0	4_GEFFEN_09,3,3,{
 		delequip .@loc;
 		getitem2 .@eq_id,1,1,.@refine,0,.@card[0],.@card[1],.@card[2],.@card[3];
 		mes "[Illusion Enchanter]";
-		mes "It's done. Please check.";
+		mes "มันเสร็จแล้ว. โปรดตรวจสอบ.";
 		specialeffect2 EF_REPAIRWEAPON;
 		close;
 
 	case true:
 		if (!F_IsCharm(.@card[2]) || !F_IsCharm(.@card[3])) {
 			mes "[Illusion Enchanter]";
-			mes "Only fully enchanted items can be reset. Please enchant it twice, and if you still want to reset it, then bring it to me.";
+			mes "สามารถรีเซ็ตได้เฉพาะรายการที่ร่ายมนตร์อย่างเต็มที่เท่านั้น กรุณาร่ายมนตร์สองครั้ง และถ้าท่านยังต้องการรีเซ็ตมันอยู่ นำมาให้ฉัน.";
 			close;
 		}
 		mes "[Illusion Enchanter]";
-		mes "Your resetting chance varies, depending on the amount of Zeny you pay. What would you like to do?";
+		mes "โอกาสในการรีเซ็ตของคุณจะแตกต่างกันไป ขึ้นอยู่กับจำนวนเงิน Zeny ที่คุณจ่าย คุณอยากจะทำอะไร?";
 		next;
-		.@s = select( "I'll come back later.", "100,000 Zeny (50%)", "200,000 Zeny (60%)", "300,000 Zeny (70%)", "400,000 Zeny (80%)", "500,000 Zeny (90%)" ) - 1;
+		.@s = select( "ฉันจะกลับมาในภายหลัง", "100,000 Zeny (50%)", "200,000 Zeny (60%)", "300,000 Zeny (70%)", "400,000 Zeny (80%)", "500,000 Zeny (90%)" ) - 1;
 		if (.@s == 0) {
 			mes "[Illusion Enchanter]";
-			mes "No problem. Come back if you change your mind.";
+			mes "ไม่มีปัญหา. กลับมาถ้าคุณเปลี่ยนใจ.";
 			close;
 		}
 		.@cost = 100000 * .@s;
@@ -1082,7 +1082,7 @@ prontera,90,115,5	script	Illusion Enchanter#0	4_GEFFEN_09,3,3,{
 
 		if (Zeny < .@cost) {
 			mes "[Illusion Enchanter]";
-			mes "You don't have enough money.";
+			mes "คุณมีเงินไม่พอ.";
 			close;
 		}
 
@@ -1095,12 +1095,12 @@ prontera,90,115,5	script	Illusion Enchanter#0	4_GEFFEN_09,3,3,{
 		if (rand(100) < .@rate) {
 			getitem2 .@eq_id,1,1,.@refine,0,.@card[0],.@card[1],0,0;
 			mes "[Illusion Enchanter]";
-			mes "It's done. Please check.";
+			mes "มันเสร็จแล้ว. โปรดตรวจสอบ.";
 			specialeffect2 EF_REPAIRWEAPON;
 			close;
 		}
 		mes "[Illusion Enchanter]";
-		mes "Ah, that was unfortunate. Well, you can't always be lucky.";
+		mes "อา น่าเสียดาย คุณไม่สามารถโชคดีเสมอไป.";
 		specialeffect2 EF_LORD;
 		close;
 	}
@@ -1340,6 +1340,9 @@ OnTouch:
 	if (isbegin_quest(12415) == 0)
 		npctalk "Illusion Enchanter: Come talk to me if you're interested in the Illusion equipment!", "", bc_self;
 	end;
+OnInit:
+	waitingroom "[#] ออฟ Illusion",0;
+end;
 }
 
 
@@ -1705,4 +1708,4 @@ OnInit:
 	setunitdata .@npc_id, UNPC_HAIRCOLOR, 6;
 	end;
 }
-
+morocc,197,106,4	duplicate(Illusion Enchanter#0)	Illusion Enchanter	4_GEFFEN_09,3,3

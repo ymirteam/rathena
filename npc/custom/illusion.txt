@@ -1,4 +1,4 @@
-morocc,135,76,5	script	Illusion Exchange	4_EP16_MARK,{
+morocc,193,106,4	script	Illusion Exchange	4_EP16_MARK,{
 	mes "[" + strnpcinfo(1) + "]";
 	mes "คุณต้องการจะทำอะไร";
 	switch(select("Illusion Of Moonlight","Illusion Of Vampire","Illusion Of Frozen","Illusion Of Abyss","Illusion Of Teddy bear","Illusion Of Luanda","Illusion Of Labyrinth","Illusion Of Underwater","Illusion Of Twin")){

@@ -523,7 +523,7 @@ ein_in01,38,29,0	script	Paul Spanner	63,{
 
 // Weapon/Armor Refiners
 //============================================================
-morocc,127,76,5	script	Hollgrehenn	4_M_03,{
+morocc,197,110,4	script	Hollgrehenn	4_M_03,{
 	if( getbattleflag( "feature.refineui" ) ){
 		mes "[Hollgrehenn]";
 		mes "ฉันเป็นช่างตีเหล็กที่สามารถปรับแต่งอาวุธและอุปกรณ์ได้";

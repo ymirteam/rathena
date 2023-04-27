@@ -10,55 +10,55 @@
 
 grademk,34,184,4	script	Sratos#sratos	4_JP_GARM_H,{
 	mes "[Sratos]";
-	mes "Hello, dear customer who walked in, let's hope for a miracle today.";
-	mes "How can I help you?";
+	mes "สวัสดี, ลูกค้าที่เดินเข้ามาวันนี้ขอให้มีปาฏิหาริย์เกิดขึ้นกับคุณ";
+	mes "มีอะไรให้ฉันช่วยไหม?";
 	next;
-	switch( select( "Enhance the equipment's grade.", "Exchange Etel items", "What is Grade Enhancement?" ) ){
+	switch( select( "เพิ่มเกรดของอุปกรณ์", "แลกเปลี่ยน Etel", "การเพิ่มเกรดคืออะไร?" ) ){
 		case 1:
 			mes "[Sratos]";
-			mes "Our customer. You want to enhance the grade of equipment.";
-			mes "It is not easy to move the magical power of jewels.";
+			mes "ลูกค้าของเรา คุณต้องการเพิ่มเกรดของอุปกรณ์.";
+			mes "มันไม่ง่ายเลยที่จะเคลื่อนย้ายพลังวิเศษของอัญมณี.";
 			next;
 			mes "[Sratos]";
-			mes "Magical power can explode on the spot.";
-			mes "Then the weapon that will inherit the magical power also explodes!";
+			mes "พลังเวทย์สามารถระเบิดได้ทันที";
+			mes "จากนั้นอาวุธที่จะสืบทอดพลังเวทย์ก็ระเบิดเช่นกัน!";
 			next;
-			switch( select( "I'll still do it!", "I'll think about it." ) ){
+			switch( select( "ฉันจะยังคงทำมัน!", "ฉันขอคิดก่อนแล้วกัน." ) ){
 				case 1:
 					mes "[Sratos]";
-					mes "I wish good luck to our courageous customers!";
+					mes "ฉันขอให้โชคดีกับลูกค้าที่กล้าหาญของเรา!";
 					close2;
 					enchantgradeui();
 					end;
 				case 2:
 					mes "[Sratos]";
-					mes "Whenever you have the courage to challenge, please come back.";
+					mes "เมื่อใดก็ตามที่คุณมีความกล้าที่จะท้าทาย กลับมาได้เสมอ.";
 					close;
 			}
 		case 2:
 			mes "[Sratos]";
-			mes "These are jewels used to enhance grades.";
-			mes "Etel Dust, the jewels that will be the base, and if you give me a small fee I'll exchange it for Etel jewels.";
+			mes "เป็นอัญมณีที่ใช้เสริมเกรด.";
+			mes "Etel Dust อัญมณีที่จะเป็นฐาน และถ้าคุณให้เงินฉันเล็กน้อย ฉันจะเปลี่ยนเป็นอัญมณี Etel.";
 			close2;
 			callshop "EnchantGradeExchange";
 			end;
 
 		case 3:
 			mes "[Sratos]";
-			mes "Occasionally, unstable jewels with a lot of pure magical power are found.";
-			mes "We call these etheric gems, right?";
+			mes "บางครั้งจะพบอัญมณีที่ไม่เสถียรซึ่งมีพลังเวทย์มนตร์บริสุทธิ์มากมาย.";
+			mes "เราเรียกสิ่งเหล่านี้ว่า Etheric Gem ใช่ไหม?";
 			next;
 			mes "[Sratos]";
-			mes "You can transfer the magical power of the etheric gem to other weapons, but of course there is some risk.";
-			mes "It's delicate, so if you aren't careful, pop! It will explode.";
+			mes "คุณสามารถถ่ายโอนพลังเวทย์มนตร์ของ Etheric Gem ไปยังอาวุธอื่นๆ ได้ แต่แน่นอนว่ามีความเสี่ยงอยู่บ้าง.";
+			mes "ละเอียดอ่อนขนาดนี้ ถ้าไม่ระวัง ป๊าบ! มันจะระเบิด.";
 			next;
 			mes "[Sratos]";
-			mes "Anyway, if you use this etheric gem, you can enhance the weapon you are using.";
-			mes "Performance gets better. We call this grade enhancement.";
+			mes "อย่างไรก็ตาม หากคุณใช้ Etheric Gem คุณสามารถปรับปรุงอาวุธที่คุณใช้อยู่ได้.";
+			mes "ประสิทธิภาพดีขึ้น เราเรียกสิ่งนี้ว่าการเพิ่มเกรด.";
 			next;
 			mes "[Sratos]";
-			mes "You too, wouldn't you be happy if the weapons you love grow one step further?";
-			mes "We are the people who assist it. It's a bit risky, though. ahahaha.";
+			mes "คุณเองก็เช่นกัน คุณจะไม่มีความสุขเลยเหรอถ้าอาวุธที่คุณรักเติบโตขึ้นไปอีกก้าวหนึ่ง?";
+			mes "เราเป็นคนช่วยมัน มันค่อนข้างเสี่ยงแม้ว่า... ฮ่าฮ่าฮ่าฮ่า.";
 			close;
 	}
 
@@ -132,4 +132,4 @@ paramk,8,171,0	warp	grade_in	1,1,paramk,141,64
 paramk,145,64,0	warp	grade_out	1,1,paramk,11,171
 
 //============================================================
-morocc,123,76,5	duplicate(Sratos#sratos)	Sratos	4_JP_GARM_H
+morocc,193,110,4	duplicate(Sratos#sratos)	Sratos	4_JP_GARM_H
