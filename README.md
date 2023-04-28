@@ -2,9 +2,14 @@
 
 # rAthena MOD By. nullptr
 # 🪙🏧 Donate :coffee: : TTB : 9212483326 🙏🏽🙏🏽
-# Dowload Client Game : [Dive](https://bit.ly/3MKVOTN)
-![ms](https://img.shields.io/github/actions/workflow/status/iberryRO/MiX/build_servers_msbuild.yml?label=ms%20build&logo=visualstudio)
-![GitHub](https://img.shields.io/github/license/iberryRO/MiX.svg) ![commit activity](https://img.shields.io/github/commit-activity/w/iberryRO/MiX) ![GitHub repo size](https://img.shields.io/github/repo-size/iberryRO/MiX.svg)
+# Dowload Client Game : [Ver.6.2.5 แก้ไขล่าสุดเมื่อ : 27-04-2023](https://shorturl.asia/JLNsS)
+| Platform       | Status          |
+|----------------|----------------------|
+| Windows        | ![ms](https://img.shields.io/github/actions/workflow/status/iberryRO/MiX/build_servers_msbuild.yml?label=ms%20build&logo=visualstudio) |
+| Commit | ![commit activity](https://img.shields.io/github/commit-activity/w/iberryRO/MiX) |
+| Repo size | ![GitHub repo size](https://img.shields.io/github/repo-size/iberryRO/MiX.svg) |
+| License | ![GitHub](https://img.shields.io/github/license/iberryRO/MiX.svg) |
+
 > rAthena is a collaborative software development project revolving around the creation of a robust massively multiplayer online role playing game (MMORPG) server package. Written in C, the program is very versatile and provides NPCs, warps and modifications. The project is jointly managed by a group of volunteers located around the world as well as a tremendous community providing QA and support. rAthena is a continuation of the eAthena project.
 
 # โปรแกรมจำเป็นสำหรับการเปิดเซิร์ฟเวอร์
@@ -31,6 +36,7 @@
 10. Fix roulette issue #7581
 11. Add chance table for roulette #7620
 12. Correction of the clone mode #7734
+13. Fixed PLAGIARIZED skill would cause skill data loss #6771
 
 🫰 __SRC Modify__ 🐥
 1. Adds IT_CHARM ไม่ได้สร้างไอเทมให้ลงแค่ SRC
@@ -46,73 +52,26 @@
 🤪 Dungeon ที่ยังไม่เข้า 🤟🏻
 1. Initial release of Illusion of Twins #7524
 2. Initial release of Abyss 4 dungeon #7601
-3. Einbech dungeon 3 #7209
-4. Clock tower unknown basement #7626
-5. 17.1 Dungeon - Odin Past. #6486
-6. เพิ่ม Geffen Night Arena by. @GS,.Editored
+3. Clock tower unknown basement #7626
+4. 17.1 Dungeon - Odin Past. #6486
+5. เพิ่ม Geffen Night Arena by. @GS,.Editored
 
 #🛠️ Tools 🧰 
->1. adds rAthena Server Monitor - โหลดเร็วกว่า runser.bat
+1. adds rAthena Server Monitor - โหลดเร็วกว่า runser.bat
 >แต่หากปิดเซิฟจะโรแบล็ค 1-3 นาทีเนื่องจากไม่มีฟั่งชั่น ctrl+c เพื่อหยุดการทำงาน
 >ขอขอบคุณ @T5ive ที่แบ่งปั่นครับ
-
-### Table of Contents
-1. [Prerequisites](#1-prerequisites)
-2. [Installation](#2-installation)
-3. [Troubleshooting](#3-troubleshooting)
-4. [More Documentation](#4-more-documentation)
-5. [How to Contribute](#5-how-to-contribute)
-6. [License](#6-license)
-
-## 1. Prerequisites
-Before installing rAthena there are certain tools and applications you will need which
-differs between the varying operating systems available.
 
 ### Hardware
 Hardware Type | Minimum | Recommended
 ------|------|------
 CPU | 2 Core | 4 Cores
 RAM | 2 GB | 4 GB
-Disk Space | 2 GB | 4 GB
+Disk Space | 2 GB | 20 GB
 
 ### Operating System & Preferred Compiler
 Operating System | Compiler
 ------|------
-Linux  | [gcc-5 or newer](https://www.gnu.org/software/gcc/gcc-5/) / [Make](https://www.gnu.org/software/make/)
-Windows | [MS Visual Studio 2017 or newer](https://www.visualstudio.com/downloads/)
+Windows | [MS Visual Studio 2022 or newer](https://www.visualstudio.com/downloads/)
 
-### Required Applications
-Application | Name
-------|------
-Database | [MySQL 5 or newer](https://www.mysql.com/downloads/) / [MariaDB 5 or newer](https://downloads.mariadb.org/)
-Git | [Windows](https://gitforwindows.org/) / [Linux](https://git-scm.com/download/linux)
-
-### Optional Applications
-Application | Name
-------|------
-Database | [MySQL Workbench 5 or newer](http://www.mysql.com/downloads/workbench/)
-
-## 2. Installation 
-
-### Full Installation Instructions
-  * [Windows](https://github.com/rathena/rathena/wiki/Install-on-Windows)
-
-## 3. Troubleshooting
-
-If you're having problems with starting your server, the first thing you should
-do is check what's happening on your consoles. More often that not, all support issues
-can be solved simply by looking at the error messages given. Check out the [wiki](https://github.com/rathena/rathena/wiki)
-or [forums](https://rathena.org/forum) if you need more support on troubleshooting.
-
-## 4. More Documentation
-rAthena has a large collection of help files and sample NPC scripts located in the /doc/
-directory. These include detailed explanations of NPC script commands, atcommands (@),
-group permissions, item bonuses, and packet structures, among many other topics. We
-recommend that all users take the time to look over this directory before asking for
-assistance elsewhere.
-
-## 5. How to Contribute
-Details on how to contribute to rAthena can be found in [CONTRIBUTING.md](https://github.com/rathena/rathena/blob/master/.github/CONTRIBUTING.md)!
-
-## 6. License
+## License
 Copyright (c) rAthena Development Team - Licensed under [GNU General Public License v3.0](https://github.com/rathena/rathena/blob/master/LICENSE)
