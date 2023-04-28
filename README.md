@@ -36,6 +36,7 @@
 10. Fix roulette issue #7581
 11. Add chance table for roulette #7620
 12. Correction of the clone mode #7734
+13. Fixed PLAGIARIZED skill would cause skill data loss #6771
 
 🫰 __SRC Modify__ 🐥
 1. Adds IT_CHARM ไม่ได้สร้างไอเทมให้ลงแค่ SRC
