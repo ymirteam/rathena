@@ -8,15 +8,15 @@
 #include <math.h>
 #include <stdlib.h>
 
-#include "../common/cbasetypes.hpp"
-#include "../common/malloc.hpp"
-#include "../common/mmo.hpp"
-#include "../common/nullpo.hpp"
-#include "../common/random.hpp"
-#include "../common/showmsg.hpp"
-#include "../common/strlib.hpp"
-#include "../common/timer.hpp"
-#include "../common/utils.hpp"
+#include <common/cbasetypes.hpp>
+#include <common/malloc.hpp>
+#include <common/mmo.hpp>
+#include <common/nullpo.hpp>
+#include <common/random.hpp>
+#include <common/showmsg.hpp>
+#include <common/strlib.hpp>
+#include <common/timer.hpp>
+#include <common/utils.hpp>
 
 #include "battle.hpp"
 #include "clif.hpp"
@@ -284,7 +284,7 @@ int elemental_data_received(s_elemental *ele, bool flag) {
 		clif_spawn(&ed->bl);
 		clif_elemental_info(sd);
 		clif_elemental_updatestatus(sd,SP_HP);
-		clif_hpmeter_single(sd->fd,ed->bl.id,ed->battle_status.hp,ed->battle_status.max_hp);
+		clif_hpmeter_single( *sd, ed->bl.id, ed->battle_status.hp, ed->battle_status.max_hp );
 		clif_elemental_updatestatus(sd,SP_SP);
 	}
 
@@ -583,7 +583,7 @@ static int elemental_ai_sub_timer(s_elemental_data *ed, map_session_data *sd, t_
 
 	int master_dist, view_range;
 
-	if( ed->sc.count && ed->sc.data[SC_BLIND] )
+	if( ed->sc.count && ed->sc.getSCE(SC_BLIND) )
 		view_range = 3;
 	else
 		view_range = ed->db->range2;
@@ -668,7 +668,7 @@ const std::string ElementalDatabase::getDefaultLocation() {
  * @param node: YAML node containing the entry.
  * @return count of successfully parsed rows
  */
-uint64 ElementalDatabase::parseBodyNode(const ryml::NodeRef node) {
+uint64 ElementalDatabase::parseBodyNode(const ryml::NodeRef& node) {
 	int32 id;
 
 	if (!this->asInt32(node, "Id", id))
@@ -1059,9 +1059,9 @@ uint64 ElementalDatabase::parseBodyNode(const ryml::NodeRef node) {
 	elemental->status.aspd_rate = 1000;
 
 	if (this->nodeExists(node, "Mode")) {
-		const ryml::NodeRef ModeNode = node["Mode"];
+		const ryml::NodeRef& ModeNode = node["Mode"];
 
-		for (const auto &Modeit : ModeNode.children()) {
+		for (const auto &Modeit : ModeNode) {
 			std::string mode_name;
 			c4::from_chars(Modeit.key(), &mode_name);
 
@@ -1081,7 +1081,7 @@ uint64 ElementalDatabase::parseBodyNode(const ryml::NodeRef node) {
 			if (!mode_exists)
 				entry = std::make_shared<s_elemental_skill>();
 
-			const ryml::NodeRef SkillNode = ModeNode[Modeit.key()];
+			const ryml::NodeRef& SkillNode = ModeNode[Modeit.key()];
 			std::string skill_name;
 
 			if (!this->asString(SkillNode, "Skill", skill_name))

@@ -7,11 +7,11 @@
 #include <array>
 #include <bitset>
 
-#include "../common/cbasetypes.hpp"
-#include "../common/database.hpp"
-#include "../common/db.hpp"
-#include "../common/mmo.hpp" // MAX_SKILL, struct square
-#include "../common/timer.hpp"
+#include <common/cbasetypes.hpp>
+#include <common/database.hpp>
+#include <common/db.hpp>
+#include <common/mmo.hpp> // MAX_SKILL, struct square
+#include <common/timer.hpp>
 
 #include "map.hpp" // struct block_list
 
@@ -21,12 +21,12 @@ enum send_target : uint8;
 enum e_damage_type : uint8;
 enum e_battle_flag : uint16;
 enum e_battle_check_target : uint32;
-struct map_session_data;
+class map_session_data;
 struct homun_data;
 struct skill_unit;
 struct s_skill_unit_group;
 struct status_change_entry;
-struct status_change;
+class status_change;
 
 #define MAX_SKILL_PRODUCE_DB	300 /// Max Produce DB
 #define MAX_PRODUCE_RESOURCE	12 /// Max Produce requirements
@@ -312,7 +312,7 @@ private:
 	/// Skill count, also as last index
 	uint16 skill_num;
 
-	template<typename T, size_t S> bool parseNode(std::string nodeName, std::string subNodeName, ryml::NodeRef node, T(&arr)[S]);
+	template<typename T, size_t S> bool parseNode(const std::string& nodeName, const std::string& subNodeName, const ryml::NodeRef& node, T(&arr)[S]);
 
 public:
 	SkillDatabase() : TypesafeCachedYamlDatabase("SKILL_DB", 3, 1) {
@@ -320,7 +320,7 @@ public:
 	}
 
 	const std::string getDefaultLocation() override;
-	uint64 parseBodyNode(const ryml::NodeRef node) override;
+	uint64 parseBodyNode(const ryml::NodeRef& node) override;
 	void clear() override;
 	void loadingFinished() override;
 
@@ -462,7 +462,7 @@ public:
 	}
 
 	const std::string getDefaultLocation() override;
-	uint64 parseBodyNode(const ryml::NodeRef node) override;
+	uint64 parseBodyNode(const ryml::NodeRef& node) override;
 };
 
 extern SkillArrowDatabase skill_arrow_db;
@@ -480,21 +480,7 @@ public:
 	}
 
 	const std::string getDefaultLocation() override;
-	uint64 parseBodyNode(const ryml::NodeRef node) override;
-};
-
-struct s_skill_improvise_db {
-	uint16 skill_id, per;
-};
-
-class ImprovisedSongDatabase : public TypesafeYamlDatabase<uint16, s_skill_improvise_db> {
-public:
-	ImprovisedSongDatabase() : TypesafeYamlDatabase("IMPROVISED_SONG_DB", 1) {
-
-	}
-
-	const std::string getDefaultLocation() override;
-	uint64 parseBodyNode(const ryml::NodeRef node) override;
+	uint64 parseBodyNode(const ryml::NodeRef& node) override;
 };
 
 void do_init_skill(void);
@@ -562,11 +548,11 @@ unsigned short skill_dummy2skill_id(unsigned short skill_id);
 
 uint16 skill_name2id(const char* name);
 
-int skill_isammotype(struct map_session_data *sd, unsigned short skill_id);
+int skill_isammotype(map_session_data *sd, unsigned short skill_id);
 TIMER_FUNC(skill_castend_id);
 TIMER_FUNC(skill_castend_pos);
 TIMER_FUNC( skill_keep_using );
-int skill_castend_map( struct map_session_data *sd,uint16 skill_id, const char *map);
+int skill_castend_map( map_session_data *sd,uint16 skill_id, const char *map);
 
 int skill_cleartimerskill(struct block_list *src);
 int skill_addtimerskill(struct block_list *src,t_tick tick,int target,int x,int y,uint16 skill_id,uint16 skill_lv,int type,int flag);
@@ -603,50 +589,51 @@ int skill_delayfix(struct block_list *bl, uint16 skill_id, uint16 skill_lv);
 void skill_toggle_magicpower(struct block_list *bl, uint16 skill_id);
 
 // Skill conditions check and remove [Inkfish]
-bool skill_check_condition_castbegin(struct map_session_data *sd, uint16 skill_id, uint16 skill_lv);
-bool skill_check_condition_castend(struct map_session_data *sd, uint16 skill_id, uint16 skill_lv);
+bool skill_check_condition_castbegin(map_session_data *sd, uint16 skill_id, uint16 skill_lv);
+bool skill_check_condition_castend(map_session_data *sd, uint16 skill_id, uint16 skill_lv);
 int skill_check_condition_char_sub (struct block_list *bl, va_list ap);
-void skill_consume_requirement(struct map_session_data *sd, uint16 skill_id, uint16 skill_lv, short type);
-struct s_skill_condition skill_get_requirement(struct map_session_data *sd, uint16 skill_id, uint16 skill_lv);
+void skill_consume_requirement(map_session_data *sd, uint16 skill_id, uint16 skill_lv, short type);
+struct s_skill_condition skill_get_requirement(map_session_data *sd, uint16 skill_id, uint16 skill_lv);
 bool skill_disable_check(status_change &sc, uint16 skill_id);
 bool skill_pos_maxcount_check(struct block_list *src, int16 x, int16 y, uint16 skill_id, uint16 skill_lv, enum bl_type type, bool display_failure);
 
-int skill_check_pc_partner(struct map_session_data *sd, uint16 skill_id, uint16 *skill_lv, int range, int cast_flag);
+int skill_check_pc_partner(map_session_data *sd, uint16 skill_id, uint16 *skill_lv, int range, int cast_flag);
 int skill_unit_move(struct block_list *bl,t_tick tick,int flag);
 void skill_unit_move_unit_group( std::shared_ptr<s_skill_unit_group> group, int16 m,int16 dx,int16 dy);
 void skill_unit_move_unit(struct block_list *bl, int dx, int dy);
 
-int skill_sit(struct map_session_data *sd, bool sitting);
-void skill_repairweapon(struct map_session_data *sd, int idx);
-void skill_identify(struct map_session_data *sd,int idx);
-void skill_weaponrefine(struct map_session_data *sd,int idx); // [Celest]
-int skill_autospell(struct map_session_data *md,uint16 skill_id);
+int skill_sit(map_session_data *sd, bool sitting);
+void skill_repairweapon(map_session_data *sd, int idx);
+void skill_identify(map_session_data *sd,int idx);
+void skill_weaponrefine(map_session_data *sd,int idx); // [Celest]
+int skill_autospell(map_session_data *md,uint16 skill_id);
 
 int skill_calc_heal(struct block_list *src, struct block_list *target, uint16 skill_id, uint16 skill_lv, bool heal);
 
 bool skill_check_cloaking(struct block_list *bl, struct status_change_entry *sce);
+int8 skill_isCopyable(map_session_data *sd, uint16 skill_id);
 
 // Abnormal status
-bool skill_isNotOk(uint16 skill_id, struct map_session_data *sd);
+bool skill_isNotOk(uint16 skill_id, map_session_data *sd);
 bool skill_isNotOk_hom(struct homun_data *hd, uint16 skill_id, uint16 skill_lv);
 bool skill_isNotOk_mercenary(uint16 skill_id, s_mercenary_data *md);
 
 bool skill_isNotOk_npcRange(struct block_list *src, uint16 skill_id, uint16 skill_lv, int pos_x, int pos_y);
 
 // Item creation
-short skill_can_produce_mix( struct map_session_data *sd, t_itemid nameid, int trigger, int qty);
-bool skill_produce_mix( struct map_session_data *sd, uint16 skill_id, t_itemid nameid, int slot1, int slot2, int slot3, int qty, short produce_idx );
+short skill_can_produce_mix( map_session_data *sd, t_itemid nameid, int trigger, int qty);
+bool skill_produce_mix( map_session_data *sd, uint16 skill_id, t_itemid nameid, int slot1, int slot2, int slot3, int qty, short produce_idx );
 
-bool skill_arrow_create( struct map_session_data *sd, t_itemid nameid);
+bool skill_arrow_create( map_session_data *sd, t_itemid nameid);
 
 // skills for the mob
 int skill_castend_nodamage_id( struct block_list *src, struct block_list *bl,uint16 skill_id,uint16 skill_lv,t_tick tick,int flag );
 int skill_castend_damage_id( struct block_list* src, struct block_list *bl,uint16 skill_id,uint16 skill_lv,t_tick tick,int flag );
 int skill_castend_pos2( struct block_list *src, int x,int y,uint16 skill_id,uint16 skill_lv,t_tick tick,int flag);
 
-int skill_blockpc_start(struct map_session_data*, int, t_tick);
-int skill_blockpc_get(struct map_session_data *sd, int skillid);
-int skill_blockpc_clear(struct map_session_data *sd);
+int skill_blockpc_start(map_session_data*, int, t_tick);
+int skill_blockpc_get(map_session_data *sd, int skillid);
+int skill_blockpc_clear(map_session_data *sd);
 TIMER_FUNC(skill_blockpc_end);
 int skill_blockhomun_start (struct homun_data*,uint16 skill_id,int);
 int skill_blockmerc_start (s_mercenary_data*,uint16 skill_id,int);
@@ -1483,6 +1470,34 @@ enum e_skill {
 	NPC_DAMAGE_HEAL,
 	NPC_IMMUNE_PROPERTY,
 	NPC_MOVE_COORDINATE,
+	NPC_WIDEBLEEDING2,
+	NPC_WIDESILENCE2,
+	NPC_WIDESTUN2,
+	NPC_WIDESTONE2,
+	NPC_WIDESLEEP2,
+	NPC_WIDECURSE2,
+	NPC_WIDECONFUSE2,
+	NPC_WIDEFREEZE2,
+	NPC_BLEEDING2,
+	NPC_ICEBREATH2,
+	NPC_ACIDBREATH2,
+	NPC_EVILLAND2,
+	NPC_HELLJUDGEMENT2,
+	NPC_RAINOFMETEOR,
+	NPC_GROUNDDRIVE,
+	NPC_RELIEVE_ON,
+	NPC_RELIEVE_OFF,
+	NPC_LOCKON_LASER,
+	NPC_LOCKON_LASER_ATK,
+	NPC_SEEDTRAP,
+	NPC_DEADLYCURSE,
+	NPC_RANDOMBREAK,
+	NPC_STRIP_SHADOW,
+	NPC_DEADLYCURSE2,
+	NPC_CANE_OF_EVIL_EYE,
+	NPC_CURSE_OF_RED_CUBE,
+	NPC_CURSE_OF_BLUE_CUBE,
+	NPC_KILLING_AURA,	// 783
 
 	KN_CHARGEATK = 1001,
 	CR_SHRINK,
@@ -2206,6 +2221,111 @@ enum e_skill {
 	EM_ELEMENTAL_BUSTER_GROUND,
 	EM_ELEMENTAL_BUSTER_POISON,
 
+	NW_P_F_I = 5401,
+	NW_GRENADE_MASTERY,
+	NW_INTENSIVE_AIM,
+	NW_GRENADE_FRAGMENT,
+	NW_THE_VIGILANTE_AT_NIGHT,
+	NW_ONLY_ONE_BULLET,
+	NW_SPIRAL_SHOOTING,
+	NW_MAGAZINE_FOR_ONE,
+	NW_WILD_FIRE,
+	NW_BASIC_GRENADE,
+	NW_HASTY_FIRE_IN_THE_HOLE,
+	NW_GRENADES_DROPPING,
+	NW_AUTO_FIRING_LAUNCHER,
+	NW_HIDDEN_CARD,
+	NW_MISSION_BOMBARD,
+
+	SOA_TALISMAN_MASTERY,
+	SOA_SOUL_MASTERY,
+	SOA_TALISMAN_OF_PROTECTION,
+	SOA_TALISMAN_OF_WARRIOR,
+	SOA_TALISMAN_OF_MAGICIAN,
+	SOA_SOUL_GATHERING,
+	SOA_TOTEM_OF_TUTELARY,
+	SOA_TALISMAN_OF_FIVE_ELEMENTS,
+	SOA_TALISMAN_OF_SOUL_STEALING,
+	SOA_EXORCISM_OF_MALICIOUS_SOUL,
+	SOA_TALISMAN_OF_BLUE_DRAGON,
+	SOA_TALISMAN_OF_WHITE_TIGER,
+	SOA_TALISMAN_OF_RED_PHOENIX,
+	SOA_TALISMAN_OF_BLACK_TORTOISE,
+	SOA_TALISMAN_OF_FOUR_BEARING_GOD,
+	SOA_CIRCLE_OF_DIRECTIONS_AND_ELEMENTALS,
+	SOA_SOUL_OF_HEAVEN_AND_EARTH,
+
+	SH_MYSTICAL_CREATURE_MASTERY,
+	SH_COMMUNE_WITH_CHUL_HO,
+	SH_CHUL_HO_SONIC_CLAW,
+	SH_HOWLING_OF_CHUL_HO,
+	SH_HOGOGONG_STRIKE,
+	SH_COMMUNE_WITH_KI_SUL,
+	SH_KI_SUL_WATER_SPRAYING,
+	SH_MARINE_FESTIVAL_OF_KI_SUL,
+	SH_SANDY_FESTIVAL_OF_KI_SUL,
+	SH_KI_SUL_RAMPAGE,
+	SH_COMMUNE_WITH_HYUN_ROK,
+	SH_COLORS_OF_HYUN_ROK,
+	SH_HYUN_ROKS_BREEZE,
+	SH_HYUN_ROK_CANNON,
+	SH_TEMPORARY_COMMUNION,
+	SH_BLESSING_OF_MYSTICAL_CREATURES,
+
+	HN_SELFSTUDY_TATICS,
+	HN_SELFSTUDY_SOCERY,
+	HN_DOUBLEBOWLINGBASH,
+	HN_MEGA_SONIC_BLOW,
+	HN_SHIELD_CHAIN_RUSH,
+	HN_SPIRAL_PIERCE_MAX,
+	HN_METEOR_STORM_BUSTER,
+	HN_JUPITEL_THUNDER_STORM,
+	HN_JACK_FROST_NOVA,
+	HN_HELLS_DRIVE,
+	HN_GROUND_GRAVITATION,
+	HN_NAPALM_VULCAN_STRIKE,
+	HN_BREAKINGLIMIT,
+	HN_RULEBREAK,
+
+	SKE_SKY_MASTERY,
+	SKE_WAR_BOOK_MASTERY,
+	SKE_RISING_SUN,
+	SKE_NOON_BLAST,
+	SKE_SUNSET_BLAST,
+	SKE_RISING_MOON,
+	SKE_MIDNIGHT_KICK,
+	SKE_DAWN_BREAK,
+	SKE_TWINKLING_GALAXY,
+	SKE_STAR_BURST,
+	SKE_STAR_CANNON,
+	SKE_ALL_IN_THE_SKY,
+	SKE_ENCHANTING_SKY,
+
+	SS_TOKEDASU,
+	SS_SHIMIRU,
+	SS_AKUMUKESU,
+	SS_SHINKIROU,
+	SS_KAGEGARI,
+	SS_KAGENOMAI,
+	SS_KAGEGISSEN,
+	SS_FUUMASHOUAKU,
+	SS_FUUMAKOUCHIKU,
+	SS_KUNAIWAIKYOKU,
+	SS_KUNAIKAITEN,
+	SS_KUNAIKUSSETSU,
+	SS_SEKIENHOU,
+	SS_REIKETSUHOU,
+	SS_RAIDENPOU,
+	SS_KINRYUUHOU,
+	SS_ANTENPOU,
+	SS_KAGEAKUMU,
+	SS_HITOUAKUMU,
+	SS_ANKOKURYUUAKUMU,
+
+	NW_THE_VIGILANTE_AT_NIGHT_GUN_GATLING,
+	NW_THE_VIGILANTE_AT_NIGHT_GUN_SHOTGUN,
+	SS_FUUMAKOUCHIKU_BLASTING,
+
 	HLIF_HEAL = 8001,
 	HLIF_AVOID,
 	HLIF_BRAIN,
@@ -2249,6 +2369,22 @@ enum e_skill {
 	MH_LAVA_SLIDE,
 	MH_PYROCLASTIC,
 	MH_VOLCANIC_ASH,
+	MH_BLAST_FORGE,
+	MH_TEMPERING,
+	MH_CLASSY_FLUTTER,
+	MH_TWISTER_CUTTER,
+	MH_ABSOLUTE_ZEPHYR,
+	MH_BRUSHUP_CLAW,
+	MH_BLAZING_AND_FURIOUS,
+	MH_THE_ONE_FIGHTER_RISES,
+	MH_POLISHING_NEEDLE,
+	MH_TOXIN_OF_MANDARA,
+	MH_NEEDLE_STINGER,
+	MH_LICHT_GEHORN,
+	MH_GLANZEN_SPIES,
+	MH_HEILIGE_PFERD,
+	MH_GOLDENE_TONE,
+	MH_BLAZING_LAVA,
 
 	MS_BASH = 8201,
 	MS_MAGNUM,
@@ -2505,8 +2641,8 @@ enum e_skill_unit_id : uint16 {
 
 	UNT_RAIN_OF_CRYSTAL,
 	UNT_MYSTERY_ILLUSION,
-	UNT_UNKNOWN_1,// No idea. Makes a old style plant appear for a second.
-	UNT_STRANTUM_TREMOR,
+
+	UNT_STRANTUM_TREMOR = 269,
 	UNT_VIOLENT_QUAKE,
 	UNT_ALL_BLOOM,
 	UNT_TORNADO_STORM,
@@ -2522,6 +2658,20 @@ enum e_skill_unit_id : uint16 {
 	UNT_LIGHTNING_LAND,
 	UNT_VENOM_SWAMP,
 	UNT_CONFLAGRATION,
+	UNT_CANE_OF_EVIL_EYE,
+	UNT_TWINKLING_GALAXY,
+	UNT_STAR_CANNON,
+	UNT_GRENADES_DROPPING,
+
+	UNT_FUUMASHOUAKU = 290, // Huuma Shuriken - Grasp
+	UNT_MISSION_BOMBARD,
+	UNT_TOTEM_OF_TUTELARY,
+	UNT_HYUN_ROKS_BREEZE,
+	UNT_SHINKIROU, // Mirage
+	UNT_JACK_FROST_NOVA,
+	UNT_GROUND_GRAVITATION,
+
+	UNT_KUNAIWAIKYOKU = 298, // Kunai - Distortion
 
 	// Skill units outside the normal unit range.
 	UNT_DEEPBLINDTRAP = 20852,
@@ -2543,8 +2693,8 @@ enum e_skill_unit_id : uint16 {
 /**
  * Skill Unit Save
  **/
-void skill_usave_add(struct map_session_data * sd, uint16 skill_id, uint16 skill_lv);
-void skill_usave_trigger(struct map_session_data *sd);
+void skill_usave_add(map_session_data * sd, uint16 skill_id, uint16 skill_lv);
+void skill_usave_trigger(map_session_data *sd);
 
 /**
  * Warlock
@@ -2568,7 +2718,7 @@ public:
 	}
 
 	const std::string getDefaultLocation() override;
-	uint64 parseBodyNode(const ryml::NodeRef node) override;
+	uint64 parseBodyNode(const ryml::NodeRef& node) override;
 
 	// Additional
 	std::shared_ptr<s_skill_spellbook_db> findBook(t_itemid nameid);
@@ -2591,7 +2741,7 @@ public:
 	}
 
 	const std::string getDefaultLocation() override;
-	uint64 parseBodyNode(const ryml::NodeRef node) override;
+	uint64 parseBodyNode(const ryml::NodeRef& node) override;
 };
 
 extern MagicMushroomDatabase magic_mushroom_db;
@@ -2608,23 +2758,23 @@ bool skill_check_camouflage(struct block_list *bl, struct status_change_entry *s
 /**
  * Mechanic
  **/
-int skill_magicdecoy(struct map_session_data *sd, t_itemid nameid);
+int skill_magicdecoy(map_session_data *sd, t_itemid nameid);
 
 /**
  * Guiltoine Cross
  **/
-int skill_poisoningweapon( struct map_session_data *sd, t_itemid nameid);
+int skill_poisoningweapon( map_session_data *sd, t_itemid nameid);
 
 /**
  * Auto Shadow Spell (Shadow Chaser)
  **/
-int skill_select_menu(struct map_session_data *sd,uint16 skill_id);
+int skill_select_menu(map_session_data *sd,uint16 skill_id);
 
-int skill_elementalanalysis(struct map_session_data *sd, int n, uint16 skill_lv, unsigned short *item_list); // Sorcerer Four Elemental Analisys.
-int skill_changematerial(struct map_session_data *sd, int n, unsigned short *item_list);	// Genetic Change Material.
+int skill_elementalanalysis(map_session_data *sd, int n, uint16 skill_lv, unsigned short *item_list); // Sorcerer Four Elemental Analisys.
+int skill_changematerial(map_session_data *sd, int n, unsigned short *item_list);	// Genetic Change Material.
 int skill_get_elemental_type(uint16 skill_id, uint16 skill_lv);
 
-int skill_banding_count(struct map_session_data *sd);
+int skill_banding_count(map_session_data *sd);
 
 int skill_is_combo(uint16 skill_id);
 void skill_combo_toggle_inf(struct block_list* bl, uint16 skill_id, int inf);
