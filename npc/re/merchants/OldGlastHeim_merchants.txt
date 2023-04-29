@@ -341,7 +341,7 @@ S_Slot:
 }
 
 // Temporal shoes slotted - npc enchant
-morocc,139,66,5	script	Dark magic master#pa082	1_F_01,{
+morocc,213,106,4	script	Dark magic master#pa082	1_F_01,{
 	disable_items;
 	if ((MaxWeight - Weight) < 1000) {
 		mes "Your bag is too heavy. Reduce some weight and come back.";
@@ -516,6 +516,9 @@ morocc,139,66,5	script	Dark magic master#pa082	1_F_01,{
 	mes "Trying for " + .@string$;
 	getitem2 .@equip_id,1,1,.@equip_refine,0,0,0,.@card[2],.@card[3];
 	close;
+OnInit:
+	waitingroom "[#] ออฟรองเท้าเทมรู[]",0;
+end;
 }
 
 
@@ -597,3 +600,4 @@ glast_01,216,292,5	script	Portrait collector#0002	4_M_OILMAN,{
 	getitem .@reward_id,1;
 	close;
 }
+//morocc,213,106,4	duplicate(Hugin's Magician#pa0829)	Hugin's Magician	564

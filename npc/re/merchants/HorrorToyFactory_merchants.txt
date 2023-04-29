@@ -478,4 +478,9 @@ xmas,240,294,3	script	Black Beard Joe#pa0829	4_M_05,{
 	}
 	mes "Hmm.. By the way, you need to fill up Bloody Coins. You cannot even pay for the fee.";
 	close;
+OnInit:
+	waitingroom "[#] ÍÍ¿ Horror Toy Factory",0;
+end;
 }
+
+morocc,217,106,4	duplicate(Black Beard Joe#pa0829)	Black Beard Joe	4_M_05

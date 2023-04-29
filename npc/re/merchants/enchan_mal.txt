@@ -683,4 +683,8 @@ L_Socket:
 
 		close;
 	}
+OnInit:
+	waitingroom "[#] ÍÍ¿ÍÒÇØ¸ Lv.4",0;
+end;
 }
+morocc,209,106,4	duplicate(Mayomayo#mal)	Mayomayo	555
