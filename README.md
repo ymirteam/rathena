@@ -54,8 +54,8 @@
 2. Initial release of Abyss 4 dungeon #7601
 3. Clock tower unknown basement #7626
 4. 17.1 Dungeon - Odin Past. #6486
-5. เพิ่ม Geffen Night Arena by. @GS,.Editored
-
+5. Added Geffen Night Arena by. @GS,.Editored
+6. Added Varmundt's Biosphere by. iberryRO
 #🛠️ Tools 🧰 
 1. adds rAthena Server Monitor - โหลดเร็วกว่า runser.bat
 >แต่หากปิดเซิฟจะโรแบล็ค 1-3 นาทีเนื่องจากไม่มีฟั่งชั่น ctrl+c เพื่อหยุดการทำงาน
