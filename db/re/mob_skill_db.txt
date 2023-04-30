@@ -14750,7 +14750,6 @@
 20179,SIEGLOUSE@NPC_GUIDEDATTACK,attack,172,1,2000,0,10000,no,target,always,0,,,,,,,
 20179,SIEGLOUSE@WZ_HEAVENDRIVE,attack,91,1,2000,500,10000,no,target,always,0,,,,,,,
 
-
 // GeffenNightArena by.GS,.Editored#9657
 // unknown skills monsters (dummy)
 20856,MD_N_ARENA_1@WZ_JUPITEL,attack,84,10,1000,0,10000,no,target,always,0,,,,,,,
