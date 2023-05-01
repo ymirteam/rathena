@@ -217699,6 +217699,7 @@ Body:
     AttackDelay: 1960
     AttackMotion: 576
     DamageMotion: 420
+    DamageTaken: 10
     Ai: 26
     Drops:
       - Item: Clattering_Skull
@@ -217711,17 +217712,19 @@ Body:
         Rate: 5
       - Item: Zelunium_Ore
         Rate: 100
+      - Item: Ragged_Zombie_Card
+        Rate: 1
   - Id: 21575
     AegisName: ECO_WRAITH
     Name: Grave Wraith Dead
-    Level: 245
-    Hp: 3711750
-    BaseExp: 106050
-    JobExp: 70700
+    Level: 254
+    Hp: 29822370
+    BaseExp: 40302500
+    JobExp: 40302500
     Attack: 13220
     Attack2: 7716
-    Defense: 288
-    MagicDefense: 289
+    Defense: 434
+    MagicDefense: 244
     Str: 270
     Agi: 214
     Vit: 101
@@ -217739,6 +217742,7 @@ Body:
     AttackDelay: 1816
     AttackMotion: 576
     DamageMotion: 240
+    DamageTaken: 10
     Ai: 21
     Drops:
       - Item: Transparent_Cloth
@@ -217751,17 +217755,19 @@ Body:
         Rate: 5
       - Item: Shadowdecon_Ore
         Rate: 100
+      - Item: Wraith_Card
+        Rate: 1
   - Id: 21576
     AegisName: ECO_FLAME_SKULL
     Name: Grave Flame Skull
     Level: 247
-    Hp: 3667950
-    BaseExp: 104799
-    JobExp: 69866
+    Hp: 21469657
+    BaseExp: 40239950	
+    JobExp: 40239950	
     Attack: 10997
     Attack2: 4223
-    Defense: 389
-    MagicDefense: 391
+    Defense: 318
+    MagicDefense: 340
     Str: 230
     Agi: 189
     Vit: 99
@@ -217779,6 +217785,7 @@ Body:
     AttackDelay: 972
     AttackMotion: 648
     DamageMotion: 432
+    DamageTaken: 10
     Ai: 20
     Drops:
       - Item: Skull
@@ -217791,17 +217798,19 @@ Body:
         Rate: 5
       - Item: Zelunium_Ore
         Rate: 100
+      - Item: Flame_Skull_Card
+        Rate: 1
   - Id: 21577
     AegisName: ECO_BANSHEE
     Name: Grave Banshee
     Level: 254
-    Hp: 4724400
+    Hp: 24831628
     BaseExp: 134983
     JobExp: 89989
     Attack: 10110
     Attack2: 6400
-    Defense: 534
-    MagicDefense: 280
+    Defense: 442
+    MagicDefense: 249
     Str: 339
     Agi: 211
     Vit: 124
@@ -217819,6 +217828,7 @@ Body:
     AttackDelay: 504
     AttackMotion: 504
     DamageMotion: 504
+    DamageTaken: 10
     Ai: 20
     Drops:
       - Item: Old_White_Cloth
@@ -217831,17 +217841,19 @@ Body:
         Rate: 5
       - Item: Shadowdecon_Ore
         Rate: 100
+      - Item: Banshee_Card
+        Rate: 1
   - Id: 21578
     AegisName: ECO_KNIGHT_OF_ABYSS
     Name: Grave Abysmal Knight
-    Level: 250
-    Hp: 5625000
-    BaseExp: 160714
-    JobExp: 107143
+    Level: 255
+    Hp: 26602843
+    BaseExp: 43035700
+    JobExp: 40357150
     Attack: 7983
     Attack2: 5679
-    Defense: 422
-    MagicDefense: 200
+    Defense: 478
+    MagicDefense: 185
     Str: 288
     Agi: 223
     Vit: 150
@@ -217859,6 +217871,7 @@ Body:
     AttackDelay: 672
     AttackMotion: 672
     DamageMotion: 240
+    DamageTaken: 10
     Ai: 21
     Drops:
       - Item: Reins
@@ -217871,6 +217884,8 @@ Body:
         Rate: 5
       - Item: Zelunium_Ore
         Rate: 100
+      - Item: Knight_Of_Abyss_Card
+        Rate: 1
   - Id: 21579
     AegisName: ECO_LORD_OF_DEATH
     Name: Grave Lord of the Dead
