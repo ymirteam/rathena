@@ -107562,10 +107562,6 @@ Body:
         Rate: 5000
       - Item: Scarlet_Jewel
         Rate: 3000
-      - Item: Blacksmith_Blessing
-        Rate: 1000
-      - Item: Barmund_Hammer
-        Rate: 500
     Drops:
       - Item: Old_Card_Album
         Rate: 500
@@ -107577,6 +107573,10 @@ Body:
         Rate: 1000
       - Item: Shadowdecon
         Rate: 1000
+      - Item: Blacksmith_Blessing
+        Rate: 1000
+      - Item: Barmund_Hammer
+        Rate: 500
       - Item: Mistress_Card
         Rate: 1
 ## Biosphere - Fire
@@ -107921,10 +107921,6 @@ Body:
         Rate: 5000
       - Item: Crystal_Jewel__
         Rate: 2000
-      - Item: Blacksmith_Blessing
-        Rate: 1000
-      - Item: Barmund_Hammer
-        Rate: 500
     Drops:
       - Item: Treasure_Box
         Rate: 2500
@@ -107936,6 +107932,10 @@ Body:
         Rate: 1000
       - Item: Shadowdecon
         Rate: 1000
+      - Item: Blacksmith_Blessing
+        Rate: 1000
+      - Item: Barmund_Hammer
+        Rate: 500
       - Item: Detale_Card
         Rate: 1
 ## Biosphere - Ice
@@ -108246,8 +108246,8 @@ Body:
     Name: Glacial Ktullanux
     Level: 265
     Hp: 129000000
-    BaseExp: 405,714,300
-    JobExp: 282,142,850
+    BaseExp: 405714300
+    JobExp: 282142850
     Attack: 13207
     Attack2: 9876
     Defense: 328
@@ -108281,10 +108281,6 @@ Body:
         Rate: 5000
       - Item: Old_Violet_Box
         Rate: 5000
-      - Item: Blacksmith_Blessing
-        Rate: 1000
-      - Item: Barmund_Hammer
-        Rate: 500
     Drops:
       - Item: Old_Card_Album
         Rate: 500
@@ -108296,6 +108292,10 @@ Body:
         Rate: 1000
       - Item: Shadowdecon
         Rate: 1000
+      - Item: Blacksmith_Blessing
+        Rate: 1000
+      - Item: Barmund_Hammer
+        Rate: 500
       - Item: Ktullanux_Card
         Rate: 1
 ## Biosphere - Death
@@ -108640,10 +108640,6 @@ Body:
         Rate: 5000
       - Item: Old_Violet_Box
         Rate: 5000
-      - Item: Blacksmith_Blessing
-        Rate: 1000
-      - Item: Barmund_Hammer
-        Rate: 500
     Drops:
       - Item: Boroken_Shiled_Piece
         Rate: 2668
@@ -108655,6 +108651,10 @@ Body:
         Rate: 1000
       - Item: Shadowdecon
         Rate: 1000
+      - Item: Blacksmith_Blessing
+        Rate: 1000
+      - Item: Barmund_Hammer
+        Rate: 500
       - Item: Lord_Of_Death_Card
         Rate: 1
 
