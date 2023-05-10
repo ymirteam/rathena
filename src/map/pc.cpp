@@ -2297,7 +2297,15 @@ TIMER_FUNC(pc_goldpc_update){
 	}
 
 	// TODO: add mapflag to disable?
-
+	// Check if IDLE_PLAYER
+	if ( battle_config.idletime_option & IDLE_WALK && (time(nullptr) - sd->idletime) >= battle_config.feature_goldpc_idle ){
+		//sd->idletime = time(nullptr);
+		sd->idletime = last_tick;
+		clif_messagecolor(&sd->bl, color_table[COLOR_RED], "================== System Goldpc time counting has stopped. ==================", false, SELF);
+		clif_messagecolor(&sd->bl, color_table[COLOR_RED], "========================= Please . . . relogin ===========================", false, SELF);
+		return 0;
+	}
+	
 	int64 points = pc_readparam( sd, SP_GOLDPC_POINTS );
 
 	if( battle_config.feature_goldpc_vip && pc_isvip( sd ) ){

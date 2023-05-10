@@ -25305,6 +25305,7 @@ void clif_goldpc_info( map_session_data& sd ){
 
 		p.packetType = HEADER_ZC_GOLDPCCAFE_POINT;
 		p.active = true;
+		//p.active = map_getmapflag(sd.bl.m, MF_BATTLEGROUND) ? false:true;
 		if( battle_config.feature_goldpc_vip && pc_isvip( &sd ) ){
 			p.unitPoint = 2;
 		}else{

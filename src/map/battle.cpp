@@ -11287,6 +11287,7 @@ static const struct _battle_data {
 	{ "feature.goldpc_time",                &battle_config.feature_goldpc_time,				3600,	0,		3600,              },
 	{ "feature.goldpc_max_points",          &battle_config.feature_goldpc_max_points,		300,	0,		SHRT_MAX,              },
 	{ "feature.goldpc_vip",                 &battle_config.feature_goldpc_vip,				1,		0,		1,              },
+	{ "feature.goldpc_idle",                &battle_config.feature_goldpc_idle,          3600,      0,   3600,              },
 
 #ifdef RENEWAL
 	{ "feature.instance_allow_reconnect",   &battle_config.instance_allow_reconnect,        1,      0,      1,              },
