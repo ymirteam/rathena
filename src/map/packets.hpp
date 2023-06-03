@@ -423,58 +423,6 @@ struct PACKET_ZC_DYNAMICNPC_CREATE_RESULT{
 	int32 result;
 } __attribute__((packed));
 
-struct PACKET_CZ_PARTY_REQ_MASTER_TO_JOIN{
-	int16 packetType;
-	uint32 CID;
-	uint32 AID;
-} __attribute__((packed));
-
-struct PACKET_ZC_PARTY_REQ_MASTER_TO_JOIN{
-	int16 packetType;
-	uint32 CID;
-	uint32 AID;
-	char name[NAME_LENGTH];
-	uint16 x;
-	uint16 y;
-} __attribute__((packed));
-
-struct PACKET_CZ_PARTY_REQ_ACK_MASTER_TO_JOIN{
-	int16 packetType;
-	uint32 CID;
-	uint32 AID;
-	uint8 accept;
-} __attribute__((packed));
-
-struct PACKET_ZC_PARTY_JOIN_REQ_ACK_FROM_MASTER{
-	int16 packetType;
-	char player_name[NAME_LENGTH];
-	char party_name[NAME_LENGTH];
-	uint32 AID;
-	uint32 refused;
-} __attribute__((packed));
-
-struct PACKET_CZ_REQ_SE_CASH_TAB_CODE{
-	int16 packetType;
-	int16 tab;
-} __attribute__((packed));
-
-struct PACKET_ZC_ACK_SE_CASH_ITEM_LIST2_sub{
-#if PACKETVER_MAIN_NUM >= 20181121 || PACKETVER_RE_NUM >= 20180704 || PACKETVER_ZERO_NUM >= 20181114
-	uint32 itemId;
-#else
-	uint16 itemId;
-#endif
-	int32 price;
-} __attribute__((packed));
-
-struct PACKET_ZC_ACK_SE_CASH_ITEM_LIST2{
-	int16 packetType;
-	int16 packetLength;
-	uint32 tab;
-	int16 count;
-	struct PACKET_ZC_ACK_SE_CASH_ITEM_LIST2_sub items[];
-} __attribute__((packed));
-
 // NetBSD 5 and Solaris don't like pragma pack but accept the packed attribute
 #if !defined( sun ) && ( !defined( __NETBSD__ ) || __NetBSD_Version__ >= 600000000 )
 	#pragma pack( pop )
@@ -529,6 +477,8 @@ DEFINE_PACKET_HEADER(ZC_ACK_OPEN_BANKING, 0x9b7)
 DEFINE_PACKET_HEADER(ZC_ACK_CLOSE_BANKING, 0x9b9)
 DEFINE_PACKET_HEADER(ZC_ACK_COUNT_BARGAIN_SALE_ITEM, 0x9c4)
 DEFINE_PACKET_HEADER(ZC_ACK_GUILDSTORAGE_LOG, 0x9da)
+DEFINE_PACKET_HEADER(ZC_GOLDPCCAFE_POINT, 0xa15)
+DEFINE_PACKET_HEADER(CZ_DYNAMICNPC_CREATE_REQUEST, 0xa16)
 DEFINE_PACKET_HEADER(ZC_DYNAMICNPC_CREATE_RESULT, 0xa17)
 DEFINE_PACKET_HEADER(CZ_REQ_APPLY_BARGAIN_SALE_ITEM2, 0xa3d)
 DEFINE_PACKET_HEADER(CZ_REQ_STYLE_CHANGE, 0xa46)
