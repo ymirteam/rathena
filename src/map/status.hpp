@@ -165,8 +165,7 @@ struct s_enchantgradeoption{
 
 struct s_enchantgradelevel{
 	e_enchantgrade grade;
-	uint16 refine;
-	uint16 chance[MAX_REFINE];
+	uint16 chances[MAX_REFINE + 1];
 	uint16 bonus;
 	bool announceSuccess;
 	bool announceFail;
@@ -186,7 +185,7 @@ struct s_enchantgrade{
 
 class EnchantgradeDatabase : public TypesafeYamlDatabase<uint16, s_enchantgrade>{
 public:
-	EnchantgradeDatabase() : TypesafeYamlDatabase( "ENCHANTGRADE_DB", 3, 1 ){
+	EnchantgradeDatabase() : TypesafeYamlDatabase( "ENCHANTGRADE_DB", 3 ){
 
 	}
 
@@ -1281,75 +1280,8 @@ enum sc_type : int16 {
 	SC_RELIEVE_ON,
 	SC_RELIEVE_OFF,
 
-	// pr/7024
 	SC_RUSH_QUAKE1,
 	SC_RUSH_QUAKE2,
-
-	// Hyper Novice
-	SC_SHIELDCHAINRUSH,
-	SC_MISTYFROST,
-	SC_GROUNDGRAVITY,
-	SC_BREAKINGLIMIT,
-	SC_RULEBREAK,
-	SC_HNNOWEAPON,
-	
-	// Sky Emperor
-	SC_RISING_SUN,
-	SC_NOON_SUN,
-	SC_SUNSET_SUN,
-	SC_RISING_MOON,
-	SC_MIDNIGHT_MOON,
-	SC_DAWN_MOON,
-	SC_STAR_BURST,
-	SC_SKY_ENCHANT,
-	
-	// Soul Ascetic
-	SC_TALISMAN_OF_PROTECTION,
-	SC_TALISMAN_OF_WARRIOR,
-	SC_TALISMAN_OF_MAGICIAN,
-	SC_TALISMAN_OF_FIVE_ELEMENTS,
-	SC_T_FIRST_GOD,
-	SC_T_SECOND_GOD,
-	SC_T_THIRD_GOD,
-	SC_T_FOURTH_GOD,
-	SC_T_FIFTH_GOD,
-	SC_HEAVEN_AND_EARTH,
-	SC_TOTEM_OF_TUTELARY,
-	
-	// Night Watch
-	SC_INTENSIVE_AIM,
-	SC_INTENSIVE_AIM_COUNT,
-	SC_GRENADE_FRAGMENT_1,
-	SC_GRENADE_FRAGMENT_2,
-	SC_GRENADE_FRAGMENT_3,
-	SC_GRENADE_FRAGMENT_4,
-	SC_GRENADE_FRAGMENT_5,
-	SC_GRENADE_FRAGMENT_6,
-	SC_AUTO_FIRING_LAUNCHER,
-	SC_HIDDEN_CARD,
-
-	// Shinkiro/Shiranui
-	SC_SHADOW_CLOCK,
-	SC_SHINKIROU_CALL,
-	SC_NIGHTMARE,
-	SC_SBUNSHIN,
-
-	// Spirit Handler
-	SC_HOGOGONG,
-	SC_MARINE_FESTIVAL,
-	SC_SANDY_FESTIVAL,
-	SC_KI_SUL_RAMPAGE,
-	SC_COLORS_OF_HYUN_ROK_1,
-	SC_COLORS_OF_HYUN_ROK_2,
-	SC_COLORS_OF_HYUN_ROK_3,
-	SC_COLORS_OF_HYUN_ROK_4,
-	SC_COLORS_OF_HYUN_ROK_5,
-	SC_COLORS_OF_HYUN_ROK_6,
-	SC_COLORS_OF_HYUN_ROK_BUFF,
-	SC_TEMPORARY_COMMUNION,
-	SC_BLESSING_OF_M_CREATURES,
-	SC_BLESSING_OF_M_C_DEBUFF,
-	// pr/7024
 
 #ifdef RENEWAL
 	SC_EXTREMITYFIST2, //! NOTE: This SC should be right before SC_MAX, so it doesn't disturb if RENEWAL is disabled
@@ -2996,7 +2928,6 @@ enum e_status_calc_opt : uint8 {
 	SCO_NONE  = 0x0,
 	SCO_FIRST = 0x1, ///< Trigger the calculations that should take place only onspawn/once, process base status initialization code
 	SCO_FORCE = 0x2, ///< Only relevant to BL_PC types, ensures call bypasses the queue caused by delayed damage
-	SCO_ITEM_RELOAD = 0x4, ///< Triggered when the item database is reloaded to force autobonus types to reset
 };
 
 /// Flags for status_change_start and status_get_sc_def
@@ -3100,6 +3031,7 @@ enum e_status_change_flag : uint16 {
 	SCF_REMOVEONUNEQUIPWEAPON,
 	SCF_REMOVEONUNEQUIPARMOR,
 	SCF_REMOVEONHERMODE,
+	SCF_REQUIRENOWEAPON,
 	SCF_MAX
 };
 

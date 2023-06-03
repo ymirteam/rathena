@@ -117,7 +117,7 @@ static inline int itemtype(t_itemid nameid) {
 		else
 			return IT_ARMOR;
 	}
-	return ( type == IT_PETEGG ) ? IT_ARMOR : (type == IT_CHARM) ? IT_ETC : type;
+	return ( type == IT_PETEGG ) ? IT_ARMOR : type;
 }
 
 // TODO: doc
@@ -2147,6 +2147,11 @@ void clif_changemapserver(map_session_data* sd, const char* map, int x, int y, u
 #if PACKETVER >= 20170315
 	memset(WFIFOP(fd, 28), 0, 128); // Unknown
 #endif
+#ifdef DEBUG
+	ShowDebug(
+		"Sending the client (%d %d.%d.%d.%d) to map-server with ip %d.%d.%d.%d and port %hu\n",
+		sd->status.account_id, CONVIP(session[fd]->client_addr), CONVIP(ip), port);
+#endif
 	WFIFOSET(fd,packet_len(cmd));
 }
 
@@ -2369,7 +2374,7 @@ void clif_npc_market_purchase_ack( map_session_data *sd, e_purchase_result res, 
 	p->result = ( res == e_purchase_result::PURCHASE_SUCCEED ? 1 : 0 );
 #endif
 
-	if( p->result ){
+	if( res == e_purchase_result::PURCHASE_SUCCEED ){
 		for( int i = 0, j, count = 0; i < list.size(); i++ ){
 			ARR_FIND( 0, nd->u.shop.count, j, list[i].nameid == nd->u.shop.shop_item[j].nameid );
 
@@ -7135,7 +7140,6 @@ void clif_use_card(map_session_data *sd,int idx)
 		return; //Avoid parsing invalid item indexes (no card/no item)
 
 	ep=sd->inventory_data[idx]->equip;
-	bool is_enchantment = sd->inventory_data[idx]->equip == 0;
 	WFIFOHEAD(fd,MAX_INVENTORY * 2 + 4);
 	WFIFOW(fd,0)=0x17b;
 
@@ -7144,9 +7148,7 @@ void clif_use_card(map_session_data *sd,int idx)
 
 		if(sd->inventory_data[i] == NULL)
 			continue;
-		if(!is_enchantment && sd->inventory_data[i]->type!=IT_WEAPON && sd->inventory_data[i]->type!=IT_ARMOR)
-			continue;
-		if(is_enchantment && sd->inventory_data[i]->type!=IT_WEAPON && sd->inventory_data[i]->type!=IT_ARMOR && sd->inventory_data[i]->type!=IT_SHADOWGEAR)
+		if(sd->inventory_data[i]->type!=IT_WEAPON && sd->inventory_data[i]->type!=IT_ARMOR)
 			continue;
 		if(itemdb_isspecial(sd->inventory.u.items_inventory[i].card[0])) //Can't slot it
 			continue;
@@ -7154,7 +7156,7 @@ void clif_use_card(map_session_data *sd,int idx)
 		if(sd->inventory.u.items_inventory[i].identify==0 )	//Not identified
 			continue;
 
-		if(!is_enchantment && (sd->inventory_data[i]->equip&ep)==0)	//Not equippable on this part.
+		if((sd->inventory_data[i]->equip&ep)==0)	//Not equippable on this part.
 			continue;
 
 		if(sd->inventory_data[i]->type==IT_WEAPON && ep==EQP_SHIELD) //Shield card won't go on left weapon.
@@ -7163,16 +7165,9 @@ void clif_use_card(map_session_data *sd,int idx)
 		if(sd->inventory_data[i]->type == IT_ARMOR && (ep & EQP_ACC) && ((ep & EQP_ACC) != EQP_ACC) && ((sd->inventory_data[i]->equip & EQP_ACC) != (ep & EQP_ACC)) ) // specific accessory-card can only be inserted to specific accessory.
 			continue;
 
-		if (is_enchantment) {
-			ARR_FIND(sd->inventory_data[i]->slots, 4, j, sd->inventory.u.items_inventory[i].card[j] == 0);
-			if (j == 4)	// No room
-				continue;
-		}
-		else {
-			ARR_FIND(0, sd->inventory_data[i]->slots, j, sd->inventory.u.items_inventory[i].card[j] == 0);
-			if (j == sd->inventory_data[i]->slots)	// No room
-				continue;
-		}
+		ARR_FIND( 0, sd->inventory_data[i]->slots, j, sd->inventory.u.items_inventory[i].card[j] == 0 );
+		if( j == sd->inventory_data[i]->slots )	// No room
+			continue;
 
 		if( sd->inventory.u.items_inventory[i].equip > 0 )	// Do not check items that are already equipped
 			continue;
@@ -7492,6 +7487,10 @@ void clif_parse_BankOpen(int fd, map_session_data* sd) {
 		clif_messagecolor(&sd->bl,color_table[COLOR_RED],msg_txt(sd,1496),false,SELF); //Banking is disabled
 		return;
 	}
+	if( map_getmapflag( sd->bl.m, MF_NOBANK ) ){
+		clif_displaymessage( sd->fd, msg_txt( sd, 831 ) ); // You cannot use the Bank on this map.
+		return;
+	}
 	else {
 		struct s_packet_db* info = &packet_db[RFIFOW(fd,0)];
 		int aid = RFIFOL(fd,info->pos[0]); //unused should we check vs fd ?
@@ -7563,6 +7562,10 @@ void clif_parse_BankCheck(int fd, map_session_data* sd) {
 		clif_messagecolor(&sd->bl,color_table[COLOR_RED],msg_txt(sd,1496),false,SELF); //Banking is disabled
 		return;
 	}
+	if( map_getmapflag( sd->bl.m, MF_NOBANK ) ){
+		clif_displaymessage( sd->fd, msg_txt( sd, 831 ) ); // You cannot use the Bank on this map.
+		return;
+	}
 	else {
 		struct s_packet_db* info = &packet_db[RFIFOW(fd,0)];
 		int aid = RFIFOL(fd,info->pos[0]); //unused should we check vs fd ?
@@ -7597,6 +7600,10 @@ void clif_parse_BankDeposit(int fd, map_session_data* sd) {
 	nullpo_retv(sd);
 	if( !battle_config.feature_banking ) {
 		clif_messagecolor(&sd->bl,color_table[COLOR_RED],msg_txt(sd,1496),false,SELF); //Banking is disabled
+		return;
+	}
+	if( map_getmapflag( sd->bl.m, MF_NOBANK ) ){
+		clif_displaymessage( sd->fd, msg_txt( sd, 831 ) ); // You cannot use the Bank on this map.
 		return;
 	}
 	else {
@@ -7636,6 +7643,10 @@ void clif_parse_BankWithdraw(int fd, map_session_data* sd) {
         nullpo_retv(sd);
 	if( !battle_config.feature_banking ) {
 		clif_messagecolor(&sd->bl,color_table[COLOR_RED],msg_txt(sd,1496),false,SELF); //Banking is disabled
+		return;
+	}
+	if( map_getmapflag( sd->bl.m, MF_NOBANK ) ){
+		clif_displaymessage( sd->fd, msg_txt( sd, 831 ) ); // You cannot use the Bank on this map.
 		return;
 	}
 	else {
@@ -11129,10 +11140,10 @@ void clif_parse_LoadEndAck(int fd,map_session_data *sd)
 			guild_notice = false; // Do not display it twice
 		}
 
-		if (battle_config.bg_flee_penalty != 100 || battle_config.gvg_flee_penalty != 100 || battle_config.tb_flee_penalty != 100 || battle_config.tb2_flee_penalty != 100 || battle_config.tb3_flee_penalty != 100 || battle_config.tb4_flee_penalty != 100) {
+		if (battle_config.bg_flee_penalty != 100 || battle_config.gvg_flee_penalty != 100) {
 			struct map_data *pmap = map_getmapdata(sd->state.pmap);
 
-			if ((pmap != nullptr && (mapdata_flag_gvg(pmap) || pmap->flag[MF_BATTLEGROUND])) || (mapdata != nullptr && (mapdata_flag_gvg(mapdata) || mapdata->flag[MF_BATTLEGROUND] || mapdata->flag[MF_TB] || mapdata->flag[MF_TB2] || mapdata->flag[MF_TB3] || mapdata->flag[MF_TB4])))
+			if ((pmap != nullptr && (mapdata_flag_gvg(pmap) || pmap->flag[MF_BATTLEGROUND])) || (mapdata != nullptr && (mapdata_flag_gvg(mapdata) || mapdata->flag[MF_BATTLEGROUND])))
 				status_calc_bl(&sd->bl, { SCB_FLEE }); //Refresh flee penalty
 		}
 
@@ -11189,9 +11200,6 @@ void clif_parse_LoadEndAck(int fd,map_session_data *sd)
 			channel_mjoin(sd); //join new map
 
 		clif_pk_mode_message(sd);
-
-		// Update the client
-		clif_goldpc_info( *sd );
 	}
 	
 	if( sd->guild && ( battle_config.guild_notice_changemap == 2 || guild_notice ) ){
@@ -20563,8 +20571,7 @@ void roulette_generate_bonus( map_session_data& sd ){
 void clif_roulette_open( map_session_data* sd ){
 	nullpo_retv( sd );
 
-	if (!sd->roulette.claimPrize)
-		roulette_generate_bonus( *sd );
+	roulette_generate_bonus( *sd );
 
 	struct packet_roulette_open_ack p;
 
@@ -20757,7 +20764,7 @@ void clif_parse_roulette_generate( int fd, map_session_data* sd ){
 	}
 
 	// Player has not claimed his prize yet
-	if( !sd->roulette.stage && sd->roulette.claimPrize ){
+	if( sd->roulette.claimPrize ){
 		clif_roulette_getitem( sd );
 	}
 
@@ -20786,12 +20793,11 @@ void clif_parse_roulette_generate( int fd, map_session_data* sd ){
 				pc_setreg2(sd, ROULETTE_GOLD_VAR, sd->roulette_point.gold);
 			}
 		}
-		int8 idx = rd.chance_table[sd->roulette.stage][rand() % rd.chance_table[sd->roulette.stage].size()];
 
 		sd->roulette.prizeStage = sd->roulette.stage;
-		sd->roulette.prizeIdx = idx;
+		sd->roulette.prizeIdx = rnd()%rd.items[sd->roulette.stage];
 		sd->roulette.claimPrize = true;
-		sd->roulette.tick = gettick() + i64max( 1, ( MAX_ROULETTE_COLUMNS - sd->roulette.prizeStage - 3 ) ) * battle_config.feature_roulette_spin_tick;
+		sd->roulette.tick = gettick() + i64max( 1, ( MAX_ROULETTE_COLUMNS - sd->roulette.prizeStage - 3 ) ) * 1000;
 
 		if( rd.flag[sd->roulette.stage][sd->roulette.prizeIdx]&1 ){
 			result = GENERATE_ROULETTE_LOSING;
@@ -23549,53 +23555,17 @@ void clif_parse_laphine_upgrade( int fd, map_session_data* sd ){
 	if( upgrade->resultRefine > 0 ){
 		// Absolute refine level change
 		item->refine = max( item->refine, upgrade->resultRefine );
-	}else {
-		uint16 min_value = 0;
-		uint16 max_value = MAX_REFINE;
-
-		if( upgrade->resultRefineMaximum > 0 ){
-			// If a minimum is specified it can also downgrade
-			if( upgrade->resultRefineMinimum ){
-				min_value = upgrade->resultRefineMinimum;
-			}else{
-				// Otherwise it can only be upgraded until the maximum, but not downgraded
-				min_value = item->refine;
-			}
-			max_value = upgrade->resultRefineMaximum;
-		}else if( upgrade->resultRefineMinimum > 0 ){
-			// No maximum has been specified, so it can be anything between minimum and MAX_REFINE
-			min_value = upgrade->resultRefineMinimum;
+	}else if( upgrade->resultRefineMaximum > 0 ){
+		// If a minimum is specified it can also downgrade
+		if( upgrade->resultRefineMinimum ){
+			item->refine = rnd_value( upgrade->resultRefineMinimum, upgrade->resultRefineMaximum );
+		}else{
+			// Otherwise it can only be upgraded until the maximum, but not downgraded
+			item->refine = rnd_value( item->refine, upgrade->resultRefineMaximum );
 		}
-
-		if (upgrade->resultRefineRate.empty()) {
-			item->refine = rnd_value( min_value, max_value );
-		}
-		else {
-			int level, total = 0, rate = 0;
-
-			// Get the total rate between min_value and max_value
-			for ( level = min_value; level <= max_value; level++ ) {
-				if (upgrade->resultRefineRate.count(level) > 0)
-					total += upgrade->resultRefineRate[level];
-				else
-					total += 1;
-			}
-
-			int r = rnd_value( 1, total );
-
-			for ( level = min_value; level <= max_value; level++ ) {
-				if (upgrade->resultRefineRate.count(level) > 0)
-					rate += upgrade->resultRefineRate[level];
-				else
-					rate += 1;
-
-				if (r <= rate) {
-					item->refine = level;
-					break;
-				}
-			}
-			
-		}
+	}else if( upgrade->resultRefineMinimum > 0 ){
+		// No maximum has been specified, so it can be anything between minimum and MAX_REFINE
+		item->refine = rnd_value( upgrade->resultRefineMinimum, MAX_REFINE );
 	}
 
 	// Log retrieving the item again -> with the new options
@@ -23621,11 +23591,7 @@ void clif_enchantgrade_add( map_session_data& sd, uint16 index = UINT16_MAX, std
 
 	if( index < UINT16_MAX ){
 		p->index = client_index( index );
-		if( sd.inventory.u.items_inventory[index].refine >= gradeLevel->refine ){
-			p->success_chance = gradeLevel->chance[sd.inventory.u.items_inventory[index].refine] / 100;
-		}else{
-			p->success_chance = 0;
-		}
+		p->success_chance = gradeLevel->chances[sd.inventory.u.items_inventory[index].refine] / 100;
 		p->blessing_info.id = client_nameid( gradeLevel->catalyst.item );
 		p->blessing_info.amount = gradeLevel->catalyst.amountPerStep;
 		p->blessing_info.max_blessing = gradeLevel->catalyst.maximumSteps;
@@ -23801,8 +23767,10 @@ void clif_parse_enchantgrade_start( int fd, map_session_data* sd ){
 		return;
 	}
 
-	// Not refined enough
-	if( sd->inventory.u.items_inventory[index].refine < enchantgradelevel->refine ){
+	uint16 totalChance = enchantgradelevel->chances[sd->inventory.u.items_inventory[index].refine];
+
+	// No chance to increase the enchantgrade
+	if( totalChance == 0 ){
 		return;
 	}
 
@@ -23818,7 +23786,6 @@ void clif_parse_enchantgrade_start( int fd, map_session_data* sd ){
 		return;
 	}
 
-	uint16 totalChance = enchantgradelevel->chance[sd->inventory.u.items_inventory[index].refine];
 	uint16 steps = min( p->blessing_amount, enchantgradelevel->catalyst.maximumSteps );
 	std::unordered_map<uint16, uint16> requiredItems;
 
@@ -25195,70 +25162,6 @@ void clif_parse_partybooking_reply( int fd, map_session_data* sd ){
 	}
 
 	clif_partybooking_reply( tsd, sd, p->accept );
-#endif
-}
-
-void clif_goldpc_info( map_session_data& sd ){
-#if PACKETVER_MAIN_NUM >= 20140508 || PACKETVER_RE_NUM >= 20140508 || defined(PACKETVER_ZERO)
-	const static int32 client_max_seconds = 3600;
-
-	if( battle_config.feature_goldpc_active ){
-		struct PACKET_ZC_GOLDPCCAFE_POINT p = {};
-
-		p.packetType = HEADER_ZC_GOLDPCCAFE_POINT;
-		p.active = true;
-		if( battle_config.feature_goldpc_vip && pc_isvip( &sd ) ){
-			p.unitPoint = 2;
-		}else{
-			p.unitPoint = 1;
-		}
-		p.point = (int32)pc_readparam( &sd, SP_GOLDPC_POINTS );
-		if( sd.goldpc_tid != INVALID_TIMER ){
-			const struct TimerData* td = get_timer( sd.goldpc_tid );
-
-			if( td != nullptr ){
-				// Get the remaining milliseconds until the next reward
-				t_tick remaining = td->tick - gettick();
-
-				// Always round up to full second
-				remaining += ( remaining % 1000 );
-
-				p.accumulatePlaySecond = (int32)( client_max_seconds - ( remaining / 1000 ) );
-			}else{
-				p.accumulatePlaySecond = 0;
-			}
-		}else{
-			p.accumulatePlaySecond = client_max_seconds;
-		}
-
-		clif_send( &p, sizeof( p ), &sd.bl, SELF );
-	}
-#endif
-}
-
-void clif_parse_dynamic_npc( int fd, map_session_data* sd ){
-#if PACKETVER_MAIN_NUM >= 20140430 || PACKETVER_RE_NUM >= 20140430 || defined(PACKETVER_ZERO)
-	struct PACKET_CZ_DYNAMICNPC_CREATE_REQUEST* p = (struct PACKET_CZ_DYNAMICNPC_CREATE_REQUEST*)RFIFOP( fd, 0 );
-
-	char npcname[NPC_NAME_LENGTH + 1];
-
-	if( strncasecmp( "GOLDPCCAFE", p->nickname, sizeof( p->nickname ) ) == 0 ){
-		safestrncpy( npcname, p->nickname, sizeof( npcname ) );
-	}else{
-		return;
-	}
-
-	struct npc_data* nd = npc_name2id( npcname );
-
-	if( nd == nullptr ){
-		ShowError( "clif_parse_dynamic_npc: Original NPC \"%s\" was not found.\n", npcname );
-		clif_dynamicnpc_result( *sd, DYNAMICNPC_RESULT_UNKNOWNNPC );
-		return;
-	}
-
-	if( npc_duplicate_npc_for_player( *nd, *sd ) != nullptr ){
-		clif_dynamicnpc_result( *sd, DYNAMICNPC_RESULT_SUCCESS );
-	}
 #endif
 }
 
