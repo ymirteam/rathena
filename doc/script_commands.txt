@@ -4775,7 +4775,7 @@ This command will return the SVN revision number that the server is currently
 running on.
 
 	if (get_revision() >= 15000)
-		mes "Welcome to rAthena!";
+		mes "ยินดีต้อนรับเข้าสู่เซิฟเวอร์ Ymir กรุณาทำตามกฏด้วย ขอให้มีความสุข!";
 
 ---------------------------------------
 
@@ -4783,7 +4783,7 @@ running on.
 
 This command will return the Git Hash that the server is currently running on.
 
-	mes "Welcome to rAthena! Git Hash: " + get_githash();
+	mes "ยินดีต้อนรับเข้าสู่เซิฟเวอร์ Ymir กรุณาทำตามกฏด้วย ขอให้มีความสุข!";
 
 ---------------------------------------
 \\
